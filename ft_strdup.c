@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 12:31:35 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 18:05:29 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 17:40:40 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 17:40:42 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2)
+#include "libft.h"
+
+char	*ft_strdup(const char *s)
 {
-	while (*s1 != '\0' || *s2 != '\0')
+	char	*cs;
+	int		i;
+
+	i = 0;
+	cs = malloc(sizeof(char) * ft_strlen(s));
+	if (cs == NULL)
+		return (NULL);
+	while (i < ft_strlen(s))
 	{
-		if (*s1 < *s2)
-			return (-1);
-		else if (*s1 > *s2)
-			return (1);
+		cs[i] = s[i];
+		i++;
 	}
-	return (0);
+	return (cs);
 }

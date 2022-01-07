@@ -6,11 +6,11 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:32:32 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 13:32:55 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/07 18:05:23 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	while (n-- > 0)
 	{
