@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 17:08:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/06 17:49:21 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:29:38 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:29:42 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memcpy(void *dst, void *src, unsigned int n)
 {
-	int	i;
+	char	*cdst;
+	char	*csrc;
+	int		cnt;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	while (i > 0)
-		if (s[i--] == (char) c)
-			return (&s[++i]);
-	return (NULL);
-}	
+	cdst = dst;
+	csrc = src;
+	cnt = 0;
+	while (cnt < n)
+	{
+		cdst[cnt] = csrc[cnt];
+		cnt++;
+	}
+	return (dst);
+}

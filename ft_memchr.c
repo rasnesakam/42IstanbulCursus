@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcpy.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 16:09:44 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/06 16:09:56 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:59:51 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 13:12:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned int	ix;
-
-	ix = 0;
-	while (ix < len - 1 && src[ix] != '\0')
+	while (n-- > 0)
 	{
-		dest[ix] = src[ix];
-		ix++;
+		if (*((char *)s) == (unsigned char) c)
+			return (s);
+		s++;
 	}
-	dest[ix] = '\0';
-	return (ix);
+	return (NULL);
 }

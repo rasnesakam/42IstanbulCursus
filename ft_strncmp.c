@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 16:47:46 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/06 16:49:26 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:31:35 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 13:12:59 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	strncmp(const char *s1, const char *s2)
 {
-	size_t	i;
-
-	i = 0;
-	while (*(dst + i) != '\0' && i < dstsize)
-		i++;
-	while (i < dstsize - 1 && *src != '\0')
-		*(dst + (i++)) = *(src++);
-	while (*(src++) != '\0')
-		i++;
-	return (i);
+	while (*s1 != '\0' || *s2 != '\0')
+	{
+		if (*s1 < *s2)
+			return (-1);
+		else if (*s1 > *s2)
+			return (1);
+	}
+	return (0);
 }

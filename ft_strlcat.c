@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 16:53:11 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/06 16:53:12 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:30:51 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:30:52 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	size_t	i;
+
+	i = 0;
+	while (*(dst + i) != '\0' && i < dstsize)
+		i++;
+	while (i < dstsize - 1 && *src != '\0')
+		*(dst + (i++)) = *(src++);
+	while (*(src++) != '\0')
+		i++;
+	return (i);
 }

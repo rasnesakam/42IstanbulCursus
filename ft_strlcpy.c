@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strchr.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 17:03:15 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/06 17:43:09 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:31:13 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:31:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int len)
 {
-	while (*s != '\0')
-		if (*(s++) == (char) c)
-			return (--s);
-	return (NULL);
+	unsigned int	ix;
+
+	ix = 0;
+	while (ix < len - 1 && src[ix] != '\0')
+	{
+		dest[ix] = src[ix];
+		ix++;
+	}
+	dest[ix] = '\0';
+	return (ix);
 }

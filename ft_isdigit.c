@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 20:01:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/05 20:07:24 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:28:20 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:28:22 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, unsigned int len)
+int	ft_isdigit(int c)
 {
-	int		i;
-	char	*str;
-
-	str = b;
-	i = 0;
-	while (i < len)
-	{
-		str[i] = (unsigned char) c;
-		i++;
-	}
-	return (b);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

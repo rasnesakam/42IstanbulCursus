@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 20:31:59 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/05 20:32:02 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:27:55 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:27:59 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, void *src, unsigned int n)
+int	ft_isalpha(int c)
 {
-	char	*cdst;
-	char	*csrc;
-	int		cnt;
-
-	cdst = dst;
-	csrc = src;
-	cnt = 0;
-	while (cnt < n)
-	{
-		cdst[cnt] = csrc[cnt];
-		cnt++;
-	}
-	return (dst);
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
 }

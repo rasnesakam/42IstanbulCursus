@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 20:17:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/05 20:33:31 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:32:03 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/07 12:32:05 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned int n)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned int	cnt;
-	char			*str;
+	int	i;
 
-	str = s;
-	cnt = 0;
-	while (cnt < n)
-	{
-		str[cnt++] = '\0';
-	}
-}
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	while (i > 0)
+		if (s[i--] == (char) c)
+			return (&s[++i]);
+	return (NULL);
+}	
