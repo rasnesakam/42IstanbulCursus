@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:39:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/09 10:37:08 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/09 17:16:17 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int		ft_toupper(int c);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char c, int fd);
+void	ft_putnbr_fd(int num, int fd);
 
 #endif
