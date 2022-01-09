@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:29:50 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/08 14:29:53 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/09 10:35:34 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s != '\0')
-		ft_putchar_fd(*s++,fd);
+		ft_putchar_fd (*s++, fd);
 }

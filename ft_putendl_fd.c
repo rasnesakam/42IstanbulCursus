@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:33:42 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/08 14:33:47 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/09 10:37:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl(char *s, int fd)
 {
-	ft_putstr_fd(s,fd);
-	ft_putchar_fd('\n',fd);
+	ft_putstr_fd (s, fd);
+	ft_putchar_fd ('\n', fd);
 }
