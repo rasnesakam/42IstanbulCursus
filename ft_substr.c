@@ -6,14 +6,14 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:18:06 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/10 21:33:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/12 19:07:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	char *ns;
-	char *fst;
+	char	*ns;
+	char	*fst;
 
 	ns = malloc(sizeof(char) * len);
 	fst = ns;
