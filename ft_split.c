@@ -11,7 +11,7 @@ unsigned int	ft_count(const char *s, char c)
 	return (count);
 }
 
-char	**ft_sptlit(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**arr;
 	char	*substr;
