@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:39:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/12 19:21:58 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/13 14:21:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len);
 char	**ft_split(const char *s, char c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
+char	*ft_itoa(int n);
 
 #endif
