@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:22:10 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/15 16:49:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/15 17:03:07 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	ft_decsize(int n)
 	decsize = 0;
 	if (n <= 0)
 		decsize++;
-	while (num != 0)
+	while (n != 0)
 	{
-		num /= 10;
+		n /= 10;
 		decsize++;
 	}
 	return (decsize);

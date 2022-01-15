@@ -6,14 +6,14 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:30:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/14 16:35:03 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/15 17:01:56 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0')
+	while (*s != '\0' && s != NULL)
 		if (*(s++) == (char) c)
 			return ((char *)--s);
 	return (NULL);
