@@ -6,9 +6,10 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:27:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 13:12:11 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:07:34 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	ft_bzero(void *s, unsigned int n)
 {

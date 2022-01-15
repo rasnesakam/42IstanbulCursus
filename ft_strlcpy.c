@@ -6,16 +6,17 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:31:13 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 12:31:15 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/15 15:52:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int len)
+size_t	ft_strlcpy(char *dest, char *src, size_t dstsize)
 {
-	unsigned int	ix;
+	size_t	ix;
 
 	ix = 0;
-	while (ix < len - 1 && src[ix] != '\0')
+	while (ix < dstsize - 1 && src[ix] != '\0')
 	{
 		dest[ix] = src[ix];
 		ix++;

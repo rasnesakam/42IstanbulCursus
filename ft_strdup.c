@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 17:40:40 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/08 13:54:42 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:30:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ char	*ft_strdup(const char *s)
 	cs = malloc(sizeof(char) * len);
 	if (cs == NULL)
 		return (NULL);
-	ft_strlcpy (cs, s, len);
+	ft_strlcpy (cs, (char *)s, len);
 	return (cs);
 }

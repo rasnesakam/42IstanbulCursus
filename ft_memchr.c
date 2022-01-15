@@ -6,16 +6,17 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:59:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 13:12:54 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/15 15:04:02 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	while (n-- > 0)
 	{
-		if (*((char *)s) == (unsigned char) c)
-			return (s);
+		if (*((const char *)s) == (const char) c)
+			return ((void *)s);
 		s++;
 	}
 	return (NULL);

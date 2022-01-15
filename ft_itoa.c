@@ -6,11 +6,26 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:22:10 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/13 14:40:18 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/15 16:49:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_decsize(int n)
+{
+	int	decsize;
+
+	decsize = 0;
+	if (n <= 0)
+		decsize++;
+	while (num != 0)
+	{
+		num /= 10;
+		decsize++;
+	}
+	return (decsize);
+}
 
 char	*ft_itoa(int n)
 {
@@ -19,15 +34,7 @@ char	*ft_itoa(int n)
 	int		last;
 	char	*num;
 
-	decsize = 0;
-	tmpnum = n;
-	if (n <= 0)
-		decsize++;
-	while (tmpnum != 0)
-	{
-		tmpnum /= 10;
-		decsize++;
-	}
+	decsize = ft_decsize(n);
 	tmpnum = n;
 	num = malloc (sizeof(char) * decsize);
 	while (decsize-- > 0)

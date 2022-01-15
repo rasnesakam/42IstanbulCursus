@@ -6,9 +6,10 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:30:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 12:30:52 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:52:58 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

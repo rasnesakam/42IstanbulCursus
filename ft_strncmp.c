@@ -6,9 +6,10 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:31:35 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 18:05:29 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:22:32 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,14 +6,16 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:31:25 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 12:31:26 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:41:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	c;
+	size_t	c;
 
+	c = 0;
 	while (*(s++) != '\0')
 		c++;
 	return (c);

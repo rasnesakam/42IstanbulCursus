@@ -6,14 +6,14 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:30:10 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/07 12:30:14 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/14 16:14:46 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memset(void *b, int c, unsigned int len)
 {
-	int		i;
-	char	*str;
+	unsigned int	i;
+	char			*str;
 
 	str = b;
 	i = 0;
