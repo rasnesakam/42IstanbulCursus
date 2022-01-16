@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:39:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/15 15:51:16 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/16 19:27:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef	struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 int		ft_atoi(const char *s);
 void	ft_bzero(void *s, unsigned int n);
 void	*ft_calloc(size_t count, size_t size);
