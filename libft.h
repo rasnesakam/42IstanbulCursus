@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:39:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 08:30:34 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/17 19:32:38 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-};
-typedef struct s_list	t_list;
 int		ft_atoi(const char *s);
 void	ft_bzero(void *s, unsigned int n);
 void	*ft_calloc(size_t count, size_t size);
@@ -55,5 +49,16 @@ char	**ft_split(const char *s, char c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_itoa(int n);
+struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+};
+typedef struct s_list	t_list;
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif

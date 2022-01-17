@@ -24,7 +24,7 @@ $(NAME):
 all: $(NAME)
 
 bonus:
-	$(COMPILE) $(FLAGS) -c $(BSRC) -I ./
+	$(COMPILE) $(FLAGS) -c $(BSRCS) -I ./
 	ar rc $(NAME) $(BOBJS)
 
 clean:

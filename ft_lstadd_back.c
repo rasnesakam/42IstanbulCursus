@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:58:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 18:58:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/17 19:25:00 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
-	tmp = ft_lstlast(lst[0]);
+	tmp = ft_lstlast(*lst);
 	tmp->next = new;
 }
