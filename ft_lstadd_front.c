@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 18:34:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 18:38:04 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/17 18:42:41 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/17 18:43:04 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*node;
-
-	node = (t_list *) malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	ft_memcpy (node->content, content, sizeof(content));
-	node->next = NULL;
-	return (node);
+	new->next = lst[0];
+	lst[0] = new;
 }

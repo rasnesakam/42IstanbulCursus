@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 18:34:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 18:38:04 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/17 18:46:47 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/17 18:46:55 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*node;
+	int	count;
 
-	node = (t_list *) malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	ft_memcpy (node->content, content, sizeof(content));
-	node->next = NULL;
-	return (node);
+	count = 0;
+	while (lst->next == NULL)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }
