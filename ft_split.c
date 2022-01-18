@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 20:50:14 by emakas            #+#    #+#             */
+/*   Updated: 2022/01/18 20:54:14 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static unsigned int	ft_count(const char *s, char c)
 {
-	unsigned int count;
-	unsigned int i;
+	unsigned int	count;
+	unsigned int	i;
 
 	count = 0;
 	i = 0;
@@ -11,7 +23,7 @@ static unsigned int	ft_count(const char *s, char c)
 	{
 		if (s[i] == c)
 			i++;
-		else 
+		else
 		{
 			count++;
 			while (s[i] && s[i] != c)
@@ -21,52 +33,51 @@ static unsigned int	ft_count(const char *s, char c)
 	return (count);
 }
 
-static void ft_setfree(char **arr)
+static char	*ft_create(char *lptr, char *crsr)
 {
-	int i;
+	char	*substr;
 
-	i = 0;
-	while (arr[i])
+	substr = malloc (sizeof(char) * (crsr - lptr + 1));
+	if (!substr)
+		return (NULL);
+	ft_strlcpy (substr, lptr, (crsr - lptr + 1));
+	return (substr);
+}
+
+static void	ft_iterate(const char **s, char **lptr, char c)
+{
+	while (**s && **s == c)
 	{
-		free(arr[i]);
-		i++;
+		*s = *s + 1;
+		*lptr = (char *) *s;
 	}
-	free(arr);
+	while (**s && (**s != c && **s != '\0'))
+		*s = *s + 1;
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char	**arr;
-	char	*substr;
-	char	*lastptr;
+	char			**arr;
+	char			*lastptr;
 	unsigned int	cursor;
 
 	if (!s)
 		return (NULL);
-	arr = malloc(sizeof(char*) * (ft_count(s,c) + 1 ));
+	arr = malloc (sizeof(char *) * (ft_count (s, c) + 1));
 	if (!arr)
 		return (NULL);
 	cursor = 0;
-	while (*s && *s != c)
-		s++;
 	lastptr = (char *) s;
 	while (*s)
 	{
-		if (*s == c || *s == '\0')
+		ft_iterate (&s, &lastptr, c);
+		if (lastptr < s)
 		{
-			substr = malloc(sizeof(char) * (s - lastptr + 1));
-			if (!substr)
-			{
-				ft_setfree(arr);
-				return (NULL);
-			}
-			ft_strlcpy(substr, lastptr, (s - lastptr + 1));
-			arr[cursor++] = substr;
-			//free(substr);
-			lastptr = (char *) (s + 1);
+			arr[cursor] = ft_create (lastptr, (char *)s);
+			cursor++;
+			lastptr = (char *) s;
 		}
-		s++;
 	}
-	arr[cursor] = NULL;
+	arr[cursor] = 0;
 	return (arr);
 }
