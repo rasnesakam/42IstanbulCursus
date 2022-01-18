@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:46:47 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 18:46:55 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:54:18 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstsize(t_list *lst)
 	int	count;
 
 	count = 0;
-	while (lst->next == NULL)
+	while (lst)
 	{
 		count++;
 		lst = lst->next;

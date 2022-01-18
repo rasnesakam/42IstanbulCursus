@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:34:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/17 18:38:04 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/18 14:49:32 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_list	*ft_lstnew(void *content)
 	t_list	*node;
 
 	node = (t_list *) malloc(sizeof(t_list));
-	if (node == NULL)
+	if (!node)
 		return (NULL);
-	ft_memcpy (node->content, content, sizeof(content));
+	node->content = content;
 	node->next = NULL;
 	return (node);
 }
