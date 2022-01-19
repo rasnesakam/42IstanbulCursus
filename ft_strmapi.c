@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:27:17 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/12 19:07:03 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/19 20:53:29 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 	char	*ns;
 	int		i;
 
-	ns = malloc(sizeof(char));
+	ns = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ns)
+		return (NULL);
 	i = 0;
 	while (*s != '\0')
 	{
 		ns[i] = (*f)(i,*s++);
 		i++;
 	}
+	ns[i] = '\0';
 	return (ns);
 }
