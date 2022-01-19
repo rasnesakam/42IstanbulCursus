@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:22:10 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/15 17:03:07 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/19 18:20:10 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ char	*ft_itoa(int n)
 
 	decsize = ft_decsize(n);
 	tmpnum = n;
-	num = malloc (sizeof(char) * decsize);
+	num = malloc (sizeof(char) * decsize + 1);
+	if (!num)
+		return (NULL);
+	num[decsize] = '\0';
 	while (decsize-- > 0)
 	{
 		last = tmpnum % 10;

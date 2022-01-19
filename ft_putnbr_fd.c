@@ -6,7 +6,7 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:13:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/15 15:46:28 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/19 18:58:37 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,20 @@
 
 void	ft_putnbr_fd(int num, int fd)
 {
-	ft_putstr_fd(ft_itoa(num), fd);
+	int	last;
+
+	if (num < 0)
+		ft_putchar_fd ('-', fd);
+	if (num <= -10)
+	{
+		ft_putnbr_fd ((num / -10), fd);
+	}
+	else if (num >= 10)
+	{
+		ft_putnbr_fd (num / 10, fd);
+	}
+	last = num % 10;
+	if (last < 0)
+		last *= -1;
+	ft_putchar_fd ('0' + last, fd);
 }
