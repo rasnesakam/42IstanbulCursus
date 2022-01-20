@@ -6,14 +6,14 @@
 /*   By: emakas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:27:10 by emakas            #+#    #+#             */
-/*   Updated: 2022/01/14 16:06:46 by emakas           ###   ########.fr       */
+/*   Updated: 2022/01/20 16:04:59 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_atoi(const char *s)
 {
-	int	res;
+	long	res;
 	int	sign;
 
 	res = 0;
@@ -31,7 +31,14 @@ int	ft_atoi(const char *s)
 	}
 	while (*s != '\0' && *s >= '0' && *s <= '9')
 	{
-		res = (res * 10) + (*s - '0');
+		res =  (res * 10) + (*s - '0');
+		if (res < 0)
+		{
+			if (sign == 1)
+		        return (-1);
+		    else
+		        return (0);
+		}
 		s++;
 	}
 	return (res * sign);
