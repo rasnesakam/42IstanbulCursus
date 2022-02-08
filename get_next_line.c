@@ -12,25 +12,38 @@
 
 char    *get_next_line(int fd)
 {
-    char *buffer;
-    char c;
-    int pos;
+    static char *buffer;
+    char *s;
+    static int pos;
     int ri;
+    int posendl;
 
-    buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
-    if (buffer == NULL)
-        return (NULL);
-    pos = 0;
-    ri = read(fd,&c,1);
-    if (ri > 0)
-        *(buffer + pos++) = c;
-    while (pos < BUFFER_SIZE && ri > 0 && c != '\n')
+    ri = 1;
+    //printf("ENTERING WHILE\n");
+    while (ri > 0 && ft_strpos(s,'\n') == NULL)
     {
-        ri = read(fd,&c,1);
-        *(buffer + pos++) = c;
+        //printf("EXPANDING\n");
+        ri = read(fd,s,BUFFER_SIZE);
+        printf("\nREADED: %s\n",s);
+        //printf("EXPANDED STRING: %s\n",ft_expand(buffer,s));
+        buffer = ft_expand(buffer,s);
+        //printf("EXPANDED\n");
     }
-    
-    return buffer;
+    printf("BUFFER IS: %s",buffer);
+    posendl = ft_strposi(buffer,pos,'\n');
+    if (posendl >= 0)
+    {
+        s = ft_substr (buffer, pos, posendl);
+        pos = posendl + 1;
+    }
+    //printf("EXITED IF, CHECKING IF HAS EOF\n");
+    else
+    {
+        s = ft_substr (buffer,pos,ft_strlen(buffer) - 1);
+    }
+    //printf("BUFFER IS: %s\n",buffer);
+    //printf("STRING IS: %s\n",s);
+    return (s);
 }
 
 int main(void)
@@ -42,17 +55,22 @@ int main(void)
     if (fd == -1)
         printf("Failed to open...\n");
 
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
+    char *buff;
+    buff = get_next_line(fd);
+    printf("\nline-1: %s\n", buff);
+    buff = get_next_line(fd);
+    printf("\nline-2: %s\n", buff);
+    buff = get_next_line(fd);
+    printf("\nline-3: %s\n", buff);
+    buff = get_next_line(fd);
+    printf("\nline-4: %s\n", buff);
+    buff = get_next_line(fd);
+    //printf("line-5: %s", buff);
 
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
+    /*     while (*(buff = get_next_line(fd)))
+    {
+        printf("%s",buff);
+    } */
     //get_next_line(fd);
 
     return 0;
