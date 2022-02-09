@@ -2,3 +2,6 @@
 abcdefghij
 asdfghjk
 qwertyuıop
+abcdefg
+kjh
+x
