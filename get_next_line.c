@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
+/*   Updated: 2022/02/10 22:22:13 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 #include <stdio.h>
@@ -7,84 +19,50 @@
 #include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
 #endif
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    char *buffer;
-    char *s;
-    static char *append;
-    int ri;
+	char		*buffer;
+	char		*s;
+	static char	*prepend;
+	int			ri;
 
-    ri = read(fd,s,BUFFER_SIZE);
-    printf("READED: %s\n",s);
-    if (ri >= 0)
-    {
-        while (ri == BUFFER_SIZE && ft_strposi(s,0,'\n') == -1)
-        {
-            buffer = ft_expand(buffer,s);
-            ri = read(fd,s,BUFFER_SIZE);
-        }
-        printf("READED %d bytes\n",ri);
-        printf("BUFFER: %s\n",buffer);
-        if (ft_strpos(s,'\n') != NULL && (char *)(ft_strpos(s,'\n') + 1) != NULL)
-        {
-            append = ft_strpos(s,'\n') + 1;
-            printf("APPEND: %s\n",append);
-            buffer = ft_substr(buffer,0,ft_strposi(buffer,0,'\n'));
-            printf("NEW BUFFER: %s\n",buffer);
-        }
-        if (ri < BUFFER_SIZE)
-        {
-            clear_after(&s,ri);
-            printf("new S: %s\n",s);
-        }
-
-        return (buffer);
-    }
-    return (NULL);
+	buffer = NULL;
+	if (prepend != NULL)
+		buffer = ft_expand (prepend, buffer);
+	prepend = NULL;
+	s = malloc (sizeof(char) * BUFFER_SIZE);
+	ri = read (fd, s, BUFFER_SIZE);
+	while (ri == BUFFER_SIZE && ft_strpos (s, '\n') == NULL)
+	{
+		buffer = ft_expand (buffer, s);
+		ri = read (fd, s, BUFFER_SIZE);
+	}
+	if (ri <= BUFFER_SIZE && ri > 0)
+		buffer = ft_expand (buffer, ft_substr (s, 0, ri));
+	if (ft_strpos (buffer, '\n'))
+	{
+		prepend = ft_strpos (buffer, '\n') + 1;
+		buffer = ft_substr (buffer, 0, ft_strposi (buffer, 0, '\n'));
+	}
+	return (buffer);
 }
 
-int main(void)
+int	main(void)
 {
-    int fd;
+	int	fd;
 
-    fd = open("example.txt",O_CREAT | O_RDWR, 0700);
+	fd = open("example.txt", O_RDONLY);
+	if (fd == -1)
+		printf("Failed to open...\n");
 
-    if (fd == -1)
-        printf("Failed to open...\n");
-
-    char *buff;
-    buff = get_next_line(fd);
-    printf("\nline-1: %s\n", buff);
-    
-    buff = get_next_line(fd);
-    printf("\nline-2: %s\n", buff);
-    buff = get_next_line(fd);
-    printf("\nline-3: %s\n", buff);
-    buff = get_next_line(fd);
-    printf("\nline-4: %s\n", buff);
-    buff = get_next_line(fd);
-
-    printf("\nline-5: %s\n", buff);
-    buff = get_next_line(fd);
-
-    printf("\nline-6: %s\n", buff);
-    buff = get_next_line(fd);
-
-    printf("\nline-7: %s\n", buff);
-    buff = get_next_line(fd);
-
-    printf("\nline-8: %s\n", buff);
-    buff = get_next_line(fd);
-    //printf("line-5: %s", buff);
-
-    /*     while (*(buff = get_next_line(fd)))
-    {
-        printf("%s",buff);
-    } */
-    //get_next_line(fd);
-
-    return 0;
+	char *buff;
+	for (int i = 1; i <= 9; i++)
+	{
+		buff = get_next_line(fd);
+		printf("LINE-%d: %s",i,buff);
+	}
+	return (0);
 }
