@@ -1,0 +1,2 @@
+NAME = libftprint.a
+
