@@ -6,16 +6,17 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 02:07:34 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/11 03:35:56 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/11 04:35:21 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf.h"
 int	ft_print_format(char format, va_list args)
 {
 	if (format == 'c')
 		return (ft_putchar (va_arg (args, char)));
 	else if (format == 's')
-		return (ft_putstring (va_arg (args, char *)));
+		return (ft_putstr (va_arg (args, char *)));
 	else if (format == 'p')
 		return (ft_putptr (va_arg (args, unsigned long long)));
 	else if (format == 'd')
