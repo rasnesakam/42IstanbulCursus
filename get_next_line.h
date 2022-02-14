@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:06:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/13 22:30:18 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/14 19:23:36 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 
 void	ft_prepend_if_exists(char **prepend, char **buffer);
 void	ft_inflate(int fd, char **buffer);
-void	ft_take_excess(char **buffer, char **prepend);
+char	*ft_take_excess(char **buffer);
 
 #endif

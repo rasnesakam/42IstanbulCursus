@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:09:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/13 23:13:59 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/14 20:10:39 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,53 @@ void	ft_prepend_if_exists(char **prepend, char **buffer)
 	}
 }
 
-void	ft_inflate(int fd, char **buffer)
+void	ft_inflate(char **buffer, char **append)
 {
-
+	char	*newbuffer;
+	char	*flag;
+	int		readed;
+	newbuffer = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(*append) + 1));
+	if (newbuffer == NULL)
+		return ;
+	flag = newbuffer;
+	while(*buffer != NULL && **buffer != '\0')
+	{
+		*(newbuffer++) = *((*buffer)++);
+	}
+	while (*append != NULL && *append != '\0')
+		*(newbuffer++) = *(append++);
+	*newbuffer = '\0';
+	free(*buffer);
+	free(*append);
+	buffer* = &flag;
 }
 
-void	ft_takexcess(char **buffer, char **prepend)
+char	*ft_takexcess(char **buffer)
 {
-	
+	char	*newbuffer;
+	char	*returning;
+	char	*stop;
+	int		pos;
+
+	stop = ft_strpos(*buffer,'\n');
+	if (stop != NULL)
+	{
+		newbuffer = malloc(sizeof(char) * (stop - *buffer + 2));
+		if (newbuffer == NULL)
+			return ;
+		pos = 0;
+		while (*buffer <= stop)
+			newbuffer[pos++] = *((*buffer)++);
+		newbuffer[pos] = '\0';
+		returning = malloc(sizeof(char) * (ft_strpos(stop,'\0') - stop + 1));
+		if (returning = NULL)
+			return ;
+		pos = 0;
+		while (*stop != '\0')
+			returning[pos++] = *(stop++);
+		returning[pos] = '\0';
+		free(*buffer);
+		*buffer = newbuffer;
+		return (returning);
+	}
 }

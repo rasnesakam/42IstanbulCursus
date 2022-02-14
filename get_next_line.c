@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/13 22:30:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/14 20:31:46 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,34 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+char	*ft_readline(int fd)
+{
+	int		readed;
+	char	*newbuffer;
+	char	*tmp;
+
+	readed = BUFFER_SIZE;
+	newbuffer = NULL;
+	while (readed == BUFFER_SIZE && ft_strpos (newbuffer, '\n') == NULL)
+	{
+		tmp = malloc (sizeof(char) * BUFFER_SIZE + 1);
+		if (tmp != NULL)
+			return ;
+		readed = read (fd, tmp, BUFFER_SIZE);
+		*(tmp + BUFFER_SIZE + 1 - (BUFFER_SIZE - readed)) = '\0';
+		ft_inflate(&newbuffer, &tmp);
+	}
+	return (newbuffer);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*buffer;
 	static char	*prepend;
 
 	ft_prepend_if_exists(&prepend, &buffer); // Prepends the excess from previous readed data 
-	ft_inflate(fd,&buffer); // inflates buffer with readed file datas that given file descriptor 'fd'
-	ft_takexcess(&buffer,&prepend); // takes chars after '\n' from buffer and stores them in 'prepend'
+	buffer = ft_readline(fd); // reads the string that contains ENDL or terminator
+	prepend = ft_takexcess(&buffer); // takes chars after '\n' from buffer and stores them in 'prepend'
 
 	return (buffer);
 }
