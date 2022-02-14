@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:09:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/10 22:16:26 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/13 23:13:59 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,70 +28,48 @@ char	*ft_strpos(char *s, int c)
 	return (NULL);
 }
 
-int	ft_strlen(const char *s)
+int	ft_strlen(char *c)
 {
 	int	count;
 
 	count = 0;
-	while (s != NULL && *(s++) != '\0')
-		count++;
+	if (c != NULL)
+		while (c[count] != '\0')
+			count++;
 	return (count);
 }
 
-char	*ft_expand(const char *s1, const char *s2)
-{
-	char	*new_buffer;
-	int		pos;
-
-	new_buffer = (char *) malloc(sizeof(char)
-			* (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (new_buffer == NULL)
-		return (NULL);
-	pos = 0;
-	while (s1 != NULL && *s1 != '\0')
-	{
-	new_buffer[pos] = (char) *s1;
-	pos++;
-	s1++;
-	}
-	while (s2 != NULL && *s2 != '\0')
-	{
-		new_buffer[pos] = (char) *s2;
-		pos++;
-		s2++;
-	}
-	new_buffer[pos] = '\0';
-	return (new_buffer);
-}
-
-int	ft_strposi(char *str, int start, int search)
-{
-	int	index;
-
-	index = start;
-	if (str == NULL)
-		return (-1);
-	while (str[index] != '\0')
-		if (str[index++] == (char) search)
-			return (--index);
-	if (str[index] == (char) search)
-		return (index);
-	return (-1);
-}
-
-char	*ft_substr(char *s, int start, int end)
+void	ft_prepend_if_exists(char **prepend, char **buffer)
 {
 	char	*newstr;
+	int		len;
 	int		pos;
 
-	pos = 0;
-	newstr = malloc(sizeof(char) * (end - start + 2));
-	if (newstr == NULL)
-		return (NULL);
-	while (start <= end)
+	if (*prepend != NULL)
 	{
-	newstr[pos++] = s[start++];
+		newstr = malloc (sizeof(char)
+				* (ft_strlen (*prepend) + ft_strlen (*buffer) + 1));
+		if (newstr == NULL)
+			return ;
+		pos = 0;
+		while ((*prepend)[pos] != '\0')
+			newstr[pos] = (*prepend)[pos++];
+		len = 0;
+		while ((*buffer)[len] != '\0')
+			newstr[pos++] = (*buffer)[len++];
+		newstr[pos] = '0';
+		free (*prepend);
+		free (*buffer);
+		*buffer = newstr;
 	}
-	newstr[pos] = '\0';
-	return (newstr);
+}
+
+void	ft_inflate(int fd, char **buffer)
+{
+
+}
+
+void	ft_takexcess(char **buffer, char **prepend)
+{
+	
 }

@@ -6,18 +6,19 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:06:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/10 22:16:13 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/13 22:30:18 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-char	*get_next_line(int fd);
-char	*ft_strpos(char *str, int c);
-char	*ft_expand(const char *s1, const char *s2);
-char	*ft_substr(char *s, int start, int end);
-int		ft_strposi(char *s, int start, int search);
-int		ft_strlen(const char *s);
+void	ft_prepend_if_exists(char **prepend, char **buffer);
+void	ft_inflate(int fd, char **buffer);
+void	ft_take_excess(char **buffer, char **prepend);
+
 #endif
