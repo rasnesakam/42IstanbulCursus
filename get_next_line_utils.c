@@ -87,7 +87,7 @@ void	ft_inflate(char **buffer, char **append)
 	printf("FREEING BUFFER\n");
 	if (*buffer != NULL)
 		free(*buffer);
-	printf("FREED BUFFER\n")
+	printf("FREED BUFFER\n");
 	printf("FREEING APPEND\n");
 	if (*append != NULL)
 		free(*append);
