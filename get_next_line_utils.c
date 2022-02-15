@@ -84,8 +84,10 @@ void	ft_inflate(char **buffer, char **append)
 	while (*append != NULL && **append != '\0')
 		*(newbuffer++) = *((*append)++);
 	*newbuffer = '\0';
+	printf("FREEING BUFFER\n");
 	if (*buffer != NULL)
 		free(*buffer);
+	printf("FREEING APPEND\n");
 	if (*append != NULL)
 		free(*append);
 	*buffer = flag;
