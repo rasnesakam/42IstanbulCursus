@@ -18,7 +18,9 @@
 # endif
 
 void	ft_prepend_if_exists(char **prepend, char **buffer);
-void	ft_inflate(int fd, char **buffer);
+void	ft_inflate(char **buffer, char **append);
 char	*ft_take_excess(char **buffer);
+char	*ft_strpos(char *s, int c);
+int		ft_strlen(char *s);
 
 #endif
