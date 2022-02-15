@@ -72,6 +72,7 @@ void	ft_inflate(char **buffer, char **append)
 	char	*newbuffer;
 	char	*flag;
 	int		readed;
+
 	newbuffer = malloc(sizeof(char) * (ft_strlen(*buffer) + ft_strlen(*append) + 1));
 	if (newbuffer == NULL)
 		return ;

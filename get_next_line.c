@@ -43,10 +43,12 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	static char	*prepend;
 
-	ft_prepend_if_exists(&prepend, &buffer); // Prepends the excess from previous readed data 
+	ft_prepend_if_exists(&prepend, &buffer); // Prepends the excess from previous readed data
+	printf("BUFFER: %s\n",buffer);
 	buffer = ft_readline(fd); // reads the string that contains ENDL or terminator
+	printf("BUFFER: %s\n",buffer);
 	prepend = ft_takexcess(&buffer); // takes chars after '\n' from buffer and stores them in 'prepend'
-
+	printf("BUFFER: %s\n",buffer);
 	return (buffer);
 }
 
