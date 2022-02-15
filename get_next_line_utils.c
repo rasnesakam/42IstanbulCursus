@@ -53,7 +53,10 @@ void	ft_prepend_if_exists(char **prepend, char **buffer)
 			return ;
 		pos = 0;
 		while ((*prepend)[pos] != '\0')
-			newstr[pos] = (*prepend)[pos++];
+		{
+			newstr[pos] = (*prepend)[pos];
+			pos++;
+		}
 		len = 0;
 		while ((*buffer)[len] != '\0')
 			newstr[pos++] = (*buffer)[len++];
@@ -82,7 +85,7 @@ void	ft_inflate(char **buffer, char **append)
 	*newbuffer = '\0';
 	free(*buffer);
 	free(*append);
-	*buffer = &flag;
+	*buffer = flag;
 }
 
 char	*ft_takexcess(char **buffer)
@@ -113,4 +116,5 @@ char	*ft_takexcess(char **buffer)
 		*buffer = newbuffer;
 		return (returning);
 	}
+	return (NULL);
 }
