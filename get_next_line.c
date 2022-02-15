@@ -26,10 +26,9 @@ char	*ft_readline(int fd)
 
 	readed = BUFFER_SIZE;
 	newbuffer = NULL;
-	printf("PTR: %p\n", ft_strpos (newbuffer, '\n'));
 	while (readed == BUFFER_SIZE && ft_strpos (newbuffer, '\n') == NULL)
 	{
-		tmp = malloc (sizeof(char) * BUFFER_SIZE + 1);
+		tmp = malloc (sizeof(char) * (BUFFER_SIZE + 1));
 		if (tmp != NULL)
 			return (NULL);
 		readed = read (fd, tmp, BUFFER_SIZE);
