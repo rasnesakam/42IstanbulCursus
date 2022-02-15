@@ -32,8 +32,11 @@ char	*ft_readline(int fd)
 		if (tmp != NULL)
 			return (NULL);
 		readed = read (fd, tmp, BUFFER_SIZE);
+		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
 		*(tmp + BUFFER_SIZE + 1 - (BUFFER_SIZE - readed)) = '\0';
+		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
 		ft_inflate(&newbuffer, &tmp);
+		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
 	}
 	return (newbuffer);
 }
