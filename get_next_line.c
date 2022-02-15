@@ -46,6 +46,8 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	static char	*prepend;
 
+	buffer = NULL;
+	prepend = NULL;
 	ft_prepend_if_exists(&prepend, &buffer); // Prepends the excess from previous readed data
 	printf("BUFFER: %s\n",buffer);
 	buffer = ft_readline(fd); // reads the string that contains ENDL or terminator
