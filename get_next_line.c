@@ -35,9 +35,9 @@ char	*ft_readline(int fd)
 		readed = read (fd, tmp, BUFFER_SIZE);
 		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
 		*(tmp + BUFFER_SIZE + 1 - (BUFFER_SIZE - readed)) = '\0';
-		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
+		printf("BUFFER: %s\n TEMP: %s\n Inflating\n",newbuffer,tmp);
 		ft_inflate(&newbuffer, &tmp);
-		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
+		printf("BUFFER: %s\n TEMP: %s\nInflated\n",newbuffer,tmp);
 	}
 	return (newbuffer);
 }
