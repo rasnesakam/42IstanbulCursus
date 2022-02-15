@@ -69,7 +69,7 @@ void	ft_inflate(char **buffer, char **append)
 	char	*newbuffer;
 	char	*flag;
 	int		readed;
-	newbuffer = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(*append) + 1));
+	newbuffer = malloc(sizeof(char) * (ft_strlen(*buffer) + ft_strlen(*append) + 1));
 	if (newbuffer == NULL)
 		return ;
 	flag = newbuffer;
@@ -77,12 +77,12 @@ void	ft_inflate(char **buffer, char **append)
 	{
 		*(newbuffer++) = *((*buffer)++);
 	}
-	while (*append != NULL && *append != '\0')
-		*(newbuffer++) = *(append++);
+	while (*append != NULL && **append != '\0')
+		*(newbuffer++) = *((*append)++);
 	*newbuffer = '\0';
 	free(*buffer);
 	free(*append);
-	buffer* = &flag;
+	*buffer = &flag;
 }
 
 char	*ft_takexcess(char **buffer)
@@ -97,14 +97,14 @@ char	*ft_takexcess(char **buffer)
 	{
 		newbuffer = malloc(sizeof(char) * (stop - *buffer + 2));
 		if (newbuffer == NULL)
-			return ;
+			return (NULL);
 		pos = 0;
 		while (*buffer <= stop)
 			newbuffer[pos++] = *((*buffer)++);
 		newbuffer[pos] = '\0';
 		returning = malloc(sizeof(char) * (ft_strpos(stop,'\0') - stop + 1));
-		if (returning = NULL)
-			return ;
+		if (returning == NULL)
+			return (NULL);
 		pos = 0;
 		while (*stop != '\0')
 			returning[pos++] = *(stop++);

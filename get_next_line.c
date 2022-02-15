@@ -30,7 +30,7 @@ char	*ft_readline(int fd)
 	{
 		tmp = malloc (sizeof(char) * BUFFER_SIZE + 1);
 		if (tmp != NULL)
-			return ;
+			return (NULL);
 		readed = read (fd, tmp, BUFFER_SIZE);
 		*(tmp + BUFFER_SIZE + 1 - (BUFFER_SIZE - readed)) = '\0';
 		ft_inflate(&newbuffer, &tmp);
