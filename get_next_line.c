@@ -28,6 +28,7 @@ char	*ft_readline(int fd)
 	newbuffer = NULL;
 	while (readed == BUFFER_SIZE && ft_strpos (newbuffer, '\n') == NULL)
 	{
+		printf("YAW CIHAN\n");
 		tmp = malloc (sizeof(char) * (BUFFER_SIZE + 1));
 		if (tmp != NULL)
 			return (NULL);
