@@ -30,7 +30,7 @@ char	*ft_readline(int fd)
 	{
 		printf("YAW CIHAN\n");
 		tmp = malloc (sizeof(char) * (BUFFER_SIZE + 1));
-		if (tmp != NULL)
+		if (tmp == NULL)
 			return (NULL);
 		readed = read (fd, tmp, BUFFER_SIZE);
 		printf("BUFFER: %s\n TEMP: %s\n",newbuffer,tmp);
