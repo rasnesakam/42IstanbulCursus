@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:09:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/16 19:48:44 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:11:27 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*ft_strpos(char *str, int c)
 {
 	int pos;
 
-	printf("%s\n",str);
 	while (str != NULL && str[pos] != '\0'
 		&& str[pos] != (char) c)
 		pos++;
