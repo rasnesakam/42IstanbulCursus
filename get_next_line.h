@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:06:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/14 19:23:36 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/16 19:18:00 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 #  define BUFFER_SIZE 1
 # endif
 
-void	ft_prepend_if_exists(char **prepend, char **buffer);
-void	ft_inflate(char **buffer, char **append);
-char	*ft_takexcess(char **buffer);
-char	*ft_strpos(char *s, int c);
-int		ft_strlen(char *s);
-
+void	ft_merge(char **s1, char **s2);
+char	*ft_strpos(char *str, int c);
+void	ft_setnull(char *s, int after);
+int		ft_len(char *s);
 #endif
