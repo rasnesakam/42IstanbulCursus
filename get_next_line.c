@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/16 19:50:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/17 23:25:23 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,20 @@ void	ft_read(int fd, char **buffer, char **prepend)
 	readed = BUFFER_SIZE;
 	if (*prepend != NULL)
 	{
-		ft_merge(prepend, buffer);
+		ft_merge(prepend, *buffer);
 		free(*prepend);
 	}
-	while (ft_strpos(*buffer, '\n') != NULL && readed == BUFFER_SIZE )
+	while (ft_strpos(*buffer, '\n') == NULL && readed == BUFFER_SIZE )
 	{
 		tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (tmp == NULL)
 			return ;
 		readed = read(fd,tmp,BUFFER_SIZE);
-		*(tmp + BUFFER_SIZE) = '\0';
-		printf("%s\n",tmp);
+		tmp[BUFFER_SIZE] = '\0';
 		if (readed < BUFFER_SIZE){
 			ft_setnull(tmp,readed);
 		}
-		ft_merge(buffer, &tmp);
+		ft_merge(buffer, tmp);
 		free(tmp);
 	}
 }
