@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/17 23:25:23 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/18 18:14:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ void	ft_read(int fd, char **buffer, char **prepend)
 	char	*tmp;
 
 	readed = BUFFER_SIZE;
+	tmp = NULL;
 	if (*prepend != NULL)
 	{
-		ft_merge(prepend, *buffer);
+		ft_merge(prepend,*buffer);
+		free(*buffer);
+		ft_merge(buffer,*prepend);
 		free(*prepend);
+		*prepend = NULL;
 	}
 	while (ft_strpos(*buffer, '\n') == NULL && readed == BUFFER_SIZE )
 	{
@@ -44,7 +48,24 @@ void	ft_read(int fd, char **buffer, char **prepend)
 	}
 }
 
+void	ft_get_line(char **buffer, char **prepend)
+{
+	char	*newstr;
+	char	*stop;
 
+	newstr = NULL;
+	stop = ft_strpos(*buffer,'\n');
+	if (stop == NULL)
+		stop = ft_strpos(*buffer,'\0');
+	if (*stop == '\n' && stop[1])
+	{
+		ft_merge(prepend,&stop[1]);
+		stop[1] = '\0';
+	}
+	ft_merge(&newstr,*buffer);
+	free(*buffer);
+	*buffer = newstr;
+}
 
 char	*get_next_line(int fd)
 {
@@ -52,9 +73,11 @@ char	*get_next_line(int fd)
 	char		*buffer;
 
 	buffer = NULL;
-	prepend = NULL;
-	ft_read(fd, &buffer, &prepend);
-	//buffer = ft_get_line(buffer,&prepend);
+	if (fd > 0)
+	{
+		ft_read(fd, &buffer, &prepend); // reads untill occure '\n' char or eof
+		ft_get_line(&buffer,&prepend); // clears after '\n' and stores them to prepend
+	}
 	return (buffer);
 }
 
@@ -65,7 +88,7 @@ int	main(void)
 {
 int	fd;
 
-fd = open("example.txt", O_RDONLY);
+fd = open("exammple.txt", O_RDONLY);
 if (fd == -1)
 	printf("Failed to open...\n");
 
@@ -73,7 +96,8 @@ char *buff;
 for (int i = 1; i <= 9; i++)
 {
 	buff = get_next_line(fd);
-printf("LINE-%d: %s",i,buff);
+	printf("LINE-%d: %s",i,buff);
 }
 return (0);
 }
+

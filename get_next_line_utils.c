@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:09:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/17 23:24:48 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/18 17:06:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_merge(char **s1, char *s2)
 		return ;
 	pos = 0;
 	ix = 0;
-	while (*s1 && *s1[ix] != '\0')
-		newstr[pos++] = *s1[ix++];
+	while (*s1 && (*s1)[ix] != '\0')
+		newstr[pos++] = (*s1)[ix++];
 	ix = 0;
 	while (s2 && s2[ix] != '\0')
 		newstr[pos++] = s2[ix++];

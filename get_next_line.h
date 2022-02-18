@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:06:57 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/17 22:44:21 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/18 17:34:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_merge(char **s1, char *s2);
 char	*ft_strpos(char *str, int c);
 void	ft_setnull(char *s, int after);
 int		ft_len(char *s);
+char	*get_next_line(int fd);
 #endif
