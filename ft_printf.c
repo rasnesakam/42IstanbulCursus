@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:02:59 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/11 04:34:52 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/21 13:41:27 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	ft_printf(const char *pattern, ...)
 
 int main(void)
 {
-	ft_printf("%c\n",'c');
+	ft_printf("%c\n",'s');
 	return (0);
 }

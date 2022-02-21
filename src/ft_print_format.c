@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 02:07:34 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/11 04:35:21 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/21 15:15:46 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 int	ft_print_format(char format, va_list args)
 {
 	if (format == 'c')
-		return (ft_putchar (va_arg (args, char)));
+		return (ft_putchar (va_arg (args, int)));
 	else if (format == 's')
 		return (ft_putstr (va_arg (args, char *)));
 	else if (format == 'p')
