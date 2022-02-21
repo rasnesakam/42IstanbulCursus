@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:09:23 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/18 17:06:01 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/21 13:51:18 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_merge(char **s1, char *s2)
 
 char	*ft_strpos(char *str, int c)
 {
-	int pos;
+	int	pos;
 
 	pos = 0;
 	while (str != NULL && str[pos] != '\0'
@@ -56,7 +56,7 @@ void	ft_setnull(char *s, int after)
 
 int	ft_len(char *str)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (str && str[count] != '\0')
