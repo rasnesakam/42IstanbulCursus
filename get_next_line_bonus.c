@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/22 20:15:55 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/22 20:15:37 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_prepend(char **prepend, char **buffer)
 {
@@ -70,17 +70,18 @@ void	ft_get_line(char **buffer, char **prepend)
 
 char	*get_next_line(int fd)
 {
-	static char	*prepend;
+	static char	*prepend[256];
 	char		*buffer;
 
 	buffer = NULL;
 	if (fd >= 0)
 	{
-		ft_read (fd, &buffer, &prepend);
-		ft_get_line (&buffer, &prepend);
+		ft_read (fd, &buffer, &prepend[fd]);
+		ft_get_line (&buffer, &prepend[fd]);
 	}
 	if (ft_len (buffer) > 0)
 		return (buffer);
 	free (buffer);
 	return (NULL);
 }
+
