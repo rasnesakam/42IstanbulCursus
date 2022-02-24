@@ -6,11 +6,12 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 02:07:34 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/21 15:15:46 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/24 19:05:56 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
+
 int	ft_print_format(char format, va_list args)
 {
 	if (format == 'c')
@@ -28,7 +29,7 @@ int	ft_print_format(char format, va_list args)
 	else if (format == 'x')
 		return (ft_puthexlow (va_arg (args, unsigned int)));
 	else if (format == 'X')
-		return (ft_puthexup ( va_arg (args, unsigned int)));
+		return (ft_puthexup (va_arg (args, unsigned int)));
 	else if (format == '%')
 		return (ft_putchar('%'));
 	else

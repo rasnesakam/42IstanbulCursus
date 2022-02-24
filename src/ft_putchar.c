@@ -6,11 +6,11 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 04:16:20 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/11 04:18:37 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/24 18:21:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {

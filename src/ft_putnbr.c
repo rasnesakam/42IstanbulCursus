@@ -1,6 +1,18 @@
-#include "../ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/24 19:03:07 by emakas            #+#    #+#             */
+/*   Updated: 2022/02/24 19:07:19 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_putnbr(int num)
+#include "ft_printf.h"
+
+int	ft_putnbr(int num)
 {
 	int	printed;
 	int	last;

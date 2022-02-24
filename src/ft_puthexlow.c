@@ -1,8 +1,20 @@
-#include "../ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthexlow.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/24 19:02:51 by emakas            #+#    #+#             */
+/*   Updated: 2022/02/24 19:06:40 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_puthexlow(unsigned int num)
+#include "ft_printf.h"
+
+int	ft_puthexlow(unsigned int num)
 {
-	int printed;
+	int	printed;
 
 	printed = 0;
 	if (num >= 16)
