@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:30:24 by emakas            #+#    #+#             */
-/*   Updated: 2022/02/22 20:15:37 by emakas           ###   ########.fr       */
+/*   Updated: 2022/02/24 19:32:08 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_read(int fd, char **buffer, char **prepend)
 		readed = read (fd, tmp, BUFFER_SIZE);
 		tmp[BUFFER_SIZE] = '\0';
 		if (readed < BUFFER_SIZE)
-		{
 			ft_setnull (tmp, readed);
-		}
+		if (readed == -1)
+			ft_setnull(tmp,0);
 		ft_merge (buffer, tmp);
 		free (tmp);
 	}
