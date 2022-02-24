@@ -6,7 +6,7 @@
 #    By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:15:18 by emakas            #+#    #+#              #
-#    Updated: 2022/02/24 19:15:20 by emakas           ###   ########.fr        #
+#    Updated: 2022/02/24 19:20:18 by emakas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,10 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
+$(NAME): $(OBJDIR) $(OBJECT)
+	@echo 'generating archive: $@'
+	@ar rc $(NAME) $(OBJECT)
+
 $(OBJDIR):
 	@mkdir $(OBJDIR)
 
@@ -35,9 +39,6 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 	@echo 'generating out: $@'
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(OBJECT)
-	@echo 'generating archive: $@'
-	@ar rc $(NAME) $(OBJECT)
 
 all: $(NAME)
 
