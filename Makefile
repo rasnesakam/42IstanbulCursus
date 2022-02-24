@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/24 19:15:18 by emakas            #+#    #+#              #
+#    Updated: 2022/02/24 19:15:20 by emakas           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
 SRC = ft_print_format.c ft_putchar.c ft_puthexlow.c ft_puthexup.c ft_putnbr.c ft_putptr.c ft_putstr.c ft_putudecimal.c ft_printf.c
