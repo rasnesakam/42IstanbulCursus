@@ -1,12 +1,15 @@
-#include <signal.h>
-#include <stdlib.h>
+#include "client.h"
 
 int main(int argc, char **argv){
-    int pid = atoi(argv[1]);
-    for (int i = 0; i < 5; i++)
-        kill(pid,SIGUSR2);
-    for (int i = 0; i < 5; i++)
-        kill(pid,SIGUSR1);
+    int     pid;
+    char    message;
+
+    if (argc >= 3 )
+    {
+        pid = ft_atoi(argv[1]);
+        message = argv[2];
+
+    }
     
     return(0);
 }
