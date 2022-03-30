@@ -1,5 +1,5 @@
-#ifndef SIGNALHANDLER_H
-# include <stdio.h>
+#ifndef SERVER_H
+#include "../../lib/libft/libft.h"
 # include <unistd.h>
 # include <signal.h>
 # include <stdlib.h>
