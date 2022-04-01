@@ -1,9 +1,9 @@
-#include "signalhandler.h"
+#include "server.h"
 
 int main()
 {
     int pid = getpid();
-    printf("%d\n",pid);
+    ft_putendl_fd(ft_itoa(pid),1);
     signal(SIGUSR1,handle);
     signal(SIGUSR2,handle);
     while(1);

@@ -3,29 +3,21 @@
 void handle(int signal){
     static int  clock;
     static int  data;
-    static int  bsize;
+    static int  tdata;
+    static int  csize;
 
+    if (signal == SIGUSR1)
+        data = 1;
     if (signal == SIGUSR2)
     {
-        if (clock == NULL || clock == 0)
-            clock = 1;
-        else {
-            data = (data << 1) | 0;
-            bsize++;
-        }
+        clock = 1;
+        tdata = (tdata << 1) | (data & clock);
+        csize++;
+        data = 0;
     }
-    if (signal == SIGUSR1)
+    if (csize == 9)
     {
-        if (data == NULL)
-            data = 0;
-        data = (data << 1) | 1;
-        bsize++;
-        clock = 0;
+        ft_putchar_fd(tdata,1);
+        tdata = 0;
     }
-
-    if (bsize == 8){
-        ft_putchar_fd(data,1);
-        bsize = 0;
-    }
-    
 }
