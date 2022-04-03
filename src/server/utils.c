@@ -9,6 +9,8 @@ void handle(int signal)
 	if (signal == SIGUSR1)
 		tdata = tdata | 1;
 	if (csize == 8){
+		if (tdata == 0)
+			ft_putendl_fd("",1);
 		ft_putchar_fd(tdata,1);
 		csize = 0;
 		tdata = 0;
