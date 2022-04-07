@@ -19,21 +19,21 @@ COMPILE	= gcc
 FLAGS	= -Wall -Wextra -Werror
 
 $(NAME):
-	$(COMPILE) $(FLAGS) -c $(SRCS) -I ./
-	ar rc $(NAME) $(OBJS)
+	@$(COMPILE) $(FLAGS) -c $(SRCS) -I ./
+	@ar rc $(NAME) $(OBJS)
 
 all: $(NAME)
 
 bonus:
-	$(COMPILE) $(FLAGS) -c $(BSRCS) -I ./
-	ar rc $(NAME) $(BOBJS)
+	@$(COMPILE) $(FLAGS) -c $(BSRCS) -I ./
+	@ar rc $(NAME) $(BOBJS)
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(BOBJS)
+	@rm -f $(OBJS)
+	@rm -f $(BOBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
