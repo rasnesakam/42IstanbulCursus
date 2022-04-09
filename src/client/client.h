@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:15:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/07 11:10:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/09 17:06:56 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include "../../lib/libft/libft.h"
 
 void	ft_sendmsg(int pid, char *msg);
+void	handle(int signal);
 
 #endif
