@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:12:58 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/09 17:16:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/10 16:19:56 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int argc, char **argv)
 		message = argv[2];
 		ft_sendmsg (pid, message);
 		ft_sendmsg (pid, ft_itoa(getpid()));
+		signal (SIGUSR1, handle);
+		while (1)
+			pause();
 	}
-	signal (SIGUSR1, handle);
-	while (1)
-		pause();
 	return (0);
 }

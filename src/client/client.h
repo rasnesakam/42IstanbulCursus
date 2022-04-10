@@ -6,11 +6,12 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:15:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/09 17:06:56 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/10 16:34:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLIENT_H
+# define CLIENT_H
 # include <signal.h>
 # include <stdlib.h>
 # include "../../lib/libft/libft.h"

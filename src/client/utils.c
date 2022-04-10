@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:15:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/09 17:21:21 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/10 16:44:04 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ void	ft_sendmsg(int pid, char *msg)
 		i++;
 	}
 	ft_sendsig (pid, 0, 1);
-	ft_sig(pid,SIGUSR2);
+	ft_sig (pid, SIGUSR2);
 }
 
 void	handle(int signal)
 {
+	ft_putstr_fd("Mesaj geldi",1);
 	if (signal == SIGUSR1)
-		ft_putendl_fd("Mesaj gönderildi",1);
+		ft_putendl_fd ("Mesaj gönderildi", 1);
+	exit(0);
 }

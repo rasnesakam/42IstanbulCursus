@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:02:04 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/09 17:01:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/10 16:23:35 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,27 @@
 void	handlesig(int tdata)
 {
 	static int	pid;
-	int num;
+	int			num;
 
 	num = tdata - 48;
 	if (num >= 0)
 		pid = (pid * 10) + num;
 	if (tdata == 0)
+	{
 		kill (pid, SIGUSR1);
+		pid = 0;
+	}
 }
 
 void	ft_print(int tdata, int fin)
 {
 	if (fin == 1)
-		handlesig(tdata);
+		handlesig (tdata);
 	else
 	{
-		ft_putchar_fd(tdata,1);
+		ft_putchar_fd (tdata, 1);
 		if (tdata == 0)
-			ft_putendl_fd("",1);
+			ft_putendl_fd ("", 1);
 	}
 }
 
@@ -48,7 +51,7 @@ void	handle(int signal)
 {
 	static int	csize;
 	static int	tdata;
-	static int 	fin;
+	static int	fin;
 
 	if (signal == SIGUSR1)
 		tdata = tdata | 1;
@@ -60,12 +63,12 @@ void	handle(int signal)
 		else
 		{
 			csize = 1;
+			ft_print (tdata, fin);
 			if (tdata == 0)
 			{
 				csize = 0;
 				fin = ft_toggle(fin);
 			}
-			ft_print(tdata,fin);
 			tdata = 0;
 		}
 	}
