@@ -1,3 +1,5 @@
 obj/
 src/**/*.{out,h.gch}
 lib/**/*.{a,o}
+client
+server
