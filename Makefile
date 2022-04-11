@@ -1,3 +1,4 @@
+NAME = $(CLIENT) $(SERVER)
 CLIENT = client
 SERVER = server
 
@@ -22,7 +23,7 @@ COMPILER = gcc
 FLAGS = -Wall -Wextra -Werror
 
 
-all: $(CLIENT) $(SERVER)
+all: $(NAME)
 
 clean:
 	@rm -f $(CLIENT) $(SERVER)
@@ -54,6 +55,7 @@ $(CLIENT_OBJ_DIR): $(OBJ_DIR)
 
 $(SERVER_OBJ_DIR): $(OBJ_DIR)
 	@mkdir -p $(SERVER_OBJ_DIR)
+
 
 $(SERVER_OBJ_DIR)%.o: $(SERVER_RES_DIR)%.c $(SERVER_OBJ_DIR)
 	@$(COMPILER) $(FLAGS) -c $< -o $@
