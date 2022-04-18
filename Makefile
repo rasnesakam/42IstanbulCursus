@@ -9,12 +9,16 @@ OBJ_DIR = obj/
 CLIENT_RES_DIR = $(addprefix $(SRC_DIR),$(CLIENT)/)
 CLIENT_OBJ_DIR = $(addprefix $(OBJ_DIR),$(CLIENT)/)
 CLIENT_RES = client.c  utils.c
+CLIENT_RES_BNS = $(CLIENT_RES:.c=_bonus.c)
 CLIENT_OBJ = $(CLIENT_RES:.c=.o)
+CLIENT_OBJ_BNS = $(CLIENT_RES:.c=_bonus.o)
 
 SERVER_RES_DIR = $(addprefix $(SRC_DIR),$(SERVER)/)
 SERVER_OBJ_DIR = $(addprefix $(OBJ_DIR),$(SERVER)/)
 SERVER_RES = server.c  utils.c
+SERVER_RES_BNS = $(SERVER_RES:.c=_bonus.o)
 SERVER_OBJ = $(SERVER_RES:.c=.o)
+SERVER_OBJ_BNS = $(SERVER_RES:.c=_bonus.o)
 
 LIBFT_A = $(LIB_DIR)/libft/libft.a
 
@@ -41,9 +45,17 @@ $(CLIENT): $(LIBFT_A) $(addprefix $(CLIENT_OBJ_DIR), $(CLIENT_OBJ))
 	@echo 'Generating $(CLIENT)'
 	@$(COMPILER) $(FLAGS) -o $(CLIENT) $(addprefix $(CLIENT_OBJ_DIR), $(CLIENT_OBJ)) $(LIBFT_A)
 
+$(CLIENT)_bonus: $(LIBFT_A) $(addprefix $(CLIENT_OBJ_DIR), $(CLIENT_OBJ_BNS))
+	@echo 'Generating $(CLIENT)'
+	@$(COMPILER) $(FLAGS) -o $(CLIENT) $(addprefix $(CLIENT_OBJ_DIR), $(CLIENT_OBJ_BNS)) $(LIBFT_A)
+
 $(SERVER): $(LIBFT_A) $(addprefix $(SERVER_OBJ_DIR), $(SERVER_OBJ))
 	@echo 'Generating $(SERVER)'
 	@$(COMPILER) $(FLAGS) -o $(SERVER) $(addprefix $(SERVER_OBJ_DIR), $(SERVER_OBJ)) $(LIBFT_A)
+
+$(SERVER)_bonus: $(LIBFT_A) $(addprefix $(SERVER_OBJ_DIR), $(SERVER_OBJ_BNS))
+	@echo 'Generating $(SERVER)'
+	@$(COMPILER) $(FLAGS) -o $(SERVER) $(addprefix $(SERVER_OBJ_DIR), $(SERVER_OBJ_BNS)) $(LIBFT_A)
 
 $(LIBFT_A):
 	@echo 'Generating archives'
