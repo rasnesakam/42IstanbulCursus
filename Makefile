@@ -1,4 +1,4 @@
-NAME = $(CLIENT) $(SERVER)
+NAME = NULL #$(CLIENT) $(SERVER)
 CLIENT = client
 SERVER = server
 
@@ -23,8 +23,10 @@ COMPILER = gcc
 FLAGS = -Wall -Wextra -Werror
 
 
-all: $(NAME)
+all: $(CLIENT) $(SERVER)
 
+$(NAME):
+	@echo "There is nothing to do"
 clean:
 	@rm -f $(CLIENT) $(SERVER)
 	@make -C $(LIB_DIR)/libft clean
