@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:15:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/11 13:44:46 by emakas           ###   ########.fr       */
+/*   Updated: 2022/04/18 15:27:19 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	handle(int signal)
 {
 	if (signal == SIGUSR1)
 	{
-		ft_putendl_fd ("Mesaj gönderildi", 1);
+		ft_putendl_fd ("Message sent", 1);
 	}
 	exit(0);
 }
