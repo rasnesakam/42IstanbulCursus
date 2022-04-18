@@ -1,4 +1,4 @@
-#include <mlx.h>
+#include "utils.h"
 
 int main(void)
 {
@@ -6,6 +6,6 @@ int main(void)
 	void	*mlx_win;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx,1920,1080,"AMOGUS");
+	mlx_win = mlx_new_window(mlx,1920,1080,"AMO GUS");
 	mlx_loop(mlx);
 }
