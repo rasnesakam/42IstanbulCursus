@@ -2,14 +2,32 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct player
+typedef struct object
 {
 	void	*img;
-	char	*addr;
-	int		bits_pp;
-	int		line_len;
-	int		endian;
+	char	*image_addr;
+	int		width;
+	int		height;
+	int		x;
+	int		y;
 }
-player;
+object;
+
+typedef struct wall
+{}
+wall;
+
+typedef struct enemmy
+{
+
+}
+enemmy;
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+}
+t_vars;
 
 #endif

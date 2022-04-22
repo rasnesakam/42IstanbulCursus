@@ -5,7 +5,7 @@ LFLAGS = -framework OpenGL -framework AppKit -L./mlx -lmlx
 CC = gcc
 
 SRCDIR = src/
-SRC = main.c
+SRC = main.c characters.c
 
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
