@@ -8,5 +8,6 @@
 # include <stdlib.h>
 
 
-void	put_object(object*,mlx);
+void	put_object(mlx_vars, object);
+
 #endif

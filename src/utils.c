@@ -1,6 +1,6 @@
 #include "utils.h"
 
-put_object(object object, mlx mlx)
+void	put_object(mlx_vars vars, object object)
 {
-	mlx_put_image_to_window(mlx.mlx,mlx.win,object.img,object.x,object.y);
+	mlx_put_image_to_window (vars.mlx, vars.win, object.img, object.x, object.y);
 }

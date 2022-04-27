@@ -13,11 +13,11 @@ typedef struct object
 }
 object;
 
-typedef struct s_vars
+typedef struct mlx_vars
 {
 	void	*mlx;
 	void	*win;
 }
-mlx;
+mlx_vars;
 
 #endif
