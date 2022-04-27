@@ -13,21 +13,11 @@ typedef struct object
 }
 object;
 
-typedef struct wall
-{}
-wall;
-
-typedef struct enemmy
-{
-
-}
-enemmy;
-
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 }
-t_vars;
+mlx;
 
 #endif
