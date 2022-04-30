@@ -11,7 +11,7 @@ CHARS = chars/
 
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
-LIB = libmlx.a
+LIB = mlx
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(LFLAGS) -o $(NAME) $(OBJ)
@@ -21,10 +21,6 @@ all: $(NAME)
 clean:
 	@make -C ./mlx clean
 	@rm -r $(OBJDIR)
-
-$(LIB):
-	@echo Lıbrary archive generating
-	@make -C ./$@ all
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
