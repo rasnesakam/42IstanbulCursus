@@ -1,0 +1,6 @@
+*.out
+*.gch
+*.txt
+.vscode/
+gnlTester/
+tester/
