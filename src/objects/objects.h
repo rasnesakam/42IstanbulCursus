@@ -1,5 +1,17 @@
-#ifndef PLAYER_H
-# define PLAYER_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   objects.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
+/*   Updated: 2022/05/01 15:48:02 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef OBJECTS_H
+# define OBJECTS_H
 # include <mlx.h>
 # include <stdlib.h>
 # include "../structures.h"
