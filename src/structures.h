@@ -5,11 +5,12 @@
 typedef struct s_object
 {
 	void	*img;
-	char	*image_addr;
+	char	*image_addr[2];
 	int		width;
 	int		height;
 	int		x;
 	int		y;
+	int		orientation;
 }
 t_object;
 

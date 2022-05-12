@@ -2,12 +2,16 @@
 
 t_object	*create_player(t_mlx mlx,int x, int y)
 {
-	t_object	*pl;
+	char **images;
 
-	pl = malloc (sizeof(t_object));
-	pl->image_addr = "./res/characters/player/amogus.xpm";
-	pl->x = x;
-	pl->y = y;
-	pl->img = mlx_xpm_file_to_image(mlx.mlx,pl->image_addr,pl->height,pl->width);
-	return (pl);
+	images = malloc(sizeof(char *) * 2);
+	images[0] = "./res/characters/player/amogus-left.xpm";
+	images[1] = "./res/characters/player/amogus-right.xpm";
+	return (create_object(
+		mlx,
+		x,
+		y,
+		1,
+		images
+		));
 }

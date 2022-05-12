@@ -1,6 +1,6 @@
 #include "mapresolver.h"
 
-void	resolve_map(mlx_vars mlx, char *maddr)
+void	resolve_map(t_mlx mlx, char *maddr)
 {
 	int fd;
 	int ln;
