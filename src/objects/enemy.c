@@ -1,4 +1,4 @@
 #include "objects.h"
 
-object	*create_enemy(mlx_vars mlx, int x, int y)
+t_object	*create_enemy(t_mlx mlx, int x, int y)
 {}

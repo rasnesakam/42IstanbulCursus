@@ -1,10 +1,10 @@
 #include "objects.h"
 
-object	*create_player(mlx_vars mlx,int x, int y)
+t_object	*create_player(t_mlx mlx,int x, int y)
 {
-	object	*pl;
+	t_object	*pl;
 
-	pl = malloc (sizeof(object));
+	pl = malloc (sizeof(t_object));
 	pl->image_addr = "./res/characters/player/amogus.xpm";
 	pl->x = x;
 	pl->y = y;

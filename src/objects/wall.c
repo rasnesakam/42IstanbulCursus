@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:36:37 by emakas            #+#    #+#             */
-/*   Updated: 2022/04/30 16:38:12 by emakas           ###   ########.fr       */
+/*   Updated: 2022/05/12 13:28:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 
-object	*create_wall(mlx_vars mlx, int x, int y)
+t_object	*create_wall(t_mlx mlx, int x, int y)
 {
-	object	*wall;
+	t_object	*wall;
 
-	wall = (object *) malloc(sizeof(object));
+	wall = (t_object *) malloc(sizeof(t_object));
 	wall->x = x;
 	wall->y = y;
 	wall->image_addr = "./res/objects/wall/wall-ord.xpm";

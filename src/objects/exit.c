@@ -1,6 +1,6 @@
 #include "objects.h"
 
-object	*create_exit(mlx_vars mlx, int x, int y)
+t_object	*create_exit(t_mlx mlx, int x, int y)
 {
 	
 }

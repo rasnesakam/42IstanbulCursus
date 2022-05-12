@@ -2,7 +2,7 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct object
+typedef struct s_object
 {
 	void	*img;
 	char	*image_addr;
@@ -11,13 +11,13 @@ typedef struct object
 	int		x;
 	int		y;
 }
-object;
+t_object;
 
-typedef struct mlx_vars
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
 }
-mlx_vars;
+t_mlx;
 
 #endif

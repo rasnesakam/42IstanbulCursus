@@ -4,7 +4,7 @@
 
 int main(int ac, char **av)
 {
-	mlx_vars	vars;
+	t_mlx	vars;
 	int			xsize;
 	int			ysize;
 

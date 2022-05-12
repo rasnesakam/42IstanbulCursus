@@ -1,6 +1,6 @@
 #include "objects.h"
 
-object	*create_collectible(mlx_vars mlx, int x, int y)
+t_object	*create_collectible(t_mlx mlx, int x, int y)
 {
 	
 }
