@@ -30,7 +30,8 @@ void	resolve_map(t_mlx mlx, char *maddr);
 /**
  * validate_map(char*)
  * 
- * Vadidates the map file with given path
+ * @brief Vadidates the map file with given path
+ *
  * @param maddr: Map file address
  * @param xsize: Horizontal size for map. Will be set after validation
  * @param ysize: Vertical size for map. Will be set after validation
@@ -38,22 +39,22 @@ void	resolve_map(t_mlx mlx, char *maddr);
 int		validate_map(char *maddr, int *xsize, int *ysize);
 
 /**
- * renderline(mlx_vars,int,char*)
- * 
- * renders char* and puts mlx_vars an object corresponding to char in char*
- * mlx: structure that contains mlx library vars such as mlx and mlx_win
- * lnum: line number for defining y axis for the location of object 
+ * @brief Render line for mapping
+ *
+ * @param mlx Minilibx var for interacting with window
+ * @param lindex Line index
+ * @param line The line will be rendering
  */
-void	renderline(t_mlx mlx, int lnum, char *line);
+void	renderline(t_mlx mlx, int lindex, char *line);
 
 /**
  * @brief Render chars in line for map
  * 
  * @param mlx Minilibx var for interacting with window
- * @param lnum Line number
- * @param cnum Column number
+ * @param lindex Line index
+ * @param cindex Column index
  * @param code Char code for objects in map
  */
-void	renderpoint(t_mlx mlx, int lnum, int cnum, char code);
+void	renderpoint(t_mlx mlx, int lindex, int cindex, char code);
 
 #endif

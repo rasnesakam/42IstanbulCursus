@@ -21,7 +21,6 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 	int		llen;
 	char	*line;
 
-
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
 	{
@@ -41,4 +40,37 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 			llen = ft_len(line);
 		}
 	}
+}
+
+void	renderline(t_mlx mlx, int lindex, char *line)
+{
+	int	index;
+
+	index = 0;
+	while(line[index] != NULL)
+	{
+		renderpoint(mlx, lindex, index, line[index]);
+		index++;
+	}
+}
+
+void	renderpoint(t_mlx mlx, int lindex, int cindex, char code)
+{
+	t_object *object;
+
+	if (code == '1')
+		object = create_wall (mlx, cindex, lindex);
+	else if (code == 'C')
+		object = create_collectible (mlx, cindex, lindex)
+	else if (code == 'E')
+		object = create_exit (mlx, cindex, lindex);
+	else if (code == 'P')
+		object = create_player (mlx, cindex, lindex);
+	mlx_put_image_to_window(
+			mlx.mlx,
+			mlx.win,
+			object->img,
+			object->x * 50,
+			object->y * 50
+		);
 }
