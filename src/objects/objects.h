@@ -16,6 +16,20 @@
 # include <stdlib.h>
 # include "../structures.h"
 
+typedef struct s_object
+{
+	void	*img;
+	char	*image_addr[2];
+	int		width;
+	int		height;
+	int		x;
+	int		y;
+	int		orientation;
+    void    (*collision)(t_object,t_object);
+}
+t_object;
+
+
 t_object	*create_player(t_mlx mlx, int x, int y);
 
 t_object	*create_enemy(t_mlx mlx, int x, int y);

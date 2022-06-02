@@ -4,6 +4,7 @@
 # define UTILS_H
 # include <mlx.h>
 # include "structures.h"
+# include "objects/objects.h"
 # include <unistd.h>
 # include <stdlib.h>
 
