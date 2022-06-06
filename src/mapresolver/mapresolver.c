@@ -59,18 +59,21 @@ void	renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 	t_object *object;
 
 	if (code == '1')
-		object = create_wall (mlx, cindex, lindex);
-	else if (code == 'C')
-		object = create_collectible (mlx, cindex, lindex)
-	else if (code == 'E')
-		object = create_exit (mlx, cindex, lindex);
-	else if (code == 'P')
-		object = create_player (mlx, cindex, lindex);
-	mlx_put_image_to_window(
-			mlx.mlx,
-			mlx.win,
-			object->img,
-			object->x * 50,
-			object->y * 50
-		);
+		object = create_wall (mlx,cindex,lindex);
+	else if (code == '0')
+		object = create_floor (mlx, cindex, lindex);
+	else if (code == 'P' || code == 'C' || code == 'E')
+	{
+		if (code == 'P')
+			object = create_player(mlx, cindex, lindex);
+		else if (code == 'C')
+			object = create_collectible(mlx, cindex, lindex);
+		else if (code == 'E')
+			object = create_exit(mlx, cindex, lindex);
+		put_object (mlx, create_floor (mlx, cindex, lindex));
+	}
+	else
+		ft_exit("Unknown rule for mapping.", EINVAL);
+
+	put_object(mlx,object);
 }

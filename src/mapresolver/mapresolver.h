@@ -6,17 +6,17 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/05/12 18:55:45 by emakas           ###   ########.fr       */
+/*   Updated: 2022/05/17 13:58:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAPRESOLVER_H
 # define MAPRESOLVERS_H
 # include "../structures.h"
+# include "../utils.h"
+# include "../objects/objects.h"
 # include "../ext/get_next_line.h"
 # include <fcntl.h>
-# include <errno.h>
-# include <stdio.h>
 
 /**
  * resolve_map(mlx_vars,char *);
