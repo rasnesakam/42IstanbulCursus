@@ -37,4 +37,5 @@ int	render(void *tvars)
 		}
 		row++;
 	}
+	return 0;
 }

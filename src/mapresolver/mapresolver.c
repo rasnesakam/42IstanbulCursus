@@ -1,5 +1,5 @@
 #include "mapresolver.h"
-
+/*
 void	resolve_map(t_mlx mlx, char *maddr)
 {
 	int fd;
@@ -11,10 +11,10 @@ void	resolve_map(t_mlx mlx, char *maddr)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		renderline(mlx,ln,line);
+		//renderline(mlx,ln,line);
 	}
 }
-
+*/
 int	validate_map(char *maddr, int *xsize, int *ysize)
 {
 	int		fd;
@@ -40,27 +40,14 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 			return (0);
 		return (1);
 	}
-}
-
-t_object	*renderline(t_mlx mlx, int lindex, int size, char *line)
-{
-	int			index;
-	t_object	**objects;
-
-	index = 0;
-	objects = malloc(size * sizeof(t_object));
-	while(line[index] != NULL && index < size)
-	{
-		objects[index] = renderpoint(mlx, lindex, index, line[index]);
-		index++;
-	}
-	return (objects);
+	return (0);
 }
 
 t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 {
 	t_object	*objects;
 	t_object	*object;
+
 	objects = malloc(sizeof(t_object ) * 2);
 	if (code == '1')
 		object = create_wall (mlx,cindex,lindex);
@@ -73,13 +60,31 @@ t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 	else if (code == 'E')
 		object = create_exit(mlx, cindex, lindex);
 	else
+	{
 		ft_exit("Unknown rule for mapping.", EINVAL);
+		object = malloc(sizeof (t_object));
+	}
 	if (code == '0')
 		objects[0] = *object;
 	else
 		objects[1] = *object;
 	free(object);
-	return (object);
+	return (objects);
+}
+
+t_object	**renderline(t_mlx mlx, int lindex, int size, char *line)
+{
+	int			index;
+	t_object	**objects;
+
+	index = 0;
+	objects = malloc(size * sizeof(t_object *));
+	while(line[index] != '\0' && index < size)
+	{
+		objects[index] = renderpoint(mlx, lindex, index, line[index]);
+		index++;
+	}
+	return (objects);
 }
 
 t_object	***create_map_model(t_mlx mlx, char *file)
@@ -103,5 +108,7 @@ t_object	***create_map_model(t_mlx mlx, char *file)
 			line = get_next_line(fd);
 			ln++;
 		}
+		return (omap);
 	}
+	return NULL;
 }

@@ -6,12 +6,12 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/14 16:18:55 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/14 18:45:50 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAPRESOLVER_H
-# define MAPRESOLVERS_H
+# define MAPRESOLVER_H
 # include "../structures.h"
 # include "../utils.h"
 # include "../objects/objects.h"
