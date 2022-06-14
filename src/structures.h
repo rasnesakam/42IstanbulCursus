@@ -7,7 +7,9 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_object **mmodel[2];
+	t_object ***mmodel;
+	int		mwidth;
+	int		mheigth;
 }
 t_mlx;
 

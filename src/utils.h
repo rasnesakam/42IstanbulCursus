@@ -12,5 +12,6 @@
 
 void	put_object(t_mlx mlx, t_object *object);
 void	ft_exit(char *message, int err);
+int		render(void* vars);
 
 #endif

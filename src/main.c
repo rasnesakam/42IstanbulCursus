@@ -8,15 +8,15 @@ int main(int ac, char **av)
 	int			xsize;
 	int			ysize;
 
-	if (ac == 2)
+	if (ac == 2 && validate_map(av[1],xsize,ysize))
 	{
 		vars.mlx = mlx_init();
-		if (validate_map(av[1],xsize,ysize))
-		{
-			vars.win = mlx_new_window(vars.mlx,xsize,ysize,"AMOGUS");
-	
-		}
+		
+		vars.win = mlx_new_window(vars.mlx,xsize,ysize,"AMOGUS");
+
+		mlx_loop_hook(vars.mlx,render,(void *) &vars);
+
+		mlx_loop(vars.mlx);
 	}
 	
-	mlx_loop(vars.mlx);
 }

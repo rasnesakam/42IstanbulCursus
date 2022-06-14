@@ -23,10 +23,7 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
-	{
-		perror("FILE ERROR");
-		exit(1);
-	}
+		ft_exit("FILE ERROR",errno);
 	else
 	{
 		line = get_next_line(fd);
@@ -39,41 +36,72 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 			line = get_next_line(fd);
 			llen = ft_len(line);
 		}
+		if (llen != *xsize)
+			return (0);
+		return (1);
 	}
 }
 
-void	renderline(t_mlx mlx, int lindex, char *line)
+t_object	*renderline(t_mlx mlx, int lindex, int size, char *line)
 {
-	int	index;
+	int			index;
+	t_object	**objects;
 
 	index = 0;
-	while(line[index] != NULL)
+	objects = malloc(size * sizeof(t_object));
+	while(line[index] != NULL && index < size)
 	{
-		renderpoint(mlx, lindex, index, line[index]);
+		objects[index] = renderpoint(mlx, lindex, index, line[index]);
 		index++;
 	}
+	return (objects);
 }
 
-void	renderpoint(t_mlx mlx, int lindex, int cindex, char code)
+t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 {
-	t_object *object;
-
+	t_object	*objects;
+	t_object	*object;
+	objects = malloc(sizeof(t_object ) * 2);
 	if (code == '1')
 		object = create_wall (mlx,cindex,lindex);
 	else if (code == '0')
 		object = create_floor (mlx, cindex, lindex);
-	else if (code == 'P' || code == 'C' || code == 'E')
-	{
-		if (code == 'P')
-			object = create_player(mlx, cindex, lindex);
-		else if (code == 'C')
-			object = create_collectible(mlx, cindex, lindex);
-		else if (code == 'E')
-			object = create_exit(mlx, cindex, lindex);
-		put_object (mlx, create_floor (mlx, cindex, lindex));
-	}
+	else if (code == 'P')
+		object = create_player(mlx, cindex, lindex);
+	else if (code == 'C')
+		object = create_collectible(mlx, cindex, lindex);
+	else if (code == 'E')
+		object = create_exit(mlx, cindex, lindex);
 	else
 		ft_exit("Unknown rule for mapping.", EINVAL);
+	if (code == '0')
+		objects[0] = *object;
+	else
+		objects[1] = *object;
+	free(object);
+	return (object);
+}
 
-	put_object(mlx,object);
+t_object	***create_map_model(t_mlx mlx, char *file)
+{
+	int			fd;
+	int			ln;
+	int			w;
+	int			h;
+	char		*line;
+	t_object	***omap;
+
+	fd = open(file, O_RDONLY);
+	ln = 0;
+	line = get_next_line(fd);
+	if (validate_map(file,&w,&h) > 0)
+	{
+		omap = malloc( ((sizeof(t_object) * 2) * w) * h);
+		while (ln < h)
+		{
+			omap[ln] = renderline(mlx,ln,w,line);
+			line = get_next_line(fd);
+			ln++;
+		}
+	}
 }

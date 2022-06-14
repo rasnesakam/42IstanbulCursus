@@ -12,3 +12,29 @@ void	ft_exit(char *message, int err)
 	perror(message);
 	exit(1);
 }
+
+int	render(void *tvars)
+{
+	t_mlx	*vars;
+	int		row;
+	int		col;
+	int		z;
+
+	vars = (t_mlx *) tvars;
+	row = 0;
+	col = 0;
+	z = 0;
+	while (row < vars->mheigth)
+	{
+		while (col < vars->mwidth)
+		{
+			while (z < 2)
+			{
+				put_object(*vars,&(vars->mmodel[row][col][z]));
+				z++;
+			}
+			col++;
+		}
+		row++;
+	}
+}

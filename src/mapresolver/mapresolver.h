@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapresolver.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/11 22:26:39 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/14 16:18:55 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@
  * @param file 
  * @return t_object*** An array of the objects with 3 dimension (x,y,z=2)
  */
-t_object ***create_map_model(char *file);
+t_object ***create_map_model(t_mlx mlx, char *file);
 
-t_object ***move_object(t_object ***map, int x, int y);
+/**
+ * @brief Valiate map if available for system
+ */
+int	validate_map(char *maddr, int *xsize, int *ysize);
+
 
 #endif
