@@ -1,7 +1,7 @@
 NAME = so_long
 
-CFLAGS += -Wall -Wextra -Werror -I./mlx
-LFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+CFLAGS += -Wall -Wextra -Werror -I./mlx -I./libft
+LFLAGS = -L./mlx -Llibft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 CC = gcc
 
 SRCDIR = src/
@@ -16,12 +16,12 @@ CHARS = chars/
 ASDASD = -I ./src/mapresolver/mapresolver.h ./src/objects/objects.h ./src/*.h
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
-LIB = mlx
+LIB = mlx libft
 
 HEADERS = mapresolver/ objects/ src/
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(LFLAGS)  -o $(NAME) $(addprefix $(OBJDIR), $(SRC:.c=.o))
+	$(CC) $(LFLAGS)  -o $(NAME) $(addprefix $(OBJDIR), $(SRC:.c=.o)) libft/libft.a
 
 all: $(NAME)
 

@@ -1,4 +1,6 @@
 #include "mapresolver.h"
+#include <libft.h>
+#include <unistd.h>
 /*
 void	resolve_map(t_mlx mlx, char *maddr)
 {
@@ -27,20 +29,21 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 	else
 	{
 		line = get_next_line(fd);
-		*xsize = ft_len(line);
-		llen = *xsize;
-		*ysize = 0;
-		while (llen == *xsize && line != NULL)
+		if (line != NULL)
 		{
-			(*ysize)++;
-			line = get_next_line(fd);
-			llen = ft_len(line);
+			line = ft_strtrim(line," \t\n");
+			*xsize = ft_strlen(line);
+			llen = *xsize;
 		}
-		if (llen != *xsize)
-			return (0);
-		return (1);
+		while (line != NULL && llen == *xsize)
+		{
+			line = ft_strtrim(line, " \t\n");
+			llen = ft_strlen(line);
+			line = get_next_line(fd);
+			(*ysize)++; 
+		}
 	}
-	return (0);
+	return (1);
 }
 
 t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)

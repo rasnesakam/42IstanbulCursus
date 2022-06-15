@@ -2,6 +2,7 @@
 
 void	put_object(t_mlx vars, t_object *object)
 {
+	printf("putting object\n");
 	if (object != NULL)
 		mlx_put_image_to_window (vars.mlx, vars.win, object->img, object->x, object->y);
 }
@@ -30,6 +31,7 @@ int	render(void *tvars)
 		{
 			while (z < 2)
 			{
+				printf("rendering object\n");
 				put_object(*vars,&(vars->mmodel[row][col][z]));
 				z++;
 			}
