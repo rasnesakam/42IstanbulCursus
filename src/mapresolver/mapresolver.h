@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/14 18:45:50 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/16 17:06:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
  * @brief Create a map model object
  * 
  * @param file 
- * @return t_object*** An array of the objects with 3 dimension (x,y,z=2)
  */
-t_object ***create_map_model(t_mlx mlx, char *file);
+int create_map_model(t_mlx *mlx, char *file);
 
 /**
  * @brief Valiate map if available for system

@@ -68,9 +68,30 @@ t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 		object = malloc(sizeof (t_object));
 	}
 	if (code == '0')
+	{
 		objects[0] = *object;
+		printf("created object:\n");
+	printf("\tmlx: %s\n",(char *)mlx.mlx);
+	printf("\twin: %s\n",(char *)mlx.win);
+	printf("\timg orientation: %d\n",objects[0].orientation);
+	printf("\timg address: %s\n",objects[0].image_addr[objects[0].orientation]);
+	printf("\tox: %d\n", objects[0].x);
+	printf("\toy: %d\n", objects[0].y);
+	
+	}
 	else
+	{	
 		objects[1] = *object;
+		printf("created object:\n");
+	printf("\tmlx: %s\n",(char *)mlx.mlx);
+	printf("\twin: %s\n",(char *)mlx.win);
+	printf("\timg orientation: %d\n",objects[1].orientation);
+	printf("\toimg: %s\n", (char *)objects[1].img);
+	printf("\timg address: %s\n",objects[1].image_addr[objects[1].orientation]);
+	printf("\tox: %d\n", objects[1].x);
+	printf("\toy: %d\n", objects[1].y);
+	
+	}
 	free(object);
 	return (objects);
 }
@@ -90,7 +111,7 @@ t_object	**renderline(t_mlx mlx, int lindex, int size, char *line)
 	return (objects);
 }
 
-t_object	***create_map_model(t_mlx mlx, char *file)
+int	create_map_model(t_mlx *mlx, char *file)
 {
 	int			fd;
 	int			ln;
@@ -105,13 +126,16 @@ t_object	***create_map_model(t_mlx mlx, char *file)
 	if (validate_map(file,&w,&h) > 0)
 	{
 		omap = malloc( ((sizeof(t_object) * 2) * w) * h);
+		mlx->mheigth = h;
+		mlx->mwidth = w;
 		while (ln < h)
 		{
-			omap[ln] = renderline(mlx,ln,w,line);
+			omap[ln] = renderline(*mlx,ln,w,line);
 			line = get_next_line(fd);
 			ln++;
 		}
-		return (omap);
+		mlx->mmodel = omap;
+		return (1);
 	}
-	return NULL;
+	return 0;
 }

@@ -1,4 +1,5 @@
 #include "objects.h"
+#include <stdio.h>
 
 t_object	*create_object(t_mlx mlx, int x, int y, int orientation, char **img){
 	t_object	*object;
@@ -14,5 +15,6 @@ t_object	*create_object(t_mlx mlx, int x, int y, int orientation, char **img){
 			);
 	object->x = x;
 	object->y = y;
+
 	return(object);
 }
