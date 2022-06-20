@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:36:37 by emakas            #+#    #+#             */
-/*   Updated: 2022/05/12 18:47:23 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/20 16:47:30 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_object	*create_wall(t_mlx mlx, int x, int y)
 			x,
 			y,
 			0,
-			images
+			images,
+			'1'
 		));
 }

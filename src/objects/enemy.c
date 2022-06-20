@@ -11,6 +11,7 @@ t_object	*create_enemy(t_mlx mlx, int x, int y)
 		x,
 		y,
 		1,
-		images
+		images,
+		'D'
 		));
 }

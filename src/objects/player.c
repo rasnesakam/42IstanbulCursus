@@ -12,6 +12,7 @@ t_object	*create_player(t_mlx mlx,int x, int y)
 		x,
 		y,
 		1,
-		images
+		images,
+		'P'
 		));
 }

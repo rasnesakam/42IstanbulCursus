@@ -11,6 +11,7 @@ t_object	*create_floor(t_mlx mlx, int x, int y)
 		x,
 		y,
 		0,
-		images
+		images,
+		'0'
 		));
 }

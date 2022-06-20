@@ -1,5 +1,10 @@
 #include "objects.h"
 
+void	collectible_collision(t_object *self, t_object *obj)
+{
+	printf("%c",self->otype);
+}
+
 t_object	*create_collectible(t_mlx mlx, int x, int y)
 {
 	char **images;
@@ -11,6 +16,7 @@ t_object	*create_collectible(t_mlx mlx, int x, int y)
 		x,
 		y,
 		0,
-		images
+		images,
+		'C'
 		));
 }
