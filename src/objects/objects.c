@@ -8,7 +8,7 @@ t_object	*create_object(t_mlx mlx, int x, int y, int orientation, char **img, ch
 	object->otype = code;
 	object->image_addr = img;
 	object->orientation = orientation;
-	mlx.mheigth = 6;
+	mlx.mheigth = (int *)0xff;
 	object->x = x;
 	object->y = y;
 

@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/20 13:56:13 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:13:31 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_object	***create_map_model(t_mlx mlx, char *file);
 /**
  * @brief Valiate map if available for system
  */
-int	validate_map(char *maddr, int *xsize, int *ysize);
+int	validate_map(char *maddr);
 
 
 #endif

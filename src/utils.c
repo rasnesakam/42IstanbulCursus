@@ -3,13 +3,6 @@
 void	put_object(t_mlx *vars, t_object *object)
 {
 	void	*img;
-	printf("putting object:\n");
-	printf("\tmlx: %s\n",(char *)vars->mlx);
-	printf("\twin: %s\n",(char *)vars->win);
-	printf("\timg orientation: %d\n",object->orientation);
-	printf("\timg address: %s\n",object->image_addr[object->orientation]);
-	printf("\tox: %d\n", object->x);
-	printf("\toy: %d\n", object->y);
 	
 	if (object != NULL)
 	{
@@ -36,14 +29,14 @@ int	render(void *tvars)
 	row = 0;
 	col = 0;
 	z = 0;
-	while (row < vars->mheigth)
+	while (row < *vars->mheigth)
 	{
-		while (col < vars->mwidth)
+		while (col < *vars->mwidth)
 		{
 			while (z < 2)
 			{
 				printf("rendering object\n");
-				put_object(vars,&(vars->mmodel[row][col][z]));
+				put_object(vars,&(vars->mmodel[0])[row][col][z]);
 				z++;
 			}
 			col++;

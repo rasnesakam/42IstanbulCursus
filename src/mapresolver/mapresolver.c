@@ -2,7 +2,17 @@
 #include <libft.h>
 #include <unistd.h>
 
-int	validate_map(char *maddr, int *xsize, int *ysize)
+char	*read_line(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+		if (line != NULL)
+			line = ft_strtrim(line," \t\n");
+	return line;
+}
+
+int	validate_map(char *maddr)
 {
 	int		fd;
 	int		llen;
@@ -10,23 +20,13 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
-		ft_exit("FILE ERROR",errno);
-	else
+		ft_exit("FILE ERROR:", errno);
+	line = read_line(fd);
+	if (line != NULL)
+		llen = ft_strlen(line);
+	while (line != NULL)
 	{
-		line = get_next_line(fd);
-		if (line != NULL)
-		{
-			line = ft_strtrim(line," \t\n");
-			*xsize = ft_strlen(line);
-			llen = *xsize;
-		}
-		while (line != NULL && llen == *xsize)
-		{
-			line = ft_strtrim(line, " \t\n");
-			llen = ft_strlen(line);
-			line = get_next_line(fd);
-			(*ysize)++; 
-		}
+		if ()
 	}
 	return (1);
 }
@@ -91,18 +91,16 @@ t_object	***create_map_model(t_mlx mlx, char *file)
 	fd = open(file, O_RDONLY);
 	ln = 0;
 	line = get_next_line(fd);
-	if (validate_map(file,&w,&h) > 0)
+	if (validate_map(file) > 0)
 	{
 		omap = malloc( ((sizeof(t_object) * 2) * w) * h);
-		mlx.mheigth = &h;
-		mlx.mwidth = &w;
 		while (ln < h)
 		{
 			omap[ln] = renderline(mlx,ln,w,line);
+			printf("%s",line);
 			line = get_next_line(fd);
 			ln++;
 		}
-		mlx.mmodel = omap;
 		return (omap);
 	}
 	return (NULL);
