@@ -12,59 +12,52 @@ char	*read_line(int fd)
 	return line;
 }
 
-int	validate_map(char *maddr)
+int	validate_map(char *maddr, int *xsize, int *ysize)
 {
 	int		fd;
 	int		llen;
+	int		h;
 	char	*line;
 
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
 		ft_exit("FILE ERROR:", errno);
 	line = read_line(fd);
-	if (line != NULL)
-		llen = ft_strlen(line);
+	if (line == NULL)
+		return (0);
+	llen = ft_strlen(line);
+	h = 0;
 	while (line != NULL)
 	{
-		if ()
+		if (llen != (int) ft_strlen(line))
+			return (0);
+		line = read_line(fd);
+		h++;
 	}
+	*xsize = llen;
+	*ysize = h;
 	return (1);
 }
 
-t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
+t_object	*renderpoint(int lindex, int cindex, char code)
 {
 	t_object	*objects;
-	t_object	*object;
 
 	objects = malloc(sizeof(t_object ) * 2);
-	if (code == '1')
-		object = create_wall (mlx,cindex,lindex);
-	else if (code == '0')
-		object = create_floor (mlx, cindex, lindex);
-	else if (code == 'P')
-		object = create_player(mlx, cindex, lindex);
-	else if (code == 'C')
-		object = create_collectible(mlx, cindex, lindex);
-	else if (code == 'E')
-		object = create_exit(mlx, cindex, lindex);
-	else
-	{
-		ft_exit("Unknown rule for mapping.", EINVAL);
-		object = malloc(sizeof (t_object));
-	}
+	
 	if (code == '0')
-	{
-		objects[0] = *object;
-	}
+		objects[0] = get_object(code, cindex, lindex);
+	if (code == '1')
+		objects[1] = get_object(code, cindex,lindex);
 	else
-	{	
-		objects[1] = *object;
+	{
+		objects[0] = get_object('0', cindex, lindex);
+		objects[1] = get_object(code, cindex, lindex);
 	}
-	free(object);
 	return (objects);
 }
 
-t_object	**renderline(t_mlx mlx, int lindex, int size, char *line)
+t_object	**renderline(int lindex, int size, char *line)
 {
 	int			index;
 	t_object	**objects;
@@ -73,7 +66,7 @@ t_object	**renderline(t_mlx mlx, int lindex, int size, char *line)
 	objects = malloc(size * sizeof(t_object *));
 	while(line[index] != '\0' && index < size)
 	{
-		objects[index] = renderpoint(mlx, lindex, index, line[index]);
+		objects[index] = renderpoint(lindex, index, line[index]);
 		index++;
 	}
 	return (objects);
@@ -88,19 +81,19 @@ t_object	***create_map_model(t_mlx mlx, char *file)
 	char		*line;
 	t_object	***omap;
 
-	fd = open(file, O_RDONLY);
-	ln = 0;
-	line = get_next_line(fd);
-	if (validate_map(file) > 0)
+	if (validate_map(file, &w, &h) > 0)
 	{
+		fd = open(file, O_RDONLY);
+		ln = 0;
 		omap = malloc( ((sizeof(t_object) * 2) * w) * h);
 		while (ln < h)
 		{
-			omap[ln] = renderline(mlx,ln,w,line);
-			printf("%s",line);
-			line = get_next_line(fd);
+			line = read_line(fd);
+			omap[ln] = renderline(ln,w,line);
 			ln++;
 		}
+		*(mlx.mheigth) = h;
+		*(mlx.mwidth) = w;
 		return (omap);
 	}
 	return (NULL);

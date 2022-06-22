@@ -1,16 +1,14 @@
 #include "objects.h"
 #include <stdio.h>
 
-t_object	*create_object(t_mlx mlx, int x, int y, int orientation, char **img, char code){
-	t_object	*object;
+t_object	create_object(int x, int y, int orientation, char **img, char code){
+	t_object	object;
 
-	object = (t_object *) malloc(sizeof(t_object));
-	object->otype = code;
-	object->image_addr = img;
-	object->orientation = orientation;
-	mlx.mheigth = (int *)0xff;
-	object->x = x;
-	object->y = y;
+	object.otype = code;
+	object.image_addr = img;
+	object.orientation = orientation;
+	object.x = x;
+	object.y = y;
 
 	return(object);
 }

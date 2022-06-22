@@ -8,7 +8,7 @@ int main(int ac, char **av)
 	t_mlx	vars;
 	t_object	***omap;
 	
-	if (ac == 2 && validate_map(av[1]))
+	if (ac == 2 && validate_map(av[1],vars.mwidth,vars.mheigth))
 	{
 		vars.mlx = mlx_init();
 		omap = create_map_model(vars,av[1]);
