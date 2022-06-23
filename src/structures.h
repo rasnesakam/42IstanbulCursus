@@ -21,7 +21,8 @@ typedef struct s_mlx
 	void	*win;
 	t_object ****mmodel;
 	int		*mwidth;
-	int		*mheigth;
+	int		*mheight;
+	int		object_size;
 }
 t_mlx;
 

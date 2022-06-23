@@ -5,38 +5,27 @@
 
 int main(int ac, char **av)
 {
-	t_mlx	vars;
+	t_mlx		vars;
 	t_object	***omap;
+	int			width;
+	int			height;
 	
-	if (ac == 2 && validate_map(av[1],vars.mwidth,vars.mheigth))
+	width = 0;
+	height = 0;
+	if (ac == 2 && validate_map(av[1],&width,&height))
 	{
+		vars.mheight = &height;
+		vars.mwidth = &width;
+		vars.object_size = 100;
 		vars.mlx = mlx_init();
 		omap = create_map_model(vars,av[1]);
 		vars.mmodel = &omap;
-		//vars.win = mlx_new_window(vars.mlx, *(vars.mwidth) * 100,*(vars.mheight) * 100,"AMOGUS");
+		vars.win = mlx_new_window(vars.mlx, *(vars.mwidth) * vars.object_size, *(vars.mheight) * vars.object_size, "AMOGUS");
 	
+		render((void *) &vars);
 		//mlx_loop_hook(vars.mlx,render,(void *) &vars);
-		//mlx_loop(vars.mlx);
-		int y = 0;
-
-		while (y < *vars.mheigth)
-		{
-			int x = 0;
-			while (x < *vars.mwidth)
-			{
-				int z = 0;
-				while (z < 2)
-				{
-					t_object object = vars.mmodel[0][y][x][z];
-					if ((void *)&object != NULL)
-						printf("%c",object.otype);
-					z++;
-				}
-				x++;
-			}
-			printf("\n");
-			y++;
-		}
+		mlx_loop(vars.mlx);
+		
 	}
 
 	return (0);

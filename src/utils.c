@@ -6,8 +6,9 @@ void	put_object(t_mlx *vars, t_object *object)
 	
 	if (object != NULL)
 	{
+		printf("object:\n\totype: %c\n\timg addr: %s",object->otype, object->image_addr[object->orientation]);
 		img = mlx_xpm_file_to_image(vars->mlx,object->image_addr[object->orientation],&object->width,&object->height);
-		mlx_put_image_to_window (vars->mlx, vars->win, img, object->x, object->y);
+		mlx_put_image_to_window (vars->mlx, vars->win, img, object->x * vars->object_size, object->y * vars->object_size);
 	}
 }
 
@@ -20,24 +21,29 @@ void	ft_exit(char *message, int err)
 
 int	render(void *tvars)
 {
-	t_mlx	*vars;
-	int		row;
-	int		col;
-	int		z;
+	t_mlx		*vars;
+	t_object	*obj;
+	int			row;
+	int			col;
+	int			layer;
 
 	vars = (t_mlx *) tvars;
 	row = 0;
-	col = 0;
-	z = 0;
-	while (row < *vars->mheigth)
+	printf("map boudaries: %d row, %d col\n", *vars->mheight, *vars->mwidth);
+	while (row < *vars->mheight)
 	{
+		col = 0;
 		while (col < *vars->mwidth)
 		{
-			while (z < 2)
+			layer = 0;
+			while (layer < 2)
 			{
-				printf("rendering object\n");
-				put_object(vars,&(vars->mmodel[0])[row][col][z]);
-				z++;
+				printf("rendering: (%d,%d,%d)\n",row,col,layer);
+				obj = &((*vars->mmodel)[row][col][layer]);
+				if (obj->otype != '\0')
+					put_object(vars,obj);
+				layer++;
+				printf("\n");
 			}
 			col++;
 		}
@@ -48,8 +54,6 @@ int	render(void *tvars)
 
 t_object	get_object(char code, int x, int y)
 {
-	t_object	obj;
-
 	if (code == '0')
 		return (create_floor(x, y));
 	if (code == '1')
@@ -62,5 +66,5 @@ t_object	get_object(char code, int x, int y)
 		return (create_player(x, y));
 	else
 		ft_exit("INVALID RULE FOR MAPPING",EINVAL);
-	return (obj);
+	return (create_floor(x, y));
 }
