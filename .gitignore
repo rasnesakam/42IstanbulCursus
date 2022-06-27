@@ -2,4 +2,4 @@ obj/
 .DS_Store
 **.out
 **/*.o
-./so_long
+so_long

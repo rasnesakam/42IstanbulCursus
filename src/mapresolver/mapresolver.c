@@ -39,25 +39,25 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 	return (1);
 }
 
-t_object	*renderpoint(int lindex, int cindex, char code)
+t_object	*renderpoint(t_mlx mlx, int lindex, int cindex, char code)
 {
 	t_object	*objects;
 
 	objects = malloc(sizeof(t_object ) * 2);
 	
 	if (code == '0')
-		objects[0] = get_object(code, cindex, lindex);
+		objects[0] = get_object(mlx, code, cindex, lindex);
 	if (code == '1')
-		objects[1] = get_object(code, cindex,lindex);
+		objects[1] = get_object(mlx, code, cindex,lindex);
 	else
 	{
-		objects[0] = get_object('0', cindex, lindex);
-		objects[1] = get_object(code, cindex, lindex);
+		objects[0] = get_object(mlx, '0', cindex, lindex);
+		objects[1] = get_object(mlx, code, cindex, lindex);
 	}
 	return (objects);
 }
 
-t_object	**renderline(int lindex, int size, char *line)
+t_object	**renderline(t_mlx mlx, int lindex, int size, char *line)
 {
 	int			index;
 	t_object	**objects;
@@ -66,7 +66,7 @@ t_object	**renderline(int lindex, int size, char *line)
 	objects = malloc(size * sizeof(t_object *));
 	while(line[index] != '\0' && index < size)
 	{
-		objects[index] = renderpoint(lindex, index, line[index]);
+		objects[index] = renderpoint(mlx, lindex, index, line[index]);
 		index++;
 	}
 	return (objects);
@@ -87,7 +87,7 @@ t_object	***create_map_model(t_mlx mlx, char *file)
 	while (ln < *mlx.mheight)
 	{
 		line = read_line(fd);
-		omap[ln] = renderline(ln,*mlx.mwidth,line);
+		omap[ln] = renderline(mlx, ln,*mlx.mwidth,line);
 		ln++;
 	}
 	return (omap);

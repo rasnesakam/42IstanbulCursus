@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/22 19:45:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/06/27 19:47:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 
 
-t_object	create_player(int x, int y);
+t_object	create_player(t_mlx mlx, int x, int y);
 
 t_object	create_enemy(int x, int y);
 

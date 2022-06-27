@@ -52,7 +52,7 @@ int	render(void *tvars)
 	return 0;
 }
 
-t_object	get_object(char code, int x, int y)
+t_object	get_object(t_mlx mlx, char code, int x, int y)
 {
 	if (code == '0')
 		return (create_floor(x, y));
@@ -63,7 +63,7 @@ t_object	get_object(char code, int x, int y)
 	if (code == 'E')
 		return (create_exit(x, y));
 	if (code == 'P')
-		return (create_player(x, y));
+		return (create_player(mlx, x, y));
 	else
 		ft_exit("INVALID RULE FOR MAPPING",EINVAL);
 	return (create_floor(x, y));
