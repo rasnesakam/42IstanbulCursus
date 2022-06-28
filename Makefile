@@ -5,12 +5,12 @@ LFLAGS = -L./mlx -Llibft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 CC = gcc
 
 SRCDIR = src/
-SRC = main.c utils.c \
+SRC = main.c utils.c handlers.c \
 		$(addprefix mapresolver/, $(SRC_MAPRESOLVER)) \
 		$(addprefix objects/, $(SRC_OBJECTS)) \
 		$(addprefix ext/, $(SRC_EXT))
 SRC_MAPRESOLVER = mapresolver.c
-SRC_OBJECTS = collectible.c enemy.c exit.c floor.c objects.c player.c wall.c 
+SRC_OBJECTS = collectible.c enemy.c exit.c floor.c objects.c player.c wall.c
 SRC_EXT = get_next_line_utils.c get_next_line.c
 CHARS = chars/
 ASDASD = -I ./src/mapresolver/mapresolver.h ./src/objects/objects.h ./src/*.h
