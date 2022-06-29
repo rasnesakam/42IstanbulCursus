@@ -2,7 +2,10 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_object
+typedef struct s_object t_object;
+typedef struct s_mlx t_mlx;
+
+struct s_object
 {
 	char	otype;
 	char	**image_addr;
@@ -11,11 +14,11 @@ typedef struct s_object
 	int		x;
 	int		y;
 	int		orientation;
-    int    (*collision)(struct s_object *self, struct s_object *obj);
-}
-t_object;
+	int		is_collisionable;
+    void    (*on_collision)(t_mlx *mlx,struct s_object *self, struct s_object *obj);
+};
 
-typedef struct s_mlx
+struct s_mlx
 {
 	void		*mlx;
 	void		*win;
@@ -24,7 +27,6 @@ typedef struct s_mlx
 	int			*mheight;
 	int			object_size;
 	t_object	*player;
-}
-t_mlx;
+};
 
 #endif

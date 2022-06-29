@@ -6,7 +6,6 @@ void	put_object(t_mlx *vars, t_object *object)
 	
 	if (object != NULL)
 	{
-		printf("object:\n\totype: %c\n\timg addr: %s",object->otype, object->image_addr[object->orientation]);
 		img = mlx_xpm_file_to_image(vars->mlx,object->image_addr[object->orientation],&object->width,&object->height);
 		mlx_put_image_to_window (vars->mlx, vars->win, img, object->x * vars->object_size, object->y * vars->object_size);
 	}
@@ -29,7 +28,7 @@ int	render(void *tvars)
 
 	vars = (t_mlx *) tvars;
 	row = 0;
-	printf("map boudaries: %d row, %d col\n", *vars->mheight, *vars->mwidth);
+	mlx_clear_window(vars->mlx,vars->win);
 	while (row < *vars->mheight)
 	{
 		col = 0;
@@ -38,12 +37,10 @@ int	render(void *tvars)
 			layer = 0;
 			while (layer < 2)
 			{
-				printf("rendering: (%d,%d,%d)\n",row,col,layer);
 				obj = &((*vars->mmodel)[row][col][layer]);
 				if (obj->otype != '\0')
 					put_object(vars,obj);
 				layer++;
-				printf("\n");
 			}
 			col++;
 		}
@@ -72,10 +69,18 @@ t_object	get_object(char code, int x, int y)
 void	move_object(t_mlx *vars, t_object obj, int x, int y)
 {
 	t_object	***map;
-	t_object	target;
+	t_object	*target;
+	t_object	*object;
 
 	map = *vars->mmodel;
-	target = map[y][x][1];
-	if (target.collision(&target,&obj) > 0)
-		map[y][x][1] = obj;
+	target = &map[y][x][1];
+	object = &map[obj.y][obj.x][1];
+	if (target->is_collisionable)
+	{
+		object->x = x;
+		object->y = y;
+		*target = *object;
+		//target->on_collision(vars, &target, &object);
+		ft_bzero(object,sizeof(t_object));
+	}
 }
