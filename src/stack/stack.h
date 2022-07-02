@@ -2,11 +2,12 @@
 #ifndef STACK_H
 # define STACK_H
 
-typedef struct s_stack{
-	int	*stack;
-	int	top;
-	int	size;
-} t_stack;
+typedef struct	s_stack
+{
+	int			*stack;
+	int			top;
+	int			size;
+} 				t_stack;
 
 t_stack	create_stack(int size);
 
