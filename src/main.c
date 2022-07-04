@@ -43,13 +43,16 @@ int main(int ac, char **av)
 	t_object	***omap;
 	int			width;
 	int			height;
+	int			state;
 	
 	width = 0;
 	height = 0;
+	state = 1;
 	if (ac == 2 && validate_map(av[1],&width,&height))
 	{
 		vars.mheight = &height;
 		vars.mwidth = &width;
+		vars.state = &state;
 		vars.object_size = 100;
 		vars.mlx = mlx_init();
 		vars.win = mlx_new_window(vars.mlx, *(vars.mwidth) * vars.object_size, *(vars.mheight) * vars.object_size, "AMOGUS");
@@ -57,7 +60,7 @@ int main(int ac, char **av)
 		omap = create_map_model(vars,av[1]);
 		vars.mmodel = &omap;
 		vars.player = find_object(vars,'P');
-		printf("Object position: (%d,%d)",vars.player->x,vars.player->y);
+		printf("Object position: (%d,%d)\n",vars.player->x,vars.player->y);
 		//render((void *) &vars);
 		
 		mlx_loop_hook(vars.mlx,render,(void *) &vars);

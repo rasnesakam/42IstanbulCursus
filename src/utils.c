@@ -4,10 +4,11 @@ void	put_object(t_mlx *vars, t_object *object)
 {
 	void	*img;
 	
-	if (object != NULL)
+	if (object->otype != '\0')
 	{
 		img = mlx_xpm_file_to_image(vars->mlx,object->image_addr[object->orientation],&object->width,&object->height);
 		mlx_put_image_to_window (vars->mlx, vars->win, img, object->x * vars->object_size, object->y * vars->object_size);
+		mlx_destroy_image(vars->mlx,img);
 	}
 }
 
@@ -28,23 +29,28 @@ int	render(void *tvars)
 
 	vars = (t_mlx *) tvars;
 	row = 0;
-	mlx_clear_window(vars->mlx,vars->win);
-	while (row < *vars->mheight)
+	
+	if (*vars->state == 1)
 	{
-		col = 0;
-		while (col < *vars->mwidth)
+		*vars->state = 0;
+		mlx_clear_window(vars->mlx,vars->win);
+		while (row < *vars->mheight)
 		{
-			layer = 0;
-			while (layer < 2)
+			col = 0;
+			while (col < *vars->mwidth)
 			{
-				obj = &((*vars->mmodel)[row][col][layer]);
-				if (obj->otype != '\0')
-					put_object(vars,obj);
-				layer++;
+				layer = 0;
+				while (layer < 2)
+				{
+					obj = &((*vars->mmodel)[row][col][layer]);
+					if (obj->otype != '\0')
+						put_object(vars,obj);
+					layer++;
+				}
+				col++;
 			}
-			col++;
+			row++;
 		}
-		row++;
 	}
 	return 0;
 }
@@ -66,21 +72,18 @@ t_object	get_object(char code, int x, int y)
 	return (create_floor(x, y));
 }
 
-void	move_object(t_mlx *vars, t_object obj, int x, int y)
+void	move_object(t_mlx *vars, t_object *obj, int x, int y)
 {
 	t_object	***map;
 	t_object	*target;
-	t_object	*object;
 
-	map = *vars->mmodel;
-	target = &map[y][x][1];
-	object = &map[obj.y][obj.x][1];
-	if (target->is_collisionable)
+	if (x > 0 || x < vars->mwidth 
+			&& y > 0 || y < vars->mheight)
 	{
-		object->x = x;
-		object->y = y;
-		*target = *object;
-		//target->on_collision(vars, &target, &object);
-		ft_bzero(object,sizeof(t_object));
+		map = *vars->mmodel;
+		target = &map[y][x][1];
+		printf("TARGET:\n\totype: %c",target->otype);
+		obj->x = x;
+		obj->y = y;
 	}
 }
