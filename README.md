@@ -18,9 +18,10 @@ using some of push-swap verbs
 | rrb  | Shift down all elements of **stack b** |
 | rrr  | Shift down all elements of **both stacks** |
 
-## Algorithm
+# Algorithm
 
-### Push and swap
+* # Push and swap
+
 This methods uses only push and swap verbs of this project.  
 The methodology of this algorithm is, collecting minimum and maximum numbers on the top of the both stacks
 
@@ -31,7 +32,7 @@ The methodology of this algorithm is, collecting minimum and maximum numbers on 
 5. If **a stack** is empty, do similar things on the stack a, But swap elements if **temp** is less than **top**
 6. Check order of **a stack** if not ordered correctly, go to 1.
 
-#### Pseudo code
+## Pseudo code
 ```
 This program sorts the datas of the stack using another stack and some of verbs
 
@@ -57,5 +58,13 @@ WHILE NOT isOrdered (stack_a)
 		ELSE
 			top = temp
 		
-
 ```
+
+---
+
+* # I don't know what this is
+find min and max number in array. distrubute elements according to average number ($ max - min \over elementcount $).  
+And then.. i don't know what to do. But scientists divided into two group for this problem.  
+Some of them defends that menemen prepares with onion. And some of them defends that onion is insult for the menemens
+
+---
