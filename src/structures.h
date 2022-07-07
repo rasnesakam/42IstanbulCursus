@@ -14,8 +14,7 @@ struct s_object
 	int		x;
 	int		y;
 	int		orientation;
-	int		is_collisionable;
-    void    (*on_collision)(t_mlx *mlx,struct s_object *self, struct s_object *smasher);
+    t_object	*(*on_collision)(t_mlx *mlx,struct s_object *self, struct s_object *smasher);
 };
 
 struct s_mlx
@@ -28,6 +27,7 @@ struct s_mlx
 	int			object_size;
 	t_object	*player;
 	int			*state;
+	char		*message;
 };
 
 #endif

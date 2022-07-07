@@ -25,15 +25,15 @@ void	handle_player(int keycode, t_mlx *vars)
 	ft_putnbr_fd(++mcount, 1);
 	ft_putendl_fd("", 1);
 	if (keycode == 13)
-		move_object(vars, vars->player, vars->player->x, vars->player->y - 1);
+		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y - 1);
 
 	if (keycode == 0)
-		move_object(vars, vars->player, vars->player->x - 1, vars->player->y);
+		vars->player = move_object(vars, vars->player, vars->player->x - 1, vars->player->y);
 
 	if (keycode == 1)
-		move_object(vars, vars->player, vars->player->x, vars->player->y + 1);
+		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y + 1);
 
 	if (keycode == 2)
-		move_object(vars, vars->player, vars->player->x + 1, vars->player->y);
+		vars->player = move_object(vars, vars->player, vars->player->x + 1, vars->player->y);
 	*vars->state = 1;
 }

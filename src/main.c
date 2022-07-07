@@ -56,7 +56,7 @@ int main(int ac, char **av)
 		vars.object_size = 100;
 		vars.mlx = mlx_init();
 		vars.win = mlx_new_window(vars.mlx, *(vars.mwidth) * vars.object_size, *(vars.mheight) * vars.object_size, "AMOGUS");
-		
+		vars.message = "COLLECT ALL DATA";
 		omap = create_map_model(vars,av[1]);
 		vars.mmodel = &omap;
 		vars.player = find_object(vars,'P');

@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/28 19:34:34 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/05 17:57:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_object	create_wall(int x, int y);
 t_object	create_floor(int x, int y);
 
 t_object	create_object(int x, int y, int orientation, char *img[2], char code);
+
+void		destroy_object(t_object *obj);
 
 #endif

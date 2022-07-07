@@ -12,10 +12,10 @@
 # include <errno.h>
 # include <fcntl.h>
 
-void		put_object(t_mlx *mlx, t_object *object);
+void		put_object(t_mlx *mlx, t_object *object, int x, int y);
 void		ft_exit(char *message, int err);
 int			render(void* vars);
 t_object	get_object(char code, int x, int y);
-void		move_object(t_mlx *mlx, t_object *obj, int x, int y);
+t_object	*move_object(t_mlx *mlx, t_object *obj, int x, int y);
 
 #endif
