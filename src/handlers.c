@@ -28,12 +28,17 @@ void	handle_player(int keycode, t_mlx *vars)
 		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y - 1);
 
 	if (keycode == 0)
+	{
 		vars->player = move_object(vars, vars->player, vars->player->x - 1, vars->player->y);
-
+		vars->player->orientation = 0;
+	}
 	if (keycode == 1)
 		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y + 1);
 
 	if (keycode == 2)
+	{
 		vars->player = move_object(vars, vars->player, vars->player->x + 1, vars->player->y);
+		vars->player->orientation = 1;
+	}
 	*vars->state = 1;
 }

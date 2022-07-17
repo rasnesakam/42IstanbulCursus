@@ -7,6 +7,7 @@ void	put_object(t_mlx *vars, t_object *object, int x, int y)
 	if (object->otype != '\0')
 	{
 		img = mlx_xpm_file_to_image(vars->mlx,object->image_addr[object->orientation],&object->width,&object->height);
+		
 		mlx_put_image_to_window (vars->mlx, vars->win, img, x * vars->object_size, y * vars->object_size);
 		mlx_destroy_image(vars->mlx,img);
 	}
@@ -22,22 +23,26 @@ void	ft_exit(char *message, int err)
 void	render_message(t_mlx *vars)
 {
 	static char *msg;
-	static int index;
+	static int	index;
+	static int	time;
+	int			timeunit;
 
+	timeunit = 2;
 	if (msg == NULL)
 		msg = "";
-	if (index < (int) ft_strlen(vars->message))
+	if (ft_strncmp(vars->message,msg,index) != 0)
 	{
-		msg = ft_substr(vars->message,0,index++);
-		index = index + 1;
-	}
-	/*
-	if (ft_strncmp(vars->message,msg,ft_strlen(vars->message) != 0))
-	{
+		printf("message: %s\noriginal: %s\n",msg,vars->message);
 		msg = "";
 		index = 0;
 	}
-	*/
+	if (index <= (int) ft_strlen(vars->message))
+	{
+		if (time % timeunit == 0)
+			index++;
+		msg = ft_substr(vars->message,0,index);	
+	}
+	time = (time + 1) % timeunit;
 	mlx_string_put(vars->mlx,vars->win,10,10,0x00FFFFFF,msg);
 }
 
@@ -71,16 +76,12 @@ void	render_objects(t_mlx *vars)
 int	render(void *tvars)
 {
 	t_mlx		*vars;
-	static int i = 0;
 
 	vars = (t_mlx *) tvars;
+	mlx_clear_window(vars->mlx,vars->win);
+	render_objects(vars);
+	render_message(vars);
 	
-	
-		mlx_clear_window(vars->mlx,vars->win);
-		render_objects(vars);
-		//render_message(vars);
-		mlx_string_put(vars->mlx,vars->win,10,10,0x00FFFFFF,ft_itoa(i++));
-
 	return 0;
 }
 
@@ -102,6 +103,7 @@ t_object	get_object(char code, int x, int y)
 }
 
 /**
+ * @brief Moves Objects to spesific x and y coordinates
  * TODO: apply changes to map model
  * Bir yerler gereksiz gibi sanki ama nereler
  */
@@ -130,4 +132,87 @@ t_object	*move_object(t_mlx *vars, t_object *obj, int x, int y)
 
 	}
 	return (obj);
+}
+
+/**
+ * @brief Find spesific objects in array
+ * 
+ */
+
+int 	list_size(t_object **list)
+{
+	int count = 0;
+	while (list && list[count])
+		count++;
+	return count;
+}
+
+void	list_push(t_object ***list, t_object *obj)
+{
+	t_object ** newlist;
+	int	index = 0;
+	newlist = (t_object **) ft_calloc(sizeof(t_object *),list_size(*list) + 2);
+	if (newlist == NULL)
+		return ;
+	if (list == NULL)
+		return ;
+	while (*list && (*list)[index])
+	{
+		newlist[index] = (*list)[index];
+		index++;
+	}
+	newlist[index] = obj;
+	free(*list);
+	*list = newlist;
+}
+
+void	list_remove(t_object ***reflist, t_object *ref)
+{
+	t_object	**nlist;
+	int index;
+	int nindex;
+	printf("creating array with size: %d",list_size(*reflist));
+	nlist = (t_object **)ft_calloc(sizeof(t_object *),list_size(*reflist));
+	if (!nlist)
+		return ;
+	index = 0;
+	nindex = 0;
+	while ((*reflist)[index] != NULL)
+	{
+		if ((*reflist)[index] != ref)
+		{
+			nlist[nindex] = (*reflist)[index];
+			nindex++;
+			printf("nindex: %d\n",nindex);
+		}
+		index++;
+	}
+	free(*reflist);
+	*reflist = nlist;
+}
+
+t_object	**find_objects(t_mlx mlx, char otype)
+{
+	t_object	***map;
+	t_object	**list;
+	t_object	obj;
+	int			row;
+	int			col;
+
+	map = *mlx.mmodel;
+	row = 0;
+	list = (t_object **) ft_calloc(sizeof(t_object *),1);
+	while (row < *mlx.mheight)
+	{
+		col = 0;
+		while (col < *mlx.mwidth)
+		{
+			obj = map[row][col][1];
+			if (obj.otype == otype)
+				list_push(&list,&map[row][col][1]);
+			col++;
+		}
+		row++;
+	}
+	return (list);
 }

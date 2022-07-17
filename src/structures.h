@@ -22,10 +22,11 @@ struct s_mlx
 	void		*mlx;
 	void		*win;
 	t_object	****mmodel;
+	t_object	***collectibles;
+	t_object	*player;
 	int			*mwidth;
 	int			*mheight;
 	int			object_size;
-	t_object	*player;
 	int			*state;
 	char		*message;
 };

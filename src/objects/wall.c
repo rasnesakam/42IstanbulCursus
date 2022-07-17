@@ -6,14 +6,18 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:36:37 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/04 17:19:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:24:08 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 
-
-
+static t_object	*collision_wall(t_mlx *mlx, t_object *self, t_object *smasher)
+{
+	(void) mlx;
+	(void) self;
+	return (smasher);
+}
 
 t_object	create_wall(int x, int y)
 {
@@ -29,6 +33,6 @@ t_object	create_wall(int x, int y)
 			images,
 			'1'
 		);
-	wall.on_collision = NULL;
+	wall.on_collision = collision_wall;
 	return (wall);
 }

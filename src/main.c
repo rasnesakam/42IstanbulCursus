@@ -12,35 +12,11 @@ static int	ft_handle(int keycode, t_mlx *vars)
 	return (0);
 }
 
-t_object	*find_object(t_mlx mlx, char otype)
-{
-	int			row;
-	int			col;
-	t_object	***map;
-
-	row = 0;
-	map = *mlx.mmodel;
-	while (row < *mlx.mwidth)
-	{
-		col = 0;
-		while (col < *mlx.mheight)
-		{
-			if (map[row][col][1].otype == otype)
-			{
-				printf("Object founded at: (%d,%d)",col,row);
-				return (&map[row][col][1]);
-			}
-			col++;
-		}
-		row++;
-	}
-	return (NULL);
-}
-
 int main(int ac, char **av)
 {
 	t_mlx		vars;
 	t_object	***omap;
+	t_object	**collectibles;
 	int			width;
 	int			height;
 	int			state;
@@ -56,12 +32,12 @@ int main(int ac, char **av)
 		vars.object_size = 100;
 		vars.mlx = mlx_init();
 		vars.win = mlx_new_window(vars.mlx, *(vars.mwidth) * vars.object_size, *(vars.mheight) * vars.object_size, "AMOGUS");
-		vars.message = "COLLECT ALL DATA";
+		vars.message = "COLLECT ALL OF DATAS!";
 		omap = create_map_model(vars,av[1]);
 		vars.mmodel = &omap;
-		vars.player = find_object(vars,'P');
-		printf("Object position: (%d,%d)\n",vars.player->x,vars.player->y);
-		//render((void *) &vars);
+		vars.player = find_objects(vars,'P')[0];
+		collectibles = find_objects(vars,'C');
+		vars.collectibles = &collectibles;
 		
 		mlx_loop_hook(vars.mlx,render,(void *) &vars);
 		mlx_hook(vars.win, 2, 1L<<0, ft_handle, &vars);

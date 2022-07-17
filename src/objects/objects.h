@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/05 17:57:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/17 01:16:22 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include "../structures.h"
+# include "../utils.h"
 # include <stdio.h>
-
-
 
 t_object	create_player(int x, int y);
 
