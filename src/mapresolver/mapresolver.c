@@ -12,30 +12,58 @@ char	*read_line(int fd)
 	return line;
 }
 
-int	validate_map(char *maddr, int *xsize, int *ysize)
+int openorext(char *maddr)
 {
-	int		fd;
-	int		llen;
-	int		h;
-	char	*line;
+	int fd;
 
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
 		ft_exit("FILE ERROR:", errno);
+	if (ft_strrchr(maddr,'.') == NULL)
+		ft_exit("FILE FORMAT NOT SUPPORTED",EINVAL);
+	if (ft_strncmp(ft_strrchr(maddr,'.'),".ber",ft_strlen(".ber")))
+		ft_exit("FILE FORMAT NOT SUPPORTED",EINVAL);
+	return (fd);
+}
+
+void	check_all_wall(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] != '1')
+			ft_exit("MAP SHOULD BE SURROUNDED BY WALLS",EINVAL);
+		i++;
+	}
+}
+
+int	validate_map(char *maddr, int *xsize, int *ysize)
+{
+	int		fd;
+	char	*line;
+	char	*tline;
+
+	fd = openorext(maddr);
 	line = read_line(fd);
 	if (line == NULL)
 		return (0);
-	llen = ft_strlen(line);
-	h = 0;
+	*xsize = ft_strlen(line);
+	*ysize = 0;
+	check_all_wall(line);
 	while (line != NULL)
 	{
-		if (llen != (int) ft_strlen(line))
-			return (0);
+		if (*xsize != (int) ft_strlen(line))
+			ft_exit("MAP SHOULD BE RECTANGULAR",EINVAL);
+		if (line[0] != '1' && line[*xsize -1] != '1')
+			ft_exit("MAP SHOULD BE SURROUNDED BY WALLS",EINVAL);
 		line = read_line(fd);
-		h++;
+		if (line != NULL)
+			tline = line;
+		*ysize += 1;
 	}
-	*xsize = llen;
-	*ysize = h;
+	check_all_wall(tline);
 	return (1);
 }
 
