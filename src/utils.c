@@ -16,6 +16,7 @@ void	put_object(t_mlx *vars, t_object *object, int x, int y)
 void	ft_exit(char *message, int err)
 {
 	errno = err;
+	ft_putendl_fd("ERROR",2);
 	perror(message);
 	exit(1);
 }
