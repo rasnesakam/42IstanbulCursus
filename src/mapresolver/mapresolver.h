@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/06/22 20:54:45 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/26 07:30:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../objects/objects.h"
 # include "../ext/get_next_line.h"
 # include <fcntl.h>
+# include <libft.h>
 
 /**
  * @brief Create a map model object
@@ -28,7 +29,16 @@ t_object	***create_map_model(t_mlx mlx, char *file);
 /**
  * @brief Valiate map if available for system
  */
-int	validate_map(char *maddr, int *xsize, int *ysize);
+int			validate_map(char *maddr, int *xsize, int *ysize);
 
+int			openorext(char *maddr);
+
+char		*read_line(int fd);
+
+void		check_all_wall(char *line);
+
+t_object	*renderpoint(int lindex, int cindex, char code);
+
+t_object	**renderline(int lindex, int size, char *line);
 
 #endif

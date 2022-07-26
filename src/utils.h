@@ -20,5 +20,5 @@ t_object	*move_object(t_mlx *mlx, t_object *obj, int x, int y);
 t_object	**find_objects(t_mlx mlx, char otype);
 int			list_size(t_object **list);
 void		list_remove(t_object ***reflist, t_object *ref);
-
+t_object	*move_objects(t_mlx *mlx, t_object *target, t_object *source);
 #endif

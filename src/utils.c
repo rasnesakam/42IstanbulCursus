@@ -7,7 +7,8 @@ void	put_object(t_mlx *vars, t_object *object, int x, int y)
 	if (object->otype != '\0')
 	{
 		img = mlx_xpm_file_to_image(vars->mlx,object->image_addr[object->orientation],&object->width,&object->height);
-		
+		if (img == NULL)
+			ft_exit("IMAGE FILE COULDN'T FOUND",ENOENT);
 		mlx_put_image_to_window (vars->mlx, vars->win, img, x * vars->object_size, y * vars->object_size);
 		mlx_destroy_image(vars->mlx,img);
 	}
@@ -117,11 +118,7 @@ t_object	*move_object(t_mlx *vars, t_object *obj, int x, int y)
 	if ((x > 0 || x < *vars->mwidth) 
 			&& (y > 0 || y < *vars->mheight))
 	{
-		printf("MOVING OBJ FROM: (%d,%d) TO: (%d,%d)\n",obj->x,obj->y,x,y);
-		printf("bus error here\n");
-		printf("type: %d\n",map[y][x][1].otype);
 		target = &(map[y][x][1]);
-		printf("Maybe it's inside of if statement\n");
 		if (target->on_collision != NULL)
 			return (target->on_collision(vars,target,obj));
 		else
@@ -218,4 +215,16 @@ t_object	**find_objects(t_mlx mlx, char otype)
 		row++;
 	}
 	return (list);
+}
+
+t_object *move_objects(t_mlx *mlx, t_object *target, t_object *source)
+{
+	t_object	***model;
+	model = *mlx->mmodel;
+	target = &model[target->y][target->x][1];
+	source = &model[source->y][source->x][1];
+	source->x = target->x;
+	source->y = target->y;
+	*target = *source;
+	return (target);
 }

@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 00:42:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/26 07:46:22 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdio.h>
 
 t_object	create_player(int x, int y);
-
-t_object	create_enemy(int x, int y);
 
 t_object	create_exit(int x, int y);
 

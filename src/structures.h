@@ -6,26 +6,26 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 06:43:59 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 06:44:35 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/26 07:03:31 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_object t_object;
-typedef struct s_mlx t_mlx;
+typedef struct s_object	t_object;
+typedef struct s_mlx	t_mlx;
 
 struct s_object
 {
-	char	otype;
-	char	**image_addr;
-	int		width;
-	int		height;
-	int		x;
-	int		y;
-	int		orientation;
-    t_object	*(*on_collision)(t_mlx *mlx,
+	char		otype;
+	char		**image_addr;
+	int			width;
+	int			height;
+	int			x;
+	int			y;
+	int			orientation;
+	t_object	*(*on_collision)(t_mlx *mlx,
 			struct s_object *self, struct s_object *smasher);
 };
 

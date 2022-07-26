@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floor.c                                            :+:      :+:    :+:   */
+/*   renderline.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 07:49:09 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 07:49:35 by emakas           ###   ########.fr       */
+/*   Created: 2022/07/26 07:26:00 by emakas            #+#    #+#             */
+/*   Updated: 2022/07/26 07:26:18 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "objects.h"
+#include "mapresolver.h"
 
-t_object	create_floor(int x, int y)
+t_object	**renderline(int lindex, int size, char *line)
 {
-	t_object	floor;
-	char		**images;
+	int			index;
+	t_object	**objects;
 
-	images = malloc (sizeof(char *));
-	images[0] = "./res/objects/floor/floor.xpm";
-	floor = create_object (
-			x,
-			y,
-			0,
-			images,
-			'0'
-			);
-	floor.on_collision = NULL;
-	return (floor);
+	index = 0;
+	objects = malloc (size * sizeof(t_object *));
+	while (line[index] != '\0' && index < size)
+	{
+		objects[index] = renderpoint (lindex, index, line[index]);
+		index++;
+	}
+	return (objects);
 }

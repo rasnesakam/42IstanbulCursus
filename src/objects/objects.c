@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   objects.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 07:49:47 by emakas            #+#    #+#             */
+/*   Updated: 2022/07/26 07:52:04 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "objects.h"
 #include <stdio.h>
 
-t_object	create_object(int x, int y, int orientation, char **img, char code){
+t_object	create_object(int x, int y, int orientation, char **img, char code)
+{
 	t_object	object;
 
 	object.otype = code;
@@ -9,11 +22,10 @@ t_object	create_object(int x, int y, int orientation, char **img, char code){
 	object.orientation = orientation;
 	object.x = x;
 	object.y = y;
-
 	return(object);
 }
 
-t_object	create_null()
+t_object	create_null(void)
 {
 	t_object	object;
 
@@ -23,7 +35,6 @@ t_object	create_null()
 	object.x = 0;
 	object.y = 0;
 	object.on_collision = NULL;
-
 	return(object);
 }
 
