@@ -40,5 +40,4 @@ void	handle_player(int keycode, t_mlx *vars)
 		vars->player = move_object(vars, vars->player, vars->player->x + 1, vars->player->y);
 		vars->player->orientation = 1;
 	}
-	*vars->state = 1;
 }

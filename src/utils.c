@@ -118,8 +118,10 @@ t_object	*move_object(t_mlx *vars, t_object *obj, int x, int y)
 			&& (y > 0 || y < *vars->mheight))
 	{
 		printf("MOVING OBJ FROM: (%d,%d) TO: (%d,%d)\n",obj->x,obj->y,x,y);
-		
-		target = &map[y][x][1];
+		printf("bus error here\n");
+		printf("type: %d\n",map[y][x][1].otype);
+		target = &(map[y][x][1]);
+		printf("Maybe it's inside of if statement\n");
 		if (target->on_collision != NULL)
 			return (target->on_collision(vars,target,obj));
 		else

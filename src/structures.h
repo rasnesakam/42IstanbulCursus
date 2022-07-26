@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structures.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 06:43:59 by emakas            #+#    #+#             */
+/*   Updated: 2022/07/26 06:44:35 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
@@ -14,7 +25,8 @@ struct s_object
 	int		x;
 	int		y;
 	int		orientation;
-    t_object	*(*on_collision)(t_mlx *mlx,struct s_object *self, struct s_object *smasher);
+    t_object	*(*on_collision)(t_mlx *mlx,
+			struct s_object *self, struct s_object *smasher);
 };
 
 struct s_mlx
@@ -27,7 +39,6 @@ struct s_mlx
 	int			*mwidth;
 	int			*mheight;
 	int			object_size;
-	int			*state;
 	char		*message;
 };
 

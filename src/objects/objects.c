@@ -13,6 +13,20 @@ t_object	create_object(int x, int y, int orientation, char **img, char code){
 	return(object);
 }
 
+t_object	create_null()
+{
+	t_object	object;
+
+	object.otype = '\0';
+	object.image_addr = NULL;
+	object.orientation = 0;
+	object.x = 0;
+	object.y = 0;
+	object.on_collision = NULL;
+
+	return(object);
+}
+
 void	destroy_object(t_object *obj)
 {
 	obj->height = 0;

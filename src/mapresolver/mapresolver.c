@@ -15,13 +15,16 @@ char	*read_line(int fd)
 int openorext(char *maddr)
 {
 	int fd;
+	int cmp;
 
 	fd = open(maddr, O_RDONLY);
 	if (fd < 0)
 		ft_exit("FILE ERROR:", errno);
 	if (ft_strrchr(maddr,'.') == NULL)
 		ft_exit("FILE FORMAT NOT SUPPORTED",EINVAL);
-	if (ft_strncmp(ft_strrchr(maddr,'.'),".ber",ft_strlen(".ber")))
+	cmp = ft_strncmp(ft_strrchr(maddr,'.'),
+			".ber",ft_strlen(maddr) + ft_strlen(".ber"));
+	if ( cmp!= 0)
 		ft_exit("FILE FORMAT NOT SUPPORTED",EINVAL);
 	return (fd);
 }
@@ -56,7 +59,9 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 	{
 		if (*xsize != (int) ft_strlen(line))
 			ft_exit("MAP SHOULD BE RECTANGULAR",EINVAL);
-		if (line[0] != '1' && line[*xsize -1] != '1')
+			char a = line[0];
+			char b = line[*xsize - 1];
+		if (a != '1' ||  b != '1')
 			ft_exit("MAP SHOULD BE SURROUNDED BY WALLS",EINVAL);
 		line = read_line(fd);
 		if (line != NULL)
@@ -71,12 +76,18 @@ t_object	*renderpoint(int lindex, int cindex, char code)
 {
 	t_object	*objects;
 
-	objects = malloc(sizeof(t_object ) * 2);
+	objects = ft_calloc(sizeof(t_object ), 2);
 	
 	if (code == '0')
+	{
 		objects[0] = get_object(code, cindex, lindex);
-	if (code == '1')
+		objects[1] = create_null();
+	}
+	else if (code == '1')
+	{
+		objects[0] = create_null();
 		objects[1] = get_object(code, cindex,lindex);
+	}
 	else
 	{
 		objects[0] = get_object('0', cindex, lindex);
