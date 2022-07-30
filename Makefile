@@ -42,6 +42,7 @@ $(LIBFT):libft
 	@make -C ./libft all
 
 libft:
+	@git submodule init
 	@git submodule update
 
 $(ODIR):
