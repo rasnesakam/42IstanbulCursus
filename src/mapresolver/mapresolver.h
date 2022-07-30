@@ -6,14 +6,14 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 07:30:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:34:57 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAPRESOLVER_H
 # define MAPRESOLVER_H
 # include "../structures.h"
-# include "../utils.h"
+# include "../utils/utils.h"
 # include "../objects/objects.h"
 # include "../ext/get_next_line.h"
 # include <fcntl.h>

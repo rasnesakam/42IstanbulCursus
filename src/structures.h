@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 06:43:59 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 07:03:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:07:29 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ struct s_mlx
 	t_object	****mmodel;
 	t_object	***collectibles;
 	t_object	*player;
+	int			*movecount;
 	int			*mwidth;
 	int			*mheight;
 	int			object_size;

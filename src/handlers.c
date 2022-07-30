@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handlers.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/30 14:06:18 by emakas            #+#    #+#             */
+/*   Updated: 2022/07/30 14:34:40 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "handlers.h"
-#include "utils.h"
+#include "utils/utils.h"
 
 void	handle_exit(int keycode, t_mlx *vars)
 {
 	if (keycode == 53)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		ft_putendl_fd("Program terminated",1);
-		exit(0);
+		mlx_destroy_window (vars->mlx, vars->win);
+		ft_putendl_fd ("Program terminated", 1);
+		exit (0);
 	}
 }
 
@@ -21,23 +33,25 @@ void	handle_player(int keycode, t_mlx *vars)
 {
 	static int	mcount;
 
-	ft_putstr_fd("Movement count: ",1);
-	ft_putnbr_fd(++mcount, 1);
-	ft_putendl_fd("", 1);
+	ft_putstr_fd ("Move count: ", 1);
+	ft_putnbr_fd (*vars->movecount, 1);
+	ft_putendl_fd ("", 1);
 	if (keycode == 13)
-		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y - 1);
-
+		vars->player = move_object(
+				vars, vars->player, vars->player->x, vars->player->y - 1);
 	if (keycode == 0)
 	{
-		vars->player = move_object(vars, vars->player, vars->player->x - 1, vars->player->y);
+		vars->player = move_object(
+				vars, vars->player, vars->player->x - 1, vars->player->y);
 		vars->player->orientation = 0;
 	}
 	if (keycode == 1)
-		vars->player = move_object(vars, vars->player, vars->player->x, vars->player->y + 1);
-
+		vars->player = move_object(
+				vars, vars->player, vars->player->x, vars->player->y + 1);
 	if (keycode == 2)
 	{
-		vars->player = move_object(vars, vars->player, vars->player->x + 1, vars->player->y);
+		vars->player = move_object(
+				vars, vars->player, vars->player->x + 1, vars->player->y);
 		vars->player->orientation = 1;
 	}
 }

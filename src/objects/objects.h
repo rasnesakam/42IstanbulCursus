@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:47:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 07:46:22 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:22:08 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include "../structures.h"
-# include "../utils.h"
+# include "../utils/utils.h"
 # include <stdio.h>
 
 t_object	create_player(int x, int y);
@@ -28,9 +28,9 @@ t_object	create_wall(int x, int y);
 
 t_object	create_floor(int x, int y);
 
-t_object	create_object(int x, int y, int orientation, char *img[2], char code);
+t_object	create_object(int x, int y, char *img[2], char code);
 
-t_object	create_null();
+t_object	create_null(void);
 
 void		destroy_object(t_object *obj);
 

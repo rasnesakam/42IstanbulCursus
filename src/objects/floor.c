@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:49:09 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/26 07:49:35 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 13:45:17 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_object	create_floor(int x, int y)
 	floor = create_object (
 			x,
 			y,
-			0,
 			images,
 			'0'
 			);
