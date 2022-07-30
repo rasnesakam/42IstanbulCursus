@@ -6,11 +6,11 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:19:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 14:19:24 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 19:14:31 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils/utils.h"
 #include "objects/objects.h"
 #include "handlers.h"
 #include "mapresolver/mapresolver.h"

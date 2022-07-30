@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 14:34:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 19:20:27 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,9 @@
 # include <fcntl.h>
 # include <libft.h>
 
-/**
- * @brief Create a map model object
- * 
- * @param file 
- */
+
 t_object	***create_map_model(t_mlx mlx, char *file);
 
-/**
- * @brief Valiate map if available for system
- */
 int			validate_map(char *maddr, int *xsize, int *ysize);
 
 int			openorext(char *maddr);

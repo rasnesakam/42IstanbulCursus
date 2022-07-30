@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:06:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 14:34:40 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 19:14:04 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	handle_exit(int keycode, t_mlx *vars)
  */
 void	handle_player(int keycode, t_mlx *vars)
 {
-	static int	mcount;
-
 	ft_putstr_fd ("Move count: ", 1);
 	ft_putnbr_fd (*vars->movecount, 1);
 	ft_putendl_fd ("", 1);
