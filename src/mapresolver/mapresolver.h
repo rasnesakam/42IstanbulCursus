@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:44:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 19:20:27 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/30 20:24:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../ext/get_next_line.h"
 # include <fcntl.h>
 # include <libft.h>
-
 
 t_object	***create_map_model(t_mlx mlx, char *file);
 

@@ -59,14 +59,17 @@ $(ODIR)%.o: $(SRCDIR)%.c
 all: $(NAME)
 
 clean:
+	@echo "\nREMOVING MLX OBJECTS \n"
 	@make -C ./mlx clean
+	@echo "\nREMOVING LIBFT OBJECTS \n"
 	@make -C ./libft clean
-	@rm -r $(OBJDIR)
+	@rm -rf $(ODIR)
 
 fclean: clean
-	@make -C ./mlx fclean
+	@echo "\nFULL CLEAN FOR LIBFT\n"
 	@make -C ./libft fclean
-	@rm $(NAME)
+	@echo "\nREMOVING $(NAME)\n"
+	@rm  -f $(NAME)
 
 re: fclean all
 
