@@ -16,10 +16,10 @@ OBJDIR		= objects/
 UDIR		= utils/
 
 EXTERNALS	= get_next_line_utils.c get_next_line.c
-MRESOLVERS	= check_all_wall.c create_map_model.c openorext.c \
-				read_line.c renderline.c renderpoint.c validate_map.c
+MRESOLVERS	= create_map_model.c openorext.c \
+				read_line.c validate_map.c
 OBJECTS 	= collectible.c exit.c floor.c objects.c player.c wall.c
-UTILS		= list.c objectmodels.c render.c utils.c 
+UTILS		= list.c objectmodels.c render.c utils.c safext.c
 MAIN		= handlers.c main.c
 
 ALL_SRC		= $(addprefix $(join $(ODIR),$(EXTDIR)), $(EXTERNALS)) \

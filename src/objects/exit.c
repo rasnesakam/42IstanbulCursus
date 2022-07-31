@@ -6,25 +6,26 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:48:47 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 14:38:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/31 19:40:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 
 static t_object	*collsion_exit(t_mlx *vars, t_object *self, t_object *smasher)
-{
+{	
 	if (smasher->otype == 'P')
 	{
 		if (list_size (*vars->collectibles) > 0)
-			vars->message = "DID YOU COLLECTED ALL OF DATAS?";
+			set_message(
+				vars,
+				ft_strjoin("DID YOU COLLECTED ALL OF DATAS?",""));
 		else
 		{
 			smasher = move_in_map (vars, self, smasher);
-			mlx_destroy_window (vars->mlx, vars->win);
 			ft_putendl_fd ("The End...", 1);
 			ft_putendl_fd ("This little manouver is gonna cost us 51 years", 1);
-			exit (0);
+			safe_exit (0,vars);
 		}
 	}
 	return (smasher);

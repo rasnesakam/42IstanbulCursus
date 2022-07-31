@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:19:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 19:14:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/31 20:27:07 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ static int	ft_handle(int keycode, t_mlx *vars)
 	return (0);
 }
 
-void	check_model(t_mlx vars)
+void	check_model(t_mlx *vars)
 {
 	int	collectiblecount;
 	int	exitcount;
 	int	spawncount;
 
-	collectiblecount = list_size (find_objects (vars, 'C'));
-	exitcount = list_size (find_objects (vars, 'E'));
-	spawncount = list_size (find_objects (vars, 'P'));
-	if (!collectiblecount || !exitcount || !spawncount)
+	collectiblecount = list_size (find_objects (*vars, 'C'));
+	exitcount = list_size (find_objects (*vars, 'E'));
+	spawncount = list_size (find_objects (*vars, 'P'));
+	if (!collectiblecount || !exitcount || spawncount != 1)
 		ft_exit(
-			"MAP SHOULD INCLUDE AT LEAST ONE FOR EVERY C, E AND P",
+			"MAP SHOULD INCLUDE AT LEAST ONE FOR EVERY C, E AND ONLY P",
+			vars,
 			EINVAL);
 }
 
@@ -53,8 +54,8 @@ t_mlx	create(int *height, int *width, char *file)
 			*(vars.mwidth) * vars.object_size,
 			*(vars.mheight) * vars.object_size,
 			"AMOGUS");
-	vars.message = "COLLECT ALL OF DATAS!";
-	*vars.mmodel = create_map_model (vars, file);
+	vars.message = NULL;
+	*vars.mmodel = create_map_model (&vars, file);
 	vars.player = find_objects (vars, 'P')[0];
 	*vars.collectibles = find_objects (vars, 'C');
 	return (vars);
@@ -65,15 +66,22 @@ int	main(int ac, char **av)
 	t_mlx		vars;
 	int			width;
 	int			height;
-	int			state;
+	int			mcount;
+	char		*mesg1;
+	char		*mesg2;
 
 	width = 0;
 	height = 0;
-	state = 1;
+	mcount = 1;
 	if (ac == 2 && validate_map (av[1], &width, &height))
 	{
+		safe_exit(0,&vars);
 		vars = create (&height, &width, av[1]);
-		check_model (vars);
+		check_model (&vars);
+		mesg1 = "ALIENS ARE ATTACKING! ";
+		mesg2 = "COLLECT ALL DATAS BEFORE EVERYTHING RUINED!";
+		set_message (&vars, ft_strjoin(mesg1, mesg2));
+		vars.movecount = &mcount;
 		mlx_loop_hook (vars.mlx, render, (void *) &vars);
 		mlx_hook (vars.win, 2, 1L << 0, ft_handle, &vars);
 		mlx_loop (vars.mlx);

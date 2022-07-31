@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:49:47 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 17:19:21 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/31 20:09:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ t_object	get_object(char code, int x, int y)
 	if (code == 'P')
 		return (create_player (x, y));
 	else
-		ft_exit("INVALID RULE FOR MAPPING", EINVAL);
+		return (create_null());
 	return (create_floor (x, y));
 }

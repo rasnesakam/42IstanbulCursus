@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:43:14 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 14:38:08 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/31 17:24:35 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ static t_object	*on_collision(t_mlx *mlx, t_object *self, t_object *smasher)
 	list_remove (mlx->collectibles, self);
 	ccount = list_size (*mlx->collectibles);
 	if (ccount > 0)
-		mlx->message = ft_strjoin ("REMAINED DATAS: ", ft_itoa (ccount));
+		set_message(
+			mlx, ft_strjoin("REMAINED DATAS: ", ft_itoa(ccount)));
 	else
-		mlx->message = "CONGRATULATIONS. UNIVERSE HAS BEEN SAVED. MOVE TO EXIT";
+		set_message(
+			mlx, "CONGRATULATIONS. UNIVERSE HAS BEEN SAVED. MOVE TO EXIT");
 	smasher = move_in_map (mlx, self, smasher);
-	destroy_object(self);
 	return (smasher);
 }
 

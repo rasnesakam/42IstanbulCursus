@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:20:33 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/30 17:21:07 by emakas           ###   ########.fr       */
+/*   Updated: 2022/07/31 17:18:13 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void	render_message(t_mlx *vars)
 	{
 		if (time % timeunit == 0)
 			index++;
+		ft_bzero (msg, ft_strlen(msg));
 		msg = ft_substr (vars->message, 0, index);
 	}
 	time = (time + 1) % timeunit;
 	mlx_string_put(vars->mlx, vars->win, 10, 10, 0x00FFFFFF, msg);
+	
 }
 
 void	render_objects(t_mlx *vars)
