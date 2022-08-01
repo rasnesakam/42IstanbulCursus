@@ -6,15 +6,15 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:28:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 20:31:14 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:45:45 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mapresolver.h"
 
-static void check_all_wall(char *line)
+static void	check_all_wall(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')

@@ -1,7 +1,7 @@
 NAME		= so_long
 
-CFLAGS		+= -Wall -Wextra -Werror -I./mlx -I./libft
-LFLAGS		= -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME)
+CFLAGS		+= -g -Wall -Wextra -Werror -I./mlx -I./libft
+LFLAGS		= -g -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME)
 CC			= gcc
 
 MLX			= mlx/libmlx.a

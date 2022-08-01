@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:48:47 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 19:40:49 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:47:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static t_object	*collsion_exit(t_mlx *vars, t_object *self, t_object *smasher)
 {	
 	if (smasher->otype == 'P')
 	{
-		if (list_size (*vars->collectibles) > 0)
+		if (find_ocs(vars, 'C') > 0)
 			set_message(
 				vars,
-				ft_strjoin("DID YOU COLLECTED ALL OF DATAS?",""));
+				ft_strjoin("DID YOU COLLECTED ALL OF DATAS?", ""));
 		else
 		{
 			smasher = move_in_map (vars, self, smasher);
-			ft_putendl_fd ("The End...", 1);
-			ft_putendl_fd ("This little manouver is gonna cost us 51 years", 1);
-			safe_exit (0,vars);
+			ft_putendl_fd("The End...", 1);
+			ft_putendl_fd("This little manouver is gonna cost us 51 years", 1);
+			safe_exit(0, vars);
 		}
 	}
 	return (smasher);

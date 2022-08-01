@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:21:34 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 19:44:11 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:53:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,3 @@ void	set_message(t_mlx *mlx, char *message)
 	}
 	mlx->message = message;
 }
-
-

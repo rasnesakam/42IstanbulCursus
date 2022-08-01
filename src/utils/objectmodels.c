@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:14:38 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 18:58:00 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:51:57 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,60 @@ t_object	*move_object(t_mlx *vars, t_object *obj, int x, int y)
 			*target = *obj;
 			target->x = x;
 			target->y = y;
-			destroy_object (obj);
+			*obj = create_null();
 			ft_putstr_fd("Move count: ", 1);
 			ft_putnbr_fd((*vars->movecount)++, 1);
 			ft_putendl_fd("", 1);
 			return (target);
 		}
-
 	}
 	return (obj);
 }
 
-t_object	**find_objects(t_mlx mlx, char otype)
+int	find_ocs(t_mlx *mlx, char otype)
 {
-	t_object	***map;
-	t_object	**list;
-	t_object	obj;
+	t_object	*obj;
 	int			row;
 	int			col;
+	int			count;
 
-	map = *mlx.mmodel;
 	row = 0;
-	list = (t_object **) ft_calloc (sizeof(t_object *), 1);
-	while (row < *mlx.mheight)
+	count = 0;
+	while (row < *mlx->mheight)
 	{
 		col = 0;
-		while (col < *mlx.mwidth)
+		while (col < *mlx->mwidth)
 		{
-			obj = map[row][col][1];
-			if (obj.otype == otype)
-				list_push (&list, &map[row][col][1]);
+			obj = &(*mlx->mmodel)[row][col][1];
+			if (obj->otype == otype)
+				count++;
 			col++;
 		}
 		row++;
 	}
-	return (list);
+	return (count);
+}
+
+t_object	*find_object(t_mlx *mlx, char otype)
+{
+	t_object	*obj;
+	int			row;
+	int			col;
+
+	row = 0;
+	while (row < *mlx->mheight)
+	{
+		col = 0;
+		while (col < *mlx->mwidth)
+		{
+			obj = &(*mlx->mmodel)[row][col][1];
+			if (obj->otype == otype)
+				return (obj);
+			col++;
+		}
+		row++;
+	}
+	return (NULL);
 }
 
 t_object	*move_in_map(t_mlx *mlx, t_object *target, t_object *source)
@@ -91,8 +110,9 @@ t_object	*move_in_map(t_mlx *mlx, t_object *target, t_object *source)
 	source = &(*mlx->mmodel)[source->y][source->x][1];
 	source->x = target->x;
 	source->y = target->y;
+	destroy_object(target);
 	*target = *source;
-	destroy_object(source);
+	*source = create_null();
 	ft_putstr_fd("Move count: ", 1);
 	ft_putnbr_fd((*mlx->movecount)++, 1);
 	ft_putendl_fd("", 1);

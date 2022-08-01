@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:49:47 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 20:09:54 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 21:37:29 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ t_object	create_null(void)
 	t_object	object;
 
 	object.otype = '\0';
-	object.image_addr = NULL;
+	object.image_addr = 0;
 	object.orientation = 0;
 	object.x = 0;
 	object.y = 0;
-	object.on_collision = NULL;
+	object.on_collision = 0;
 	return (object);
 }
 
 void	destroy_object(t_object *obj)
 {
 	obj->height = 0;
-	obj->image_addr = NULL;
-	obj->on_collision = NULL;
+	obj->on_collision = 0;
 	obj->orientation = 0;
-	obj->otype = '\0';
+	obj->otype = 0;
 	obj->width = 0;
 	obj->x = 0;
 	obj->y = 0;
+	free(obj->image_addr);
 }
 
 t_object	get_object(char code, int x, int y)

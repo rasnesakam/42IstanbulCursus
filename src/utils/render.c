@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:20:33 by emakas            #+#    #+#             */
-/*   Updated: 2022/07/31 17:18:13 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:40:09 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	render_message(t_mlx *vars)
 
 	timeunit = 2;
 	if (msg == NULL)
-		msg = "";
+		msg = malloc(sizeof(char *));
 	if (ft_strncmp (vars->message, msg, index) != 0)
 	{
-		msg = "";
+		free(msg);
+		msg = malloc(sizeof(char *));
 		index = 0;
 	}
 	if (index <= (int) ft_strlen (vars->message))
 	{
 		if (time % timeunit == 0)
 			index++;
-		ft_bzero (msg, ft_strlen(msg));
+		free(msg);
 		msg = ft_substr (vars->message, 0, index);
 	}
 	time = (time + 1) % timeunit;
 	mlx_string_put(vars->mlx, vars->win, 10, 10, 0x00FFFFFF, msg);
-	
 }
 
 void	render_objects(t_mlx *vars)
@@ -57,7 +57,7 @@ void	render_objects(t_mlx *vars)
 			{
 				obj = &((*vars->mmodel)[row][col][layer]);
 				if (obj->otype != '\0')
-					put_object(vars, obj, col, row);
+					put_object (vars, obj, col, row);
 				layer++;
 			}
 			col++;
