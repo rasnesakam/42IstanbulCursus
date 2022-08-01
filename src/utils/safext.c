@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/01 23:56:30 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/01 23:59:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	safe_exit(int code, t_mlx *mlx)
 {
 	(void) mlx;
-	system("leaks so_long");
 	exit(code);
 }
