@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:19:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/01 23:43:17 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/02 03:35:10 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "objects/objects.h"
 #include "handlers.h"
 #include "mapresolver/mapresolver.h"
-#include <stdio.h>
 
 static int	ft_handle(int keycode, t_mlx *vars)
 {

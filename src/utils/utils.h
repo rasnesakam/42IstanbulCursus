@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:11:53 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/01 23:48:29 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/02 03:37:14 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 void		put_object(t_mlx *mlx, t_object *object, int x, int y);
 void		ft_exit(char *message, t_mlx *mlx, int err);
