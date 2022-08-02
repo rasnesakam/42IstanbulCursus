@@ -39,11 +39,9 @@ $(MLX):
 	@make -C ./mlx all
 
 $(LIBFT):libft
-	@make -C ./libft all
-
-libft:
 	@git submodule init
 	@git submodule update
+	@make -C ./libft all
 
 $(ODIR):
 	mkdir -p $(ODIR)
