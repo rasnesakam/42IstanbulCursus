@@ -6,35 +6,37 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:21:41 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/03 19:34:03 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/03 21:23:32 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arg-parser.h"
 #include "../../libft/libft.h"
+#include <stdio.h>
 
 char	**collect_args(int ac, char **av)
 {
 	char	**args;
 	char	**sargs;
-	int		size;
-	int		pindex;
-	int		sindex;
+	int		li;
+	int		ai;
+	int		si;
 
-	size = count_args(ac, av);
-	pindex = 0;
-	aindex = 0;
-	args = malloc(size * sizeof(char));
-	while (aindex < ac)
+	li = 1;
+	ai = 0;
+	args = malloc(sizeof(char *) * count_args(ac, av));
+	while (li < ac)
 	{
-		sindex = 0;
-		sargs = ft_split(av[aindex], ' ');
-		while (sindex < count_words(av[aindex]))
+		si = 0;
+		sargs = ft_split(av[li], ' ');
+		while (si < count_words(av[li]))
 		{
-			args[aindex] = sargs[sindex];
-			aindex++;
-			sindex++;
+			args[ai] = sargs[si];
+			ai++;
+			si++;
 		}
-		aindex++;
+		free(sargs);
+		li++;
 	}
+	return (args);
 }

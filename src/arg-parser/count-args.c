@@ -6,11 +6,13 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 16:46:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/03 18:29:32 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/03 20:45:44 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	count_words(char *c)
+#include <stdio.h>
+#include "../../libft/libft.h"
+int	count_words(char *c)
 {
 	unsigned int	count;
 	unsigned int	i;
@@ -18,14 +20,15 @@ static int	count_words(char *c)
 
 	count = 0;
 	i = 0;
-	while (s[i] != '\0')
+	
+	while (c && c[i] != '\0')
 	{
-		if (s[i] == delimiter)
+		if (c[i] == delimiter)
 			i++;
 		else
 		{
 			count++;
-			while (s[i] && s[i] != delimiter)
+			while (c[i] && c[i] != delimiter)
 				i++;
 		}
 	}
@@ -42,6 +45,7 @@ int	count_args(int ac, char **av)
 	while (index < ac)
 	{
 		count += count_words(av[index]);
+		index++;
 	}
 	return (count);
 }
