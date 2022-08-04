@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:19:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/04 15:09:00 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/04 15:26:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include "handlers.h"
 #include "mapresolver/mapresolver.h"
 
-static int destroy_window(void *params)
+static int	destroy_window(void *params)
 {
 	ft_putendl_fd("Program terminated", 1);
-	safe_exit(0,(t_mlx *) params);
+	safe_exit(0, (t_mlx *) params);
 	return (0);
 }
 
