@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 07:28:03 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/04 16:47:09 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/04 18:04:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	validate_map(char *maddr, int *xsize, int *ysize)
 	while (line != NULL)
 	{
 		if (ft_strchr (line, '\n') == NULL)
-			check_all_wall(tline);
+			check_all_wall(line);
 		free(line);
 		line = ft_strtrim(line, "\n");
 		ft_control(line,*xsize);
