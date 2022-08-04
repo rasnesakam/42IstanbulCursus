@@ -6,13 +6,11 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:21:41 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/03 21:23:32 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/04 15:58:47 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arg-parser.h"
-#include "../../libft/libft.h"
-#include <stdio.h>
 
 char	**collect_args(int ac, char **av)
 {
@@ -31,7 +29,8 @@ char	**collect_args(int ac, char **av)
 		sargs = ft_split(av[li], ' ');
 		while (si < count_words(av[li]))
 		{
-			args[ai] = sargs[si];
+			args[ai] = ft_strtrim(sargs[si], "\t\n\v\f\r");
+			free(sargs[si]);
 			ai++;
 			si++;
 		}

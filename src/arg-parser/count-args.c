@@ -6,12 +6,11 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 16:46:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/03 20:45:44 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/04 15:59:11 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../../libft/libft.h"
+#include "arg-parser.h"
 int	count_words(char *c)
 {
 	unsigned int	count;
