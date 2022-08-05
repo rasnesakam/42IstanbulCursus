@@ -12,6 +12,7 @@ void	revr(t_stack *stack)
 	while (tmp_stack->top >= 0)
 		push_stack(stack, pop_stack(tmp_stack));
 	push_stack(stack, value);
+	destroy_stack(tmp_stack);
 }
 
 void	revrr(t_stack *stack_a, t_stack *stack_b)

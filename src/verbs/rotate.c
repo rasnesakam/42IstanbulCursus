@@ -12,6 +12,7 @@ void	rotate(t_stack *stack)
 	push_stack(stack, value);
 	while (tmp_stack->top >= 0)
 		push_stack(stack, pop_stack(tmp_stack));
+	destroy_stack(tmp_stack);
 }
 
 void	rrotate(t_stack *stack_a, t_stack *stack_b)
