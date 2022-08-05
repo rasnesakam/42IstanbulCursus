@@ -1,5 +1,6 @@
 
 #include "stack.h"
+#include "../utils/utils.h"
 
 t_stack *create_stack(int size)
 {
