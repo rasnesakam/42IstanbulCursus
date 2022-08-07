@@ -43,4 +43,5 @@ int	pop_stack(t_stack *stack)
 	}
 	else
 		ft_error("STACK IS EMPTY");
+	return (0);
 }

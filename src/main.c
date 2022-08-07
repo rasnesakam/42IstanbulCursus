@@ -2,35 +2,65 @@
 #include "arg-parser/arg-parser.h"
 #include "arg-verifier/arg-verifier.h"
 #include "arg-converter/arg-converter.h"
+#include "magic-alg/magic-alg.h"
 #include "stack/stack.h"
+
+void	load_stack(t_stack *stack, int *list, int size)
+{
+	while (size >= 0)
+	{
+		push_stack(stack, list[size]);
+		size--;
+	}
+}
+
+int	check_sorted(t_stack *stack)
+{
+	t_stack	*tmp_stack;
+	int		check_val;
+	int		tmp_val;
+	int		retval;
+
+	tmp_stack = create_stack(stack->size);
+	retval = 1;
+	if (stack->top > 0)
+	{
+		check_val = pop_stack(stack);
+		push_stack(tmp_stack, check_val);
+	}
+	while (stack->top >= 0)
+	{
+		tmp_val = pop_stack(stack);
+		if (check_val > tmp_val)
+			retval = 0;
+		check_val = tmp_val;
+		push_stack(tmp_stack, check_val);
+	}
+	while (tmp_stack->top >= 0)
+		push_stack(stack, pop_stack(tmp_stack));
+	return (retval);
+}
 
 int	main(int ac, char **av)
 {
-	char **args = collect_args(ac,av);
-	int count = count_args(ac,av);
+	char	**args;
+	int		count;
+	int		*list;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	
+	args = collect_args(ac,av);
+	count = count_args(ac,av);
 	if (verify_args(count, args))
-		ft_putendl_fd("CORRECT!",1);
-	else
-		ft_putendl_fd("INCORRECT",1);
-	
-	int *list = convert_args(count, args);
-	ft_putendl_fd("list created",1);
-
-	t_stack *stack = create_stack(count);
-	ft_putstr_fd("stack created with size: ", 1);
-	ft_putendl_fd(ft_itoa(count), 1);
-	for (int i = 0; i < count; i++)
 	{
-		push_stack(stack,list[i]);
+		list = convert_args(count, args);
+		stack_a = create_stack(count);
+		stack_b = create_stack(count);
+		load_stack(stack_a, list, count);
+		if (check_sorted(stack_a) == 0)
+			abracadabra(stack_a, stack_b);
+		destroy_stack(stack_a);
+		destroy_stack(stack_b);
 	}
-	ft_putendl_fd("items pushed to stack", 1);
-	for (int i = 0; i < count; i++)
-	{
-		int item = pop_stack(stack);
-		ft_putnbr_fd(item,1);
-		ft_putendl_fd("",1);
-	}
-	destroy_stack(stack);
 	return (0);
 }
