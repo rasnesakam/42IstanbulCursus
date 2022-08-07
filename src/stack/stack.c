@@ -13,7 +13,7 @@ t_stack *create_stack(int size)
 		return (NULL);
 	stack->size = size;
 	stack->datas = datas;
-	stack->top = 0;
+	stack->top = -1;
 	return (stack);
 }
 
