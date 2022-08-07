@@ -25,7 +25,7 @@ CFLAGS	+= -Wall -Wextra -Werror -I ./ -c
 
 
 $(NAME): $(BIN_DIR) $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(BIN_DIR)*.o
 
 $(BIN_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) $< -o $@
@@ -33,10 +33,9 @@ $(BIN_DIR)%.o: $(SRC_DIR)%.c
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-all: $(NAME) bonus
+all: bonus $(NAME)
 
-bonus: $(BIN_DIR) $(BOBJS)
-	ar rc $(NAME) $(BOBJS)
+bonus: $(BIN_DIR) $(BOBJS) $(NAME)
 
 clean:
 	rm -rf $(BIN_DIR)
