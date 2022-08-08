@@ -16,7 +16,7 @@ CC				= gcc
 CFLAGS			= asdasd
 
 $(NAME):
-	gcc src/*.c src/arg-converter/*.c src/arg-parser/*.c src/arg-verifier/*.c src/magic-alg/*.c src/stack/*.c src/utils/*.c src/verbs/*.c libft/libft.a
+	gcc src/*.c src/arg-converter/*.c src/arg-parser/*.c src/arg-verifier/*.c src/magic-alg/*.c src/stack/*.c src/utils/*.c src/verbs/*.c -Ilibft/src -Llibft -lft
 
 all: $(NAME)
 
