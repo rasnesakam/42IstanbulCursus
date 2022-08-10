@@ -39,12 +39,11 @@ static void	ft_filter(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-/*
+
 void	ft_sort_stack(t_stack *stack)
 {
-
+	if ()
 }
-*/
 
 
 void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)

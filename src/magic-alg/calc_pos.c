@@ -43,7 +43,7 @@ void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 	{
 		position_a = find_pos(stack_a, pop_stack(&stack_b));
 		optimum_rate = get_optimum_rate(position_a,
-			position_b, stack_a.size, stack_b.size);
+			position_b, stack_a.top, stack_b.top);
 		if (optimum_rate < oldoptimum_rate)
 		{
 			oldoptimum_rate = optimum_rate;
