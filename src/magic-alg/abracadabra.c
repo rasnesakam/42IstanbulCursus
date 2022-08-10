@@ -46,10 +46,6 @@ void	ft_sort_stack(t_stack *stack)
 }
 */
 
-void	ft_calc_pos(t_stack *stack_a, t_stack *stack_b, int *pos_a, int *pos_b)
-{
-
-}
 
 void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 {
