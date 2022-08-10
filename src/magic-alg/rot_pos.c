@@ -7,7 +7,10 @@ void ft_rotpos(t_stack *stack, int pos)
 	{
 		pos = stack->top - pos;
 		while (pos--)
+		{
 			revr(stack);
+
+		}
 	}
 	else
 	{}
