@@ -1,6 +1,7 @@
 
 #include "stack.h"
 #include "../utils/utils.h"
+#include <stdio.h>
 
 t_stack *create_stack(int size)
 {
@@ -8,7 +9,7 @@ t_stack *create_stack(int size)
 	int		*datas;
 
 	stack = malloc(sizeof(t_stack));
-	datas = malloc(sizeof(int) * size);
+	datas = malloc(sizeof(int) * (size - 1));
 	if (stack == NULL || datas == NULL)
 		return (NULL);
 	stack->size = size;
@@ -19,13 +20,13 @@ t_stack *create_stack(int size)
 
 void	destroy_stack(t_stack *stack)
 {
-	free(stack->datas);
+	//free(stack->datas);
 	free(stack);
 }
 
 void	push_stack(t_stack *stack, int value)
 {
-	if (stack->top < stack->size)
+	if (stack->top < stack->size - 1)
 	{
 		stack->top += 1;
 		stack->datas[stack->top] = value;
@@ -36,7 +37,7 @@ void	push_stack(t_stack *stack, int value)
 
 int	pop_stack(t_stack *stack)
 {
-	if (stack->top > 0)
+	if (stack->top > -1)
 	{
 		stack->top -= 1;
 		return (stack->datas[stack->top + 1]);
@@ -44,4 +45,16 @@ int	pop_stack(t_stack *stack)
 	else
 		ft_error("STACK IS EMPTY");
 	return (0);
+}
+
+/**
+ * @brief Returns top element of stack
+ * Returns top element of stack and keeps it in stack
+ * If stack is empty returns INT_MIN (1 << 31)
+ */
+int	top_stack(t_stack *stack)
+{
+	if (stack->top > -1)
+		return (stack->datas[stack->top]);
+	return (1 << 31);
 }

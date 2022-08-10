@@ -14,5 +14,5 @@ t_stack	*create_stack(int size);
 void	destroy_stack(t_stack *stack);
 void	push_stack(t_stack *stack, int value);
 int		pop_stack(t_stack *stack);
-
+int		top_stack(t_stack *stack);
 #endif

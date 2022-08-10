@@ -18,7 +18,7 @@ int	get_min(t_stack *stack)
 
 	tmp_stack = create_stack(stack->size);
 	min = 1 << 31;
-	if (stack->top > 0)
+	if (stack->top >= 0)
 	{
 		min = pop_stack(stack);
 		push_stack(tmp_stack,min);

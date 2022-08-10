@@ -10,7 +10,7 @@
  * @param stack
  * @return int
  */
-int get_max(t_stack *stack)
+int get_avg(t_stack *stack)
 {
 	t_stack *tmp_stack;
 	int		avg;
@@ -21,6 +21,7 @@ int get_max(t_stack *stack)
 	count = 0;
 	if (stack->top < 0)
 		return (1 << 31);
+	tmp_stack = create_stack(stack->size);
 	while (stack->top >= 0)
 	{
 		tmp = pop_stack(stack);

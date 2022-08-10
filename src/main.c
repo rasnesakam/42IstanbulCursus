@@ -4,14 +4,12 @@
 #include "arg-converter/arg-converter.h"
 #include "magic-alg/magic-alg.h"
 #include "stack/stack.h"
-
+#include <stdio.h>
 void	load_stack(t_stack *stack, int *list, int size)
 {
-	while (size >= 0)
-	{
+	printf("LOAD STACK\n");
+	while (--size >= 0)
 		push_stack(stack, list[size]);
-		size--;
-	}
 }
 
 int	check_sorted(t_stack *stack)
