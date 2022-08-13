@@ -1,3 +1,5 @@
+#include "../stack/stack.h"
+
 int	find_pos(t_stack stack, int number)
 {
 	int	position;

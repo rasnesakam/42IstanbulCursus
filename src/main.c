@@ -1,10 +1,10 @@
+#include "./arg-parser/arg-parser.h"
+#include "./arg-verifier/arg-verifier.h"
+#include "./arg-converter/arg-converter.h"
+#include "./magic-alg/magic-alg.h"
+#include "./stack/stack.h";
 
-#include "arg-parser/arg-parser.h"
-#include "arg-verifier/arg-verifier.h"
-#include "arg-converter/arg-converter.h"
-#include "magic-alg/magic-alg.h"
-#include "stack/stack.h"
-#include <stdio.h>
+
 void	load_stack(t_stack *stack, int *list, int size)
 {
 	printf("LOAD STACK\n");

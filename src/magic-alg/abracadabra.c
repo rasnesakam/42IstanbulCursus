@@ -1,6 +1,7 @@
 #include "../stack/stack.h"
 #include "../data-analyzer/data-analyzer.h"
 #include "../verbs/verbs.h"
+#include "magic-alg.h"
 #include <libft.h>
 
 /**
@@ -39,12 +40,12 @@ static void	ft_filter(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-
+/*
 void	ft_sort_stack(t_stack *stack)
 {
 	if ()
 }
-
+*/
 
 void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 {
@@ -53,9 +54,9 @@ void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 
 	while (stack_b->top > -1)
 	{
-		ft_calc_pos(stack_a, stack_b, &pos_a, &pos_b);
-		//ft_rotpos(stack_b, pos_b);
-		//ft_rotpos(stack_a, pos_a);
+		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
+		// Can we rotate both with command: rr or rrr? for mutual rotations
+		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
 		push(stack_b, stack_a);
 		ft_putendl_fd("pa", 1);
 	}

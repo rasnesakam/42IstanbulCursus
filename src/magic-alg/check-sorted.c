@@ -1,3 +1,4 @@
+#include "../stack/stack.h"
 
 int	check_sorted(t_stack *stack)
 {
