@@ -8,7 +8,6 @@
 
 void	load_stack(t_stack *stack, int *list, int size)
 {
-	printf("LOAD STACK\n");
 	while (--size >= 0)
 		push_stack(stack, list[size]);
 }

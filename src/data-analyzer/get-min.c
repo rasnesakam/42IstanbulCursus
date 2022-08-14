@@ -16,11 +16,11 @@ int	get_min(t_stack stack)
 	int		tmp;
 
 	min = 1 << 31;
-	if (stack->top >= 0)
-		min = pop_stack(stack);
-	while (stack->top >= 0)
+	if (stack.top >= 0)
+		min = pop_stack(&stack);
+	while (stack.top >= 0)
 	{
-		tmp = pop_stack(stack);
+		tmp = pop_stack(&stack);
 		if (tmp < min)
 			min = tmp;
 	}

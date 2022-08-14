@@ -17,10 +17,10 @@ int get_max(t_stack stack)
 
 	max = 0xFFFFFFFF >> 1;
 	if (stack.top > 0)
-		max = pop_stack(stack);
+		max = pop_stack(&stack);
 	while (stack.top >= 0)
 	{
-		tmp = pop_stack(stack);
+		tmp = pop_stack(&stack);
 		if (tmp > max)
 			max = tmp;
 	}
