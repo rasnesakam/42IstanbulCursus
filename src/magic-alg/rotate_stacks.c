@@ -2,28 +2,7 @@
 #include "../verbs/verbs.h"
 #include <libft.h>
 
-void ft_rotpos(t_stack *stack, int pos, char *stack_name)
-{
-	if (pos > (stack->top / 2))
-	{
-		pos = stack->top + 1 - pos;
-		while (pos--)
-		{
-			revr(stack);
-			ft_putendl_fd(ft_strjoin("rr", stack_name), 1);
-		}
-	}
-	else
-	{
-		while (pos--)
-		{
-			rotate(stack);
-			ft_putendl_fd(ft_strjoin("r", stack_name), 1);
-		}
-	}
-}
-
-void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b)
+static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b)
 {
 	// Rotate
 	if (*pos_a <= (stack_a->top + 1) / 2 && *pos_b < (stack_b->top + 1) / 2)
@@ -50,6 +29,27 @@ void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b
 			*pos_a -= (stack_a->top + 1);
 		if (*pos_b >= (stack_b->top + 1))
 			*pos_b -= (stack_b->top + 1);
+	}
+}
+
+void ft_rotpos(t_stack *stack, int pos, char *stack_name)
+{
+	if (pos > (stack->top / 2))
+	{
+		pos = stack->top + 1 - pos;
+		while (pos--)
+		{
+			revr(stack);
+			ft_putendl_fd(ft_strjoin("rr", stack_name), 1);
+		}
+	}
+	else
+	{
+		while (pos--)
+		{
+			rotate(stack);
+			ft_putendl_fd(ft_strjoin("r", stack_name), 1);
+		}
 	}
 }
 

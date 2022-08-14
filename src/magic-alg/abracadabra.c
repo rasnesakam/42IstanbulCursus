@@ -47,19 +47,6 @@ void	ft_sort_stack(t_stack *stack)
 }
 */
 
-void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
-{
-	int	pos_a;
-	int	pos_b;
-
-	while (stack_b->top > -1)
-	{
-		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
-		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
-		push(stack_b, stack_a);
-		ft_putendl_fd("pa", 1);
-	}
-}
 
 void	ft_printstack(t_stack stack)
 {
@@ -69,24 +56,44 @@ void	ft_printstack(t_stack stack)
 	ft_putendl_fd("\n", 1);
 }
 
+void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	int	pos_a;
+	int	pos_b;
+
+	while (stack_b->top > -1)
+	{
+		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
+		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
+
+		ft_putendl_fd("\n===================================", 1);
+
+		ft_putendl_fd("\nSTACK A:", 1);
+		ft_printstack(*stack_a);
+
+		ft_putendl_fd("\nSTACK B:", 1);
+		ft_printstack(*stack_b);
+		
+		ft_putendl_fd("\n===================================", 1);
+
+		push(stack_b, stack_a);
+		ft_putendl_fd("pa", 1);
+	}
+}
+
+#include <stdio.h>
 void abracadabra(t_stack *stack_a, t_stack *stack_b)
 {
 	
 	ft_filter(stack_a, stack_b);
 
-	ft_putendl_fd("\nSTACK A:",1);
-	ft_printstack(*stack_a);
-
-	ft_putendl_fd("\nSTACK B:",1);
-	ft_printstack(*stack_b);
 	// Sort stack a
 	//ft_sort_stack(stack_a);
 
 	// fit datas to a
 	ft_fit_stack(stack_a, stack_b);
-
 	//put min to top
-
+	ft_rotpos(stack_a, find_pos(*stack_a, get_min(stack_a)), "a");
 	ft_putendl_fd("\nSTACK A:", 1);
 	ft_printstack(*stack_a);
 

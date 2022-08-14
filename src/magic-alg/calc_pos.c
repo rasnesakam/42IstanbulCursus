@@ -1,35 +1,41 @@
 #include "../stack/stack.h"
 
-int	find_pos(t_stack stack, int number)
-{
-	int	position;
-	int	difference;
-	int	old_difference;
-
-	old_difference = 0xFFFFFFFF >> 1;
-	position = 0;
-	while (stack.top > -1)
-	{
-		difference = pop_stack(&stack) - number;
-		if (difference > 0 && difference < old_difference)
-		{
-			old_difference = difference;
-			position++;
-		}
-	}
-	return (position);
-}
-
-int	ft_min(int i1, int i2)
+static int	ft_min(int i1, int i2)
 {
 	if (i1 < i2)
 		return (i1);
 	return (i2);
 }
 
-int	get_optimum_rate(int pos_a, int pos_b, int size_a, int size_b)
+static int	get_optimum_rate(int pos_a, int pos_b, int size_a, int size_b)
 {
 	return (ft_min(pos_a, size_a - pos_a) + ft_min(pos_b, size_b - pos_b));
+}
+
+
+int	find_pos(t_stack stack, int number)
+{
+	int	position;
+	int	difference;
+	int	old_difference;
+	int	return_position;
+
+	old_difference = 0xFFFFFFFF >> 1;
+	position = 0;
+	return_position = -1;
+	while (stack.top > -1)
+	{
+		difference = pop_stack(&stack) - number;
+		if (difference > 0 && difference < old_difference)
+		{
+			old_difference = difference;
+			return_position = position;
+		}
+		position++;
+	}
+	if (return_position < 0)
+		return (position);
+	return (return_position);
 }
 
 void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
