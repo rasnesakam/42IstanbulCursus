@@ -83,9 +83,12 @@ void abracadabra(t_stack *stack_a, t_stack *stack_b)
 	//ft_sort_stack(stack_a);
 
 	// fit datas to a
-	//ft_fit_stack(stack_a, stack_b);
+	ft_fit_stack(stack_a, stack_b);
 
 	//put min to top
+
+	ft_putendl_fd("\nSTACK A:", 1);
+	ft_printstack(*stack_a);
 
 	return ;
 }
