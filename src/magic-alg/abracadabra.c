@@ -108,6 +108,5 @@ void abracadabra(t_stack *stack_a, t_stack *stack_b)
 	ft_rotpos(stack_a, find_pos(*stack_a, get_min(*stack_a)), "a");
 	
 	ft_printstack(*stack_a);
-
 	return ;
 }
