@@ -58,3 +58,11 @@ int	top_stack(t_stack *stack)
 		return (stack->datas[stack->top]);
 	return (1 << 31);
 }
+
+void ft_printstack(t_stack stack)
+{
+	ft_putendl_fd("\nSTACK:", 1);
+	while (stack.top > -1)
+		ft_putendl_fd(ft_itoa(pop_stack(&stack)), 1);
+	ft_putendl_fd("\n", 1);
+}

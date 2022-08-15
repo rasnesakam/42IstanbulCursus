@@ -39,6 +39,26 @@ int	find_pos(t_stack stack, int number, int *diff)
 	return (return_position);
 }
 
+/*
+
+pos_a	pos_b
+0		3
+
+STACK:
+9
+
+
+
+STACK:
+6
+5
+3
+4
+2
+
+
+*/
+
 void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 {
 	int	position_a;
@@ -49,6 +69,7 @@ void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 
 	position_b = 0;
 	oldoptimum_rate = 0xFFFFFFFF >> 1;
+	diff = 0;
 	while (stack_b.top > -1)
 	{
 		position_a = find_pos(stack_a, pop_stack(&stack_b), &diff);
