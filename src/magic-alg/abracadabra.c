@@ -8,6 +8,7 @@
 /**
  * transfer if less than
  */
+#include <stdio.h>
 static void	ft_tiflt(t_stack *stack_a, int filter, t_stack *stack_b)
 {
 	int	count;
@@ -55,10 +56,11 @@ void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 
 	while (stack_b->top > -1)
 	{
+		
 		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
 		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
 		push(stack_b, stack_a);
-		
+		ft_putendl_fd("pa", 1);
 	}
 }
 

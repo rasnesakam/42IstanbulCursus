@@ -10,7 +10,7 @@ void	rotate(t_stack *stack)
 	if (stack->top <= 0)
 		return ;
 	value = pop_stack(stack);
-	tmp_stack = create_stack(stack->top + 1);
+	tmp_stack = create_stack(stack->size);
 	if (!tmp_stack)
 		ft_error("COULDN'T CREATED TEMPORARY STACK");
 	while (stack->top >= 0)

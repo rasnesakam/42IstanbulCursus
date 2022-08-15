@@ -10,6 +10,14 @@ static int	ft_min(int i1, int i2)
 #include <stdio.h>
 static int	get_optimum_rate(int pos_a, int pos_b, int size_a, int size_b, int diff)
 {
+	/*
+	printf(
+		"pa: %d (%d)\tpb: %d (%d)\tdf: %d\t pnt: %d\n",
+		pos_a, size_a - pos_a,
+		pos_b, size_b - pos_b,
+		diff,
+		ft_min(pos_a, size_a - pos_a) + ft_min(pos_b, size_b - pos_b) + diff);
+		*/
 	return (ft_min(pos_a, size_a - pos_a) + ft_min(pos_b, size_b - pos_b) + diff);
 }
 
@@ -75,8 +83,8 @@ void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 	while (stack_b.top > -1)
 	{
 		position_a = find_pos(stack_a, pop_stack(&stack_b), &diff);
-		if (optimum_rate < get_optimum_rate(position_a,
-				position_b, stack_a.top, size_b, diff))
+		if (get_optimum_rate(position_a,
+				position_b, stack_a.top, size_b, diff) < optimum_rate)
 		{
 			optimum_rate = get_optimum_rate(position_a,
 					position_b, stack_a.top, size_b, diff);
