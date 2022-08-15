@@ -3,6 +3,7 @@
 #include "../verbs/verbs.h"
 #include "magic-alg.h"
 #include <libft.h>
+#include <stdio.h>
 
 /**
  * transfer if less than
@@ -47,31 +48,6 @@ void	ft_sort_stack(t_stack *stack)
 }
 */
 
-#include <stdio.h>
-void	ft_fit_stack_b(t_stack *stack_a, t_stack *stack_b)
-{
-	int	pos_a;
-	int	pos_b;
-
-	pos_a = 0;
-	pos_b = 0;
-	while (stack_b->top > -1)
-	{
-		ft_calc_pos(*stack_b, *stack_a, &pos_b, &pos_a);
-
-		
-		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
-		
-		
-		
-		printf("%d %d\n",pos_a, pos_b);
-		ft_printstack(*stack_a);
-		ft_printstack(*stack_b);
-		push(stack_a, stack_b);
-		ft_putendl_fd("pb", 1);
-	}
-}
-
 void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	pos_a;
@@ -80,33 +56,21 @@ void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 	while (stack_b->top > -1)
 	{
 		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
-
-		ft_printstack(*stack_a);
-		ft_printstack(*stack_b);
-		printf("ROTATE\n");
 		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
-
-		ft_printstack(*stack_a);
-		ft_printstack(*stack_b);
-		
 		push(stack_b, stack_a);
-		printf("PUSH\n");
-		ft_putendl_fd("pa", 1);
-		
-		ft_printstack(*stack_a);
-		ft_printstack(*stack_b);
 		
 	}
 }
 
 void abracadabra(t_stack *stack_a, t_stack *stack_b)
 {
-	
+	int	pos;
+	int	min;
+
 	ft_filter(stack_a, stack_b);
-	//ft_fit_stack_b(stack_b, stack_a);
 	ft_fit_stack(stack_a, stack_b);
-	printf("\nlast rotate\n");
-	ft_rotpos(stack_a, find_pos(*stack_a, get_min(*stack_a)), "a");
-	ft_printstack(*stack_a);
+	min = get_min(*stack_a);
+	pos = find_pos(*stack_a, min, NULL);
+	ft_rotpos(stack_a, pos, "a");
 	return ;
 }

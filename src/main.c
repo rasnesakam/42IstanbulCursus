@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 		stack_a = create_stack(count);
 		stack_b = create_stack(count);
 		load_stack(stack_a, list, count);
-		if (check_sorted(stack_a) == 0)
+		if (check_sorted(*stack_a) == 0)
 			abracadabra(stack_a, stack_b);
 		destroy_stack(stack_a);
 		destroy_stack(stack_b);

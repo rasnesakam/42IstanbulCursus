@@ -1,7 +1,7 @@
 #include "verbs.h"
 #include <libft.h>
 #include "../utils/utils.h"
-
+#include <stdio.h>
 void	rotate(t_stack *stack)
 {
 	int		value;

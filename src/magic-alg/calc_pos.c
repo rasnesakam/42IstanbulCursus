@@ -29,7 +29,8 @@ int	find_pos(t_stack stack, int number, int *diff)
 		if (difference >= 0 && difference < old_difference)
 		{
 			old_difference = difference;
-			*diff = difference;
+			if (diff)
+				*diff = difference;
 			return_position = position;
 		}
 		position++;
@@ -49,12 +50,12 @@ STACK:
 
 
 
-STACK:
-6
-5
-3
-4
-2
+STACK:	pa	pb		df	pnt
+6		0	0		3 -> 3
+5		0	1		4 -> 5
+3		0	2		6 -> 8
+4		0	3 (1)	5 -> 6
+2		0	4 (0)	7 -> 11
 
 
 */
