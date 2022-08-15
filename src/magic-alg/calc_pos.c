@@ -7,6 +7,7 @@ static int	ft_min(int i1, int i2)
 	return (i2);
 }
 
+#include <stdio.h>
 static int	get_optimum_rate(int pos_a, int pos_b, int size_a, int size_b, int diff)
 {
 	return (ft_min(pos_a, size_a - pos_a) + ft_min(pos_b, size_b - pos_b) + diff);
@@ -51,34 +52,34 @@ STACK:
 
 
 STACK:	pa	pb		df	pnt
-6		0	0		3 -> 3
-5		0	1		4 -> 5
-3		0	2		6 -> 8
+6		0	0 (4)	3 -> 3
+5		0	1 (3)	4 -> 5
+3		0	2 (2)	6 -> 8
 4		0	3 (1)	5 -> 6
-2		0	4 (0)	7 -> 11
+2		0	4 (0)	7 -> 7
 
 
 */
-
 void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 {
 	int	position_a;
 	int	position_b;
-	int	oldoptimum_rate;
+	int	size_b;
 	int	optimum_rate;
 	int	diff;
 
 	position_b = 0;
-	oldoptimum_rate = 0xFFFFFFFF >> 1;
+	optimum_rate = 0xFFFFFFFF >> 1;
 	diff = 0;
+	size_b = stack_b.top;
 	while (stack_b.top > -1)
 	{
 		position_a = find_pos(stack_a, pop_stack(&stack_b), &diff);
-		optimum_rate = get_optimum_rate(position_a,
-			position_b, stack_a.top, stack_b.top, diff);
-		if (optimum_rate < oldoptimum_rate)
+		if (optimum_rate < get_optimum_rate(position_a,
+				position_b, stack_a.top, size_b, diff))
 		{
-			oldoptimum_rate = optimum_rate;
+			optimum_rate = get_optimum_rate(position_a,
+					position_b, stack_a.top, size_b, diff);
 			*pos_a = position_a;
 			*pos_b = position_b;
 		}
