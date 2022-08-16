@@ -34,13 +34,17 @@ static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int
 
 void ft_rotpos(t_stack *stack, int pos, char *stack_name)
 {
+	char *name;
+
 	if (pos > (stack->top / 2))
 	{
 		pos = stack->top + 1 - pos;
 		while (pos-- > 0)
 		{
 			revr(stack);
-			ft_putendl_fd(ft_strjoin("rr", stack_name), 1);
+			name = ft_strjoin("rr", stack_name);
+			ft_putendl_fd(name, 1);
+			free(name);
 		}
 	}
 	else
@@ -48,7 +52,9 @@ void ft_rotpos(t_stack *stack, int pos, char *stack_name)
 		while (pos-- > 0)
 		{
 			rotate(stack);
-			ft_putendl_fd(ft_strjoin("r", stack_name), 1);
+			name = ft_strjoin("r", stack_name);
+			ft_putendl_fd(name, 1);
+			free(name);
 		}
 	}
 }

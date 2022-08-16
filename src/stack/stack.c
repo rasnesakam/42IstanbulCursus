@@ -20,7 +20,7 @@ t_stack *create_stack(int size)
 
 void	destroy_stack(t_stack *stack)
 {
-	//free(stack->datas);
+	free(stack->datas);
 	free(stack);
 }
 
