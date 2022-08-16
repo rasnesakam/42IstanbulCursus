@@ -1,0 +1,8 @@
+[submodule "libs/libft"]
+	path = libs/libft
+	url = git@github.com:rasnesakam/42IstanbulCursus.git
+	branch = libft
+[submodule "libs/ft_printf"]
+	path = libs/ft_printf
+	url = git@github.com:rasnesakam/42IstanbulCursus.git
+	branch = ft_printf
