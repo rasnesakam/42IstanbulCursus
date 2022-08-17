@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:58:00 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/04 19:42:29 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/17 21:54:43 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ static int	ft_max(int integer1, int integer2)
 		return (integer1);
 	else
 		return (integer2);
+}
+
+static int	ft_cmp_bound_ints(char *act_string)
+{
+	int		conv_int;
+
+	conv_int = ft_atoi(act_string);
+	if ((conv_int == -1 || conv_int == 0) && ft_strlen(act_string) > 2)
+		return (1);
+	return (0);
 }
 
 static int	ft_look_between(char **list, char *look, int after, int end)
@@ -39,7 +49,8 @@ static int	ft_look_between(char **list, char *look, int after, int end)
 int	verify_arg(char *arg)
 {
 	int	index;
-
+	if (ft_cmp_bound_ints(arg))
+		return (0);
 	index = 0;
 	if (arg[0] == '-' || arg[0] == '+')
 		index++;
@@ -56,8 +67,8 @@ int	verify_arg(char *arg)
 
 int	verify_args(int ac, char **args)
 {
-	int	i;
-	int	si;
+	int		i;
+	int		si;
 
 	i = 0;
 	if (ac == 0)

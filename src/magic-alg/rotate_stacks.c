@@ -1,5 +1,7 @@
 #include "../stack/stack.h"
 #include "../verbs/verbs.h"
+#include "../magic-alg/magic-alg.h"
+#include "../data-analyzer/data-analyzer.h"
 #include <libft.h>
 
 static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b)
@@ -71,4 +73,33 @@ if (stack_a->top > 0) // rotate if a stack size bigger than 1
 if (stack_b->top > 0) // rotate if b stack size bigger than 1
 	ft_rotpos(stack_b, pos_b, "b");
 
+}
+
+void	ft_sort_rotate(t_stack *stack)
+{
+	int	posmax;
+	int	posmin;
+
+	posmax = find_pos(*stack, get_max(*stack), NULL);
+	posmin = find_pos(*stack, get_min(*stack), NULL);
+	if (posmin - posmax == 1)
+	{
+		if (posmax > 0)
+		{
+			revr(stack);
+			ft_putendl_fd("rra", 1);
+		}
+		else
+		{
+			rotate(stack);
+			ft_putendl_fd("ra", 1);
+		}
+	}
+	else
+	{
+		swap(stack);
+		ft_putendl_fd("sa", 1);
+	}
+	if (check_sorted(*stack) == 0)
+		ft_sort_rotate(stack);
 }

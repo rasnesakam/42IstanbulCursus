@@ -42,12 +42,15 @@ static void	ft_filter(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-/*
-void	ft_sort_stack(t_stack *stack)
+static void	ft_short_divide(t_stack *stack_a, t_stack *stack_b)
 {
-	if ()
+	while (stack_a->top > 2)
+	{
+		push(stack_a, stack_b);
+		ft_putendl_fd("pb", 1);
+	}
+	ft_sort_rotate(stack_a);
 }
-*/
 
 void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 {
@@ -69,10 +72,14 @@ void abracadabra(t_stack *stack_a, t_stack *stack_b)
 	int	pos;
 	int	min;
 
-	ft_filter(stack_a, stack_b);
+	if (stack_a->size > 5)
+		ft_filter(stack_a, stack_b);
+	else
+		ft_short_divide(stack_a, stack_b);
 	ft_fit_stack(stack_a, stack_b);
 	min = get_min(*stack_a);
 	pos = find_pos(*stack_a, min, NULL);
 	ft_rotpos(stack_a, pos, "a");
+
 	return ;
 }

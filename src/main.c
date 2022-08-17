@@ -33,5 +33,7 @@ int	main(int ac, char **av)
 		destroy_stack(stack_a);
 		destroy_stack(stack_b);
 	}
+	else if (count > 0)
+		ft_putendl_fd("Error", 1);
 	return (0);
 }

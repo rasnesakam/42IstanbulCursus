@@ -31,8 +31,8 @@ void	push_stack(t_stack *stack, int value)
 		stack->top += 1;
 		stack->datas[stack->top] = value;
 	}
-	else
-		ft_error("STACK OVERFLOW");
+	/* else
+		ft_error("STACK OVERFLOW"); */
 }
 
 int	pop_stack(t_stack *stack)

@@ -7,8 +7,8 @@ void	swap(t_stack *stack)
 
 	val1 = pop_stack(stack);
 	val2 = pop_stack(stack);
-	push_stack(stack, val2);
 	push_stack(stack, val1);
+	push_stack(stack, val2);
 }
 
 void	sswap(t_stack *stack_a, t_stack *stack_b)
