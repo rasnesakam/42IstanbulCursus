@@ -26,19 +26,12 @@ int	main(int ac, char **av)
 	
 	args = collect_args(ac,av);
 	count = count_args(ac, av);
-	printf("count: %d\n", count);
 	stack_a = create_stack(count);
-	printf("stack a: [%p][%p]\n", stack_a, stack_a->datas);
-	//stack_b = create_stack(count);
 	stack_b = create_stack(count);
-	printf("stack b: [%p][%p]\n", stack_b, stack_b->datas);
-	printf("stack a: [%p][%p]\n", stack_a, stack_a->datas);
 	if (verify_args(count, args) && stack_a && stack_b)
 	{
 		list = convert_args(count, args);
 		load_stack(stack_a, list, count);
-		printf("stack b: [%p][%p]\n", stack_b, stack_b->datas);
-		printf("stack a: [%p][%p]\n", stack_a, stack_a->datas);
 		if (check_sorted(*stack_a) == 0)
 			abracadabra(stack_a, stack_b);
 		destroy_stack(stack_a);

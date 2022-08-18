@@ -8,7 +8,7 @@ t_stack *create_stack(int size)
 	t_stack *stack;
 
 	stack = (t_stack *) malloc(sizeof(t_stack));
-	stack->datas = (int *) malloc(sizeof(int) * (size - 1));
+	stack->datas = (int *) malloc(sizeof(int) * (size));
 	if (stack == NULL || stack->datas == NULL)
 		return (NULL);
 	stack->size = size;
