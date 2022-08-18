@@ -72,6 +72,14 @@ void abracadabra(t_stack *stack_a, t_stack *stack_b)
 	int	pos;
 	int	min;
 
+	//ft_printstack(*stack_a);
+	//ft_printstack(*stack_b);
+	//printf("addr: [%p] null: [%p]\n", stack_b, NULL);
+	//printf("val: [%d] \n", *stack_b->datas);
+	//push_stack(stack_b, pop_stack(stack_a));
+	//system("leaks push_swap");
+	//stack_b->size = 5;
+	/*
 	if (stack_a->size > 5)
 		ft_filter(stack_a, stack_b);
 	else
@@ -80,6 +88,6 @@ void abracadabra(t_stack *stack_a, t_stack *stack_b)
 	min = get_min(*stack_a);
 	pos = find_pos(*stack_a, min, NULL);
 	ft_rotpos(stack_a, pos, "a");
-
+*/
 	return ;
 }

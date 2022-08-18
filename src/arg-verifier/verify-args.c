@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify-args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:58:00 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/17 21:54:43 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/18 02:03:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	verify_arg(char *arg)
 	index = 0;
 	if (arg[0] == '-' || arg[0] == '+')
 		index++;
-	if (index >= ft_strlen(arg))
+	if (index >= (int) ft_strlen(arg))
 		return (0);
-	while (index < ft_strlen(arg) && arg[index] != '\0')
+	while (index < (int) ft_strlen(arg) && arg[index] != '\0')
 	{
 		if (ft_isdigit((int) arg[index]) == 0)
 			return (0);
