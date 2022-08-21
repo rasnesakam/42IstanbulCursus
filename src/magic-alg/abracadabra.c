@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   abracadabra.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 02:22:43 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 02:24:58 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../stack/stack.h"
-#include "../data-analyzer/data-analyzer.h"
+#include "../data-analyzer/data_analyzer.h"
 #include "../verbs/verbs.h"
-#include "magic-alg.h"
+#include "magic_alg.h"
 #include <libft.h>
-#include <stdio.h>
 
 /**
  * transfer if less than
  */
-#include <stdio.h>
 static void	ft_tiflt(t_stack *stack_a, int filter, t_stack *stack_b)
 {
 	int	count;
@@ -59,7 +69,6 @@ void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 
 	while (stack_b->top > -1)
 	{
-		
 		ft_calc_pos(*stack_a, *stack_b, &pos_a, &pos_b);
 		ft_rotate_stacks(stack_a, pos_a, stack_b, pos_b);
 		push(stack_b, stack_a);
@@ -67,7 +76,7 @@ void	ft_fit_stack(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void abracadabra(t_stack *stack_a, t_stack *stack_b)
+void	abracadabra(t_stack *stack_a, t_stack *stack_b)
 {
 	int	pos;
 	int	min;

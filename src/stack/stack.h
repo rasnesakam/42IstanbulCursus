@@ -1,14 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 04:39:54 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 05:16:24 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 # include <stdlib.h>
 
-typedef struct	s_stack
+struct	s_stack
 {
 	int			*datas;
 	int			top;
 	int			size;
-} 				t_stack;
+};
+
+typedef struct s_stack	t_stack;
 
 t_stack	*create_stack(int size);
 void	destroy_stack(t_stack *stack);

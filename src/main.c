@@ -1,18 +1,93 @@
-#include "./arg-parser/arg-parser.h"
-#include "./arg-verifier/arg-verifier.h"
-#include "./arg-converter/arg-converter.h"
-#include "./magic-alg/magic-alg.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 04:39:43 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 05:19:02 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./arg-parser/arg_parser.h"
+#include "./arg-verifier/arg_verifier.h"
+#include "./arg-converter/arg_converter.h"
+#include "./magic-alg/magic_alg.h"
 #include "./stack/stack.h"
 #include <stdio.h>
 
-
-void	load_stack(t_stack *stack, int *list, int size)
+static void	load_stack(t_stack *stack, int *list, int size)
 {
 	while (--size >= 0)
 	{
 		push_stack(stack, list[size]);
-		//printf("pushed: %d\n", list[size]);
-		//printf("stack b: [%p][%p]\n", stack, stack->datas);
+	}
+}
+
+static void	sort_simple(int **list, int **sortedlist, int size)
+{
+	int	index;
+	int	sub_index;
+	int	minimum;
+	int	min_index;
+
+	index = 0;
+	while (index < size)
+	{
+		sub_index = index;
+		minimum = (*sortedlist)[sub_index];
+		while (sub_index < size)
+		{
+			if ((*sortedlist)[sub_index] < minimum)
+				min_index = sub_index;
+			sub_index++;
+		}
+		if (minimum < (*sortedlist)[index])
+		{
+			minimum = (*sortedlist)[min_index];
+			(*sortedlist)[min_index] = (*sortedlist)[index];
+			(*sortedlist)[index] = minimum;
+		}
+		index++;
+	}
+}
+
+static int	find_index(int *list, int search, int size)
+{
+	int	index;
+
+	index = 0;
+	while (index < size)
+	{
+		if (list[index] == search)
+			return (index);
+		index++;
+	}
+	return (index);
+}
+
+static void	simplify(int **list, int size)
+{
+	int	*sorted;
+	int	index;
+
+	sorted = malloc(sizeof(int) * size);
+	if (!sorted)
+		ft_error("COULDN'T ALLOCATED DATA");
+	index = 0;
+	while (index < size)
+	{
+		sorted[index] = (*list)[index];
+		index++;
+	}
+	sort_simple(list, &sorted, size);
+	index = 0;
+	while (index < size)
+	{
+		printf();
+		(*list)[index] = find_index(sorted, (*list)[index], size);
+		index++;
 	}
 }
 
@@ -23,15 +98,17 @@ int	main(int ac, char **av)
 	int		*list;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	
-	args = collect_args(ac,av);
+
+	args = collect_args(ac, av);
 	count = count_args(ac, av);
 	stack_a = create_stack(count);
 	stack_b = create_stack(count);
 	if (verify_args(count, args) && stack_a && stack_b)
 	{
 		list = convert_args(count, args);
+		simplify(&list, count);
 		load_stack(stack_a, list, count);
+		ft_printstack(*stack_a);
 		if (check_sorted(*stack_a) == 0)
 			abracadabra(stack_a, stack_b);
 		destroy_stack(stack_a);

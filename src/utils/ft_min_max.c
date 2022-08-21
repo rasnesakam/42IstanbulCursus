@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check-sorted.c                                     :+:      :+:    :+:   */
+/*   ft_min_max.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 04:23:05 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 04:23:06 by emakas           ###   ########.fr       */
+/*   Created: 2022/08/21 04:35:35 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 05:04:35 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../stack/stack.h"
-
-int	check_sorted(t_stack stack)
+int	ft_min(int integer1, int integer2)
 {
-	int		check_val;
-	int		tmp_val;
-	int		retval;
+	if (integer1 < integer2)
+		return (integer1);
+	return (integer2);
+}
 
-	retval = 1;
-	if (stack.top > 0)
-		check_val = pop_stack(&stack);
-	while (stack.top >= 0)
-	{
-		tmp_val = pop_stack(&stack);
-		if (check_val > tmp_val)
-			retval = 0;
-		check_val = tmp_val;
-	}
-	return (retval);
+int	ft_max(int integer1, int integer2)
+{
+	if (integer1 >= integer2)
+		return (integer1);
+	else
+		return (integer2);
 }

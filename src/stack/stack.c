@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 04:39:50 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 05:16:19 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "stack.h"
 #include "../utils/utils.h"
 #include <stdio.h>
 
-t_stack *create_stack(int size)
+t_stack	*create_stack(int size)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = (t_stack *) malloc(sizeof(t_stack));
 	stack->datas = (int *) malloc(sizeof(int) * (size));
@@ -56,6 +67,7 @@ int	top_stack(t_stack *stack)
 		return (stack->datas[stack->top]);
 	return (1 << 31);
 }
+
 
 void ft_printstack(t_stack stack)
 {

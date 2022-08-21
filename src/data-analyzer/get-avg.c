@@ -1,4 +1,16 @@
-#include "data-analyzer.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get-avg.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 02:20:19 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 02:21:47 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "data_analyzer.h"
 
 /**
  * @brief Get the average number in stack
@@ -10,9 +22,9 @@
  * @param stack
  * @return int
  */
-int get_avg(t_stack stack)
+int	get_avg(t_stack stack)
 {
-	int		avg;
+	long	avg;
 	int		count;
 	int		tmp;
 

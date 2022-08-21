@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 04:35:48 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 05:05:12 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "verbs.h"
 #include <libft.h>
 #include "../utils/utils.h"
-#include <stdio.h>
+
 void	rotate(t_stack *stack)
 {
 	int		value;

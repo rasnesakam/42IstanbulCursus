@@ -6,11 +6,11 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:21:41 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/18 04:11:04 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 02:15:02 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arg-parser.h"
+#include "arg_parser.h"
 
 char	**collect_args(int ac, char **av)
 {

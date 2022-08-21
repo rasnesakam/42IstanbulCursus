@@ -6,20 +6,12 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:58:00 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/18 02:03:24 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 02:15:13 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arg-verifier.h"
+#include "arg_verifier.h"
 #include <stdio.h>
-
-static int	ft_max(int integer1, int integer2)
-{
-	if (integer1 >= integer2)
-		return (integer1);
-	else
-		return (integer2);
-}
 
 static int	ft_cmp_bound_ints(char *act_string)
 {
@@ -49,6 +41,7 @@ static int	ft_look_between(char **list, char *look, int after, int end)
 int	verify_arg(char *arg)
 {
 	int	index;
+
 	if (ft_cmp_bound_ints(arg))
 		return (0);
 	index = 0;

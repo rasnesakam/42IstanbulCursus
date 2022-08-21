@@ -1,4 +1,16 @@
-#include "data-analyzer.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get-max.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 02:20:25 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 02:20:54 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "data_analyzer.h"
 
 /**
  * @brief Get the maximum number in stack
@@ -10,12 +22,12 @@
  * @param stack
  * @return int
  */
-int get_max(t_stack stack)
+int	get_max(t_stack stack)
 {
-	int max;
-	int tmp;
+	int	max;
+	int	tmp;
 
-	max = 0xFFFFFFFF >> 1;
+	max = 1 << 31;
 	if (stack.top > 0)
 		max = pop_stack(&stack);
 	while (stack.top >= 0)

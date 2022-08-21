@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_stacks.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/21 04:24:03 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 04:34:17 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../stack/stack.h"
 #include "../verbs/verbs.h"
-#include "../magic-alg/magic-alg.h"
-#include "../data-analyzer/data-analyzer.h"
+#include "../data-analyzer/data_analyzer.h"
+#include "magic_alg.h"
 #include <libft.h>
 
-static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b)
+static void
+	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int *pos_b)
 {
-	// Rotate
 	if (*pos_a < (stack_a->top + 1) / 2 && *pos_b < (stack_b->top + 1) / 2)
 	{
 		while (*pos_a > 0 && *pos_b > 0)
@@ -17,8 +29,8 @@ static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int
 			(*pos_b)--;
 		}
 	}
-	// Reverse Rotate
-	else if (*pos_a >= (stack_a->top + 1) / 2 && *pos_b >= (stack_b->top + 1) / 2)
+	else if (*pos_a >= (stack_a->top + 1) / 2
+		&& *pos_b >= (stack_b->top + 1) / 2)
 	{
 		while (*pos_a < (stack_a->top + 1) && *pos_b < (stack_b->top + 1))
 		{
@@ -34,9 +46,9 @@ static void	ft_rotate_mutual(t_stack *stack_a, int *pos_a, t_stack *stack_b, int
 	}
 }
 
-void ft_rotpos(t_stack *stack, int pos, char *stack_name)
+void	ft_rotpos(t_stack *stack, int pos, char *stack_name)
 {
-	char *name;
+	char	*name;
 
 	if (pos > (stack->top / 2))
 	{
@@ -61,18 +73,15 @@ void ft_rotpos(t_stack *stack, int pos, char *stack_name)
 	}
 }
 
-#include <stdio.h>
-void ft_rotate_stacks(t_stack *stack_a, int pos_a, t_stack *stack_b, int pos_b)
+void
+	ft_rotate_stacks(t_stack *stack_a, int pos_a, t_stack *stack_b, int pos_b)
 {
-
-// MUTUAL ROTATION
-if (stack_a->top > 0 && stack_b->top > 0)
-	ft_rotate_mutual(stack_a, &pos_a, stack_b, &pos_b); // rotate if both stack sizes bigger than 1
-if (stack_a->top > 0) // rotate if a stack size bigger than 1
-	ft_rotpos(stack_a, pos_a, "a");
-if (stack_b->top > 0) // rotate if b stack size bigger than 1
-	ft_rotpos(stack_b, pos_b, "b");
-
+	if (stack_a->top > 0 && stack_b->top > 0)
+		ft_rotate_mutual(stack_a, &pos_a, stack_b, &pos_b);
+	if (stack_a->top > 0)
+		ft_rotpos(stack_a, pos_a, "a");
+	if (stack_b->top > 0)
+		ft_rotpos(stack_b, pos_b, "b");
 }
 
 void	ft_sort_rotate(t_stack *stack)
