@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:25:07 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 05:11:28 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 06:39:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_optimum_rate(int pos_a, int pos_b, int size, int diff)
 {
-	return ((pos_a + pos_a) * 10 * (size) + diff);
+	return ((pos_a + pos_b) * 10 + diff);
 }
 
 int	find_pos(t_stack stack, int number, int *diff)

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_verifier.h                                     :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:39:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 09:55:24 by emakas           ###   ########.fr       */
+/*   Created: 2022/08/21 11:16:54 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 13:34:47 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARG_VERIFIER_H
-# define ARG_VERIFIER_H
-# include <libft.h>
-# include "../utils/utils.h"
-
-int		verify_args(int ac, char **args);
-int		verify_arg(char *arg);
-void	check_args(char **av, int ac );
-#endif
+#ifndef CHECKER_H
+# define CHECKER_H
+# include "../arg-parser/arg_parser.h"
+# include "../arg-verifier/arg_verifier.h"
+# include "../arg-converter/arg_converter.h"
+# include "../stack/stack.h"
+# include <get_next_line.h>
+void	start_checker(t_stack *stack_a, t_stack *stack_b);
+#endif;

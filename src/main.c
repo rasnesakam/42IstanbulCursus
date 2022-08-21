@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:39:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 05:19:02 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 13:33:53 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "./arg-converter/arg_converter.h"
 #include "./magic-alg/magic_alg.h"
 #include "./stack/stack.h"
-#include <stdio.h>
 
 static void	load_stack(t_stack *stack, int *list, int size)
 {
@@ -25,7 +24,7 @@ static void	load_stack(t_stack *stack, int *list, int size)
 	}
 }
 
-static void	sort_simple(int **list, int **sortedlist, int size)
+static void	sort_simple(int **sortedlist, int size)
 {
 	int	index;
 	int	sub_index;
@@ -36,14 +35,14 @@ static void	sort_simple(int **list, int **sortedlist, int size)
 	while (index < size)
 	{
 		sub_index = index;
-		minimum = (*sortedlist)[sub_index];
+		min_index = sub_index;
 		while (sub_index < size)
 		{
-			if ((*sortedlist)[sub_index] < minimum)
+			if ((*sortedlist)[sub_index] < (*sortedlist)[min_index])
 				min_index = sub_index;
 			sub_index++;
 		}
-		if (minimum < (*sortedlist)[index])
+		if ((*sortedlist)[min_index] < (*sortedlist)[index])
 		{
 			minimum = (*sortedlist)[min_index];
 			(*sortedlist)[min_index] = (*sortedlist)[index];
@@ -81,11 +80,10 @@ static void	simplify(int **list, int size)
 		sorted[index] = (*list)[index];
 		index++;
 	}
-	sort_simple(list, &sorted, size);
+	sort_simple(&sorted, size);
 	index = 0;
 	while (index < size)
 	{
-		printf();
 		(*list)[index] = find_index(sorted, (*list)[index], size);
 		index++;
 	}
@@ -99,6 +97,7 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	check_args(av, ac);
 	args = collect_args(ac, av);
 	count = count_args(ac, av);
 	stack_a = create_stack(count);
@@ -108,13 +107,12 @@ int	main(int ac, char **av)
 		list = convert_args(count, args);
 		simplify(&list, count);
 		load_stack(stack_a, list, count);
-		ft_printstack(*stack_a);
 		if (check_sorted(*stack_a) == 0)
 			abracadabra(stack_a, stack_b);
 		destroy_stack(stack_a);
 		destroy_stack(stack_b);
 	}
 	else if (count > 0)
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 	return (0);
 }

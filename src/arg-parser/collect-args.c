@@ -6,11 +6,13 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:21:41 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 02:15:02 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 09:54:05 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include "arg_parser.h"
+#include "../utils/utils.h"
 
 char	**collect_args(int ac, char **av)
 {

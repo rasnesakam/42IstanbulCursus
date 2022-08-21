@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_verifier.h                                     :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:39:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 09:55:24 by emakas           ###   ########.fr       */
+/*   Created: 2022/08/21 09:54:50 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/21 09:59:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARG_VERIFIER_H
-# define ARG_VERIFIER_H
-# include <libft.h>
-# include "../utils/utils.h"
+#include "arg_verifier.h"
 
-int		verify_args(int ac, char **args);
-int		verify_arg(char *arg);
-void	check_args(char **av, int ac );
-#endif
+int	check_arg(char *str)
+{
+	while (*str)
+	{
+		if (ft_isdigit(*str++))
+			return (1);
+	}
+	return (0);
+}
+
+void	check_args(char **av, int ac )
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (check_arg(av[i]) == 0)
+			ft_error(NULL);
+		i++;
+	}
+}
