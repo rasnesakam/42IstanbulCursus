@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_pos.c                                         :+:      :+:    :+:   */
+/*   calc-pos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:25:07 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 06:39:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/21 18:24:18 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "magic_alg.h"
 
-static int	get_optimum_rate(int pos_a, int pos_b, int size, int diff)
+static int	get_optimum_rate(int pos_a, int pos_b, int diff)
 {
 	return ((pos_a + pos_b) * 10 + diff);
 }
@@ -60,12 +60,12 @@ void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)
 	{
 		position_a = find_pos(stack_a, pop_stack(&stack_b), &diff);
 		if (get_optimum_rate(ft_min(position_a, stack_a.top - position_a),
-				ft_min(position_b, size_b - position_b), stack_a.top + size_b,
+				ft_min(position_b, size_b - position_b),
 				diff) < optimum_rate)
 		{
 			optimum_rate = get_optimum_rate(ft_min(position_a,
 						stack_a.top - position_a), ft_min(position_b,
-						size_b - position_b), stack_a.top + size_b, diff);
+						size_b - position_b), diff);
 			*pos_a = position_a;
 			*pos_b = position_b;
 		}
