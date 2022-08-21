@@ -15,7 +15,7 @@ typedef struct s_philo t_philo;
 
 struct s_environment
 {
-	t_philo	*philos;
+	t_philo	*philo;
 	int		*forks;
 };
 typedef struct s_environment t_environment;

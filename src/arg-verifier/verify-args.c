@@ -64,13 +64,7 @@ int	verify_args(int ac, char **args)
 		return (0);
 	while (i < ac)
 	{
-		if (verify_arg(args[i]))
-		{
-			si = i + 1;
-			if (ft_look_between(args, args[i], si, ac - 1))
-				return (0);
-		}
-		else
+		if (!verify_arg(args[i]))
 			return (0);
 		i++;
 	}
