@@ -114,11 +114,13 @@ $(BBIN_DIRS):
 $(NAME): $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
 	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
 
-$(CHECKER): $(BBIN_DIRS) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS))
+$(CHECKER): $(addprefix $(GNL), $(SRC_GNL:.c=.o)) $(BBIN_DIRS) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS))
 
-all: $(NAME) bonus
+# CREATE LIBRARY
 
-bonus: $(addprefix $(GNL), $(SRC_GNL:.c=.o)) $(CHECKER)
+all: libs $(NAME) bonus
+
+bonus: libs $(addprefix $(GNL), $(SRC_GNL)) $(CHECKER)
 	@$(CC) -Llibft -lft -o $(CHECKER) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS)) \
 		$(addprefix $(GNL), $(SRC_GNL:.c=.o))
 
@@ -130,4 +132,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME) $(CHECKER)
 
-.PHONY: all clean fclean re bonus
+libs:
+	@git submodule init
+	@git submodule update
+
+.PHONY: all clean fclean re bonus libs

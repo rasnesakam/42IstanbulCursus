@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VERBS_H
-# define VERBS_H
+#ifndef VERBS_BONUS_H
+# define VERBS_BONUS_H
 # include "../stack/stack_bonus.h"
-#include "../utils/utils_bonus.h"
-#include <libft.h>
+# include "../utils/utils_bonus.h"
+# include <libft.h>
 
 void	swap(t_stack *t_stack);
 

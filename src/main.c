@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:39:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 13:33:53 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:02:57 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static void	simplify(int **list, int size)
 		(*list)[index] = find_index(sorted, (*list)[index], size);
 		index++;
 	}
+	free(sorted);
 }
 
 int	main(int ac, char **av)

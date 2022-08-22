@@ -6,10 +6,9 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:07:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 19:05:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:41:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "checker_bonus.h"
 
@@ -40,6 +39,14 @@ static int	check_sorted(t_stack stack)
 	return (retval);
 }
 
+static void	ft_print_result(t_stack stack_a)
+{
+	if (check_sorted(stack_a))
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
+}
+
 int	main(int ac, char **av)
 {
 	char	**args;
@@ -58,11 +65,7 @@ int	main(int ac, char **av)
 		list = convert_args(count, args);
 		load_stack(stack_a, list, count);
 		start_checker(stack_a, stack_b);
-		if (check_sorted(*stack_a))
-			ft_putendl_fd("OK", 1);
-		else
-			ft_putendl_fd("KO", 1);
-		ft_printstack(*stack_a);
+		ft_print_result(*stack_a);
 		destroy_stack(stack_a);
 		destroy_stack(stack_b);
 	}
