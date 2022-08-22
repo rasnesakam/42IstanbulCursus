@@ -110,6 +110,8 @@ $(BBIN_DIRS):
 	@echo "Creating file: $@"
 	@mkdir -p $@
 
+$(LIBFT):
+	@make -C libft all
 
 $(NAME): $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
 	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
@@ -132,7 +134,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME) $(CHECKER)
 
-libs:
+libs: $(LIBFT)
 	@git submodule init
 	@git submodule update
 
