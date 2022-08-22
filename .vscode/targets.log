@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Thu Aug 18 09:19:02 2022
+# Make data base, printed on Mon Aug 22 18:56:27 2022
 
 # Variables
 
@@ -15,8 +16,18 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# makefile (from `Makefile', line 10)
+SRC = $(wildcard *.c)
+# environment
+VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 3)
+DIR_SRC = src
+# makefile (from `Makefile', line 7)
+DIR_ARG_PARSER = arg-parser/
+# makefile (from `Makefile', line 8)
+DIR_ARG_VERIFIER = arg-verifier/
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
@@ -26,35 +37,46 @@ CURDIR := /Users/emakas/Desktop/42Cursus/philosophers
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{"*":"tr"},"_languagePackId":"6765e731291c4f4d14d665fa42b9b01a.tr","_translationsConfigFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/tcf.json","_cacheRoot":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr","_resolvedLanguagePackCoreLocation":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/054a9295330880ed74ceaedda236253b4f39a335","_corruptedFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
+VSCODE_NODE_CACHED_DATA_DIR = /Users/emakas/Library/Application Support/Code/CachedData/054a9295330880ed74ceaedda236253b4f39a335
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscode-ipc-3707ec52-32e0-4237-8fa7-355ed92bbbbc.sock
+# environment
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
+ 
+make: *** No rule to make target `all'.  Stop.
+
+# environment
+VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JWbvcONlGr/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.fviTWTZjUZ/Listeners
 # automatic
 %F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /Users/emakas/Desktop/42Cursus/philosophers
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
 HOME = /Users/emakas
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CODE_CACHE_PATH = /Users/emakas/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = emakas
 # environment
@@ -76,7 +98,9 @@ MAKE_VERSION := 3.81
 # environment
 USER = emakas
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := info
+# makefile (from `Makefile', line 1)
+NAME = philosophers
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -88,9 +112,7 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/emakas/Library/Application Support/Code/1.70.2-main.sock
-# environment
-MallocNanoZone = 0
+VSCODE_IPC_HOOK = /Users/emakas/Library/Application Support/Code/1.56.2-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -98,7 +120,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2500
+XPC_SERVICE_NAME = com.microsoft.VSCode.1180
+# makefile (from `Makefile', line 4)
+DIR_BIN = bin
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -107,6 +131,8 @@ XPC_SERVICE_NAME = com.microsoft.VSCode.2500
 __CF_USER_TEXT_ENCODING = 0x18C95:0:0
 # default
 MAKEFILES := 
+# makefile (from `Makefile', line 6)
+DIR_ARG_CONVERTER = arg-converter/
 # automatic
 <F = $(notdir $<)
 # environment
@@ -122,9 +148,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 58933
+VSCODE_PID = 83909
 # variable set hash-table stats:
-# Load=56/1024=5%, Rehash=0, Collisions=1/79=1%
+# Load=67/1024=7%, Rehash=0, Collisions=1/91=1%
 
 # Pattern-specific Variable Values
 
@@ -132,9 +158,9 @@ VSCODE_PID = 58933
 
 # Directories
 
-# . (device 16777225, inode 663070): 8 files, no impossibilities.
+# . (device 16777225, inode 663070): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -160,7 +186,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 16:38:31
+#  Last modified 2022-08-22 18:56:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -172,8 +198,16 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 13):
+	echo $(wildcard *.c)
+	
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/16=0%
+# Load=5/1024=0%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -185,8 +219,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 18 09:19:02 2022
+# Finished Make data base on Mon Aug 22 18:56:27 2022
 
  
-make: *** No rule to make target `all'.  Stop.
-

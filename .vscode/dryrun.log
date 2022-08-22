@@ -1,5 +1,6 @@
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/emakas/Desktop/42Cursus/philosophers'
+echo anan.c
+ 
 make: Leaving directory `/Users/emakas/Desktop/42Cursus/philosophers'
  
-make: *** No targets.  Stop.
-
