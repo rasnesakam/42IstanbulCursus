@@ -93,48 +93,60 @@ $(DIR_BIN)%.o: $(DIR_SRC)%.c
 	@echo "Compiling binary: $@"
 	@$(CC) $(CFLAGS) -o $@ $<
 
+$(BIN_DIRS):
+	@echo "Creating file: $@"
+	@mkdir -p $@
+
+
+$(NAME): $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
+	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
+
+# BONUS
 
 $(BNS_DIR_BIN)%.o: $(DIR_BONUS)%.c
 	@echo "Compiling binary: $@"
 	@$(CC) $(CFLAGS) -o $@ $<
 
-$(GNL)%.o: $(GNL)%.c
+$(GNL)%.o: $(GNL)%.c 
 	@echo "Compiling binary: $@"
 	@$(CC) $(CFLAGS) -o $@ $<
-
-$(BIN_DIRS):
-	@echo "Creating file: $@"
-	@mkdir -p $@
 
 $(BBIN_DIRS):
 	@echo "Creating file: $@"
 	@mkdir -p $@
 
-$(LIBFT):
-	@make -C libft all
-
-$(NAME): $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
-	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
-
 $(CHECKER): $(addprefix $(GNL), $(SRC_GNL:.c=.o)) $(BBIN_DIRS) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS))
 
 # CREATE LIBRARY
 
-all: libs $(NAME) bonus
 
-bonus: libs $(addprefix $(GNL), $(SRC_GNL)) $(CHECKER)
+ $(GNL)%.c: libs
+
+
+$(LIBFT): libs
+	@echo "Making libft"
+	@make -C libft all
+
+
+all: $(LIBFT) $(NAME) bonus
+
+bonus: $(LIBFT) $(addprefix $(GNL), $(SRC_GNL)) $(CHECKER)
 	@$(CC) -Llibft -lft -o $(CHECKER) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS)) \
 		$(addprefix $(GNL), $(SRC_GNL:.c=.o))
 
 re: fclean all	
 
 clean:
-	rm -rf $(DIR_BIN) $(BNS_DIR_BIN) $(addprefix $(GNL), $(SRC_GNL:.c=.o))
+	@echo "Removing libft binaries"
+	@make -C libft clean
+	@rm -rf $(DIR_BIN) $(BNS_DIR_BIN) $(addprefix $(GNL), $(SRC_GNL:.c=.o))
 
 fclean: clean
-	rm -rf $(NAME) $(CHECKER)
+	@echo "Removing libft archives"
+	@make -C libft fclean
+	@rm -rf $(NAME) $(CHECKER)
 
-libs: $(LIBFT)
+libs:
 	@git submodule init
 	@git submodule update
 
