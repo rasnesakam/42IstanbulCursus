@@ -1,21 +1,29 @@
-NAME = philosophers
+NAME := philosophers
 
-DIR_SRC = src
-DIR_BIN = bin/
+DIR_SRC := src
+DIR_BIN := bin
 
-DIRS = /\
-		/arg-converter/ \
-		/arg-parser/ \
-		/arg-verifier/
+DIRS_SRC = $(shell find $(DIR_SRC) -type d)
 
-SRC_DIRS = $(addprefix $(DIR_SRC), $(DIRS))			
+SRC = $(wildcard $(addsuffix /*.c, $(DIRS_SRC)))
 
-SRC					= $(wildcard $(addsuffix *.c, $(SRC_DIRS)))
 
+BIN = $(subst $(DIR_SRC)/,$(DIR_BIN)/, $(SRC:.c=.o))
+
+$(addprefix /%.o, $(DIR_BIN)): $(addprefix /%.c, $(DIR_SRC)):
+	echo sa
+
+$(NAME): $(SRC:.c=.o)
+
+all: $(NAME)
+
+re: fclean all
+
+clean:
+
+fclean: clean
 
 info:
-	@echo $(SRC)
+	@echo $(BIN)
 
-
-$(SRC:.c=.o): 
-	@echo sa
+.PHONY: all re clean fclean

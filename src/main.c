@@ -4,7 +4,15 @@
 static void	simulate(void *env)
 {
 	t_environment *environment = (t_environment *) env;
+
+	philo_eat();
+	philo_sleep();
+
 }
+
+static void halt_immediate()
+{}
+
 
 int main(int ac, char **av)
 {
@@ -17,6 +25,10 @@ int main(int ac, char **av)
 	if (verify_args(count_args, args) && count_args > 4)
 	{
 		int_args = convert_args(count_args, args);
+
 	}
+
+	// check threads are died. learn more about pthread_detach
+
 	return (0);
 }
