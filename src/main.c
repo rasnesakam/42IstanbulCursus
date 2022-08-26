@@ -13,19 +13,23 @@ static void	simulate(void *env)
 static void halt_immediate()
 {}
 
-
+// NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
 int main(int ac, char **av)
 {
-	char	**args;
-	int		*int_args;
-	int		count_args;
+	char			**args;
+	int				*int_args;
+	int				count_args;
+	t_philo			*philos;
+	t_environment	*envs;
 
 	count_args = count_args(ac, av);
 	args = collect_args(ac, av);
 	if (verify_args(count_args, args) && count_args > 4)
 	{
 		int_args = convert_args(count_args, args);
-
+		philos = malloc(sizeof(t_philo) * int_args[0]);
+		envs = malloc(sizeof(t_environment) * int_args[0]);
+		
 	}
 
 	// check threads are died. learn more about pthread_detach
