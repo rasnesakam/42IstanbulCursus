@@ -3,10 +3,21 @@
 
 static void	simulate(void *env)
 {
+	void	*ret;
 	t_environment *environment = (t_environment *) env;
 
-	philo_eat();
-	philo_sleep();
+	while (!env->philo->is_died)
+	{
+		ret = take_forks(environment);
+		if (ret == NULL)
+			break;
+		ret = eat(environment);
+		if (ret == NULL)
+			break;
+		ret = sleep(environment);
+		if (ret == NULL)
+			break;
+	}
 
 }
 

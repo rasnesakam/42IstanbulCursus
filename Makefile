@@ -7,8 +7,11 @@ DIRS_SRC = $(shell find $(DIR_SRC) -type d)
 
 SRC = $(wildcard $(addsuffix /*.c, $(DIRS_SRC)))
 
-
 BIN = $(subst $(DIR_SRC)/,$(DIR_BIN)/, $(SRC:.c=.o))
+
+
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -c
 
 $(addprefix /%.o, $(DIR_BIN)): $(addprefix /%.c, $(DIR_SRC)):
 	echo sa

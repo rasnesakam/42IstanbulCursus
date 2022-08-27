@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   verify-args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:58:00 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/04 19:42:29 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/27 16:22:05 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arg-verifier.h"
-#include <stdio.h>
-
-static int	ft_max(int integer1, int integer2)
-{
-	if (integer1 >= integer2)
-		return (integer1);
-	else
-		return (integer2);
-}
 
 static int	ft_look_between(char **list, char *look, int after, int end)
 {
