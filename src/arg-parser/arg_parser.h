@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg-verifier.h                                     :+:      :+:    :+:   */
+/*   arg-parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 15:39:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/27 16:21:49 by emakas           ###   ########.fr       */
+/*   Created: 2022/08/03 16:41:25 by emakas            #+#    #+#             */
+/*   Updated: 2022/08/27 17:35:08 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARGVERIFIER_H
-# define ARGVERIFIER_H
-#include "../utils.h"
+#ifndef ARG_PARSER_H
+#define ARG_PARSER_H
+int		count_words(char *c);
+int		count_args(int ac, char **args);
+char	**collect_args(int ac, char **args);
 
-int	verify_args(int ac, char **args);
-int	verify_arg(char *arg);
-
-#endif
+# endif

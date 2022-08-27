@@ -2,9 +2,9 @@
 # define UTILS_H
 # include "philosopher/philosopher.h"
 # include "environment/environment.h"
-# include "arg-converter/arg-converter.h"
-# include "arg-parser/arg-parser.h"
-# include "arg-verifier/arg-verifier.h"
+# include "arg-converter/arg_converter.h"
+# include "arg-parser/arg_parser.h"
+# include "arg-verifier/arg_verifier.h"
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>

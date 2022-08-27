@@ -8,22 +8,27 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sat Aug 27 15:55:44 2022
+# Make data base, printed on Sat Aug 27 18:45:22 2022
 
+ 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 8)
-SRC = $(wildcard $(addsuffix /*.c, $(DIRS_SRC)))
+# makefile (from `Makefile', line 35)
+SRC := src/main.c src/arg-converter/convert-args.c src/arg-marser/collect-args.c src/arg-marser/count-args.c src/arg-verifier/verify-args.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from `Makefile', line 3)
-DIR_SRC := src
+# makefile (from `Makefile', line 4)
+DIR_SRC := src/
+# makefile (from `Makefile', line 9)
+DIR_ARG_PARSER := arg-marser/
+# makefile (from `Makefile', line 10)
+DIR_ARG_VERIFIER := arg-verifier/
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
@@ -32,14 +37,16 @@ DIR_SRC := src
 CURDIR := /Users/emakas/Desktop/42Cursus/philosophers
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 10)
-BIN = $(subst $(DIR_SRC)/,$(DIR_BIN)/, $(SRC:.c=.o))
+# makefile (from `Makefile', line 36)
+BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o
 # environment
 VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{"*":"tr"},"_languagePackId":"6765e731291c4f4d14d665fa42b9b01a.tr","_translationsConfigFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/tcf.json","_cacheRoot":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr","_resolvedLanguagePackCoreLocation":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/054a9295330880ed74ceaedda236253b4f39a335","_corruptedFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 14)
+# makefile (from `Makefile', line 40)
 CFLAGS = -Wall -Werror -Wextra -c
+# makefile (from `Makefile', line 11)
+DIR_ENVIRONMENT := environment/
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
@@ -52,16 +59,22 @@ VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscod
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
+# makefile (from `Makefile', line 13)
+DIR_UTILS := utils/
 # environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 21)
+SRC_PHILOSOPHER := 
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.8CHqsvomPF/Listeners
 # automatic
 %F = $(notdir $%)
+# makefile (from `Makefile', line 12)
+DIR_PHILOSOPHER := philosopher/
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -72,6 +85,8 @@ ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
 HOME = /Users/emakas
+# makefile (from `Makefile', line 17)
+SRC_ARG_CONVERTER := convert-args.c
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
@@ -90,18 +105,20 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 13)
-CC = gcc
+# makefile (from `Makefile', line 39)
+CC := gcc
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = emakas
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := philosophers
 # makefile (from `Makefile', line 1)
 NAME := philosophers
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# makefile (from `Makefile', line 16)
+SRC_ROOT := main.c
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
@@ -110,8 +127,6 @@ MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/
 # automatic
 *F = $(notdir $*)
-# makefile (from `Makefile', line 6)
-DIRS_SRC = $(shell find $(DIR_SRC) -type d)
 # environment
 VSCODE_IPC_HOOK = /Users/emakas/Library/Application Support/Code/1.56.2-main.sock
 # makefile
@@ -122,16 +137,24 @@ MFLAGS = -Rrqp
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 XPC_SERVICE_NAME = com.microsoft.VSCode.2160
-# makefile (from `Makefile', line 4)
-DIR_BIN := bin
+# makefile (from `Makefile', line 5)
+DIR_BIN := bin/
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
+# makefile (from `Makefile', line 18)
+SRC_ARG_PARSER := collect-args.c count-args.c
+# makefile (from `Makefile', line 19)
+SRC_ARG_VERIFIER := verify-args.c
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18C95:0:0
+# makefile (from `Makefile', line 20)
+SRC_ENVIRONMENT := 
 # default
 MAKEFILES := 
+# makefile (from `Makefile', line 8)
+DIR_ARG_CONVERTER := arg-converter/
 # automatic
 <F = $(notdir $<)
 # environment
@@ -142,6 +165,8 @@ LC_ALL = C
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/local/include
+# makefile (from `Makefile', line 22)
+SRC_UTILS := ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c
 # environment
 MAKELEVEL := 0
 # environment
@@ -149,7 +174,7 @@ LANG = C
 # environment
 VSCODE_PID = 83734
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=1/84=1%
+# Load=80/1024=8%, Rehash=0, Collisions=5/135=4%
 
 # Pattern-specific Variable Values
 
@@ -157,19 +182,55 @@ VSCODE_PID = 83734
 
 # Directories
 
-# . (device 16777225, inode 663070): 7 files, no impossibilities.
+# . (device 16777225, inode 663070): 8 files, no impossibilities.
+# bin (device 16777225, inode 944663): No files, no impossibilities so far.
+# src (device 16777225, inode 663134): 7 files, no impossibilities so far.
 
-# 7 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+bin/%.o: src/%.c bin/
+#  commands to execute (from `Makefile', line 61):
+	$(CC) $(CFLAGS) $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
+bin/:
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-27 18:44:31
+#  File has been updated.
+#  Successfully updated.
+#  commands to execute (from `Makefile', line 58):
+	mkdir -p $(DIR_BIN)
+	
+
 # Not a target:
-all:
+bin/arg-verifier/verify-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: philosophers
+#  Phony target (prerequisite of .PHONY).
 #  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+
+.PHONY: all re clean fclean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-max.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -182,6 +243,58 @@ all:
 
 # Not a target:
 Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-27 18:44:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bin/utils/ft-strlcpy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strncmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-marser/count-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 52):
+ 
+	@rm -rf $(NAME)
+	
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-27 15:19:06
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bin/arg-converter/convert-args.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -192,8 +305,91 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+bin/utils/ft-strtrim.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+philosophers: bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 49):
+	@rm -rf $(DIR_BIN)
+	
+
+# Not a target:
+bin/utils/ft-strlen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bin/main.o: src/main.c bin/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/main.o
+# automatic
+# % := 
+# automatic
+# * := main
+# automatic
+# + := src/main.c bin/
+# automatic
+# | := 
+# automatic
+# < := src/main.c
+# automatic
+# ^ := src/main.c bin/
+# automatic
+# ? := src/main.c bin/
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
+#  commands to execute (from `Makefile', line 61):
+	$(CC) $(CFLAGS) $< -o $@
+	
+
+# Not a target:
+bin/utils/ft-split.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-marser/collect-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 55):
+	@echo $(BIN)
+	
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/5=0%
+# Load=24/1024=2%, Rehash=0, Collisions=0/62=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -205,8 +401,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Aug 27 15:55:44 2022
+# Finished Make data base on Sat Aug 27 18:45:22 2022
 
  
-Makefile:16: *** mixed implicit and static pattern rules.  Stop.
-
