@@ -2,7 +2,3 @@
 	path = libft
 	url = git@github.com:rasnesakam/42IstanbulCursus.git
 	branch = libft
-[submodule "gnl"]
-	path = gnl
-	url = git@github.com:rasnesakam/42IstanbulCursus.git
-	branch = get_next_line

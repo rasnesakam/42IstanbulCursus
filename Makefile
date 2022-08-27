@@ -4,9 +4,6 @@ CHECKER				= checker
 # EXTERNALS
 LIBFT				= libft/libft.a
 
-GNL					= gnl/
-SRC_GNL				= get_next_line.c get_next_line_utils.c
-OBJ_GNL				= $(SRC_GNL:.c=.o)
 
 
 # DIRECTORIES
@@ -54,7 +51,7 @@ BIN_DIRS			= $(addprefix $(DIR_BIN), $(DIR_ARG_CONVERTER)) \
 						$(addprefix $(DIR_BIN), $(DIR_VERBS)) 
 
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -Ilibft/src -Ignl -c
+CFLAGS				= -Wall -Werror -Wextra -Ilibft/src -c
 
 
 
@@ -68,7 +65,7 @@ BNS_SRC_ARG_PARSER		= collect-args_bonus.c count-args_bonus.c
 BNS_SRC_ARG_VERIFIER	= check-args_bonus.c verify-args_bonus.c
 BNS_SRC_CHECKER			= checker_bonus.c start-checker_bonus.c
 BNS_SRC_STACK			= stack_bonus.c
-BNS_SRC_UTILS			= ft_min_max_bonus.c ft-error_bonus.c
+BNS_SRC_UTILS			= ft_min_max_bonus.c ft-error_bonus.c get_next_line.c get_next_line_utils.c
 BNS_SRC_VERBS			= push_bonus.c rotate_bonus.c rrotate_bonus.c swap_bonus.c
 
 BBIN_OBJS			= $(addprefix $(DIR_ARG_CONVERTER), $(BNS_SRC_ARG_CONVERTER:.c=.o)) \
@@ -89,6 +86,21 @@ BBIN_DIRS			= $(addprefix $(BNS_DIR_BIN), $(DIR_ARG_CONVERTER)) \
 
 
 
+# DEFAULT RULES
+all: $(LIBFT) $(NAME) bonus
+
+$(NAME): $(LIBFT) $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
+	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
+
+$(CHECKER): $(LIBFT) $(addprefix $(GNL), $(SRC_GNL:.c=.o)) $(BBIN_DIRS) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS))
+
+# CREATE LIBRARY
+$(LIBFT): libs
+	@echo "Making libft"
+	@make -C libft all
+
+
+# MANDATORY BINARIES
 $(DIR_BIN)%.o: $(DIR_SRC)%.c
 	@echo "Compiling binary: $@"
 	@$(CC) $(CFLAGS) -o $@ $<
@@ -98,16 +110,8 @@ $(BIN_DIRS):
 	@mkdir -p $@
 
 
-$(NAME): $(BIN_DIRS) $(addprefix $(DIR_BIN), $(BIN_OBJS))
-	@$(CC) -Llibft -lft -o $(NAME) $(addprefix $(DIR_BIN), $(BIN_OBJS))
-
-# BONUS
-
+# BONUS BINARIES
 $(BNS_DIR_BIN)%.o: $(DIR_BONUS)%.c
-	@echo "Compiling binary: $@"
-	@$(CC) $(CFLAGS) -o $@ $<
-
-$(GNL)%.o: $(GNL)%.c 
 	@echo "Compiling binary: $@"
 	@$(CC) $(CFLAGS) -o $@ $<
 
@@ -115,21 +119,8 @@ $(BBIN_DIRS):
 	@echo "Creating file: $@"
 	@mkdir -p $@
 
-$(CHECKER): $(addprefix $(GNL), $(SRC_GNL:.c=.o)) $(BBIN_DIRS) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS))
 
-# CREATE LIBRARY
-
-
- $(GNL)%.c: libs
-
-
-$(LIBFT): libs
-	@echo "Making libft"
-	@make -C libft all
-
-
-all: $(LIBFT) $(NAME) bonus
-
+#PHONIES
 bonus: $(LIBFT) $(addprefix $(GNL), $(SRC_GNL)) $(CHECKER)
 	@$(CC) -Llibft -lft -o $(CHECKER) $(addprefix $(BNS_DIR_BIN), $(BBIN_OBJS)) \
 		$(addprefix $(GNL), $(SRC_GNL:.c=.o))

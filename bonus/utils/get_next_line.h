@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.h                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 11:16:54 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/27 14:06:32 by emakas           ###   ########.fr       */
+/*   Created: 2022/02/10 20:06:57 by emakas            #+#    #+#             */
+/*   Updated: 2022/02/18 17:34:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_BONUS_H
-# define CHECKER_BONUS_H
-# include "../arg-parser/arg_parser_bonus.h"
-# include "../arg-verifier/arg_verifier_bonus.h"
-# include "../arg-converter/arg_converter_bonus.h"
-# include "../stack/stack_bonus.h"
-# include "../verbs/verbs_bonus.h"
-# include "../utils/get_next_line.h"
+#ifndef GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-void	start_checker(t_stack *stack_a, t_stack *stack_b);
-
+void	ft_merge(char **s1, char *s2);
+char	*ft_strpos(char *str, int c);
+void	ft_setnull(char *s, int after);
+int		ft_len(char *s);
+char	*get_next_line(int fd);
 #endif
