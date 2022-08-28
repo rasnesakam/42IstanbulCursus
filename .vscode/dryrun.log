@@ -1,5 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/emakas/Desktop/42Cursus/philosophers'
+mkdir -p bin/
  
 gcc -Wall -Werror -Wextra -c src/main.c -o bin/main.o
 gcc -Wall -Werror -Wextra -c src/arg-converter/convert-args.c -o bin/arg-converter/convert-args.o

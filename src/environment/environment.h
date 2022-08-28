@@ -3,11 +3,11 @@
 
 struct s_environment
 {
-	t_philo	*philosopher;
-	int		eat_time;
-	int		sleep_time;
-	int		die_time;
-	int		*forks;
+	t_philosopher	*philosopher;
+	int				eat_time;
+	int				sleep_time;
+	int				die_time;
+	int				*forks;
 };
 typedef struct s_environment t_environment;
 

@@ -3,8 +3,8 @@
 
 static void	simulate(void *env)
 {
-	void	*ret;
-	t_environment *environment = (t_environment *) env;
+	void			*ret;
+	t_environment	*environment = (t_environment *) env;
 
 	while (!environment->philosopher->is_died)
 	{
@@ -24,13 +24,14 @@ static void	simulate(void *env)
 static void halt_immediate()
 {}
 
+
 // NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
 int main(int ac, char **av)
 {
 	char			**args;
 	int				*int_args;
 	int				count_arguments;
-	t_philo			*philos;
+	int				*forks;
 	t_environment	*envs;
 
 	count_arguments = count_args(ac, av);
@@ -38,12 +39,14 @@ int main(int ac, char **av)
 	if (verify_args(count_arguments, args) && count_arguments > 4)
 	{
 		int_args = convert_args(count_arguments, args);
-		philos = malloc(sizeof(t_philo) * int_args[0]);
-		envs = malloc(sizeof(t_environment) * int_args[0]);
-		
+		forks = create_forks(int_args[0]);
+		envs = create_environments(count_args, int_args, forks);
+		start_threads(envs);
 	}
 
 	// check threads are died. learn more about pthread_detach
+
+	destroy_
 
 	return (0);
 }

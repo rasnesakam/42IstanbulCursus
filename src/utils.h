@@ -18,8 +18,22 @@
  * 			Else, returns address of philosopher
  */
 void	*take_forks(t_environment *environment);
+
+/**
+ * @brief Tries to eat. If fails, (Maybe, because of death) returns NULL
+ *
+ * @param environment Environment that contains philosopher, and their forks
+ */
 void	*eat(t_environment *environment);
 void	*sleep(t_environment *environment);
+
+t_environment   *create_environments(int arg_count, int *args, int *forks);
+void	        destroy_environments(t_environment *environments);
+
+int	            *create_forks(int count);
+void             destroy_forks(int *forks);
+
+unsigned long long  get_timestamp(unsigned long long offset);
 
 int ft_max(int integer1, int integer2);
 
