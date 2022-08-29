@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:25:07 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 18:24:18 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 15:47:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,25 @@
 
 static int	get_optimum_rate(int pos_a, int pos_b, int diff)
 {
-	return ((pos_a + pos_b) * 10 + diff);
+	return ((pos_a + pos_b)  + diff);
 }
+#include <stdio.h>
+/*
+static int	after_last(t_stack stack, int number, int *diff)
+{
+	int	max;
+	int	pos;
 
+	ft_printstack(stack);
+
+	max = get_max(stack);
+	//printf("max: %d\n", max);
+	pos = find_pos(stack, max, diff);
+	//printf("pos: %d\n", pos);
+	*diff = number - max;
+	return (pos);
+}
+*/
 int	find_pos(t_stack stack, int number, int *diff)
 {
 	int	position;

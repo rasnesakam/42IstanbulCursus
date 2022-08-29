@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:39:50 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/21 05:51:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 14:32:46 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	top_stack(t_stack *stack)
 	return (1 << 31);
 }
 
-/*
+
 void ft_printstack(t_stack stack)
 {
 	ft_putstr_fd("\nSTACK:", 1);
@@ -78,4 +78,3 @@ void ft_printstack(t_stack stack)
 		ft_putendl_fd(ft_itoa(pop_stack(&stack)), 1);
 	ft_putendl_fd("\n", 1);
 }
-*/
