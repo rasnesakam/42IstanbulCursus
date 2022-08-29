@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:25:07 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/29 15:47:15 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:29:53 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,27 @@
 
 static int	get_optimum_rate(int pos_a, int pos_b, int diff)
 {
-	return ((pos_a + pos_b)  + diff);
+	return ((pos_a + pos_b) * 10 + diff);
 }
-#include <stdio.h>
-/*
-static int	after_last(t_stack stack, int number, int *diff)
+
+static int	get_pos_after_max(t_stack stack, int number, int *diff)
 {
 	int	max;
 	int	pos;
 
-	ft_printstack(stack);
-
 	max = get_max(stack);
-	//printf("max: %d\n", max);
 	pos = find_pos(stack, max, diff);
-	//printf("pos: %d\n", pos);
 	*diff = number - max;
-	return (pos);
+	return (pos + 1);
 }
-*/
-int	find_pos(t_stack stack, int number, int *diff)
+
+
+static int	get_pos(t_stack stack, int number, int *diff)
 {
-	int	position;
-	int	difference;
-	int	old_difference;
-	int	return_position;
+	int position;
+	int difference;
+	int old_difference;
+	int return_position;
 
 	old_difference = 0xFFFFFFFF >> 1;
 	position = 0;
@@ -55,9 +51,16 @@ int	find_pos(t_stack stack, int number, int *diff)
 		}
 		position++;
 	}
-	if (return_position < 0)
-		return (position);
 	return (return_position);
+}
+int	find_pos(t_stack stack, int number, int *diff)
+{
+	int	position;
+	
+	position = get_pos(stack, number, diff);
+	if (position < 0)
+		return (get_pos_after_max(stack, number, diff));
+	return (position);
 }
 
 void	ft_calc_pos(t_stack stack_a, t_stack stack_b, int *pos_a, int *pos_b)

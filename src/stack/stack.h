@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:39:54 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/29 14:32:42 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:30:33 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	destroy_stack(t_stack *stack);
 void	push_stack(t_stack *stack, int value);
 int		pop_stack(t_stack *stack);
 int		top_stack(t_stack *stack);
-void	ft_printstack(t_stack stack);
+//void	ft_printstack(t_stack stack);
 #endif

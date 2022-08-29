@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:39:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/29 14:32:59 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 18:29:23 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int	main(int ac, char **av)
 		load_stack(stack_a, list, count);
 		if (check_sorted(*stack_a) == 0)
 			abracadabra(stack_a, stack_b);
-		ft_printstack(*stack_a);
 		destroy_stack(stack_a);
 		destroy_stack(stack_b);
 	}
