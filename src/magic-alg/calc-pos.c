@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:25:07 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/29 18:29:53 by emakas           ###   ########.fr       */
+/*   Updated: 2022/08/29 19:00:21 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ static int	get_pos_after_max(t_stack stack, int number, int *diff)
 	return (pos + 1);
 }
 
-
 static int	get_pos(t_stack stack, int number, int *diff)
 {
-	int position;
-	int difference;
-	int old_difference;
-	int return_position;
+	int	position;
+	int	difference;
+	int	old_difference;
+	int	return_position;
 
 	old_difference = 0xFFFFFFFF >> 1;
 	position = 0;
@@ -53,10 +52,11 @@ static int	get_pos(t_stack stack, int number, int *diff)
 	}
 	return (return_position);
 }
+
 int	find_pos(t_stack stack, int number, int *diff)
 {
 	int	position;
-	
+
 	position = get_pos(stack, number, diff);
 	if (position < 0)
 		return (get_pos_after_max(stack, number, diff));
