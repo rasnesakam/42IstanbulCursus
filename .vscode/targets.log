@@ -8,17 +8,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Aug 28 14:40:56 2022
- 
+# Make data base, printed on Tue Aug 30 06:48:49 2022
 
 # Variables
+ 
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 35)
-SRC := src/main.c src/arg-converter/convert-args.c src/arg-marser/collect-args.c src/arg-marser/count-args.c src/arg-verifier/verify-args.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c
+# makefile (from `Makefile', line 37)
+SRC := src/main.c src/arg-converter/convert-args.c src/arg-marser/collect-args.c src/arg-marser/count-args.c src/arg-verifier/verify-args.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c src/utils/environment.c src/utils/forks.c src/utils/sleep.c src/utils/eat.c src/utils/take*forks.c
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -37,13 +37,13 @@ DIR_ARG_VERIFIER := arg-verifier/
 CURDIR := /Users/emakas/Desktop/42Cursus/philosophers
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 36)
-BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o
+# makefile (from `Makefile', line 38)
+BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environment.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
 # environment
 VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{"*":"tr"},"_languagePackId":"6765e731291c4f4d14d665fa42b9b01a.tr","_translationsConfigFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/tcf.json","_cacheRoot":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr","_resolvedLanguagePackCoreLocation":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/054a9295330880ed74ceaedda236253b4f39a335","_corruptedFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 40)
+# makefile (from `Makefile', line 42)
 CFLAGS = -Wall -Werror -Wextra -c
 # makefile (from `Makefile', line 11)
 DIR_ENVIRONMENT := environment/
@@ -54,13 +54,15 @@ VSCODE_NODE_CACHED_DATA_DIR = /Users/emakas/Library/Application Support/Code/Cac
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscode-ipc-b79645b6-e4e7-4897-94d8-be9bb90aa16f.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscode-ipc-2f29260a-6d9f-4f10-bab8-54142c8d39fa.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
 # makefile (from `Makefile', line 13)
 DIR_UTILS := utils/
+# environment
+LaunchInstanceID = B4135B84-29B5-40F6-9275-F99C1004CCD5
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -70,7 +72,7 @@ SRC_PHILOSOPHER :=
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.XKeP988oi9/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.1x9kVI1KSq/Listeners
 # automatic
 %F = $(notdir $%)
 # makefile (from `Makefile', line 12)
@@ -105,7 +107,7 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 39)
+# makefile (from `Makefile', line 41)
 CC := gcc
 # default
 MAKE_VERSION := 3.81
@@ -136,7 +138,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2380
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
 # makefile (from `Makefile', line 5)
 DIR_BIN := bin/
 # automatic
@@ -149,6 +151,8 @@ SRC_ARG_VERIFIER := verify-args.c
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18C95:0:0
+# environment
+COMMAND_MODE = unix2003
 # makefile (from `Makefile', line 20)
 SRC_ENVIRONMENT := 
 # default
@@ -159,6 +163,8 @@ DIR_ARG_CONVERTER := arg-converter/
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -166,15 +172,15 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/local/include
 # makefile (from `Makefile', line 22)
-SRC_UTILS := ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c
+SRC_UTILS := ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c environment.c forks.c sleep.c eat.c take*forks.c
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 94871
+VSCODE_PID = 3698
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=5/135=4%
+# Load=83/1024=8%, Rehash=0, Collisions=5/138=4%
 
 # Pattern-specific Variable Values
 
@@ -182,16 +188,17 @@ VSCODE_PID = 94871
 
 # Directories
 
+# bin/utils: could not be stat'd.
 # . (device 16777225, inode 663070): 8 files, no impossibilities.
 # bin (device 16777225, inode 944663): No files, no impossibilities so far.
 # src (device 16777225, inode 663134): 7 files, no impossibilities so far.
 
-# 15 files, no impossibilities in 3 directories.
+# 15 files, no impossibilities in 4 directories.
 
 # Implicit Rules
 
 bin/%.o: src/%.c bin/
-#  commands to execute (from `Makefile', line 61):
+#  commands to execute (from `Makefile', line 63):
 	$(CC) $(CFLAGS) $< -o $@
 	
 
@@ -201,10 +208,10 @@ bin/%.o: src/%.c bin/
 
 bin/:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-27 18:44:31
+#  Last modified 2022-08-30 06:48:26
 #  File has been updated.
 #  Successfully updated.
-#  commands to execute (from `Makefile', line 58):
+#  commands to execute (from `Makefile', line 60):
 	mkdir -p $(DIR_BIN)
 	
 
@@ -224,6 +231,12 @@ all: philosophers
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
+# Not a target:
+bin/utils/environment.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 .PHONY: all re clean fclean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -231,6 +244,12 @@ all: philosophers
 
 # Not a target:
 bin/utils/ft-max.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/sleep.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -244,7 +263,7 @@ bin/utils/ft-max.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-27 18:44:28
+#  Last modified 2022-08-30 06:47:24
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -253,6 +272,7 @@ Makefile:
 # Not a target:
 bin/utils/ft-strlcpy.o:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -274,20 +294,37 @@ bin/utils/ft-strchr.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+bin/utils/eat.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/take*forks.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/forks.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 52):
- 
+#  commands to execute (from `Makefile', line 54):
 	@rm -rf $(NAME)
 	
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-27 18:47:27
+#  Last modified 2022-08-30 04:23:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -311,7 +348,7 @@ bin/utils/ft-strtrim.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-philosophers: bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o
+philosophers: bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environment.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -330,7 +367,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 49):
+#  commands to execute (from `Makefile', line 51):
 	@rm -rf $(DIR_BIN)
 	
 
@@ -364,7 +401,7 @@ bin/main.o: src/main.c bin/
 # ? := src/main.c bin/
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 61):
+#  commands to execute (from `Makefile', line 63):
 	$(CC) $(CFLAGS) $< -o $@
 	
 
@@ -384,12 +421,12 @@ info:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 55):
+#  commands to execute (from `Makefile', line 57):
 	@echo $(BIN)
 	
 
 # files hash-table stats:
-# Load=24/1024=2%, Rehash=0, Collisions=0/62=0%
+# Load=29/1024=3%, Rehash=0, Collisions=1/72=1%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -401,6 +438,6 @@ info:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug 28 14:40:56 2022
+# Finished Make data base on Tue Aug 30 06:48:49 2022
 
  

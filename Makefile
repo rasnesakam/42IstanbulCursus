@@ -21,7 +21,9 @@ SRC_ENVIRONMENT 	:=
 SRC_PHILOSOPHER 	:= 
 SRC_UTILS 			:= ft-max.c ft-split.c ft-strchr.c \
 						ft-strlcpy.c ft-strlen.c \
-						ft-strncmp.c ft-strtrim.c
+						ft-strncmp.c ft-strtrim.c \
+						environment.c forks.c sleep.c \
+						eat.c take*forks.c
 
 
 SRC					:= $(SRC_ROOT) \
