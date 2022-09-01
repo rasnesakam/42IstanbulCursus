@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   collect-args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:21:41 by emakas            #+#    #+#             */
-/*   Updated: 2022/08/04 15:58:47 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/01 16:37:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arg-parser.h"
+#include "arg_parser.h"
 
 char	**collect_args(int ac, char **av)
 {
@@ -22,7 +22,7 @@ char	**collect_args(int ac, char **av)
 
 	li = 1;
 	ai = 0;
-	args = malloc(sizeof(char *) * count_args(ac, av));
+	args = (char **) malloc(sizeof(char *) * count_args(ac, av));
 	while (li < ac)
 	{
 		si = 0;

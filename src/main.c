@@ -1,28 +1,27 @@
 
 #include "utils.h"
 
-static void	simulate(void *env)
+static void	*simulate(void *env)
 {
-	void			*ret;
-	t_environment	*environment = (t_environment *) env;
-
+	//t_environment	*environment = (t_environment *) env;
+	(void) env;
+	/*
 	while (!environment->philosopher->is_died)
 	{
 		ret = take_forks(environment);
 		if (ret == NULL)
 			break;
-		ret = eat(environment);
+		ret = philo_eat(environment);
 		if (ret == NULL)
 			break;
-		ret = sleep(environment);
+		ret = philo_sleep(environment);
 		if (ret == NULL)
 			break;
 	}
-
+	*/
+	return(NULL);
 }
 
-static void halt_immediate()
-{}
 
 static void	start_threads(int count, t_environment *envs)
 {
@@ -31,7 +30,25 @@ static void	start_threads(int count, t_environment *envs)
 	index = 0;
 	while (index < count)
 	{
-		pthread_create(&(envs[index].philosopher->thread),NULL,simulate,&envs[index]);
+		t_environment *environment = &(envs[index]);
+
+		printf("============================\n");
+		printf("\tphilo-> %d\n", environment->philosopher->id);
+		printf("\tdie-> %d\n", environment->die_time);
+		printf("\teat-> %d\n", environment->eat_time);
+		printf("\tsleep-> %d\n", environment->sleep_time);
+		printf("\teat-> %d\n", environment->eat_time);
+		printf("\tleft fork\t-> [%p]\n", environment->forks[0]);
+		printf("\tright fork\t-> [%p]\n", environment->forks[1]);
+		printf("============================\n");
+
+		pthread_create(&(envs[index].philosopher->thread),NULL,&simulate,&envs[index]);
+		index++;
+	}
+	index = 0;
+	while (index < count)
+	{
+		pthread_join((envs[index].philosopher->thread), NULL);
 		index++;
 	}
 }
@@ -47,19 +64,20 @@ int main(int ac, char **av)
 
 	count_arguments = count_args(ac, av);
 	args = collect_args(ac, av);
-	if (verify_args(count_arguments, args) && count_arguments > 4)
+	printf("%d\n",count_arguments);
+	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
 		int_args = convert_args(count_arguments, args);
 		forks = create_forks(int_args[0]);
-		envs = create_environments(count_args, int_args, forks);
+		envs = create_environments(count_arguments, int_args, forks);
 		start_threads(int_args[0], envs);
+
+		// check threads are died. learn more about pthread_detach
+		
+		// destroy all envs and forks after finished
+		destroy_forks(forks);
+		usleep(10000);
+		destroy_environments(envs);
 	}
-
-	// check threads are died. learn more about pthread_detach
-
-	// destroy all envs and forks after finished
-	destroy_forks(forks);
-	destroy_environments(envs);
-
 	return (0);
 }

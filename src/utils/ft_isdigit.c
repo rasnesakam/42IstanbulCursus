@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_parser.h                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 16:41:25 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/01 16:37:06 by emakas           ###   ########.fr       */
+/*   Created: 2022/01/07 12:28:20 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/01 16:55:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARG_PARSER_H
-#define ARG_PARSER_H
-# include "../utils.h"
-
-int		count_words(char *c);
-int		count_args(int ac, char **args);
-char	**collect_args(int ac, char **args);
-
-# endif
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}

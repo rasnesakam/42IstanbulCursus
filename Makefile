@@ -6,11 +6,15 @@ DIR_BIN		:= bin/
 
 # Sub Directories
 DIR_ARG_CONVERTER	:= arg-converter/
-DIR_ARG_PARSER		:= arg-marser/
+DIR_ARG_PARSER		:= arg-parser/
 DIR_ARG_VERIFIER	:= arg-verifier/
 DIR_ENVIRONMENT		:= environment/
 DIR_PHILOSOPHER		:= philosopher/
 DIR_UTILS			:= utils/
+
+DIR_LIST			:= $(DIR_ARG_CONVERTER) $(DIR_ARG_PARSER) \
+						$(DIR_ARG_VERIFIER) $(DIR_ENVIRONMENT) \
+						$(DIR_PHILOSOPHER) $(DIR_UTILS)
 
 # Sources
 SRC_ROOT 			:= main.c
@@ -22,8 +26,9 @@ SRC_PHILOSOPHER 	:=
 SRC_UTILS 			:= ft-max.c ft-split.c ft-strchr.c \
 						ft-strlcpy.c ft-strlen.c \
 						ft-strncmp.c ft-strtrim.c \
+						ft_isdigit.c \
 						environments.c forks.c sleep.c \
-						eat.c take*forks.c
+						eat.c take-forks.c
 
 
 SRC					:= $(SRC_ROOT) \
@@ -39,10 +44,10 @@ BIN					:= $(subst $(DIR_SRC),$(DIR_BIN), $(SRC:.c=.o))
 
 
 CC			:= gcc
-CFLAGS 		+= -Wall -Werror -Wextra -c
+CFLAGS 		+= -Wall -Werror -Wextra -pthread
 
 $(NAME): $(BIN)
-
+	$(CC) $(CFLAGS) $(BIN)  -o $(NAME)
 all: $(NAME)
 
 re: fclean all
@@ -53,13 +58,12 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 
-info:
-	@echo $(BIN)
-
 $(DIR_BIN):
-	mkdir -p $(DIR_BIN)
+	mkdir -p $(DIR_BIN) $(addprefix $(DIR_BIN), $(DIR_LIST))
 
 $(DIR_BIN)%.o: $(DIR_SRC)%.c $(DIR_BIN)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: all re clean fclean
+
+# echo $(SRC) | awk '{split($$0, array); for (el in array){print el}}'

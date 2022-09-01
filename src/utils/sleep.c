@@ -1,4 +1,7 @@
 #include "../utils.h"
 
-void	*sleep(t_environment *env)
-{}
+void	*philo_sleep(t_environment *env)
+{
+	(void) env;
+	return (NULL);
+}
