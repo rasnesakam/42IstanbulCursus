@@ -1,186 +1,343 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 3.81
-# Copyright (C) 2006  Free Software Foundation, Inc.
-# This is free software; see the source for copying conditions.
-# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-# PARTICULAR PURPOSE.
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
 
-# This program built for i386-apple-darwin11.3.0
- 
-
-# Make data base, printed on Tue Aug 30 06:48:49 2022
+# Make data base, printed on Wed Aug 31 23:35:21 2022
 
 # Variables
- 
 
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# automatic
-?F = $(notdir $?)
-# makefile (from `Makefile', line 37)
-SRC := src/main.c src/arg-converter/convert-args.c src/arg-marser/collect-args.c src/arg-marser/count-args.c src/arg-verifier/verify-args.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c src/utils/environment.c src/utils/forks.c src/utils/sleep.c src/utils/eat.c src/utils/take*forks.c
+ 
 # environment
-VSCODE_LOG_NATIVE = false
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# makefile (from `Makefile', line 4)
-DIR_SRC := src/
-# makefile (from `Makefile', line 9)
-DIR_ARG_PARSER := arg-marser/
-# makefile (from `Makefile', line 10)
-DIR_ARG_VERIFIER := arg-verifier/
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# makefile (from 'Makefile', line 37)
+SRC := src/main.c src/arg-converter/convert-args.c src/arg-marser/collect-args.c src/arg-marser/count-args.c src/arg-verifier/verify-args.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c src/utils/environments.c src/utils/forks.c src/utils/sleep.c src/utils/eat.c src/utils/take*forks.c
+# environment
+GTK_RC_FILES = /etc/gtk/gtkrc:/home/master/.gtkrc:/home/master/.config/gtkrc
+# environment
+SNAP_INSTANCE_KEY = 
+# makefile (from 'Makefile', line 21)
+SRC_PHILOSOPHER := 
+# environment
+LC_NAME = tr_TR.UTF-8
+# environment
+LC_NUMERIC = tr_TR.UTF-8
+# environment
+VSCODE_CWD = /home/master
+# environment
+LESS_TERMCAP_me = [0m
+# environment
+LC_ADDRESS = tr_TR.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+GTK3_MODULES = xapp-gtk3-module
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
-# makefile
-CURDIR := /Users/emakas/Desktop/42Cursus/philosophers
-# makefile
-SHELL = /bin/sh
-# makefile (from `Makefile', line 38)
-BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environment.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
+# makefile (from 'Makefile', line 8)
+DIR_ARG_CONVERTER := arg-converter/
 # environment
-VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{"*":"tr"},"_languagePackId":"6765e731291c4f4d14d665fa42b9b01a.tr","_translationsConfigFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/tcf.json","_cacheRoot":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr","_resolvedLanguagePackCoreLocation":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/054a9295330880ed74ceaedda236253b4f39a335","_corruptedFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/corrupted.info","_languagePackSupport":true}
+SNAP_INSTANCE_NAME = code
+# makefile (from 'Makefile', line 4)
+DIR_SRC := src/
 # environment
-_ = /usr/bin/make
-# makefile (from `Makefile', line 42)
-CFLAGS = -Wall -Werror -Wextra -c
-# makefile (from `Makefile', line 11)
-DIR_ENVIRONMENT := environment/
-# makefile (from `Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# environment
-VSCODE_NODE_CACHED_DATA_DIR = /Users/emakas/Library/Application Support/Code/CachedData/054a9295330880ed74ceaedda236253b4f39a335
-# environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscode-ipc-2f29260a-6d9f-4f10-bab8-54142c8d39fa.sock
-# environment
-VSCODE_CWD = /
-# environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
-# makefile (from `Makefile', line 13)
-DIR_UTILS := utils/
-# environment
-LaunchInstanceID = B4135B84-29B5-40F6-9275-F99C1004CCD5
-# environment
-VSCODE_LOG_STACK = false
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# makefile (from `Makefile', line 21)
-SRC_PHILOSOPHER := 
-# default
-.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.1x9kVI1KSq/Listeners
-# automatic
-%F = $(notdir $%)
-# makefile (from `Makefile', line 12)
-DIR_PHILOSOPHER := philosopher/
-# environment
-VSCODE_PIPE_LOGGING = true
-# environment
-PWD = /Users/emakas/Desktop/42Cursus/philosophers
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
-# environment
-HOME = /Users/emakas
-# makefile (from `Makefile', line 17)
-SRC_ARG_CONVERTER := convert-args.c
-# default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-LOGNAME = emakas
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+GDK_PIXBUF_MODULEDIR = /snap/code/105/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/master/Documents/42Cursus/philosophers
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+MAIL = /var/spool/mail/master
+# environment
+XDG_DATA_DIRS = /home/master/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/master
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
 # environment
-XPC_FLAGS = 0x0
+VSCODE_CODE_CACHE_PATH = /home/master/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/master/.Xauthority
 # default
-MAKE = $(MAKE_COMMAND)
+.LOADED := 
+# environment
+LESS_TERMCAP_md = [01;32m
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+LESS_TERMCAP_so = [01;47;34m
+# makefile
+CURDIR := /home/master/Documents/42Cursus/philosophers
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+LESS_TERMCAP_ue = [0m
+# environment
+PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /home/master/.config/kdedefaults:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+P9K_SSH = 0
+# environment
+XCURSOR_THEME = breeze_cursors
+# environment
+XDG_SESSION_DESKTOP = KDE
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# makefile (from 'Makefile', line 16)
+SRC_ROOT := main.c
+# environment
+SNAP_REEXEC = 
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 3016
+# environment
+MOZ_ENABLE_WAYLAND = 1
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+SESSION_MANAGER = local/mfpc:@/tmp/.ICE-unix/1433,unix/mfpc:/tmp/.ICE-unix/1433
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 19)
+SRC_ARG_VERIFIER := verify-args.c
+# environment
+QT_QPA_PLATFORMTHEME = gnome
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# environment
+LESS_TERMCAP_us = [01;36m
 # default
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 41)
-CC := gcc
-# default
-MAKE_VERSION := 3.81
 # environment
-USER = emakas
-# makefile
-.DEFAULT_GOAL := philosophers
-# makefile (from `Makefile', line 1)
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+SNAP_COOKIE = pbEZ8NZpbP8uuphA_q2CwplaRpeY2KTz76S01c4tGuv7vVlxu7fd
+# environment
+PATH = /home/master/.local/bin:/home/master/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin
+# environment
+LESS_TERMCAP_se = [0m
+# makefile (from 'Makefile', line 12)
+DIR_PHILOSOPHER := philosopher/
+# default
+MAKEFILES := 
+# environment
+LANGUAGE = 
+# environment
+LC_MONETARY = tr_TR.UTF-8
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# environment
+SNAP_USER_COMMON = /home/master/snap/code/common
+# environment
+LC_TIME = tr_TR.UTF-8
+# environment
+LESS_TERMCAP_mb = [01;32m
+# environment
+SNAP = /snap/code/105
+# environment
+GRADLE_HOME = /usr/share/java/gradle
+# makefile (from 'Makefile', line 9)
+DIR_ARG_PARSER := arg-marser/
+ 
+# environment
+SNAP_REVISION = 105
+# environment
+SNAP_REAL_HOME = /home/master
+# environment
+LC_TELEPHONE = tr_TR.UTF-8
+# automatic
+?F = $(notdir $?)
+# environment
+KDE_APPLICATIONS_AS_SCOPE = 1
+# makefile (from 'Makefile', line 1)
 NAME := philosophers
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# makefile (from `Makefile', line 16)
-SRC_ROOT := main.c
-# default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# default
-.VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/
-# automatic
-*F = $(notdir $*)
+XDG_SEAT = seat0
 # environment
-VSCODE_IPC_HOOK = /Users/emakas/Library/Application Support/Code/1.56.2-main.sock
-# makefile
-MAKEFLAGS = Rrqp
+XDG_CURRENT_DESKTOP = KDE
+# makefile (from 'Makefile', line 20)
+SRC_ENVIRONMENT := 
 # environment
-MFLAGS = -Rrqp
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
-# makefile (from `Makefile', line 5)
-DIR_BIN := bin/
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# makefile (from `Makefile', line 18)
-SRC_ARG_PARSER := collect-args.c count-args.c
-# makefile (from `Makefile', line 19)
-SRC_ARG_VERIFIER := verify-args.c
+LS_COLORS = 
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x18C95:0:0
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-COMMAND_MODE = unix2003
-# makefile (from `Makefile', line 20)
-SRC_ENVIRONMENT := 
+LESS = -R
+# environment
+DESKTOP_SESSION = plasma
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = KDE
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+QT_SCREEN_SCALE_FACTORS = eDP-1=1;HDMI-1=1;
+# environment
+LOGNAME = master
+# environment
+SNAP_ARCH = amd64
+# environment
+XDG_VTNR = 1
+# makefile
+.DEFAULT_GOAL := philosophers
+# environment
+SYSTEMD_EXEC_PID = 1223
+# environment
+EDITOR = /usr/bin/nano
+# environment
+DISPLAY = :0
+# environment
+GTK_MODULES = canberra-gtk-module
+# environment
+USER = master
 # default
-MAKEFILES := 
-# makefile (from `Makefile', line 8)
-DIR_ARG_CONVERTER := arg-converter/
+MAKE_VERSION := 4.3
+# environment
+KDE_SESSION_UID = 1000
+# environment
+DISABLE_WAYLAND = 1
+# environment
+SNAP_DATA = /var/snap/code/105
+# environment
+SNAP_CONTEXT = pbEZ8NZpbP8uuphA_q2CwplaRpeY2KTz76S01c4tGuv7vVlxu7fd
+# environment
+LC_MEASUREMENT = tr_TR.UTF-8
+# makefile (from 'Makefile', line 18)
+SRC_ARG_PARSER := collect-args.c count-args.c
+# environment
+QT_STYLE_OVERRIDE = kvantum
+# environment
+_ = /usr/bin/make
+# environment
+LC_PAPER = tr_TR.UTF-8
+# makefile (from 'Makefile', line 38)
+BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environments.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 42)
+CFLAGS = -Wall -Werror -Wextra -c
+# environment
+GDK_PIXBUF_MODULE_FILE = /home/master/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/master/.gtkrc-2.0:/home/master/.config/gtkrc-2.0
+# environment
+HOME = /home/master
+# makefile (from 'Makefile', line 13)
+DIR_UTILS := utils/
+# makefile (from 'Makefile', line 17)
+ 
+SRC_ARG_CONVERTER := convert-args.c
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-41268c26-1.70.2-main.sock
+# environment
+SNAP_NAME = code
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/105/usr/share/glib-2.0/schemas
+# environment
+XDG_SESSION_ID = 2
+# environment
+XCURSOR_SIZE = 24
+# default
+.RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
 # environment
-LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a8
-# automatic
-^F = $(notdir $^)
+SNAP_VERSION = e4503b30
+# makefile (from 'Makefile', line 5)
+DIR_BIN := bin/
 # default
 SUFFIXES := 
+# environment
+QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from 'Makefile', line 10)
+DIR_ARG_VERIFIER := arg-verifier/
+# environment
+SNAP_COMMON = /var/snap/code/common
+# environment
+LS_OPTIONS = --color=auto
+# environment
+KDE_SESSION_VERSION = 5
 # default
-.INCLUDE_DIRS = /usr/local/include
-# makefile (from `Makefile', line 22)
-SRC_UTILS := ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c environment.c forks.c sleep.c eat.c take*forks.c
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
+# makefile (from 'Makefile', line 11)
+DIR_ENVIRONMENT := environment/
+# makefile (from 'Makefile', line 22)
+SRC_UTILS := ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c environments.c forks.c sleep.c eat.c take*forks.c
+# makefile (from 'Makefile', line 41)
+CC := gcc
 # environment
-MAKELEVEL := 0
+KDE_FULL_SESSION = true
 # environment
-LANG = C
+SNAP_USER_DATA = /home/master/snap/code/105
 # environment
-VSCODE_PID = 3698
+PKGFILE_PROMPT_INSTALL_MISSING = 1
+# environment
+ 
+LC_IDENTIFICATION = tr_TR.UTF-8
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=5/138=4%
+# Load=161/1024=16%, Rehash=0, Collisions=27/222=12%
 
 # Pattern-specific Variable Values
 
@@ -188,56 +345,24 @@ VSCODE_PID = 3698
 
 # Directories
 
+# src (device 66308, inode 6160703): 9 files, no impossibilities so far.
+# . (device 66308, inode 6160469): 7 files, no impossibilities.
 # bin/utils: could not be stat'd.
-# . (device 16777225, inode 663070): 8 files, no impossibilities.
-# bin (device 16777225, inode 944663): No files, no impossibilities so far.
-# src (device 16777225, inode 663134): 7 files, no impossibilities so far.
+# bin: could not be stat'd.
 
-# 15 files, no impossibilities in 4 directories.
+# 16 files, no impossibilities in 4 directories.
 
 # Implicit Rules
 
 bin/%.o: src/%.c bin/
-#  commands to execute (from `Makefile', line 63):
+#  recipe to execute (from 'Makefile', line 63):
 	$(CC) $(CFLAGS) $< -o $@
-	
 
 # 1 implicit rules, 0 (0.0%) terminal.
-
 # Files
 
-bin/:
-#  Implicit rule search has not been done.
-#  Last modified 2022-08-30 06:48:26
-#  File has been updated.
-#  Successfully updated.
-#  commands to execute (from `Makefile', line 60):
-	mkdir -p $(DIR_BIN)
-	
-
 # Not a target:
-bin/arg-verifier/verify-args.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-all: philosophers
-#  Phony target (prerequisite of .PHONY).
-#  Command-line target.
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-
-# Not a target:
-bin/utils/environment.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-.PHONY: all re clean fclean
+bin/utils/take*forks.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -249,13 +374,51 @@ bin/utils/ft-max.o:
 #  File has not been updated.
 
 # Not a target:
-bin/utils/sleep.o:
+bin/arg-marser/count-args.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+bin/main.o: src/main.c bin/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  recipe to execute (from 'Makefile', line 63):
+	$(CC) $(CFLAGS) $< -o $@
+
+bin/:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+#  recipe to execute (from 'Makefile', line 60):
+	mkdir -p $(DIR_BIN)
+
 # Not a target:
-.SUFFIXES:
+bin/utils/ft-split.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -263,16 +426,110 @@ bin/utils/sleep.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-30 06:47:24
+#  Last modified 2022-08-31 23:35:17.749265483
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/utils/ft-strlcpy.o:
+bin/utils/ft-strtrim.o:
 #  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/eat.o:
  
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/sleep.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 51):
+	@rm -rf $(DIR_BIN)
+
+info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 57):
+	@echo $(BIN)
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-31 14:47:00.964710359
+#  File has been updated.
+#  Successfully updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+philosophers: bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environments.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: philosophers
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 54):
+	@rm -rf $(NAME)
+
+# Not a target:
+bin/utils/ft-strchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strlen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-verifier/verify-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-converter/convert-args.o:
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -283,161 +540,55 @@ bin/utils/ft-strncmp.o:
 #  File has not been updated.
 
 # Not a target:
-bin/arg-marser/count-args.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/utils/ft-strchr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/utils/eat.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/utils/take*forks.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 bin/utils/forks.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-fclean: clean
-#  Phony target (prerequisite of .PHONY).
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 54):
-	@rm -rf $(NAME)
-	
 
-# Not a target:
-src/main.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-30 04:23:21
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-bin/arg-converter/convert-args.o:
+.PHONY: all re clean fclean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-.DEFAULT:
+bin/utils/ft-strlcpy.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-bin/utils/ft-strtrim.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-philosophers: bin/main.o bin/arg-converter/convert-args.o bin/arg-marser/collect-args.o bin/arg-marser/count-args.o bin/arg-verifier/verify-args.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/environment.o bin/utils/forks.o bin/utils/sleep.o bin/utils/eat.o bin/utils/take*forks.o
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-
-re: fclean all
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
-clean:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 51):
-	@rm -rf $(DIR_BIN)
-	
-
-# Not a target:
-bin/utils/ft-strlen.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-bin/main.o: src/main.c bin/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `main'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := bin/main.o
-# automatic
-# % := 
-# automatic
-# * := main
-# automatic
-# + := src/main.c bin/
-# automatic
-# | := 
-# automatic
-# < := src/main.c
-# automatic
-# ^ := src/main.c bin/
-# automatic
-# ? := src/main.c bin/
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 63):
-	$(CC) $(CFLAGS) $< -o $@
-	
-
-# Not a target:
-bin/utils/ft-split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
+ 
 bin/arg-marser/collect-args.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-info:
+# Not a target:
+bin/utils/environments.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 57):
-	@echo $(BIN)
-	
 
 # files hash-table stats:
-# Load=29/1024=3%, Rehash=0, Collisions=1/72=1%
+# Load=29/1024=3%, Rehash=0, Collisions=0/72=0%
 # VPATH Search Paths
 
-# No `vpath' search paths.
+# No 'vpath' search paths.
 
-# No general (`VPATH' variable) search path.
+# No general ('VPATH' variable) search path.
 
-# # of strings in strcache: 1
-# # of strcache buffers: 1
-# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
-# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+# strcache buffers: 1 (0) / strings = 49 / storage = 648 B / avg = 13 B
+# current buf: size = 8162 B / used = 648 B / count = 49 / avg = 13 B
 
-# Finished Make data base on Tue Aug 30 06:48:49 2022
+# strcache performance: lookups = 78 / hit rate = 37%
+# hash-table stats:
+# Load=49/8192=1%, Rehash=0, Collisions=0/78=0%
+# Finished Make data base on Wed Aug 31 23:35:21 2022
 
  

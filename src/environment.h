@@ -1,5 +1,6 @@
 #ifndef ENVIRONMENT_H
 # define ENVIRONMENT_H
+# include "philosopher.h"
 
 struct s_environment
 {
@@ -7,7 +8,8 @@ struct s_environment
 	int				eat_time;
 	int				sleep_time;
 	int				die_time;
-	int				*forks;
+	int				remained_food;
+	int				*forks[2];
 };
 typedef struct s_environment t_environment;
 

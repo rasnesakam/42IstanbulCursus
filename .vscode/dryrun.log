@@ -1,24 +1,23 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/emakas/Desktop/42Cursus/philosophers'
+make: Entering directory '/home/master/Documents/42Cursus/philosophers'
+mkdir -p bin/
 gcc -Wall -Werror -Wextra -c src/main.c -o bin/main.o
- 
 gcc -Wall -Werror -Wextra -c src/arg-converter/convert-args.c -o bin/arg-converter/convert-args.o
 gcc -Wall -Werror -Wextra -c src/arg-verifier/verify-args.c -o bin/arg-verifier/verify-args.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-max.c -o bin/utils/ft-max.o
- 
-make: *** No rule to make target `bin/arg-marser/collect-args.o', needed by `philosophers'.
-make: *** No rule to make target `bin/arg-marser/count-args.o', needed by `philosophers'.
-make: *** No rule to make target `bin/utils/environment.o', needed by `philosophers'.
-
 gcc -Wall -Werror -Wextra -c src/utils/ft-split.c -o bin/utils/ft-split.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-strchr.c -o bin/utils/ft-strchr.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-strlcpy.c -o bin/utils/ft-strlcpy.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-strlen.c -o bin/utils/ft-strlen.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-strncmp.c -o bin/utils/ft-strncmp.o
 gcc -Wall -Werror -Wextra -c src/utils/ft-strtrim.c -o bin/utils/ft-strtrim.o
+gcc -Wall -Werror -Wextra -c src/utils/environments.c -o bin/utils/environments.o
 gcc -Wall -Werror -Wextra -c src/utils/forks.c -o bin/utils/forks.o
 gcc -Wall -Werror -Wextra -c src/utils/sleep.c -o bin/utils/sleep.o
 gcc -Wall -Werror -Wextra -c src/utils/eat.c -o bin/utils/eat.o
 gcc -Wall -Werror -Wextra -c src/utils/take-forks.c -o bin/utils/take*forks.o
-make: Leaving directory `/Users/emakas/Desktop/42Cursus/philosophers'
+make: Leaving directory '/home/master/Documents/42Cursus/philosophers'
  
+make: *** No rule to make target 'bin/arg-marser/collect-args.o', needed by 'philosophers'.
+make: *** No rule to make target 'bin/arg-marser/count-args.o', needed by 'philosophers'.
+
