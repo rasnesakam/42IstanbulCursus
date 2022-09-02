@@ -21,6 +21,16 @@
 void	*take_forks(t_environment *environment);
 
 /**
+ * @brief Tries to leave forks.
+ * 			if phiosopher dies during take the forks, returns NULL
+ *
+ * @param environment Container of philosopher and it's forks and other util datas
+ * @return void* NULL if philosopher dies while taking forks.
+ * 			Else, returns address of philosopher
+ */
+void *leave_forks(t_environment *environment);
+
+/**
  * @brief Tries to eat. If fails, (Maybe, because of death) returns NULL
  *
  * @param environment Environment that contains philosopher, and their forks

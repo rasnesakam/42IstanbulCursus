@@ -3,10 +3,11 @@
 
 static void	*simulate(void *env)
 {
-	//t_environment	*environment = (t_environment *) env;
-	(void) env;
-	/*
-	while (!environment->philosopher->is_died)
+	t_environment	*environment;
+	void			*ret;
+	
+	environment = (t_environment *) env;
+	while (!environment->philosopher->is_died )
 	{
 		ret = take_forks(environment);
 		if (ret == NULL)
@@ -18,31 +19,21 @@ static void	*simulate(void *env)
 		if (ret == NULL)
 			break;
 	}
-	*/
 	return(NULL);
 }
 
 
 static void	start_threads(int count, t_environment *envs)
 {
-	int	index;
+	int				index;
+	t_environment	*environment;
 
 	index = 0;
 	while (index < count)
 	{
-		t_environment *environment = &(envs[index]);
-
-		printf("============================\n");
-		printf("\tphilo-> %d\n", environment->philosopher->id);
-		printf("\tdie-> %d\n", environment->die_time);
-		printf("\teat-> %d\n", environment->eat_time);
-		printf("\tsleep-> %d\n", environment->sleep_time);
-		printf("\teat-> %d\n", environment->eat_time);
-		printf("\tleft fork\t-> [%p]\n", environment->forks[0]);
-		printf("\tright fork\t-> [%p]\n", environment->forks[1]);
-		printf("============================\n");
-
+		environment = &(envs[index]);
 		pthread_create(&(envs[index].philosopher->thread),NULL,&simulate,&envs[index]);
+		pthread_detach(envs[index].philosopher->thread);
 		index++;
 	}
 	index = 0;
