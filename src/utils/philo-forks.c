@@ -1,6 +1,6 @@
 #include "../utils.h"
 
-void synchronized(void *ref, void *(*f)(void *), void *param)
+void *synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
 {
 	void *val_return;
 	val_return = (*f)(param);
@@ -10,9 +10,8 @@ void synchronized(void *ref, void *(*f)(void *), void *param)
 
 void	*take_forks(t_environment *env)
 {
-
-	int *fork_right;
-	int *fork_left;
+	pthread_mutex_t *fork_right;
+	pthread_mutex_t *fork_left;
 	t_philosopher *philo;
 
 	philo = env->philosopher;
@@ -25,8 +24,8 @@ void	*take_forks(t_environment *env)
 
 void	*leave_forks(t_environment *env)
 {
-	int				*fork_right;
-	int				*fork_left;
+	pthread_mutex_t	*fork_right;
+	pthread_mutex_t	*fork_left;
 	t_philosopher	*philo;
 
 	philo = env->philosopher;

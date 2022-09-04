@@ -1,7 +1,10 @@
 #include "../utils.h"
 
-static void
-	set_env(t_environment *env, t_philosopher *philo, int *args, int *forks)
+static void	set_env(\
+t_environment *env, \
+t_philosopher *philo, \
+int *args, \
+pthread_mutex_t *forks)
 {
 	int	index;
 
@@ -15,7 +18,11 @@ static void
 	env->forks[1] = &(forks[(index + 1) % args[0]]);
 }
 
-t_environment	*create_environments(int arg_count, int *args, int *forks)
+t_environment	*create_environments(\
+int arg_count, \
+int *args, \
+pthread_mutex_t *forks
+)
 {
 	int				index;
 	t_environment	*environments;

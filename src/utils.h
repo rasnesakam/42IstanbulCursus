@@ -53,7 +53,8 @@ void	*philo_sleep(t_environment *environment);
  * @param forks Forks that will be attached
  * @return t_environment* list of t_environment with size args[0]
  */
-t_environment   *create_environments(int arg_count, int *args, int *forks);
+t_environment   \
+*create_environments(int arg_count, int *args, pthread_mutex_t *forks);
 
 /**
  * @brief Destroys current environment objects
@@ -69,7 +70,7 @@ int	        destroy_environments(t_environment *environments);
  * @param count size of the list
  * @return int* fork list with size 'count'
  */
-int	            *create_forks(int count);
+pthread_mutex_t	            *create_forks(int count);
 
 /**
  * @brief Destroys fork list
@@ -77,7 +78,7 @@ int	            *create_forks(int count);
  * @param forks list to be destroy
  * @return 1 if destroys succesfully
  */
-int             destroy_forks(int *forks);
+int             destroy_forks(pthread_mutex_t *forks);
 
 /**
  * @brief Get the timestamp from given offset.

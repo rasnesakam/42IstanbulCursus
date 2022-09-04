@@ -1,21 +1,21 @@
 #include "../utils.h"
 
-int	*create_forks(int count)
+pthread_mutex_t	*create_forks(int count)
 {
-	int	*forks;
+	pthread_mutex_t	*forks;
 	int	index;
 
 	index = 0;
-	forks = (int *) malloc(sizeof(int) * count);
+	forks = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * count);
 	while (index < count)
 	{
-		forks[index] = 1;
+		pthread_mutex_init();
 		index++;
 	}
 	return (forks);
 }
 
-int    destroy_forks(int *forks)
+int    destroy_forks(pthread_mutex_t *forks)
 {
 	if (forks != NULL)
 		free(forks);

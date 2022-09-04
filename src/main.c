@@ -50,7 +50,7 @@ int main(int ac, char **av)
 	char			**args;
 	int				*int_args;
 	int				count_arguments;
-	int				*forks;
+	pthread_mutex_t	*forks;
 	t_environment	*envs;
 
 	count_arguments = count_args(ac, av);
