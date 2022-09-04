@@ -34,11 +34,9 @@ pthread_mutex_t *forks
 	index = 0;
 	while (index < args[0])
 	{
-		philosopher = (t_philosopher *) malloc(sizeof(t_philosopher));
+		philosopher = create_philosopher(index);
 		if (!philosopher && destroy_environments(environments))
 			return (NULL);
-		philosopher->id = index;
-		philosopher->is_died = 0;
 		set_env(&(environments[index]), philosopher, args, forks);
 		if (arg_count > 4)
 			environments[index].remained_food = args[4];

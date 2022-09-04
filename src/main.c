@@ -44,6 +44,37 @@ static void	start_threads(int count, t_environment *envs)
 	}
 }
 
+static void	kill_all(t_environment *envs, int count)
+{
+	int	index;
+
+	while(index < count)
+	{
+		pthread_mutex_lock(envs[index].philo->mutex);
+		envs[index].philo->is_died = 1;
+		pthread_mutex_unlock(envs[index].philo->mutex);
+	}
+}
+
+static void	listen_philos(t_environment *envs, int count)
+{
+	int	loop;
+	int index;
+
+	loop = 1;
+	while (loop)
+	{
+		index = 0;
+		while (index < count)
+			if (envs[index++].philo->is_died)
+			{
+				kill_all_philos(envs, count);
+				loop = 0;
+			}
+		usleep(5000);
+	}
+}
+
 // NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
 int main(int ac, char **av)
 {
@@ -62,12 +93,8 @@ int main(int ac, char **av)
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
 		start_threads(int_args[0], envs);
-
-		// check threads are died. learn more about pthread_detach
-		
-		// destroy all envs and forks after finished
-		destroy_forks(forks);
-		usleep(10000);
+		listten_philos();
+		destroy_forks(forks, int_args[0]);
 		destroy_environments(envs);
 	}
 	return (0);
