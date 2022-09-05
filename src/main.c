@@ -50,9 +50,9 @@ static void	kill_all(t_environment *envs, int count)
 
 	while(index < count)
 	{
-		pthread_mutex_lock(envs[index].philo->mutex);
-		envs[index].philo->is_died = 1;
-		pthread_mutex_unlock(envs[index].philo->mutex);
+		pthread_mutex_lock(&(envs[index].philosopher->mutex));
+		envs[index].philosopher->is_died = 1;
+		pthread_mutex_unlock(&(envs[index].philosopher->mutex));
 	}
 }
 
@@ -66,7 +66,7 @@ static void	listen_philos(t_environment *envs, int count)
 	{
 		index = 0;
 		while (index < count)
-			if (envs[index++].philo->is_died)
+			if (envs[index++].philosopher->is_died)
 			{
 				kill_all_philos(envs, count);
 				loop = 0;

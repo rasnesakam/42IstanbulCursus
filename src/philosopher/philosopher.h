@@ -1,7 +1,9 @@
 
 #ifndef PHILSOPHER_H
 # define PHILSOPHER_H
-# include <pthread.h>
+# include "utils.h"
+
+typedef struct s_philosopher t_philosopher;
 struct s_philosopher
 {
 	int			id;
@@ -10,9 +12,8 @@ struct s_philosopher
 	pthread_mutex_t mutex;
 	pthread_t	thread;
 };
-typedef struct s_philosopher t_philosopher;
 
-t_philosopher	create_philosopher(int id);
+t_philosopher	*create_philosopher(int id);
 
 int	destroy_philosopher(t_philosopher *philosopher);
 

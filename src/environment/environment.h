@@ -1,7 +1,8 @@
 #ifndef ENVIRONMENT_H
 # define ENVIRONMENT_H
-# include "philosopher.h"
-# include <pthread.h>
+# include "../utils.h"
+
+typedef struct s_environment t_environment;
 
 struct s_environment
 {
@@ -12,7 +13,6 @@ struct s_environment
 	int				remained_food;
 	pthread_mutex_t	*forks[2];
 };
-typedef struct s_environment t_environment;
 
 /**
  * @brief Create several (size of args[0]) environment objects
