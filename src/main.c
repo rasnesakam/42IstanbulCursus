@@ -1,24 +1,33 @@
 
-#include "utils.h"
+#include "philosopher/philosopher.h"
+#include "environment/environment.h"
+#include "arg-converter/arg_converter.h"
+#include "arg-parser/arg_parser.h"
+#include "arg-verifier/arg_verifier.h"
+#include "concurrency/concurrency.h"
 
 static void	*simulate(void *env)
 {
 	t_environment	*environment;
+	t_philosopher	*philo;
+	pthread_mutex_t	*mutex;
 	void			*ret;
 	
 	environment = (t_environment *) env;
-	while (!environment->philosopher->is_died )
+	while (!(*((int *)get_synchronized(mutex, philo_is_dead, philo))))
 	{
-		ret = take_forks(environment);
-		if (ret == NULL)
-			break;
-		ret = philo_eat(environment);
+		
+		ret = get_synchronized(environment->forks[1], prepare_eat, environment);
 		if (ret == NULL)
 			break;
 		ret = philo_sleep(environment);
 		if (ret == NULL)
 			break;
-	}
+
+		ret = philo_think(environment);
+		if (ret == NULL)
+			break;
+		}
 	return(NULL);
 }
 
@@ -47,28 +56,29 @@ static void	start_threads(int count, t_environment *envs)
 static void	kill_all(t_environment *envs, int count)
 {
 	int	index;
+	pthread_mutex_t *mutex;
 
 	while(index < count)
 	{
-		pthread_mutex_lock(&(envs[index].philosopher->mutex));
-		envs[index].philosopher->is_died = 1;
-		pthread_mutex_unlock(&(envs[index].philosopher->mutex));
+		mutex = &(envs[index].philosopher->mutex); 
+		call_synchronized(mutex, set_philo_dead, envs[index].philosopher);
 	}
 }
 
-static void	listen_philos(t_environment *envs, int count)
+static void listen_philos(int count, t_environment *envs)
 {
 	int	loop;
 	int index;
+	pthread_mutex_t *mutex;
 
 	loop = 1;
 	while (loop)
 	{
 		index = 0;
 		while (index < count)
-			if (envs[index++].philosopher->is_died)
+			if (get_synchronized(mutex, philo_is_dead, envs[index].philosopher))
 			{
-				kill_all_philos(envs, count);
+				kill_all_(envs, count);
 				loop = 0;
 			}
 		usleep(5000);
@@ -93,7 +103,7 @@ int main(int ac, char **av)
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
 		start_threads(int_args[0], envs);
-		listten_philos();
+		listen_philos(int_args[0], envs);
 		destroy_forks(forks, int_args[0]);
 		destroy_environments(envs);
 	}

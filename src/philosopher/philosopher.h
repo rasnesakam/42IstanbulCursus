@@ -1,27 +1,25 @@
 
 #ifndef PHILSOPHER_H
-# define PHILSOPHER_H
-# include "utils.h"
+#define PHILSOPHER_H
+#include <pthread.h>
 
-typedef struct s_philosopher t_philosopher;
 struct s_philosopher
 {
-	int			id;
-	int			is_died;
-	unsigned long long	last_eat_timestamp;
+	int id;
+	int is_died;
+	unsigned long long last_eat_timestamp;
 	pthread_mutex_t mutex;
-	pthread_t	thread;
+	pthread_t thread;
 };
 
-t_philosopher	*create_philosopher(int id);
+typedef struct s_philosopher t_philosopher;
 
-int	destroy_philosopher(t_philosopher *philosopher);
+t_philosopher *create_philosopher(int id);
 
-void	*prepare_eat(t_environment *environment);
+int destroy_philosopher(t_philosopher *philosopher);
 
-void	*start_eat(t_environment *environment);
+int philo_is_dead(t_philosopher *s_philosopher);
 
-void	*philo_sleep(t_environment *environment);
-
+void set_philo_dead(t_philosopher *philosopher);
 
 #endif

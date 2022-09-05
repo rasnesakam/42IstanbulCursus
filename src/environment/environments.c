@@ -1,5 +1,6 @@
 #include "../utils.h"
 
+
 static void	set_env(\
 t_environment *env, \
 t_philosopher *philo, \

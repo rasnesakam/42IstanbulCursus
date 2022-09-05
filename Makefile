@@ -21,14 +21,13 @@ SRC_ROOT 			:= main.c
 SRC_ARG_CONVERTER	:= convert-args.c
 SRC_ARG_PARSER		:= collect-args.c count-args.c
 SRC_ARG_VERIFIER	:= verify-args.c
-SRC_ENVIRONMENT 	:= 
-SRC_PHILOSOPHER 	:= 
+SRC_ENVIRONMENT 	:= environments.c forks.c
+SRC_PHILOSOPHER 	:= philosopher.c
 SRC_UTILS 			:= ft-max.c ft-split.c ft-strchr.c \
 						ft-strlcpy.c ft-strlen.c \
 						ft-strncmp.c ft-strtrim.c \
-						ft_isdigit.c \
-						environments.c forks.c philo-sleep.c \
-						philo-eat.c philo-forks.c
+						ft_isdigit.c \  philo-eat.c \
+						philo-sleep.c
 
 
 SRC					:= $(SRC_ROOT) \
@@ -47,7 +46,7 @@ CC			:= gcc
 CFLAGS 		+= -Wall -Werror -Wextra -pthread
 
 $(NAME): $(BIN)
-	$(CC) $(CFLAGS) $(BIN)  -o $(NAME)
+	@echo bitti
 all: $(NAME)
 
 re: fclean all
