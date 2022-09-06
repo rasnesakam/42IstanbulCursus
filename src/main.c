@@ -1,10 +1,4 @@
-
-#include "philosopher/philosopher.h"
-#include "environment/environment.h"
-#include "arg-converter/arg_converter.h"
-#include "arg-parser/arg_parser.h"
-#include "arg-verifier/arg_verifier.h"
-#include "concurrency/concurrency.h"
+#include "utils.h"
 
 static void	*simulate(void *env)
 {

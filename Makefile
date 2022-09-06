@@ -26,8 +26,9 @@ SRC_PHILOSOPHER 	:= philosopher.c
 SRC_UTILS 			:= ft-max.c ft-split.c ft-strchr.c \
 						ft-strlcpy.c ft-strlen.c \
 						ft-strncmp.c ft-strtrim.c \
-						ft_isdigit.c \  philo-eat.c \
-						philo-sleep.c
+						ft_isdigit.c philo-eat.c \
+						philo-sleep.c philo-think.c \
+						philo-print.c
 
 
 SRC					:= $(SRC_ROOT) \

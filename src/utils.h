@@ -1,15 +1,25 @@
 #ifndef UTILS_H
 # define UTILS_H
+# include "environment/environment.h"
+# include "philosopher/philosopher.h"
+# include "arg-converter/arg_converter.h"
+# include "arg-parser/arg_parser.h"
+# include "arg-verifier/arg_verifier.h"
+# include "concurrency/concurrency.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 
 
-void *prepare_eat(t_environment *environment);
+void	*prepare_eat(t_environment *environment);
 
-void *start_eat(t_environment *environment);
+void	*start_eat(t_environment *environment);
 
-void *philo_sleep(t_environment *environment);
+void	*philo_sleep(t_environment *environment);
+
+void	*philo_think(t_environment *environment);
+
+void	philo_print(t_philosopher s_philosopher, char *message);
 
 /**
  * @brief Get the timestamp from given offset.
