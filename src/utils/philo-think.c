@@ -7,5 +7,9 @@ void *philo_think(t_environment *environment)
 
 	mutex = &(environment->philosopher->mutex);
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *)environment->philosopher))
+	{
 		philo_print(*(environment->philosopher), "is thinking");
+		return ((void *) environment->philosopher);
+	}
+	return (NULL);
 }
