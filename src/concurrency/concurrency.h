@@ -7,7 +7,6 @@ struct s_function
 	int (*int_func)(void *);
 	void	*arg;
 };
-
 typedef struct s_function t_function;
 
 int *int_function(t_function function);

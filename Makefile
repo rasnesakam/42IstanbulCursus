@@ -46,9 +46,10 @@ BIN					:= $(subst $(DIR_SRC),$(DIR_BIN), $(SRC:.c=.o))
 CC			:= gcc
 CFLAGS 		+= -Wall -Werror -Wextra -pthread
 
+all: $(NAME)
+
 $(NAME): $(BIN)
 	@echo bitti
-all: $(NAME)
 
 re: fclean all
 
