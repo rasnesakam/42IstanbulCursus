@@ -6,7 +6,7 @@ void	*prepare_eat(t_environment *env)
 	return (NULL);
 }
 
-void	*start_eat(void *env)
+void	*start_eat(t_environment *env)
 {
 	(void)env;
 	return (NULL);
