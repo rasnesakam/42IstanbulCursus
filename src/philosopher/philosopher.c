@@ -1,4 +1,5 @@
 #include "philosopher.h"
+#include <stdlib.h>
 
 
 t_philosopher	*create_philosopher(int id)
@@ -14,13 +15,13 @@ t_philosopher	*create_philosopher(int id)
 	return (philosopher);
 }
 
-int destroy_philosopher(void *philosopher)
+int destroy_philosopher(t_philosopher *philosopher)
 {
 	(void) philosopher;
 	return 1;
 }
 
-int	philo_is_dead(void *philosopher)
+int	philo_is_dead(t_philosopher *philosopher)
 {
 	t_philosopher *philo;
 

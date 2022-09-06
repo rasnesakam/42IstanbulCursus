@@ -16,10 +16,10 @@ typedef struct s_philosopher t_philosopher;
 
 t_philosopher *create_philosopher(int id);
 
-int destroy_philosopher(void *philosopher);
+int destroy_philosopher(t_philosopher *philosopher);
 
-int philo_is_dead(void *philosopher);
+int philo_is_dead(t_philosopher *philosopher);
 
-void set_philo_dead(void *philosopher);
+void set_philo_dead(t_philosopher *philosopher);
 
 #endif
