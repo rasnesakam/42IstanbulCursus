@@ -10,9 +10,9 @@ static void	*simulate(void *env)
 	environment = (t_environment *) env;
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
-	while (!(*(get_int_sync(mutex, philo_is_dead, philo))))
+	while (!(get_int_sync(mutex, philo_is_dead, philo)))
 	{
-		ret = get_synchronized(environment->forks[1], prepare_eat, environment);
+		ret = get_synchronized(environment->forks[1], (void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
 			break;
 		ret = philo_sleep(environment);
@@ -75,7 +75,7 @@ static void listen_philos(int count, t_environment *envs)
 		{
 			philo = envs[index].philosopher;
 			mutex = &(philo->mutex);
-			if (*(get_int_sync(mutex, philo_is_dead, envs[index].philosopher)))
+			if (get_int_sync(mutex, philo_is_dead, envs[index].philosopher))
 			{
 				kill_all(envs, count);
 				loop = 0;

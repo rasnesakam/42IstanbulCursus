@@ -13,10 +13,11 @@ void *get_synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
 	}
 	return (val_return);
 }
-
+/*
 int	get_int_sync(pthread_mutex_t *ref, int (*f)(void *), void *param)
 {
 	void	*res;
 
 	res = get_synchronized(ref, int_)
 }
+*/
