@@ -1,12 +1,12 @@
 #include "../utils.h"
 
-void	*prepare_eat(t_environment *env)
+void	*prepare_eat(void *env)
 {
 	(void)env;
 	return (NULL);
 }
 
-void	*start_eat(t_environment *env)
+void	*start_eat(void *env)
 {
 	(void)env;
 	return (NULL);

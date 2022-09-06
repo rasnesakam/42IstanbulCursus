@@ -11,9 +11,9 @@
 # include <stdlib.h>
 
 
-void	*prepare_eat(t_environment *environment);
+void	*prepare_eat(void *environment);
 
-void	*start_eat(t_environment *environment);
+void	*start_eat(void *environment);
 
 void	*philo_sleep(t_environment *environment);
 

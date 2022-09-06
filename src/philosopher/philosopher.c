@@ -1,13 +1,5 @@
 #include "philosopher.h"
 
-struct s_philosopher
-{
-	int id;
-	int is_died;
-	unsigned long long last_eat_timestamp;
-	pthread_mutex_t mutex;
-	pthread_t thread;
-};
 
 t_philosopher	*create_philosopher(int id)
 {
@@ -22,12 +14,24 @@ t_philosopher	*create_philosopher(int id)
 	return (philosopher);
 }
 
-int	philo_is_dead(t_philosopher *philosopher)
+int destroy_philosopher(void *philosopher)
 {
-	return (philosopher->is_died);
+	(void) philosopher;
+	return 1;
+}
+
+int	philo_is_dead(void *philosopher)
+{
+	t_philosopher *philo;
+
+	philo = (t_philosopher *) philosopher;
+	return (philo->is_died);
 }
 
 void set_philo_dead(t_philosopher *philosopher)
 {
-	philosopher->is_died = 1;
+	t_philosopher *philo;
+
+	philo = (t_philosopher *) philosopher;
+	philo->is_died = 1;
 }
