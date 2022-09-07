@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo-think.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 16:35:55 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:37:51 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../utils.h"
 
-void *philo_think(t_environment *environment)
+void	*philo_think(t_environment *environment)
 {
-	pthread_mutex_t *mutex;
+	pthread_mutex_t	*mutex;
 
 	mutex = &(environment->philosopher->mutex);
-	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *)environment->philosopher))
+	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead,
+		(void *)environment->philosopher))
 	{
 		philo_print(*(environment->philosopher), "is thinking");
 		return ((void *) environment->philosopher);

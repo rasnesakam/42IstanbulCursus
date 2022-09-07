@@ -1,5 +1,16 @@
-#include "../utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   environments.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:12:59 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../utils.h"
 
 static void	set_env(\
 t_environment *env, \
@@ -46,11 +57,12 @@ pthread_mutex_t *forks
 	return (environments);
 }
 
+// TODO: destroy environment data
 int	destroy_environments(t_environment *environments)
 {
 	if (environments != NULL)
 	{
-		// TODO: destroy environment data
+		(void) environments;
 	}
 	return (1);
 }

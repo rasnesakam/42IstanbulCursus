@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft-split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 16:25:55 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:36:52 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../utils.h"
 
-static unsigned int ft_count(const char *s, char c)
+static unsigned int	ft_count(const char *s, char c)
 {
-	unsigned int count;
-	unsigned int i;
+	unsigned int	count;
+	unsigned int	i;
 
 	count = 0;
 	i = 0;
@@ -22,9 +33,9 @@ static unsigned int ft_count(const char *s, char c)
 	return (count);
 }
 
-static char *ft_create(char *lptr, char *crsr)
+static char	*ft_create(char *lptr, char *crsr)
 {
-	char *substr;
+	char	*substr;
 
 	substr = malloc(sizeof(char) * (crsr - lptr + 1));
 	if (!substr)
@@ -33,7 +44,7 @@ static char *ft_create(char *lptr, char *crsr)
 	return (substr);
 }
 
-static void ft_iterate(const char **s, char **lptr, char c)
+static void	ft_iterate(const char **s, char **lptr, char c)
 {
 	while (**s && **s == c)
 	{
@@ -44,11 +55,11 @@ static void ft_iterate(const char **s, char **lptr, char c)
 		*s = *s + 1;
 }
 
-char **ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	char **arr;
-	char *lastptr;
-	unsigned int cursor;
+	char			**arr;
+	char			*lastptr;
+	unsigned int	cursor;
 
 	if (!s)
 		return (NULL);

@@ -1,8 +1,21 @@
-# include "concurrency.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get-synchronized.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:49:55 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 15:49:57 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void *get_synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
+#include "concurrency.h"
+
+void
+	*get_synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
 {
-	void *val_return;
+	void	*val_return;
 
 	val_return = NULL;
 	if (ref)

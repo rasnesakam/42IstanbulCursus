@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:40:57 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_H
 # define UTILS_H
 # include "environment/environment.h"
@@ -10,16 +22,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+void				*prepare_eat(t_environment *environment);
 
-void	*prepare_eat(t_environment *environment);
+void				*start_eat(t_environment *environment);
 
-void	*start_eat(t_environment *environment);
+void				*philo_sleep(t_environment *environment);
 
-void	*philo_sleep(t_environment *environment);
+void				*philo_think(t_environment *environment);
 
-void	*philo_think(t_environment *environment);
-
-void	philo_print(t_philosopher s_philosopher, char *message);
+void				philo_print(t_philosopher s_philosopher, char *message);
 
 /**
  * @brief Get the timestamp from given offset.
@@ -28,25 +39,25 @@ void	philo_print(t_philosopher s_philosopher, char *message);
  * @param offset Time that will be exclude to determine passed time from offset
  * @return unsigned long long 
  */
-unsigned long long  get_timestamp(unsigned long long offset);
+unsigned long long	get_timestamp(unsigned long long offset);
 
+/*
+	external functions
+*/
+int					ft_max(int integer1, int integer2);
 
+char				**ft_split(const char *s, char c);
 
+char				*ft_strtrim(const char *s1, const char *set);
 
-int ft_max(int integer1, int integer2);
+char				*ft_strchr(const char *s, int c);
 
-char **ft_split(const char *s, char c);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
-char *ft_strtrim(const char *s1, const char *set);
+size_t				ft_strlen(const char *s);
 
-char *ft_strchr(const char *s, int c);
+int					ft_isdigit(int c);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
-size_t ft_strlen(const char *s);
-
-int	ft_isdigit(int c);
-
-size_t ft_strlcpy(char *dest, char *src, size_t dstsize);
+size_t				ft_strlcpy(char *dest, char *src, size_t dstsize);
 
 #endif

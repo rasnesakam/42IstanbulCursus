@@ -1,14 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   convert-args.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 15:37:15 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:25:42 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "arg_converter.h"
 
-static int ft_atoi(const char *s)
+static int	ft_isspace(int c)
 {
-	int res;
-	int sign;
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\v' || c == '\f' || c == '\r');
+}
+
+static int	ft_atoi(const char *s)
+{
+	int	res;
+	int	sign;
 
 	res = 0;
 	sign = 1;
-	while (*s != '\0' && (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\v' || *s == '\f' || *s == '\r'))
+	while (*s != '\0' && )
 		s++;
 	if (*s == '-' || *s == '+')
 		if (*s++ == '-')

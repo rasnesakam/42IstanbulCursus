@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   count-args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 16:46:12 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/01 16:36:01 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 15:48:05 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arg_parser.h"
+
 int	count_words(char *c)
 {
 	unsigned int	count;
@@ -19,7 +20,6 @@ int	count_words(char *c)
 
 	count = 0;
 	i = 0;
-	
 	while (c && c[i] != '\0')
 	{
 		if (c[i] == delimiter)

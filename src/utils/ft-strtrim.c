@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft-strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 16:27:47 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:35:25 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../utils.h"
 
-char *ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	char *bptr;
-	char *eptr;
-	char *trimmed;
+	char	*bptr;
+	char	*eptr;
+	char	*trimmed;
 
 	bptr = (char *)s1;
 	while (ft_strchr(set, *bptr) != NULL && *bptr != '\0')

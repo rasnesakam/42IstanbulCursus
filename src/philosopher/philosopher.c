@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosopher.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/07 16:17:09 by emakas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosopher.h"
 #include <stdlib.h>
 
-
 t_philosopher	*create_philosopher(int id)
 {
-	t_philosopher *philosopher;
+	t_philosopher	*philosopher;
 
 	philosopher = (t_philosopher *) malloc(sizeof(t_philosopher));
 	if (!philosopher)
@@ -15,23 +26,23 @@ t_philosopher	*create_philosopher(int id)
 	return (philosopher);
 }
 
-int destroy_philosopher(t_philosopher *philosopher)
+int	destroy_philosopher(t_philosopher *philosopher)
 {
 	(void) philosopher;
-	return 1;
+	return (1);
 }
 
 int	philo_is_dead(t_philosopher *philosopher)
 {
-	t_philosopher *philo;
+	t_philosopher	*philo;
 
 	philo = (t_philosopher *) philosopher;
 	return (philo->is_died);
 }
 
-void set_philo_dead(t_philosopher *philosopher)
+void	set_philo_dead(t_philosopher *philosopher)
 {
-	t_philosopher *philo;
+	t_philosopher	*philo;
 
 	philo = (t_philosopher *) philosopher;
 	philo->is_died = 1;
