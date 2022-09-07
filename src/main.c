@@ -10,9 +10,11 @@ static void	*simulate(void *env)
 	environment = (t_environment *) env;
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
-	while (!(get_int_sync(mutex, philo_is_dead, philo)))
+	while (!(get_int_sync(mutex,
+		(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
-		ret = get_synchronized(environment->forks[1], (void *(*)(void *)) prepare_eat, (void *)environment);
+		ret = get_synchronized(environment->forks[1],
+				(void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
 			break;
 		ret = philo_sleep(environment);
@@ -35,7 +37,8 @@ static void	start_threads(int count, t_environment *envs)
 	while (index < count)
 	{
 		environment = &(envs[index]);
-		pthread_create(&(envs[index].philosopher->thread),NULL,&simulate,&envs[index]);
+		pthread_create(&(envs[index].philosopher->thread),
+				NULL,&simulate,&envs[index]);
 		pthread_detach(envs[index].philosopher->thread);
 		index++;
 	}
@@ -56,7 +59,9 @@ static void	kill_all(t_environment *envs, int count)
 	while(index < count)
 	{
 		mutex = &(envs[index].philosopher->mutex); 
-		call_synchronized(mutex, set_philo_dead, envs[index].philosopher);
+		call_synchronized(mutex,
+				(void (*)(void *))set_philo_dead,
+				(void *)envs[index].philosopher);
 	}
 }
 
@@ -75,7 +80,9 @@ static void listen_philos(int count, t_environment *envs)
 		{
 			philo = envs[index].philosopher;
 			mutex = &(philo->mutex);
-			if (get_int_sync(mutex, philo_is_dead, envs[index].philosopher))
+			if (get_int_sync(mutex,
+				(int (*)(void *))philo_is_dead,
+				(void *) envs[index].philosopher))
 			{
 				kill_all(envs, count);
 				loop = 0;
