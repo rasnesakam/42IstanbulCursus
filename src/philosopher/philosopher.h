@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:16:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 17:59:23 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:29:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,13 @@ int				philo_is_dead(t_philosopher *philosopher);
  * @param philosopher to be indicated
  */
 void			set_philo_dead(t_philosopher *philosopher);
+
+/**
+ * @brief Sets philosopher's last eat time
+ * @param philo: Philosopher to be updated
+ * @param last_eat_timestamp: Last eat time stamp for philosopher
+ */
+void			set_philo_last_eat(t_philosopher *philo,
+					unsigned long long last_eat_timestamp);
 
 #endif
