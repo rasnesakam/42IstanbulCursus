@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 18:25:53 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:33:29 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_philo_dead(t_philosopher *philosopher)
 }
 
 void	set_philo_last_eat(t_philosopher *philo, 
-			unsigned long long last_eat_timestamp)
+			unsigned long long *last_eat_timestamp)
 {
-	philo->last_eat_timestamp = last_eat_timestamp;
+	philo->last_eat_timestamp = *last_eat_timestamp;
 }
