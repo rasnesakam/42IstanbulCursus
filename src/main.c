@@ -11,8 +11,7 @@ static void	*simulate(void *env)
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
 	while (!(get_int_sync(mutex,
-				(int (*)(void *))philo_is_dead,
-			(void *)philo)))
+				(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
@@ -53,8 +52,8 @@ static void	start_threads(int count, t_environment *envs)
 
 static void	kill_all(t_environment *envs, int count)
 {
-	int	index;
-	pthread_mutex_t *mutex;
+	int				index;
+	pthread_mutex_t	*mutex;
 
 	index = 0;
 	while (index < count)
@@ -68,8 +67,8 @@ static void	kill_all(t_environment *envs, int count)
 
 static void listen_philos(int count, t_environment *envs)
 {
-	int	loop;
-	int index;
+	int				loop;
+	int				index;
 	pthread_mutex_t *mutex;
 	t_philosopher	*philo;
 
@@ -82,7 +81,7 @@ static void listen_philos(int count, t_environment *envs)
 			philo = envs[index].philosopher;
 			mutex = &(philo->mutex);
 			if (get_int_sync(mutex,
-				(int (*)(void *))philo_is_dead,
+					(int (*)(void *))philo_is_dead,
 				(void *) envs[index].philosopher))
 			{
 				kill_all(envs, count);
@@ -104,7 +103,7 @@ int main(int ac, char **av)
 
 	count_arguments = count_args(ac, av);
 	args = collect_args(ac, av);
-	printf("%d\n",count_arguments);
+	printf("%d\n", count_arguments);
 	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
 		int_args = convert_args(count_arguments, args);
