@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:15 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:25:42 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 17:24:41 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_atoi(const char *s)
 
 	res = 0;
 	sign = 1;
-	while (*s != '\0' && )
+	while (*s != '\0' && ft_isspace((int)*s))
 		s++;
 	if (*s == '-' || *s == '+')
 		if (*s++ == '-')
