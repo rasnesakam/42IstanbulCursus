@@ -11,20 +11,20 @@ static void	*simulate(void *env)
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
 	while (!(get_int_sync(mutex,
-		(int (*)(void *))philo_is_dead, (void *)philo)))
+			(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
-			break;
+			break ;
 		ret = philo_sleep(environment);
 		if (ret == NULL)
-			break;
+			break ;
 		ret = philo_think(environment);
 		if (ret == NULL)
-			break;
+			break ;
 		}
-	return(NULL);
+	return (NULL);
 }
 
 
@@ -38,7 +38,7 @@ static void	start_threads(int count, t_environment *envs)
 	{
 		environment = &(envs[index]);
 		pthread_create(&(envs[index].philosopher->thread),
-				NULL,&simulate,&envs[index]);
+			NULL,&simulate,&envs[index]);
 		pthread_detach(envs[index].philosopher->thread);
 		index++;
 	}
@@ -56,12 +56,12 @@ static void	kill_all(t_environment *envs, int count)
 	pthread_mutex_t *mutex;
 
 	index = 0;
-	while(index < count)
+	while (index < count)
 	{
 		mutex = &(envs[index].philosopher->mutex); 
 		call_synchronized(mutex,
-				(void (*)(void *))set_philo_dead,
-				(void *)envs[index].philosopher);
+			(void (*)(void *))set_philo_dead,
+			(void *)envs[index].philosopher);
 	}
 }
 
