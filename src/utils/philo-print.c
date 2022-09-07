@@ -6,18 +6,20 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:35:13 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:04:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
 
-void	philo_print(t_philosopher philosopher, char *message)
+void	philo_print(t_environment env, char *message)
 {
 	unsigned long long	timestamp;
+	t_philosopher		philosopher;
 	int					id;
 
-	timestamp = get_timestamp(0);
+	philosopher = *(env.philosopher);
 	id = philosopher.id;
+	timestamp = get_timestamp(env.start_time);
 	printf("%llu %d %s\n", timestamp, id, message);
 }

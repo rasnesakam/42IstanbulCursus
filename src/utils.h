@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:40:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:03:17 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ void				*philo_sleep(t_environment *environment);
 
 void				*philo_think(t_environment *environment);
 
-void				philo_print(t_philosopher s_philosopher, char *message);
+/**
+ * @brief Prints given philosopher's status with timestamp
+ * @param env: Environment that philosopher lives
+ * @param message: Exact message that will be printed
+ */
+void				philo_print(t_environment env, char *message);
 
 /**
  * @brief Get the timestamp from given offset.

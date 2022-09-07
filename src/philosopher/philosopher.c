@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:17:09 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 17:56:14 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,10 @@ int	destroy_philosopher(t_philosopher *philosopher)
 
 int	philo_is_dead(t_philosopher *philosopher)
 {
-	t_philosopher	*philo;
-
-	philo = (t_philosopher *) philosopher;
-	return (philo->is_died);
+	return (philosopher->is_died);
 }
 
 void	set_philo_dead(t_philosopher *philosopher)
 {
-	t_philosopher	*philo;
-
-	philo = (t_philosopher *) philosopher;
-	philo->is_died = 1;
+	philosopher->is_died = 1;
 }

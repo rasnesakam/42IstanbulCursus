@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:35:55 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:37:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 17:59:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	*philo_think(t_environment *environment)
 	mutex = &(environment->philosopher->mutex);
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead,
 		(void *)environment->philosopher))
-	{
-		philo_print(*(environment->philosopher), "is thinking");
-		return ((void *) environment->philosopher);
-	}
-	return (NULL);
+		return (NULL);
+	philo_print(*(environment->philosopher), "is thinking");
+	return ((void *) environment->philosopher);
 }
