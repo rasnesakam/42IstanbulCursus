@@ -6,12 +6,13 @@ static void	*simulate(void *env)
 	t_philosopher	*philo;
 	pthread_mutex_t	*mutex;
 	void			*ret;
-	
+
 	environment = (t_environment *) env;
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
 	while (!(get_int_sync(mutex,
-			(int (*)(void *))philo_is_dead, (void *)philo)))
+				(int (*)(void *))philo_is_dead,
+				(void *)philo)))
 	{
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
