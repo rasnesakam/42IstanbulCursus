@@ -92,7 +92,7 @@ static void	listen_philos(int count, t_environment *envs)
 }
 
 // NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char			**args;
 	int				*int_args;
