@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 18:39:14 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:27:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	*start_eat(t_environment *env)
 	philo_print(*env, "is taken a fork");
 	philo_print(*env, "is eating");
 	usleep((env->eat_time) * 1000);
+	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
+		return (NULL);
 	timestamp = get_timestamp(env->start_time);
 	bifunction.bifunc = (void (*)(void *, void *)) set_philo_last_eat;
 	bifunc.arg_1 = (void *) philo;
