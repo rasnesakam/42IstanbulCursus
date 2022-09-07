@@ -23,10 +23,9 @@ static void	*simulate(void *env)
 		ret = philo_think(environment);
 		if (ret == NULL)
 			break ;
-		}
+	}
 	return (NULL);
 }
-
 
 static void	start_threads(int count, t_environment *envs)
 {
@@ -38,7 +37,7 @@ static void	start_threads(int count, t_environment *envs)
 	{
 		environment = &(envs[index]);
 		pthread_create(&(envs[index].philosopher->thread),
-			NULL,&simulate,&envs[index]);
+			NULL, &simulate, &envs[index]);
 		pthread_detach(envs[index].philosopher->thread);
 		index++;
 	}
@@ -58,18 +57,18 @@ static void	kill_all(t_environment *envs, int count)
 	index = 0;
 	while (index < count)
 	{
-		mutex = &(envs[index].philosopher->mutex); 
+		mutex = &(envs[index].philosopher->mutex);
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
 	}
 }
 
-static void listen_philos(int count, t_environment *envs)
+static void	listen_philos(int count, t_environment *envs)
 {
 	int				loop;
 	int				index;
-	pthread_mutex_t *mutex;
+	pthread_mutex_t	*mutex;
 	t_philosopher	*philo;
 
 	loop = 1;
