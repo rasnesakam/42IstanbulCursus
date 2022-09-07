@@ -11,7 +11,7 @@ static void	*simulate(void *env)
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
 	while (!(get_int_sync(mutex,
-			(int (*)(void *))philo_is_dead,
+				(int (*)(void *))philo_is_dead,
 			(void *)philo)))
 	{
 		ret = get_synchronized(environment->forks[1],
