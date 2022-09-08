@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 19:05:28 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:43:34 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static void	listen_philos(int count, t_environment *envs)
 				kill_all(envs, count);
 				return ;
 			}
+			index++;
 		}
 		usleep(1000);
 	}
