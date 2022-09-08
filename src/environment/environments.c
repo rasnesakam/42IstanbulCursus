@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:12:59 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 14:17:40 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ pthread_mutex_t *forks
 	while (index < args[0])
 	{
 		philosopher = create_philosopher(index);
-		if (!philosopher && destroy_environments(environments))
+		if (!philosopher && destroy_environments(environments, index + 1))
 			return (NULL);
 		set_env(&(environments[index]), philosopher, args, forks);
 		if (arg_count > 4)
@@ -58,11 +58,19 @@ pthread_mutex_t *forks
 }
 
 // TODO: destroy environment data
-int	destroy_environments(t_environment *environments)
+int	destroy_environments(t_environment *environments, int count)
 {
+	int index;
+
 	if (environments != NULL)
 	{
-		(void) environments;
+		index = 0;
+		while (index < count)
+		{
+			destroy_philosopher(environments[index].philosopher);
+			index++;
+		}
+		free(environments);
 	}
 	return (1);
 }

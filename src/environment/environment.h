@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:03:19 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 16:19:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 14:23:31 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ t_environment	*create_environments(int arg_count,
  * @brief Destroys current environment objects
  * 
  * @param environments that will be destroyed
+ * @param count: Count of environments in list
  * @return 1 if destroys successfully
  */
-int				destroy_environments(t_environment *environments);
+int				destroy_environments(t_environment *environments, int count);
 
 /**
  * @brief Create a fork list with 'count' size

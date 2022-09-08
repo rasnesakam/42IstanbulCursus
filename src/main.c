@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <emakas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 13:28:30 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 14:16:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	main(int ac, char **av)
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
 		destroy_forks(forks, int_args[0]);
-		destroy_environments(envs);
+		destroy_environments(envs, int_args[0]);
 	}
 	return (0);
 }
