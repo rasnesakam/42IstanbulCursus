@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 15:48:11 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 13:28:30 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void	start_threads(int count, t_environment *envs)
 	index = 0;
 	while (index < count)
 	{
-		environment = &(envs[index]);
 		pthread_create(&(envs[index].philosopher->thread),
 			NULL, &simulate, &envs[index]);
+		envs[index]->start_time = get_timestamp(0);
 		pthread_detach(envs[index].philosopher->thread);
 		index++;
 	}
