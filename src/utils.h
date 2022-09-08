@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 18:03:17 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 18:28:55 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void				*start_eat(t_environment *environment);
 void				*philo_sleep(t_environment *environment);
 
 void				*philo_think(t_environment *environment);
+
+int					check_starve(t_environment environment);
 
 /**
  * @brief Prints given philosopher's status with timestamp

@@ -1,4 +1,4 @@
-NAME		:= philosophers
+NAME		:= philo
 
 # Parent Directories
 DIR_SRC		:= src/
@@ -48,7 +48,8 @@ SRC_ENVIRONMENT 	:= environments.c \
 
 SRC_PHILOSOPHER 	:= philosopher.c
 
-SRC_UTILS 			:= ft_isdigit.c \
+SRC_UTILS 			:= check-starve.c \
+						ft_isdigit.c \
 						ft-max.c \
 						ft-split.c \
 						ft-strchr.c \

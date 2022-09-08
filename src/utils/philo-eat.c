@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 16:45:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 18:41:09 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	*prepare_eat(t_environment *env)
 {
-	void			*result;
 	pthread_mutex_t	*mutex;
+	t_philosopher	*philo;
+	void			*result;
 
 	mutex = env->forks[0];
+	philo = env->philosopher;
+	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
+		return (NULL);
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
 			(void *(*)(void *))start_eat, (void *)env);

@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 16:46:25 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:05:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	*simulate(void *env)
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
-			break ;
+			return (NULL) ;
 		ret = philo_sleep(environment);
 		if (ret == NULL)
-			break ;
+			return (NULL) ;
 		ret = philo_think(environment);
 		if (ret == NULL)
-			break ;
+			return (NULL) ;
 	}
 	return (NULL);
 }
@@ -48,10 +48,11 @@ static void	start_threads(int count, t_environment *envs)
 	while (index < count)
 	{
 		environment = &(envs[index]);
+		environment->start_time = get_timestamp(0);
 		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[index]);
-		environment->start_time = get_timestamp(0);
 		pthread_detach(environment->philosopher->thread);
+		usleep(100);
 		index++;
 	}
 	index = 0;
@@ -74,33 +75,31 @@ static void	kill_all(t_environment *envs, int count)
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
+		index++;
 	}
 }
 
 static void	listen_philos(int count, t_environment *envs)
 {
-	int				loop;
 	int				index;
 	pthread_mutex_t	*mutex;
 	t_philosopher	*philo;
 
-	loop = 1;
-	while (loop)
+	while (1)
 	{
 		index = 0;
 		while (index < count)
 		{
 			philo = envs[index].philosopher;
 			mutex = &(philo->mutex);
-			if (get_int_sync(mutex,
-					(int (*)(void *))philo_is_dead,
-				(void *) envs[index].philosopher))
+			if (check_starve(envs[index]))
 			{
+				philo_print(envs[index], "is died");
 				kill_all(envs, count);
-				loop = 0;
+				return ;
 			}
 		}
-		usleep(5000);
+		usleep(1000);
 	}
 }
 
@@ -118,8 +117,11 @@ int	main(int ac, char **av)
 	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
 		int_args = convert_args(count_arguments, args);
+		
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
+		
+		
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
 		destroy_forks(forks, int_args[0]);
