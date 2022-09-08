@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:09:47 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 14:11:33 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ t_philosopher	*create_philosopher(int id)
 
 int	destroy_philosopher(t_philosopher *philosopher)
 {
-	pthread_mutex_destroy(&(philosopher->mutex));
-	free(philosopher);
+	if (philosopher)
+	{
+		pthread_mutex_destroy(&(philosopher->mutex));
+		free(philosopher);
+	}
 	return (1);
 }
 
