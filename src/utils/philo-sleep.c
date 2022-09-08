@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:40 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:01:50 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 14:04:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	*philo_sleep(t_environment *env)
 		return (NULL);
 	philo_print(*env, "is sleeping");
 	usleep(env->sleep_time * 1000);
-	return (env->philosopher);	
+	return (env->philosopher);
 }
