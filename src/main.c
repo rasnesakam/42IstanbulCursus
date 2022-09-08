@@ -6,7 +6,7 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:16:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 16:46:25 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ static void	start_threads(int count, t_environment *envs)
 	index = 0;
 	while (index < count)
 	{
-		pthread_create(&(envs[index].philosopher->thread),
+		environment = &(envs[index]);
+		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[index]);
-		envs[index]->start_time = get_timestamp(0);
-		pthread_detach(envs[index].philosopher->thread);
+		environment->start_time = get_timestamp(0);
+		pthread_detach(environment->philosopher->thread);
 		index++;
 	}
 	index = 0;
@@ -114,7 +115,6 @@ int	main(int ac, char **av)
 
 	count_arguments = count_args(ac, av);
 	args = collect_args(ac, av);
-	printf("%d\n", count_arguments);
 	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
 		int_args = convert_args(count_arguments, args);

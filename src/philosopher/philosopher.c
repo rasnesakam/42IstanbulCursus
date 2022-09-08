@@ -6,12 +6,13 @@
 /*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:11:33 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/08 16:46:12 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 t_philosopher	*create_philosopher(int id)
 {
