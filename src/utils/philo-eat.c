@@ -41,7 +41,7 @@ void	*start_eat(t_environment *env)
 		return (NULL);
 	philo_print(*env, "is taken a fork");
 	philo_print(*env, "is eating");
-	ft_wait((env->eat_time));
+	usleep((env->eat_time) * 1000);
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
 	timestamp = get_timestamp(env->start_time);
