@@ -25,7 +25,7 @@ void	philo_print(t_environment env, char *message)
 	philosopher = *(env.philosopher);
 	id = philosopher.id;
 	timestamp = get_timestamp(env.start_time);
-	pthread_mutex_init(mutex);
+	pthread_mutex_init(mutex, NULL);
 	pthread_mutex_lock(mutex);
 	printf("[%p]\t%llu %d %s\n",mutex, timestamp, id, message);
 	pthread_mutex_unlock(mutex);
