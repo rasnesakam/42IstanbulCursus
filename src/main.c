@@ -104,7 +104,7 @@ static void	listen_philos(int count, t_environment *envs)
 	}
 }
 
-// NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
+// NUM_OF_PHILOS	 TIME_TO_DIE	 TIME_TO_EAT 	TIME_TO_SLEEP	 NUMBER_OF_EAT_TIME(OPT)
 int	main(int ac, char **av)
 {
 	char			**args;
@@ -121,7 +121,6 @@ int	main(int ac, char **av)
 		
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
-		
 		
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);

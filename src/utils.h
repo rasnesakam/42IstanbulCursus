@@ -54,7 +54,7 @@ unsigned long long	get_timestamp(unsigned long long offset);
  * @param miliseconds: miliseconds to wait
  *
  */
-void				ft_wait(int miliseconds);
+void				ft_wait(unsigned int miliseconds);
 
 /*
 	external functions

@@ -26,8 +26,8 @@ pthread_mutex_t *forks)
 	env->sleep_time = args[3];
 	env->remained_food = -1;
 	env->philosopher = philo;
-	env->forks[0] = &(forks[index]);
-	env->forks[1] = &(forks[(index + 1) % args[0]]);
+	env->forks[0] = &(forks[index - 1]);
+	env->forks[1] = &(forks[(index) % args[0]]);
 }
 
 t_environment	*create_environments(\
