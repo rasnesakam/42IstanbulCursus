@@ -17,9 +17,17 @@ void	philo_print(t_environment env, char *message)
 	unsigned long long	timestamp;
 	t_philosopher		philosopher;
 	int					id;
+	static pthread_mutex_t		*mutex;
+
+	if (mutex == NULL)
+		mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
 
 	philosopher = *(env.philosopher);
 	id = philosopher.id;
 	timestamp = get_timestamp(env.start_time);
+	pthread_mutex_init(mutex);
+	pthread_mutex_lock(mutex);
 	printf("%llu %d %s\n", timestamp, id, message);
+	pthread_mutex_unlock(mutex);
+	pthread_mutex_destroy(mutex);
 }
