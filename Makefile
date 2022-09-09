@@ -57,6 +57,7 @@ SRC_UTILS 			:= check-starve.c \
 						ft-strlen.c \
 						ft-strncmp.c \
 						ft-strtrim.c \
+						ft-wait.c \
 						get-timestamp.c \
 						philo-eat.c \
 						philo-print.c \
@@ -83,7 +84,7 @@ RED					:= \033[0;31m
 GREEN				:= \033[1;32m
 
 CC			:= gcc
-CFLAGS 		+= -Wall -Werror -Wextra -pthread
+CFLAGS 		+= -Wall -Werror -Wextra -pthread #-fsanitize=thread
 
 all: $(NAME)
 
