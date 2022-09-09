@@ -46,7 +46,7 @@ pthread_mutex_t *forks
 	index = 0;
 	while (index < args[0])
 	{
-		philosopher = create_philosopher(index);
+		philosopher = create_philosopher(index + 1);
 		if (!philosopher && destroy_environments(environments, index + 1))
 			return (NULL);
 		set_env(&(environments[index]), philosopher, args, forks);

@@ -48,6 +48,14 @@ void				philo_print(t_environment env, char *message);
  */
 unsigned long long	get_timestamp(unsigned long long offset);
 
+/**
+ * @brief Waits in miliseconds
+ * 
+ * @param miliseconds: miliseconds to wait
+ *
+ */
+void				ft_wait(int miliseconds);
+
 /*
 	external functions
 */
