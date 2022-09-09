@@ -25,6 +25,8 @@ static void	*simulate(void *env)
 	while (!(get_int_sync(mutex,
 				(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
+		if (philo->id %2 == 0)
+			ft_wait(1);
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
@@ -52,7 +54,7 @@ static void	start_threads(int count, t_environment *envs)
 		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[index]);
 		pthread_detach(environment->philosopher->thread);
-		usleep(100);
+		//usleep(100);
 		index++;
 	}
 	index = 0;
