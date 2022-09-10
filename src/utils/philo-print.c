@@ -12,23 +12,16 @@
 
 #include "../utils.h"
 
-void	philo_print(t_environment env, char *message)
+void	philo_print(t_environment env, char *message, pthread_mutex_t *mutex)
 {
-	unsigned long long	timestamp;
-	t_philosopher		philosopher;
-	int					id;
-	static pthread_mutex_t		*mutex;
-
-	if (mutex == NULL)
-	{
-		mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-		pthread_mutex_init(mutex, NULL);
-	}
+	unsigned long long		timestamp;
+	t_philosopher			philosopher;
+	int						id;
 
 	philosopher = *(env.philosopher);
 	id = philosopher.id;
-	pthread_mutex_lock(mutex);
 	timestamp = get_timestamp(env.start_time);
+	pthread_mutex_lock(mutex);
 	printf("%llu %d %s\n", timestamp, id, message);
 	pthread_mutex_unlock(mutex);
 }

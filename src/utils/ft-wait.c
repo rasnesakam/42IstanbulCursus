@@ -2,14 +2,11 @@
 
 void	ft_wait(unsigned int miliseconds)
 {
-	unsigned int	count;
-	int				subcount;
+	
+	unsigned long long	start;
 
-	count = 1;
-	miliseconds = miliseconds;
-	while (count <= miliseconds)
-	{
-		usleep(100);
-		count++;
-	}
+	start = get_timestamp(0);
+	while (get_timestamp(start) < miliseconds)
+		usleep(1);
+}
 }

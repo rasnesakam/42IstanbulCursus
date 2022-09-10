@@ -23,6 +23,7 @@ struct					s_environment
 	int					die_time;
 	int					remained_food;
 	pthread_mutex_t		*forks[2];
+	pthread_mutex_t		*spagetti;
 	unsigned long long	start_time;
 };
 

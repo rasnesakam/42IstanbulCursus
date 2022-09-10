@@ -18,6 +18,6 @@ void	*philo_sleep(t_environment *env)
 			(int (*)(void *))philo_is_dead, (void *) env->philosopher))
 		return (NULL);
 	philo_print(*env, "is sleeping");
-	usleep(env->sleep_time * 1000);
+	ft_wait(env->sleep_time);
 	return (env->philosopher);
 }

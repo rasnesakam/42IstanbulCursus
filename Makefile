@@ -84,7 +84,7 @@ RED					:= \033[0;31m
 GREEN				:= \033[1;32m
 
 CC			:= gcc
-CFLAGS 		+= -pthread #-fsanitize=thread -Wall -Werror -Wextra 
+CFLAGS 		+= -Wall -Werror -Wextra -pthread #-fsanitize=thread 
 
 all: $(NAME)
 
