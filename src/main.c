@@ -90,7 +90,7 @@ static void	listen_philos(int count, t_environment *envs)
 			}
 			index++;
 		}
-		ft_wait(5);
+		ft_wait(1);
 	}
 }
 
