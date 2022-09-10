@@ -12,7 +12,7 @@
 
 #include "../utils.h"
 
-void	philo_print(t_environment env, char *message, pthread_mutex_t *mutex)
+void	philo_print(t_environment env, char *message)
 {
 	unsigned long long		timestamp;
 	pthread_mutex_t			*mutex;

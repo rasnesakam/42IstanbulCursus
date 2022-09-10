@@ -34,8 +34,7 @@ pthread_mutex_t *forks)
 t_environment	*create_environments(\
 int arg_count, \
 int *args, \
-pthread_mutex_t *forks
-)
+pthread_mutex_t *forks)
 {
 	int				index;
 	t_environment	*environments;
