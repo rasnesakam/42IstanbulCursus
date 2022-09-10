@@ -112,8 +112,8 @@ int	main(int ac, char **av)
 		int_args = convert_args(count_arguments, args);
 		
 		unsigned long long begin = get_timestamp(0);
-		//ft_wait(int_args[0]);
-		sleep(1);
+		ft_wait(int_args[0]);
+		//sleep(1);
 		unsigned long long fin = get_timestamp(begin);
 		printf("%llu", fin);
 		/*
