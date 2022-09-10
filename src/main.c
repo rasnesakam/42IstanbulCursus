@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 19:43:34 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/10 07:38:44 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	*simulate(void *env)
 	environment = (t_environment *) env;
 	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
+	if (environment->start_time == 0)
+		environment->start_time = get_timestamp(0);
 	while (!(get_int_sync(mutex,
 				(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
@@ -43,25 +45,15 @@ static void	*simulate(void *env)
 
 static void	start_threads(int count, t_environment *envs)
 {
-	int				index;
 	t_environment	*environment;
 
-	index = 0;
-	while (index < count)
+	while (count-- > 0)
 	{
-		environment = &(envs[index]);
-		environment->start_time = get_timestamp(0);
+		environment = &(envs[count]);
 		pthread_create(&(environment->philosopher->thread),
-			NULL, &simulate, &envs[index]);
+			NULL, &simulate, &envs[count]);
 		pthread_detach(environment->philosopher->thread);
-		//usleep(100);
-		index++;
-	}
-	index = 0;
-	while (index < count)
-	{
-		pthread_join((envs[index].philosopher->thread), NULL);
-		index++;
+		usleep(100);
 	}
 }
 
@@ -84,16 +76,12 @@ static void	kill_all(t_environment *envs, int count)
 static void	listen_philos(int count, t_environment *envs)
 {
 	int				index;
-	pthread_mutex_t	*mutex;
-	t_philosopher	*philo;
 
 	while (1)
 	{
 		index = 0;
 		while (index < count)
 		{
-			philo = envs[index].philosopher;
-			mutex = &(philo->mutex);
 			if (check_starve(envs[index]))
 			{
 				philo_print(envs[index], "is died");
@@ -102,11 +90,11 @@ static void	listen_philos(int count, t_environment *envs)
 			}
 			index++;
 		}
-		usleep(1000);
+		usleep(5000);
 	}
 }
 
-// NUM_OF_PHILOS	 TIME_TO_DIE	 TIME_TO_EAT 	TIME_TO_SLEEP	 NUMBER_OF_EAT_TIME(OPT)
+// NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
 int	main(int ac, char **av)
 {
 	char			**args;

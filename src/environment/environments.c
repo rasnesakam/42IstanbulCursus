@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environments.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:17:40 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/10 07:39:06 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ pthread_mutex_t *forks)
 	env->eat_time = args[2];
 	env->sleep_time = args[3];
 	env->remained_food = -1;
+	env->start_time = 0;
 	env->philosopher = philo;
 	env->forks[0] = &(forks[index - 1]);
 	env->forks[1] = &(forks[(index) % args[0]]);

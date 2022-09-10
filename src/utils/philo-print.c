@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo-print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 18:04:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/10 07:36:24 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ void	philo_print(t_environment env, char *message)
 	static pthread_mutex_t		*mutex;
 
 	if (mutex == NULL)
+	{
 		mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(mutex, NULL);
+	}
 
 	philosopher = *(env.philosopher);
 	id = philosopher.id;
-	timestamp = get_timestamp(env.start_time);
-	pthread_mutex_init(mutex, NULL);
 	pthread_mutex_lock(mutex);
-	printf("[%p]\t%llu %d %s\n",mutex, timestamp, id, message);
+	timestamp = get_timestamp(env.start_time);
+	printf("%llu %d %s\n", timestamp, id, message);
 	pthread_mutex_unlock(mutex);
-	pthread_mutex_destroy(mutex);
 }
