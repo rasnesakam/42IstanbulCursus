@@ -109,12 +109,13 @@ int	main(int ac, char **av)
 	args = collect_args(ac, av);
 	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
+		int_args = convert_args(count_arguments, args);
+		
 		unsigned long long begin = get_timestamp(0);
 		ft_wait(int_args[0]);
 		unsigned long long fin = get_timestamp(begin);
 		printf("%llu", fin);
 		/*
-		int_args = convert_args(count_arguments, args);
 		
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
