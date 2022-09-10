@@ -49,6 +49,7 @@ SRC_ENVIRONMENT 	:= environments.c \
 SRC_PHILOSOPHER 	:= philosopher.c
 
 SRC_UTILS 			:= check-starve.c \
+						destroy-global-mutex.c \
 						ft_isdigit.c \
 						ft-max.c \
 						ft-split.c \
@@ -58,6 +59,7 @@ SRC_UTILS 			:= check-starve.c \
 						ft-strncmp.c \
 						ft-strtrim.c \
 						ft-wait.c \
+						get-global-mutex.c \
 						get-timestamp.c \
 						philo-eat.c \
 						philo-print.c \

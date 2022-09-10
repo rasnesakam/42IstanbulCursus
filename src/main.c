@@ -116,6 +116,7 @@ int	main(int ac, char **av)
 		
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
+		destroy_global_mutex();
 		destroy_forks(forks, int_args[0]);
 		destroy_environments(envs, int_args[0]);
 	}

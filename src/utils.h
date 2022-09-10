@@ -39,6 +39,10 @@ int					check_starve(t_environment environment);
  */
 void				philo_print(t_environment env, char *message);
 
+pthread_mutex_t		*get_global_mutex();
+
+int					destroy_global_mutex();
+
 /**
  * @brief Get the timestamp from given offset.
  * 			if offset is zero, result will be current time with milisecond

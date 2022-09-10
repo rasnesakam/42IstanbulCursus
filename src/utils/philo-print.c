@@ -15,11 +15,13 @@
 void	philo_print(t_environment env, char *message, pthread_mutex_t *mutex)
 {
 	unsigned long long		timestamp;
+	pthread_mutex_t			*mutex;
 	t_philosopher			philosopher;
 	int						id;
 
 	philosopher = *(env.philosopher);
 	id = philosopher.id;
+	mutex = get_global_mutex();
 	timestamp = get_timestamp(env.start_time);
 	pthread_mutex_lock(mutex);
 	printf("%llu %d %s\n", timestamp, id, message);
