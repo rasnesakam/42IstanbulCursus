@@ -6,9 +6,10 @@ void	ft_wait(unsigned int miliseconds)
 	int				subcount;
 
 	count = 1;
+	miliseconds = miliseconds * 2;
 	while (count <= miliseconds)
 	{
-		usleep(100);
+		usleep(50);
 		count++;
 	}
 }
