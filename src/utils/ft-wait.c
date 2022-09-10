@@ -8,7 +8,7 @@ void	ft_wait(unsigned int miliseconds)
 	count = 1;
 	while (count <= miliseconds)
 	{
-		usleep(1);
+		usleep(100);
 		count++;
 	}
 }
