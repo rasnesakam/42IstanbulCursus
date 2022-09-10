@@ -9,4 +9,3 @@ void	ft_wait(unsigned int miliseconds)
 	while (get_timestamp(start) < miliseconds)
 		usleep(1);
 }
-}
