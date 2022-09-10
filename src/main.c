@@ -95,7 +95,7 @@ static void	listen_philos(int count, t_environment *envs)
 }
 
 // NUM_OF_PHILOS TIME_TO_DIE TIME_TO_EAT TIME_TO_SLEEP NUMBER_OF_EAT_TIME(OPT)
-
+#include <unistd.h>
 int	main(int ac, char **av)
 {
 
@@ -112,7 +112,8 @@ int	main(int ac, char **av)
 		int_args = convert_args(count_arguments, args);
 		
 		unsigned long long begin = get_timestamp(0);
-		ft_wait(int_args[0]);
+		//ft_wait(int_args[0]);
+		sleep(1);
 		unsigned long long fin = get_timestamp(begin);
 		printf("%llu", fin);
 		/*
