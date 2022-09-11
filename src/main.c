@@ -114,7 +114,7 @@ int	main(int ac, char **av)
 		
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
-		
+		get_global_mutex();
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
 		destroy_global_mutex();
