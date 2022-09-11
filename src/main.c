@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/10 07:38:44 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/11 22:09:14 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	listen_philos(int count, t_environment *envs)
 			}
 			index++;
 		}
-		ft_wait(1);
+		usleep(100);
 	}
 }
 
