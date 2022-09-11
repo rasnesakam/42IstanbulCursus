@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/11 22:09:14 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/11 22:12:25 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	start_threads(int count, t_environment *envs)
 		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[count]);
 		pthread_detach(environment->philosopher->thread);
-		usleep(100);
+		usleep(10);
 	}
 }
 
