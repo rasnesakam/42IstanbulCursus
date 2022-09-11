@@ -69,6 +69,7 @@ static void	kill_all(t_environment *envs, int count)
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
+		pthread_join(envs[index].philosopher->thread, NULL);
 		index++;
 	}
 }
