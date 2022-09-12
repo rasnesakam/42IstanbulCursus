@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 16:46:12 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/12 15:30:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 t_philosopher	*create_philosopher(int id)
 {
 	t_philosopher	*philosopher;
+	pthread_mutex_t	*mutex;
 
 	philosopher = (t_philosopher *) malloc(sizeof(t_philosopher));
-	if (!philosopher)
+	mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	if (!philosopher || !mutex)
 		return (NULL);
 	philosopher->id = id;
 	philosopher->is_died = 0;
-	pthread_mutex_init(&(philosopher->mutex), NULL);
+	pthread_mutex_init(mutex, NULL);
+	philosopher->mutex = mutex;
 	return (philosopher);
 }
 
@@ -31,7 +34,8 @@ int	destroy_philosopher(t_philosopher *philosopher)
 {
 	if (philosopher)
 	{
-		pthread_mutex_destroy(&(philosopher->mutex));
+		pthread_mutex_destroy(philosopher->mutex);
+		free(philosopher->mutex);
 		free(philosopher);
 	}
 	return (1);

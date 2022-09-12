@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo-eat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 18:41:09 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/12 15:28:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	*prepare_eat(t_environment *env)
 
 	mutex = env->forks[0];
 	philo = env->philosopher;
-	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
+	if (get_int_sync(philo->mutex, (int (*)(void *))philo_is_dead, 
+			(void *) philo))
 		return (NULL);
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
@@ -35,7 +36,7 @@ void	*start_eat(t_environment *env)
 	t_philosopher		*philo;
 	t_bifunction		bifunction;
 
-	mutex = &(env->philosopher->mutex);
+	mutex = env->philosopher->mutex;
 	philo = env->philosopher;
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
@@ -48,7 +49,7 @@ void	*start_eat(t_environment *env)
 	bifunction.bifunc = (void (*)(void *, void *)) set_philo_last_eat;
 	bifunction.arg_1 = (void *) philo;
 	bifunction.arg_2 = (void *) &timestamp;
-	call_synchronized(&(philo->mutex),
+	call_synchronized(mutex,
 		(void (*)(void *))call_bifunction, (void *)(&bifunction));
 	return ((void *)philo);
 }

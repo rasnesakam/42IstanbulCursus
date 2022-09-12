@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:16:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/07 18:33:15 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/12 15:24:22 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct					s_philosopher
 	int					id;
 	int					is_died;
 	unsigned long long	last_eat_timestamp;
-	pthread_mutex_t		mutex;
+	pthread_mutex_t		*mutex;
 	pthread_t			thread;
 };
 

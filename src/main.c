@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/11 22:12:25 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/12 15:33:19 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static void	*simulate(void *env)
 	void			*ret;
 
 	environment = (t_environment *) env;
-	mutex = &(environment->philosopher->mutex);
 	philo = environment->philosopher;
+	mutex = philo->mutex;
 	if (environment->start_time == 0)
 		environment->start_time = get_timestamp(0);
 	while (!(get_int_sync(mutex,
 				(int (*)(void *))philo_is_dead, (void *)philo)))
 	{
-		if (philo->id %2 == 0)
-			ft_wait(1);
+		//if (philo->id % 2 == 0)
+		//	usleep(100);
 		ret = get_synchronized(environment->forks[1],
 				(void *(*)(void *)) prepare_eat, (void *)environment);
 		if (ret == NULL)
@@ -53,7 +53,7 @@ static void	start_threads(int count, t_environment *envs)
 		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[count]);
 		pthread_detach(environment->philosopher->thread);
-		usleep(10);
+		usleep(100);
 	}
 }
 
@@ -65,7 +65,7 @@ static void	kill_all(t_environment *envs, int count)
 	index = 0;
 	while (index < count)
 	{
-		mutex = &(envs[index].philosopher->mutex);
+		mutex = envs[index].philosopher->mutex;
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
@@ -91,7 +91,7 @@ static void	listen_philos(int count, t_environment *envs)
 			}
 			index++;
 		}
-		usleep(100);
+		usleep(10);
 	}
 }
 
