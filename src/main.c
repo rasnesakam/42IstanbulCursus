@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/12 15:33:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/14 16:13:12 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ int	main(int ac, char **av)
 		get_global_mutex();
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
-		destroy_global_mutex();
-		destroy_forks(forks, int_args[0]);
-		destroy_environments(envs, int_args[0]);
+		//destroy_global_mutex();
+		//destroy_forks(forks, int_args[0]);
+		//destroy_environments(envs, int_args[0]);
 	}
 	return (0);
 }
