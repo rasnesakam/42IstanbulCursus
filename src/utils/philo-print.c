@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:22 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/10 07:36:24 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/14 16:19:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	philo_print(t_environment env, char *message)
 {
 	unsigned long long		timestamp;
 	pthread_mutex_t			*mutex;
-	t_philosopher			philosopher;
 	int						id;
 
-	philosopher = *(env.philosopher);
-	id = philosopher.id;
+	id = env.philosopher->id;
 	mutex = get_global_mutex();
 	timestamp = get_timestamp(env.start_time);
 	pthread_mutex_lock(mutex);
