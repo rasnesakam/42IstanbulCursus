@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 18:28:55 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 17:33:25 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ void				*philo_think(t_environment *environment);
 
 int					check_starve(t_environment environment);
 
-/**
+int 				all_ejected(t_environment *envs, int count);
+
+	/**
  * @brief Prints given philosopher's status with timestamp
  * @param env: Environment that philosopher lives
  * @param message: Exact message that will be printed
  */
-void				philo_print(t_environment env, char *message);
+	void philo_print(t_environment env, char *message);
 
 pthread_mutex_t		*get_global_mutex();
 

@@ -48,7 +48,8 @@ SRC_ENVIRONMENT 	:= environments.c \
 
 SRC_PHILOSOPHER 	:= philosopher.c
 
-SRC_UTILS 			:= check-starve.c \
+SRC_UTILS 			:= all-ejected.c \
+						check-starve.c \
 						destroy-global-mutex.c \
 						ft_isdigit.c \
 						ft-max.c \

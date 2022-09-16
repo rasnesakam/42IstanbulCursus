@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emakas <rasnesakam@gmail.com>              +#+  +:+       +#+        */
+/*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:03:19 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/08 14:23:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 17:32:08 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ struct					s_environment
 	int					sleep_time;
 	int					die_time;
 	int					remained_food;
+	int					ejected;
 	pthread_mutex_t		*forks[2];
 	unsigned long long	start_time;
 };
@@ -63,5 +64,7 @@ pthread_mutex_t	*create_forks(int count);
  * @return 1 if destroys succesfully
  */
 int				destroy_forks(pthread_mutex_t *forks, int count);
+
+void			eject_env(t_environment *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 14:38:38 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 17:31:23 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ pthread_mutex_t *forks)
 	env->sleep_time = args[3];
 	env->remained_food = -1;
 	env->start_time = 0;
+	env->ejected = 0;
 	env->philosopher = philo;
 	env->forks[0] = &(forks[id - 1]);
 	env->forks[1] = &(forks[(id) % args[0]]);
@@ -73,4 +74,9 @@ int	destroy_environments(t_environment *environments, int count)
 		free(environments);
 	}
 	return (1);
+}
+
+void	eject_env(t_environment *env)
+{
+	env->ejected = 1;
 }

@@ -6,40 +6,36 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 15:22:31 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 18:42:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static void	*simulate(void *env)
+static void	*simulate(void *environment)
 {
-	t_environment	*environment;
-	t_philosopher	*philo;
-	pthread_mutex_t	*mutex;
+	t_environment	*env;
 	void			*ret;
 
-	environment = (t_environment *) env;
-	philo = environment->philosopher;
-	mutex = philo->mutex;
-	if (environment->start_time == 0)
-		environment->start_time = get_timestamp(0);
-	while (!(get_int_sync(mutex,
-				(int (*)(void *))philo_is_dead, (void *)philo)))
+	env = (t_environment *) environment;
+	if (env->start_time == 0)
+		env->start_time = get_timestamp(0);
+	while (!(get_int_sync(env->philosopher->mutex,
+				(int (*)(void *))philo_is_dead, (void *)env->philosopher)))
 	{
-		//if (philo->id % 2 == 0)
-		//	usleep(100);
-		ret = get_synchronized(environment->forks[1],
-				(void *(*)(void *)) prepare_eat, (void *)environment);
+		ret = get_synchronized(env->forks[1],
+				(void *(*)(void *)) prepare_eat, (void *)env);
 		if (ret == NULL)
-			return (NULL) ;
-		ret = philo_sleep(environment);
+			break ;
+		ret = philo_sleep(env);
 		if (ret == NULL)
-			return (NULL) ;
-		ret = philo_think(environment);
+			break ;
+		ret = philo_think(env);
 		if (ret == NULL)
-			return (NULL) ;
+			break ;
 	}
+	call_synchronized(env->philosopher->mutex, 
+		(void (*)(void *)) eject_env, environment);
 	return (NULL);
 }
 
@@ -53,7 +49,7 @@ static void	start_threads(int count, t_environment *envs)
 		pthread_create(&(environment->philosopher->thread),
 			NULL, &simulate, &envs[count]);
 		pthread_detach(environment->philosopher->thread);
-		usleep(200);
+			ft_wait(1);
 	}
 }
 
@@ -69,7 +65,7 @@ static void	kill_all(t_environment *envs, int count)
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
-		pthread_join(envs[index].philosopher->thread, NULL);
+		philo_print(envs[index], "is killed");
 		index++;
 	}
 }
@@ -117,9 +113,12 @@ int	main(int ac, char **av)
 		get_global_mutex();
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
-		//destroy_global_mutex();
-		//destroy_forks(forks, int_args[0]);
-		//destroy_environments(envs, int_args[0]);
+		if (all_ejected(envs, int_args[0]))
+		{
+			destroy_global_mutex();
+			destroy_forks(forks, int_args[0]);
+			destroy_environments(envs, int_args[0]);
+		}
 	}
 	return (0);
 }
