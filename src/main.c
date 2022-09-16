@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 18:42:49 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 01:22:33 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ static void	*simulate(void *environment)
 	t_environment	*env;
 	void			*ret;
 
+
 	env = (t_environment *) environment;
+
 	if (env->start_time == 0)
 		env->start_time = get_timestamp(0);
+	
 	while (!(get_int_sync(env->philosopher->mutex,
 				(int (*)(void *))philo_is_dead, (void *)env->philosopher)))
 	{
-		ret = get_synchronized(env->forks[1],
+		ret = get_synchronized(env->forks[0],
 				(void *(*)(void *)) prepare_eat, (void *)env);
 		if (ret == NULL)
 			break ;
@@ -42,14 +45,23 @@ static void	*simulate(void *environment)
 static void	start_threads(int count, t_environment *envs)
 {
 	t_environment	*environment;
+	int index;
+	int ext;
 
-	while (count-- > 0)
+	ext = 0;
+	while (ext < 2)
 	{
-		environment = &(envs[count]);
-		pthread_create(&(environment->philosopher->thread),
-			NULL, &simulate, &envs[count]);
-		pthread_detach(environment->philosopher->thread);
-			ft_wait(1);
+		index = ext;
+		while (index < count)
+		{
+			environment = &(envs[index]);
+			pthread_create(&(environment->philosopher->thread),
+						   NULL, &simulate, environment);
+			pthread_detach(environment->philosopher->thread);
+			index += 2;
+		}
+		usleep(1000);
+		ext++;
 	}
 }
 
@@ -65,7 +77,6 @@ static void	kill_all(t_environment *envs, int count)
 		call_synchronized(mutex,
 			(void (*)(void *))set_philo_dead,
 			(void *)envs[index].philosopher);
-		philo_print(envs[index], "is killed");
 		index++;
 	}
 }
@@ -107,7 +118,6 @@ int	main(int ac, char **av)
 	if (verify_args(count_arguments, args) && count_arguments >= 4)
 	{
 		int_args = convert_args(count_arguments, args);
-		
 		forks = create_forks(int_args[0]);
 		envs = create_environments(count_arguments, int_args, forks);
 		get_global_mutex();

@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 16:39:04 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 01:15:40 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ void	*prepare_eat(t_environment *env)
 	t_philosopher	*philo;
 	void			*result;
 
-	mutex = env->forks[0];
+	mutex = env->forks[1];
 	philo = env->philosopher;
-	if (get_int_sync(philo->mutex, (int (*)(void *))philo_is_dead, 
-			(void *) philo))
-		return (NULL);
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
 			(void *(*)(void *))start_eat, (void *)env);
@@ -38,11 +35,11 @@ void	*start_eat(t_environment *env)
 
 	mutex = env->philosopher->mutex;
 	philo = env->philosopher;
-	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
-		return (NULL);
 	philo_print(*env, "is taken a fork");
 	philo_print(*env, "is eating");
 	ft_wait((env->eat_time));
+
+	
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
 	timestamp = get_timestamp(env->start_time);
