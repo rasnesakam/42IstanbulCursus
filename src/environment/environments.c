@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/10 07:39:06 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 14:38:38 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ t_philosopher *philo, \
 int *args, \
 pthread_mutex_t *forks)
 {
-	int	index;
+	int	id;
 
-	index = philo->id;
+	id = philo->id;
 	env->die_time = args[1];
 	env->eat_time = args[2];
 	env->sleep_time = args[3];
 	env->remained_food = -1;
 	env->start_time = 0;
 	env->philosopher = philo;
-	env->forks[0] = &(forks[index - 1]);
-	env->forks[1] = &(forks[(index) % args[0]]);
+	env->forks[0] = &(forks[id - 1]);
+	env->forks[1] = &(forks[(id) % args[0]]);
 }
 
 t_environment	*create_environments(\

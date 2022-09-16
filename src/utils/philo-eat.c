@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/12 15:28:01 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/16 15:22:16 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	*prepare_eat(t_environment *env)
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
 			(void *(*)(void *))start_eat, (void *)env);
+	philo_print(*env, "is leaved a fork");
 	return (result);
 }
 
@@ -51,5 +52,6 @@ void	*start_eat(t_environment *env)
 	bifunction.arg_2 = (void *) &timestamp;
 	call_synchronized(mutex,
 		(void (*)(void *))call_bifunction, (void *)(&bifunction));
+	philo_print(*env, "is leaved a fork");
 	return ((void *)philo);
 }
