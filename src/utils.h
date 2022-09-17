@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 03:09:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 09:15:36 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int 				all_ejected(t_environment *envs, int count);
  * @param message: Exact message that will be printed
  */
 void				philo_print(t_environment env, char *message);
-
-int					check_opt(t_environment env);
 
 /**
  * @brief Get the single mutex object

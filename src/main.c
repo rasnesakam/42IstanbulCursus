@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 08:28:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 09:16:27 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ static void	*simulate(void *environment)
 	if (env->start_time == 0)
 		env->start_time = get_timestamp(0);
 	
-	while (!(get_int_sync(env->philosopher->mutex,
-				(int (*)(void *))philo_is_dead, (void *)env->philosopher)))
+	while (1)
 	{
 		ret = get_synchronized(env->forks[0],
 				(void *(*)(void *)) prepare_eat, (void *)env);
-		if (ret == NULL || check_opt(*env))
+		if (ret == NULL)
 			break ;
 		ret = philo_sleep(env);
 		if (ret == NULL)
@@ -90,16 +89,17 @@ static void	listen_philos(int count, t_environment *envs)
 		index = 0;
 		while (index < count)
 		{
-			if (check_starve(envs[index]) || check_opt(envs[index]))
+			if (check_starve(envs[index]))
 			{
 				if (check_starve(envs[index]))
 					philo_print(envs[index], "is died");
+				//pthread_mutex_lock(get_global_mutex());
 				kill_all(envs, count);
 				return ;
 			}
 			index++;
 		}
-		usleep(5);
+		usleep(1);
 	}
 }
 

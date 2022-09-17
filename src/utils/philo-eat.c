@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 08:26:39 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 09:17:09 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,20 @@ static void update_last_eat(t_environment *env)
 		(void (*)(void *))call_bifunction, (void *)(&bifunction));
 }
 
-static void update_remained_food(t_environment *env)
+static void *update_remained_food(t_environment *env)
 {
 	pthread_mutex_t *mutex;
+	int				remained;
 
 	mutex = env->philosopher->mutex;
 	pthread_mutex_lock(mutex);
 	if (env->remained_food > 0)
 		env->remained_food -= 1;
+	remained = env->remained_food;
 	pthread_mutex_unlock(mutex);
+	if (remained == 0)
+		return (NULL);
+	return ((void *)env->philosopher);
 }
 
 void	*prepare_eat(t_environment *env)
@@ -48,9 +53,6 @@ void	*prepare_eat(t_environment *env)
 
 	mutex = env->forks[1];
 	philo = env->philosopher;
-	if (get_int_sync(env->philosopher->mutex,
-			(int (*)(void *))philo_is_dead, (void *)env->philosopher))
-		return (NULL);
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
 			(void *(*)(void *))start_eat, (void *)env);
@@ -69,7 +71,6 @@ void	*start_eat(t_environment *env)
 	ft_wait((env->eat_time));
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
-	update_remained_food(env);
 	update_last_eat(env);
-	return ((void *)philo);
+	return (update_remained_food(env));
 }
