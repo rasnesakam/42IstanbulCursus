@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:58:00 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/01 16:57:37 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 08:06:35 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	verify_arg(char *arg)
 	int	index;
 
 	index = 0;
+	if (arg[0] == '-')
+		return (0);
 	if (arg[0] == '-' || arg[0] == '+')
 		index++;
 	if (index >= (int) ft_strlen(arg))

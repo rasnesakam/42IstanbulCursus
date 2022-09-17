@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 03:12:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 08:26:39 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	*prepare_eat(t_environment *env)
 
 	mutex = env->forks[1];
 	philo = env->philosopher;
+	if (get_int_sync(env->philosopher->mutex,
+			(int (*)(void *))philo_is_dead, (void *)env->philosopher))
+		return (NULL);
 	philo_print(*env, "is taken a fork");
 	result = get_synchronized(mutex,
 			(void *(*)(void *))start_eat, (void *)env);
@@ -66,7 +69,7 @@ void	*start_eat(t_environment *env)
 	ft_wait((env->eat_time));
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
-	update_last_eat(env);
 	update_remained_food(env);
+	update_last_eat(env);
 	return ((void *)philo);
 }

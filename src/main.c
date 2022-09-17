@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 03:18:56 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 08:28:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*simulate(void *environment)
 	{
 		ret = get_synchronized(env->forks[0],
 				(void *(*)(void *)) prepare_eat, (void *)env);
-		if (ret == NULL)
+		if (ret == NULL || check_opt(*env))
 			break ;
 		ret = philo_sleep(env);
 		if (ret == NULL)
@@ -99,7 +99,7 @@ static void	listen_philos(int count, t_environment *envs)
 			}
 			index++;
 		}
-		usleep(10);
+		usleep(5);
 	}
 }
 
