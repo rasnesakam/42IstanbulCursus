@@ -6,11 +6,39 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 01:15:40 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/17 03:12:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
+
+static void update_last_eat(t_environment *env)
+{
+	unsigned long long timestamp;
+	pthread_mutex_t *mutex;
+	t_philosopher *philo;
+	t_bifunction bifunction;
+
+	philo = env->philosopher;
+	mutex = philo->mutex;
+	timestamp = get_timestamp(env->start_time);
+	bifunction.bifunc = (void (*)(void *, void *))set_philo_last_eat;
+	bifunction.arg_1 = (void *)philo;
+	bifunction.arg_2 = (void *)&timestamp;
+	call_synchronized(mutex,
+		(void (*)(void *))call_bifunction, (void *)(&bifunction));
+}
+
+static void update_remained_food(t_environment *env)
+{
+	pthread_mutex_t *mutex;
+
+	mutex = env->philosopher->mutex;
+	pthread_mutex_lock(mutex);
+	if (env->remained_food > 0)
+		env->remained_food -= 1;
+	pthread_mutex_unlock(mutex);
+}
 
 void	*prepare_eat(t_environment *env)
 {
@@ -28,25 +56,17 @@ void	*prepare_eat(t_environment *env)
 
 void	*start_eat(t_environment *env)
 {
-	unsigned long long	timestamp;
 	pthread_mutex_t		*mutex;
 	t_philosopher		*philo;
-	t_bifunction		bifunction;
 
-	mutex = env->philosopher->mutex;
 	philo = env->philosopher;
+	mutex = philo->mutex;
 	philo_print(*env, "is taken a fork");
 	philo_print(*env, "is eating");
 	ft_wait((env->eat_time));
-
-	
 	if (get_int_sync(mutex, (int (*)(void *))philo_is_dead, (void *) philo))
 		return (NULL);
-	timestamp = get_timestamp(env->start_time);
-	bifunction.bifunc = (void (*)(void *, void *)) set_philo_last_eat;
-	bifunction.arg_1 = (void *) philo;
-	bifunction.arg_2 = (void *) &timestamp;
-	call_synchronized(mutex,
-		(void (*)(void *))call_bifunction, (void *)(&bifunction));
+	update_last_eat(env);
+	update_remained_food(env);
 	return ((void *)philo);
 }

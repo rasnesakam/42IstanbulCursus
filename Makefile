@@ -49,6 +49,7 @@ SRC_ENVIRONMENT 	:= environments.c \
 SRC_PHILOSOPHER 	:= philosopher.c
 
 SRC_UTILS 			:= all-ejected.c \
+						check-opt.c \
 						check-starve.c \
 						destroy-global-mutex.c \
 						ft_isdigit.c \
