@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 09:16:27 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/21 19:07:19 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,30 @@
 
 static void	*simulate(void *environment)
 {
-	t_environment	*env;
-	void			*ret;
-
+	t_environment		*env;
+	int					remained_food;
 
 	env = (t_environment *) environment;
 
+	if (env->philosopher->id % 2 == 1)
+		usleep(1000);
+
 	if (env->start_time == 0)
 		env->start_time = get_timestamp(0);
-	
+
 	while (1)
 	{
-		ret = get_synchronized(env->forks[0],
-				(void *(*)(void *)) prepare_eat, (void *)env);
-		if (ret == NULL)
+		pthread_mutex_lock(env->philosopher->mutex);
+		remained_food = env->remained_food;
+		pthread_mutex_unlock(env->philosopher->mutex);
+		if (remained_food == 0)
 			break ;
-		ret = philo_sleep(env);
-		if (ret == NULL)
+		if (!get_synchronized(env->forks[0],
+				(void *(*)(void *))prepare_eat, (void *)env))
 			break ;
-		ret = philo_think(env);
-		if (ret == NULL)
+		if (!philo_sleep(env))
+			break ;
+		if (!philo_think(env))
 			break ;
 	}
 	call_synchronized(env->philosopher->mutex, 
@@ -45,22 +49,16 @@ static void	start_threads(int count, t_environment *envs)
 {
 	t_environment	*environment;
 	int index;
-	int ext;
 
-	ext = 0;
-	while (ext < 2)
+	index = 0;
+	while (index < count)
 	{
-		index = ext;
-		while (index < count)
-		{
-			environment = &(envs[index]);
-			pthread_create(&(environment->philosopher->thread),
-						   NULL, &simulate, environment);
-			pthread_detach(environment->philosopher->thread);
-			index += 2;
-		}
-		usleep(1000);
-		ext++;
+		environment = &(envs[index]);
+		environment->philosopher->last_eat_timestamp = get_timestamp(0);
+		pthread_create(&(environment->philosopher->thread),
+					   NULL, &simulate, environment);
+		pthread_detach(environment->philosopher->thread);
+		index++;
 	}
 }
 
@@ -86,20 +84,25 @@ static void	listen_philos(int count, t_environment *envs)
 
 	while (1)
 	{
+		
 		index = 0;
 		while (index < count)
 		{
-			if (check_starve(envs[index]))
+			if (check_starve(&envs[index]))
 			{
-				if (check_starve(envs[index]))
-					philo_print(envs[index], "is died");
-				//pthread_mutex_lock(get_global_mutex());
-				kill_all(envs, count);
-				return ;
+				if (!get_int_sync(envs[index].philosopher->mutex,
+						(int (*)(void *))is_ejected, (void *) &envs[index]))
+				{
+					if (check_starve(&envs[index]))
+						philo_print(&envs[index], "is died");
+					kill_all(envs, count);
+					
+				}
 			}
+			return;
 			index++;
 		}
-		usleep(1);
+		ft_wait(5);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 09:15:36 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/21 18:59:14 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void				*philo_sleep(t_environment *environment);
 
 void				*philo_think(t_environment *environment);
 
-int					check_starve(t_environment environment);
+int					check_starve(t_environment *environment);
+
+int					is_ejected(t_environment *env);
 
 int 				all_ejected(t_environment *envs, int count);
 
@@ -39,7 +41,7 @@ int 				all_ejected(t_environment *envs, int count);
  * @param env: Environment that philosopher lives
  * @param message: Exact message that will be printed
  */
-void				philo_print(t_environment env, char *message);
+void				philo_print(t_environment *env, char *message);
 
 /**
  * @brief Get the single mutex object

@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:40 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 09:17:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/21 16:11:51 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	*philo_sleep(t_environment *env)
 {
-	philo_print(*env, "is sleeping");
+	if (get_int_sync(env->philosopher->mutex, (int (*)(void *))philo_is_dead,
+			(void *)env->philosopher))
+		return (NULL);
+	philo_print(env, "is sleeping");
 	ft_wait(env->sleep_time);
 	return (env->philosopher);
 }

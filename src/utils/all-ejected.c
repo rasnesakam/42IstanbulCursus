@@ -6,13 +6,13 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:27:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 18:18:19 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/21 18:58:07 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
 
-static int is_ejected(t_environment *env)
+int is_ejected(t_environment *env)
 {
 	return (env->ejected);
 }

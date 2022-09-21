@@ -7,5 +7,5 @@ void	ft_wait(unsigned int miliseconds)
 
 	start = get_timestamp(0);
 	while (get_timestamp(start) < miliseconds)
-		usleep(1);
+		usleep(300);
 }
