@@ -91,7 +91,7 @@ CFLAGS 		+= -Wall -Werror -Wextra -pthread -g #-fsanitize=thread
 
 all: $(NAME)
 
-$(NAME): $(BIN)
+$(NAME): $(DIR_BIN) $(BIN)
 	@echo "$(GREEN)creating executable file"
 	@$(CC) $(CFLAGS) $(BIN) -o $(NAME)
 
@@ -109,7 +109,7 @@ $(DIR_BIN):
 	@echo "$(GREEN)creating binary folders"
 	@mkdir -p $(DIR_BIN) $(addprefix $(DIR_BIN), $(DIR_LIST))
 
-$(DIR_BIN)%.o: $(DIR_SRC)%.c $(DIR_BIN)
+$(DIR_BIN)%.o: $(DIR_SRC)%.c
 	@echo "$(GREEN)creating binary file from: $(basename $<)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
