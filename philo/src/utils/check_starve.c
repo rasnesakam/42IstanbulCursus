@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check-starve.c                                     :+:      :+:    :+:   */
+/*   check_starve.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:08:08 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 14:23:15 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:18:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 
 int	check_starve(t_environment *environment)
 {
-    pthread_mutex_t     *mutex;
-    t_philosopher       *philosopher;
-    unsigned long long  starve_time;
-    unsigned long long  die_time;
+	pthread_mutex_t		*mutex;
+	t_philosopher		*philosopher;
+	unsigned long long	starve_time;
+	unsigned long long	die_time;
 
-    philosopher = environment->philosopher;
-    mutex = philosopher->mutex;
-    die_time = (unsigned long long) environment->die_time;
-    pthread_mutex_lock(mutex);
+	philosopher = environment->philosopher;
+	mutex = philosopher->mutex;
+	die_time = (unsigned long long) environment->die_time;
+	pthread_mutex_lock(mutex);
 	starve_time = philosopher->last_eat_timestamp;
 	pthread_mutex_unlock(mutex);
-
 	return (get_timestamp(starve_time) >= die_time);
 }

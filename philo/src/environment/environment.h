@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:03:19 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 17:32:08 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 14:30:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ pthread_mutex_t	*create_forks(int count);
 int				destroy_forks(pthread_mutex_t *forks, int count);
 
 void			eject_env(t_environment *env);
+
+int				get_remained_food(t_environment *env);
 
 #endif

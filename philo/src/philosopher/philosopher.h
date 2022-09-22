@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:16:43 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/12 15:24:22 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:06:28 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int				destroy_philosopher(t_philosopher *philosopher);
 int				philo_is_dead(t_philosopher *philosopher);
 
 /**
- * @brief Indicates the philosopher that he/she is died (Sets is_died attribute as "1")
+ * @brief Indicates the philosopher that he/she is died 
+ * (Sets is_died attribute as "1")
  * @param philosopher to be indicated
  */
 void			set_philo_dead(t_philosopher *philosopher);

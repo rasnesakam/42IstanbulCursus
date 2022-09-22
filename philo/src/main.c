@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 14:24:20 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 14:33:47 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,14 @@ static void	*simulate(void *environment)
 	int					remained_food;
 
 	env = (t_environment *) environment;
-
 	if (env->philosopher->id % 2 == 1)
 		usleep(1000);
-
 	if (env->start_time == 0)
 		env->start_time = get_timestamp(0);
-
 	while (1)
 	{
-		pthread_mutex_lock(env->philosopher->mutex);
-		remained_food = env->remained_food;
-		pthread_mutex_unlock(env->philosopher->mutex);
-		if (remained_food == 0)
+		if (!get_int_sync(env->philosopher->mutex,
+				(int (*)(void *)) get_remained_food, (void *) env))
 			break ;
 		if (!get_synchronized(env->forks[0],
 				(void *(*)(void *))prepare_eat, (void *)env))
@@ -40,7 +35,7 @@ static void	*simulate(void *environment)
 		if (!philo_think(env))
 			break ;
 	}
-	call_synchronized(env->philosopher->mutex, 
+	call_synchronized(env->philosopher->mutex,
 		(void (*)(void *)) eject_env, environment);
 	return (NULL);
 }
@@ -48,7 +43,7 @@ static void	*simulate(void *environment)
 static void	start_threads(int count, t_environment *envs)
 {
 	t_environment	*environment;
-	int index;
+	int				index;
 
 	index = 0;
 	while (index < count)
@@ -56,7 +51,7 @@ static void	start_threads(int count, t_environment *envs)
 		environment = &(envs[index]);
 		environment->philosopher->last_eat_timestamp = get_timestamp(0);
 		pthread_create(&(environment->philosopher->thread),
-					   NULL, &simulate, environment);
+			NULL, &simulate, environment);
 		pthread_detach(environment->philosopher->thread);
 		index++;
 	}
@@ -84,7 +79,6 @@ static void	listen_philos(int count, t_environment *envs)
 
 	while (1)
 	{
-		
 		index = 0;
 		while (index < count)
 		{
@@ -96,9 +90,8 @@ static void	listen_philos(int count, t_environment *envs)
 					if (check_starve(&envs[index]))
 						philo_print(&envs[index], "is died");
 					kill_all(envs, count);
-					
 				}
-				return;
+				return ;
 			}
 			index++;
 		}
@@ -110,7 +103,6 @@ static void	listen_philos(int count, t_environment *envs)
 
 int	main(int ac, char **av)
 {
-
 	char			**args;
 	int				*int_args;
 	int				count_arguments;
@@ -127,15 +119,12 @@ int	main(int ac, char **av)
 		get_global_mutex();
 		start_threads(int_args[0], envs);
 		listen_philos(int_args[0], envs);
-		if (all_ejected(envs, int_args[0]))
-		{
-			destroy_global_mutex();
-			destroy_forks(forks, int_args[0]);
-			destroy_environments(envs, int_args[0]);
-		}
+		all_ejected(envs, int_args[0]);
+		destroy_global_mutex();
+		destroy_forks(forks, int_args[0]);
+		destroy_environments(envs, int_args[0]);
 	}
 	else
 		printf("Error\n");
-	//system("leaks");
 	return (0);
 }

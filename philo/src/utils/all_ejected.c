@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get-synchronized.c                                 :+:      :+:    :+:   */
+/*   all-ejected.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:49:55 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 15:19:53 by emakas           ###   ########.fr       */
+/*   Created: 2022/09/16 17:27:30 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/22 15:08:54 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "concurrency.h"
-#include <stdio.h>
+#include "../utils.h"
 
-void *get_synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
+int	is_ejected(t_environment *env)
 {
-	void	*val_return;
-	int		return_mutex;
+	return (env->ejected);
+}
 
-	val_return = NULL;
-	if (ref)
+int	all_ejected(t_environment *envs, int count)
+{
+	pthread_mutex_t	*mutex;
+	int				index;
+	int				res;
+
+	index = 0;
+	while (index < count)
 	{
-		return_mutex = pthread_mutex_lock(ref);
-		if (return_mutex > 0)
-			return (NULL);
-		val_return = f(param);
-		return_mutex = pthread_mutex_unlock(ref);
-		if (return_mutex > 0)
-			return (NULL);
+		mutex = envs[index].philosopher->mutex;
+		res = get_int_sync(mutex, (int (*)(void *))is_ejected,
+				(void *)(envs + index));
+		if (res == 0)
+			index--;
+		index++;
 	}
-	return (val_return);
+	return (1);
 }

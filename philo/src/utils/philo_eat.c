@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo-eat.c                                        :+:      :+:    :+:   */
+/*   philo_eat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/21 19:12:30 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:17:00 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
 
-static void update_last_eat(t_environment *env)
+static void	update_last_eat(t_environment *env)
 {
-	unsigned long long timestamp;
-	pthread_mutex_t *mutex;
-	t_philosopher *philo;
+	unsigned long long	timestamp;
+	pthread_mutex_t		*mutex;
+	t_philosopher		*philo;
 
 	philo = env->philosopher;
 	mutex = philo->mutex;
@@ -26,9 +26,9 @@ static void update_last_eat(t_environment *env)
 	pthread_mutex_unlock(mutex);
 }
 
-static void *update_remained_food(t_environment *env)
+static void	*update_remained_food(t_environment *env)
 {
-	pthread_mutex_t *mutex;
+	pthread_mutex_t	*mutex;
 	int				remained;
 
 	mutex = env->philosopher->mutex;
@@ -45,8 +45,9 @@ static void *update_remained_food(t_environment *env)
 void	*prepare_eat(t_environment *env)
 {
 	void	*res;
+
 	if (get_int_sync(env->philosopher->mutex, (int (*)(void *))philo_is_dead,
-			(void *)env->philosopher))
+		(void *)env->philosopher))
 		return (NULL);
 	philo_print(env, "has taken a fork");
 	if (env->forks[0] == env->forks[1])
@@ -63,14 +64,14 @@ void	*prepare_eat(t_environment *env)
 void	*start_eat(t_environment *env)
 {
 	if (get_int_sync(env->philosopher->mutex, (int (*)(void *))philo_is_dead,
-			(void *)env->philosopher))
+		(void *)env->philosopher))
 		return (NULL);
 	philo_print(env, "has taken a fork");
 	philo_print(env, "is eating");
 	ft_wait(env->sleep_time);
 	if (get_int_sync(env->philosopher->mutex, (int (*)(void *))philo_is_dead,
-			(void *)env->philosopher))
+		(void *)env->philosopher))
 		return (NULL);
 	update_last_eat(env);
-	return update_remained_food(env);
+	return (update_remained_food(env));
 }

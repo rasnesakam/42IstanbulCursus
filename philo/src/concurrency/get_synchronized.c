@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get-int-sync.c                                     :+:      :+:    :+:   */
+/*   get-synchronized.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 15:50:19 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 14:47:17 by emakas           ###   ########.fr       */
+/*   Created: 2022/09/07 15:49:55 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/22 14:36:00 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "concurrency.h"
-#include <stdlib.h>
 #include <stdio.h>
-int	get_int_sync(pthread_mutex_t *ref, int (*f)(void *), void *param)
-{
-	void		*res;
-	int			res_int;
-	t_function	function;
 
-	function.int_func = f;
-	function.arg = param;
-	res_int = 0x80000000;
-	res = get_synchronized(ref,
-			(void *(*)(void *))int_function, (void *)(&function));
-	
-	if (res != NULL)
-		res_int = *((int *)res);
-	free(res);
-	return (res_int);
+void	*get_synchronized(pthread_mutex_t *ref, void *(*f)(void *), void *param)
+{
+	void	*val_return;
+	int		return_mutex;
+
+	val_return = NULL;
+	if (ref)
+	{
+		return_mutex = pthread_mutex_lock(ref);
+		if (return_mutex > 0)
+			return (NULL);
+		val_return = f(param);
+		return_mutex = pthread_mutex_unlock(ref);
+		if (return_mutex > 0)
+			return (NULL);
+	}
+	return (val_return);
 }

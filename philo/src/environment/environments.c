@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:04:18 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/16 17:31:23 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:05:49 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ pthread_mutex_t *forks)
 // TODO: destroy environment data
 int	destroy_environments(t_environment *environments, int count)
 {
-	int index;
+	int	index;
 
 	if (environments != NULL)
 	{
@@ -79,4 +79,9 @@ int	destroy_environments(t_environment *environments, int count)
 void	eject_env(t_environment *env)
 {
 	env->ejected = 1;
+}
+
+int	get_remained_food(t_environment *env)
+{
+	return (env->remained_food);
 }

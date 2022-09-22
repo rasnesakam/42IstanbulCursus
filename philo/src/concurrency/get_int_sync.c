@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   all-ejected.c                                      :+:      :+:    :+:   */
+/*   get-int-sync.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 17:27:30 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/21 18:58:07 by emakas           ###   ########.fr       */
+/*   Created: 2022/09/07 15:50:19 by emakas            #+#    #+#             */
+/*   Updated: 2022/09/22 14:35:38 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../utils.h"
+#include "concurrency.h"
+#include <stdlib.h>
 
-int is_ejected(t_environment *env)
+int	get_int_sync(pthread_mutex_t *ref, int (*f)(void *), void *param)
 {
-	return (env->ejected);
-}
+	void		*res;
+	int			res_int;
+	t_function	function;
 
-int all_ejected(t_environment *envs, int count)
-{
-	int	index;
-	int	res;
-	pthread_mutex_t	*mutex;
-
-	index = 0;
-	while (index < count)
-	{
-		mutex = envs[index].philosopher->mutex;
-		res = get_int_sync(mutex,(int (*)(void *))is_ejected,
-				(void *)(envs + index));
-		if (res == 0)
-			index--;
-		index++;
-	}
-	return (1);
+	function.int_func = f;
+	function.arg = param;
+	res_int = 0x80000000;
+	res = get_synchronized(ref,
+			(void *(*)(void *))int_function, (void *)(&function));
+	if (res != NULL)
+		res_int = *((int *)res);
+	free(res);
+	return (res_int);
 }

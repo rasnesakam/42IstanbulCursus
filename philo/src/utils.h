@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/21 18:59:14 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 14:34:57 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int					check_starve(t_environment *environment);
 
 int					is_ejected(t_environment *env);
 
-int 				all_ejected(t_environment *envs, int count);
+int					all_ejected(t_environment *envs, int count);
 
 /**
  * @brief Prints given philosopher's status with timestamp
@@ -48,9 +48,9 @@ void				philo_print(t_environment *env, char *message);
  * 
  * @return pthread_mutex_t* 
  */
-pthread_mutex_t		*get_global_mutex();
+pthread_mutex_t		*get_global_mutex(void);
 
-int					destroy_global_mutex();
+int					destroy_global_mutex(void);
 
 /**
  * @brief Get the timestamp from given offset.

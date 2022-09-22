@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:15:51 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/17 08:15:51 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:06:16 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	set_philo_dead(t_philosopher *philosopher)
 	philosopher->is_died = 1;
 }
 
-void	set_philo_last_eat(t_philosopher *philo, 
+void	set_philo_last_eat(t_philosopher *philo,
 			unsigned long long *last_eat_timestamp)
 {
 	philo->last_eat_timestamp = *last_eat_timestamp;
