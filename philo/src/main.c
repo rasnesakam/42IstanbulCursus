@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/21 19:37:24 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 14:24:20 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ static void	listen_philos(int count, t_environment *envs)
 					kill_all(envs, count);
 					
 				}
+				return;
 			}
-			return;
 			index++;
 		}
 		ft_wait(5);
@@ -136,5 +136,6 @@ int	main(int ac, char **av)
 	}
 	else
 		printf("Error\n");
+	//system("leaks");
 	return (0);
 }

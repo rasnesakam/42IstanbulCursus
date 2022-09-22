@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:08:08 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/21 16:20:08 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 14:23:15 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	check_starve(t_environment *environment)
 	starve_time = philosopher->last_eat_timestamp;
 	pthread_mutex_unlock(mutex);
 
-	return (get_timestamp(starve_time) > die_time);
+	return (get_timestamp(starve_time) >= die_time);
 }
