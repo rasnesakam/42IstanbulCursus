@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:37:02 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 14:34:57 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:22:58 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define UTILS_H
 # include "environment/environment.h"
 # include "philosopher/philosopher.h"
-# include "arg-converter/arg_converter.h"
-# include "arg-parser/arg_parser.h"
-# include "arg-verifier/arg_verifier.h"
+# include "arg_converter/arg_converter.h"
+# include "arg_parser/arg_parser.h"
+# include "arg_verifier/arg_verifier.h"
 # include "concurrency/concurrency.h"
 # include <unistd.h>
 # include <stdio.h>
