@@ -5,11 +5,11 @@ DIR_SRC		:= src/
 DIR_BIN		:= bin/
 
 # Sub Directories
-DIR_ARG_CONVERTER	:= arg-converter/
+DIR_ARG_CONVERTER	:= arg_converter/
 
-DIR_ARG_PARSER		:= arg-parser/
+DIR_ARG_PARSER		:= arg_parser/
 
-DIR_ARG_VERIFIER	:= arg-verifier/
+DIR_ARG_VERIFIER	:= arg_verifier/
 
 DIR_CONCURRENCY		:= concurrency/
 
@@ -30,42 +30,42 @@ DIR_LIST			:= $(DIR_ARG_CONVERTER) \
 # Sources
 SRC_ROOT 			:= main.c
 
-SRC_ARG_CONVERTER	:= convert-args.c
+SRC_ARG_CONVERTER	:= convert_args.c
 
-SRC_ARG_PARSER		:= collect-args.c \
-						count-args.c
+SRC_ARG_PARSER		:= collect_args.c \
+						count_args.c
 
-SRC_ARG_VERIFIER	:= verify-args.c
+SRC_ARG_VERIFIER	:= verify_args.c
 
-SRC_CONCURRENCY		:= call-bifunction.c \
-						call-synchronized.c \
-						get-int-sync.c \
-						get-synchronized.c \
-						int-function.c
+SRC_CONCURRENCY		:= call_bifunction.c \
+						call_synchronized.c \
+						get_int_sync.c \
+						get_synchronized.c \
+						int_function.c
 
 SRC_ENVIRONMENT 	:= environments.c \
 						forks.c
 
 SRC_PHILOSOPHER 	:= philosopher.c
 
-SRC_UTILS 			:= all-ejected.c \
-						check-starve.c \
-						destroy-global-mutex.c \
+SRC_UTILS 			:= all_ejected.c \
+						check_starve.c \
+						destroy_global_mutex.c \
 						ft_isdigit.c \
-						ft-max.c \
-						ft-split.c \
-						ft-strchr.c \
-						ft-strlcpy.c \
-						ft-strlen.c \
-						ft-strncmp.c \
-						ft-strtrim.c \
-						ft-wait.c \
-						get-global-mutex.c \
-						get-timestamp.c \
-						philo-eat.c \
-						philo-print.c \
-						philo-sleep.c \
-						philo-think.c
+						ft_max.c \
+						ft_split.c \
+						ft_strchr.c \
+						ft_strlcpy.c \
+						ft_strlen.c \
+						ft_strncmp.c \
+						ft_strtrim.c \
+						ft_wait.c \
+						get_global_mutex.c \
+						get_timestamp.c \
+						philo_eat.c \
+						philo_print.c \
+						philo_sleep.c \
+						philo_think.c
 
 
 
