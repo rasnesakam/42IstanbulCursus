@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 14:33:47 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:28:39 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	*simulate(void *environment)
 {
 	t_environment		*env;
-	int					remained_food;
 
 	env = (t_environment *) environment;
 	if (env->philosopher->id % 2 == 1)
