@@ -1,0 +1,71 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/emakas/Desktop/42Cursus/philosophers'
+echo "\033[1;32mcreating binary folders"
+mkdir -p bin/ bin/arg-converter/ bin/arg-parser/ bin/arg-verifier/ bin/concurrency/ bin/environment/ bin/philosopher/ bin/utils/
+echo "\033[1;32mcreating binary file from: src/main"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/main.c -o bin/main.o
+echo "\033[1;32mcreating binary file from: src/arg-converter/convert-args"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/arg-converter/convert-args.c -o bin/arg-converter/convert-args.o
+echo "\033[1;32mcreating binary file from: src/arg-parser/collect-args"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/arg-parser/collect-args.c -o bin/arg-parser/collect-args.o
+echo "\033[1;32mcreating binary file from: src/arg-parser/count-args"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/arg-parser/count-args.c -o bin/arg-parser/count-args.o
+echo "\033[1;32mcreating binary file from: src/arg-verifier/verify-args"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/arg-verifier/verify-args.c -o bin/arg-verifier/verify-args.o
+echo "\033[1;32mcreating binary file from: src/concurrency/call-bifunction"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/concurrency/call-bifunction.c -o bin/concurrency/call-bifunction.o
+echo "\033[1;32mcreating binary file from: src/concurrency/call-synchronized"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/concurrency/call-synchronized.c -o bin/concurrency/call-synchronized.o
+ 
+echo "\033[1;32mcreating binary file from: src/concurrency/get-int-sync"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/concurrency/get-int-sync.c -o bin/concurrency/get-int-sync.o
+echo "\033[1;32mcreating binary file from: src/concurrency/get-synchronized"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/concurrency/get-synchronized.c -o bin/concurrency/get-synchronized.o
+echo "\033[1;32mcreating binary file from: src/concurrency/int-function"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/concurrency/int-function.c -o bin/concurrency/int-function.o
+echo "\033[1;32mcreating binary file from: src/environment/environments"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/environment/environments.c -o bin/environment/environments.o
+echo "\033[1;32mcreating binary file from: src/environment/forks"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/environment/forks.c -o bin/environment/forks.o
+echo "\033[1;32mcreating binary file from: src/philosopher/philosopher"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/philosopher/philosopher.c -o bin/philosopher/philosopher.o
+echo "\033[1;32mcreating binary file from: src/utils/all-ejected"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/all-ejected.c -o bin/utils/all-ejected.o
+echo "\033[1;32mcreating binary file from: src/utils/check-starve"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/check-starve.c -o bin/utils/check-starve.o
+echo "\033[1;32mcreating binary file from: src/utils/destroy-global-mutex"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/destroy-global-mutex.c -o bin/utils/destroy-global-mutex.o
+echo "\033[1;32mcreating binary file from: src/utils/ft_isdigit"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft_isdigit.c -o bin/utils/ft_isdigit.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-max"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-max.c -o bin/utils/ft-max.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-split"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-split.c -o bin/utils/ft-split.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-strchr"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-strchr.c -o bin/utils/ft-strchr.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-strlcpy"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-strlcpy.c -o bin/utils/ft-strlcpy.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-strlen"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-strlen.c -o bin/utils/ft-strlen.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-strncmp"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-strncmp.c -o bin/utils/ft-strncmp.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-strtrim"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-strtrim.c -o bin/utils/ft-strtrim.o
+echo "\033[1;32mcreating binary file from: src/utils/ft-wait"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/ft-wait.c -o bin/utils/ft-wait.o
+echo "\033[1;32mcreating binary file from: src/utils/get-global-mutex"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/get-global-mutex.c -o bin/utils/get-global-mutex.o
+echo "\033[1;32mcreating binary file from: src/utils/get-timestamp"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/get-timestamp.c -o bin/utils/get-timestamp.o
+echo "\033[1;32mcreating binary file from: src/utils/philo-eat"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/philo-eat.c -o bin/utils/philo-eat.o
+echo "\033[1;32mcreating binary file from: src/utils/philo-print"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/philo-print.c -o bin/utils/philo-print.o
+echo "\033[1;32mcreating binary file from: src/utils/philo-sleep"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/philo-sleep.c -o bin/utils/philo-sleep.o
+echo "\033[1;32mcreating binary file from: src/utils/philo-think"
+gcc -Wall -Werror -Wextra -pthread -g  -c src/utils/philo-think.c -o bin/utils/philo-think.o
+echo "\033[1;32mcreating executable file"
+gcc -Wall -Werror -Wextra -pthread -g   bin/main.o bin/arg-converter/convert-args.o bin/arg-parser/collect-args.o bin/arg-parser/count-args.o bin/arg-verifier/verify-args.o bin/concurrency/call-bifunction.o bin/concurrency/call-synchronized.o bin/concurrency/get-int-sync.o bin/concurrency/get-synchronized.o bin/concurrency/int-function.o bin/environment/environments.o bin/environment/forks.o bin/philosopher/philosopher.o bin/utils/all-ejected.o bin/utils/check-starve.o bin/utils/destroy-global-mutex.o bin/utils/ft_isdigit.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/ft-wait.o bin/utils/get-global-mutex.o bin/utils/get-timestamp.o bin/utils/philo-eat.o bin/utils/philo-print.o bin/utils/philo-sleep.o bin/utils/philo-think.o -o philo
+make: Leaving directory `/Users/emakas/Desktop/42Cursus/philosophers'
+ 

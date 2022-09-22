@@ -1,0 +1,531 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Thu Sep 22 13:45:28 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 81)
+SRC := src/main.c src/arg-converter/convert-args.c src/arg-parser/collect-args.c src/arg-parser/count-args.c src/arg-verifier/verify-args.c src/concurrency/call-bifunction.c src/concurrency/call-synchronized.c src/concurrency/get-int-sync.c src/concurrency/get-synchronized.c src/concurrency/int-function.c src/environment/environments.c src/environment/forks.c src/philosopher/philosopher.c src/utils/all-ejected.c src/utils/check-starve.c src/utils/destroy-global-mutex.c src/utils/ft_isdigit.c src/utils/ft-max.c src/utils/ft-split.c src/utils/ft-strchr.c src/utils/ft-strlcpy.c src/utils/ft-strlen.c src/utils/ft-strncmp.c src/utils/ft-strtrim.c src/utils/ft-wait.c src/utils/get-global-mutex.c src/utils/get-timestamp.c src/utils/philo-eat.c src/utils/philo-print.c src/utils/philo-sleep.c src/utils/philo-think.c
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 4)
+DIR_SRC := src/
+# makefile (from `Makefile', line 10)
+DIR_ARG_PARSER := arg-parser/
+# makefile (from `Makefile', line 12)
+DIR_ARG_VERIFIER := arg-verifier/
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/emakas/Desktop/42Cursus/philosophers
+# makefile
+SHELL = /bin/sh
+# makefile (from `Makefile', line 82)
+BIN :=  bin/main.o bin/arg-converter/convert-args.o bin/arg-parser/collect-args.o bin/arg-parser/count-args.o bin/arg-verifier/verify-args.o bin/concurrency/call-bifunction.o bin/concurrency/call-synchronized.o bin/concurrency/get-int-sync.o bin/concurrency/get-synchronized.o bin/concurrency/int-function.o bin/environment/environments.o bin/environment/forks.o bin/philosopher/philosopher.o bin/utils/all-ejected.o bin/utils/check-starve.o bin/utils/destroy-global-mutex.o bin/utils/ft_isdigit.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/ft-wait.o bin/utils/get-global-mutex.o bin/utils/get-timestamp.o bin/utils/philo-eat.o bin/utils/philo-print.o bin/utils/philo-sleep.o bin/utils/philo-think.o
+# environment
+VSCODE_NLS_CONFIG = {"locale":"tr","availableLanguages":{"*":"tr"},"_languagePackId":"6765e731291c4f4d14d665fa42b9b01a.tr","_translationsConfigFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/tcf.json","_cacheRoot":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr","_resolvedLanguagePackCoreLocation":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/054a9295330880ed74ceaedda236253b4f39a335","_corruptedFile":"/Users/emakas/Library/Application Support/Code/clp/6765e731291c4f4d14d665fa42b9b01a.tr/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 90)
+CFLAGS = -Wall -Werror -Wextra -pthread -g 
+# makefile (from `Makefile', line 16)
+DIR_ENVIRONMENT := environment/
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 14)
+DIR_CONCURRENCY := concurrency/
+# environment
+VSCODE_NODE_CACHED_DATA_DIR = /Users/emakas/Library/Application Support/Code/CachedData/054a9295330880ed74ceaedda236253b4f39a335
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/vscode-ipc-a7ab371f-a98b-480e-a6cf-535ea5576a9c.sock
+# environment
+VSCODE_CWD = /
+# makefile (from `Makefile', line 22)
+DIR_LIST := arg-converter/ arg-parser/ arg-verifier/ concurrency/ environment/ philosopher/ utils/
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
+# makefile (from `Makefile', line 20)
+DIR_UTILS := utils/
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 49)
+SRC_PHILOSOPHER := philosopher.c
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.USBud7g6Vd/Listeners
+# automatic
+%F = $(notdir $%)
+# makefile (from `Makefile', line 18)
+DIR_PHILOSOPHER := philosopher/
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/emakas/Desktop/42Cursus/philosophers
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# makefile (from `Makefile', line 87)
+GREEN := \033[1;32m
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/emakas
+# makefile (from `Makefile', line 33)
+SRC_ARG_CONVERTER := convert-args.c
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+LOGNAME = emakas
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 89)
+CC := gcc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = emakas
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 1)
+NAME := philo
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from `Makefile', line 31)
+SRC_ROOT := main.c
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cckm00334n/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/emakas/Library/Application Support/Code/1.56.2-main.sock
+# makefile (from `Makefile', line 86)
+RED := \033[0;31m
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = com.microsoft.VSCode.2132
+# makefile (from `Makefile', line 5)
+DIR_BIN := bin/
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from `Makefile', line 35)
+SRC_ARG_PARSER := collect-args.c count-args.c
+# makefile (from `Makefile', line 38)
+SRC_ARG_VERIFIER := verify-args.c
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x18C95:0:0
+# makefile (from `Makefile', line 46)
+SRC_ENVIRONMENT := environments.c forks.c
+# default
+MAKEFILES := 
+# makefile (from `Makefile', line 8)
+DIR_ARG_CONVERTER := arg-converter/
+# automatic
+<F = $(notdir $<)
+# makefile (from `Makefile', line 40)
+SRC_CONCURRENCY := call-bifunction.c call-synchronized.c get-int-sync.c get-synchronized.c int-function.c
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# makefile (from `Makefile', line 51)
+SRC_UTILS := all-ejected.c check-starve.c destroy-global-mutex.c ft_isdigit.c ft-max.c ft-split.c ft-strchr.c ft-strlcpy.c ft-strlen.c ft-strncmp.c ft-strtrim.c ft-wait.c get-global-mutex.c get-timestamp.c philo-eat.c philo-print.c philo-sleep.c philo-think.c
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 18846
+# variable set hash-table stats:
+# Load=85/1024=8%, Rehash=0, Collisions=9/150=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777225, inode 663070): 9 files, no impossibilities.
+# bin (device 16777225, inode 1115616): No files, no impossibilities so far.
+# src (device 16777225, inode 663134): 8 files, no impossibilities so far.
+
+# 17 files, no impossibilities in 3 directories.
+
+# Implicit Rules
+
+bin/%.o: src/%.c bin/
+#  commands to execute (from `Makefile', line 113):
+	@echo "$(GREEN)creating binary file from: $(basename $<)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+bin/utils/destroy-global-mutex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bin/:
+#  Implicit rule search has not been done.
+#  Last modified 2022-09-21 19:07:25
+#  File has been updated.
+#  Successfully updated.
+ 
+#  commands to execute (from `Makefile', line 109):
+	@echo "$(GREEN)creating binary folders"
+	@mkdir -p $(DIR_BIN) $(addprefix $(DIR_BIN), $(DIR_LIST))
+	
+
+# Not a target:
+bin/arg-verifier/verify-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/concurrency/call-synchronized.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: philo
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+philo: bin/main.o bin/arg-converter/convert-args.o bin/arg-parser/collect-args.o bin/arg-parser/count-args.o bin/arg-verifier/verify-args.o bin/concurrency/call-bifunction.o bin/concurrency/call-synchronized.o bin/concurrency/get-int-sync.o bin/concurrency/get-synchronized.o bin/concurrency/int-function.o bin/environment/environments.o bin/environment/forks.o bin/philosopher/philosopher.o bin/utils/all-ejected.o bin/utils/check-starve.o bin/utils/destroy-global-mutex.o bin/utils/ft_isdigit.o bin/utils/ft-max.o bin/utils/ft-split.o bin/utils/ft-strchr.o bin/utils/ft-strlcpy.o bin/utils/ft-strlen.o bin/utils/ft-strncmp.o bin/utils/ft-strtrim.o bin/utils/ft-wait.o bin/utils/get-global-mutex.o bin/utils/get-timestamp.o bin/utils/philo-eat.o bin/utils/philo-print.o bin/utils/philo-sleep.o bin/utils/philo-think.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-09-21 19:12:34
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  commands to execute (from `Makefile', line 95):
+	@echo "$(GREEN)creating executable file"
+	@$(CC) $(CFLAGS) $(BIN) -o $(NAME)
+	
+
+.PHONY: all re clean fclean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/concurrency/call-bifunction.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft_isdigit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/concurrency/get-synchronized.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/environment/forks.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-max.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/philo-sleep.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-09-19 17:47:32
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bin/utils/ft-strlcpy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strncmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/philo-eat.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-parser/count-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/get-global-mutex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/philosopher/philosopher.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 105):
+	@echo "$(RED)removing executable file"
+	@rm -rf $(NAME)
+	
+
+# Not a target:
+bin/utils/philo-print.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-09-21 19:37:24
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+bin/utils/get-timestamp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-converter/convert-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/all-ejected.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-strtrim.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 101):
+	@echo "$(RED)removing bin file"
+	@rm -rf $(DIR_BIN)
+	
+
+# Not a target:
+bin/utils/ft-strlen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/environment/environments.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-wait.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bin/main.o: src/main.c bin/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  Last modified 2022-09-21 19:07:25
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/main.o
+# automatic
+# % := 
+# automatic
+# * := main
+# automatic
+# + := src/main.c bin/
+# automatic
+# | := 
+# automatic
+# < := src/main.c
+# automatic
+# ^ := src/main.c bin/
+# automatic
+# ? := src/main.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/16=12%
+#  commands to execute (from `Makefile', line 113):
+	@echo "$(GREEN)creating binary file from: $(basename $<)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	
+
+# Not a target:
+bin/concurrency/get-int-sync.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/concurrency/int-function.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/ft-split.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/arg-parser/collect-args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/check-starve.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bin/utils/philo-think.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=42/1024=4%, Rehash=0, Collisions=4/99=4%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Thu Sep 22 13:45:28 2022
+
+ 
