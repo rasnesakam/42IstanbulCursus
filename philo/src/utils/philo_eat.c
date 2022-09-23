@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:31:16 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 15:17:00 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:43:25 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	*start_eat(t_environment *env)
 		return (NULL);
 	philo_print(env, "has taken a fork");
 	philo_print(env, "is eating");
-	ft_wait(env->sleep_time);
+	ft_wait(env->eat_time);
 	if (get_int_sync(env->philosopher->mutex, (int (*)(void *))philo_is_dead,
 		(void *)env->philosopher))
 		return (NULL);
