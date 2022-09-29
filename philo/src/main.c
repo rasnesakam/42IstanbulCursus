@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/09/22 15:28:39 by emakas           ###   ########.fr       */
+/*   Updated: 2022/09/29 14:15:01 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ static void	*simulate(void *environment)
 	t_environment		*env;
 
 	env = (t_environment *) environment;
-	if (env->philosopher->id % 2 == 1)
-		usleep(1000);
+
 	if (env->start_time == 0)
 		env->start_time = get_timestamp(0);
+	if (env->philosopher->id % 2 == 1)
+		ft_wait(1);
 	while (1)
 	{
 		if (!get_int_sync(env->philosopher->mutex,
@@ -74,21 +75,26 @@ static void	kill_all(t_environment *envs, int count)
 
 static void	listen_philos(int count, t_environment *envs)
 {
-	int				index;
+	unsigned long long	dead_timestamp;
+	t_environment		*env;
+	int					index;
 
 	while (1)
 	{
 		index = 0;
 		while (index < count)
 		{
-			if (check_starve(&envs[index]))
+			env = &envs[index];
+			if (check_starve(env))
 			{
-				if (!get_int_sync(envs[index].philosopher->mutex,
+				if (!get_int_sync(env->philosopher->mutex,
 						(int (*)(void *))is_ejected, (void *) &envs[index]))
 				{
-					if (check_starve(&envs[index]))
-						philo_print(&envs[index], "is died");
 					kill_all(envs, count);
+					dead_timestamp = get_timestamp(env->start_time);
+					if (check_starve(&envs[index]))
+						printf("%llu %d is died\n",
+							dead_timestamp, env->philosopher->id);
 				}
 				return ;
 			}
