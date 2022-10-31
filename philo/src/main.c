@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/10/04 12:38:09 by emakas           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:36:59 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static void	kill_all(t_environment *envs, int count)
 
 static void	listen_philos(int count, t_environment *envs)
 {
-	unsigned long long	dead_timestamp;
 	t_environment		*env;
 	int					index;
 
