@@ -6,7 +6,7 @@
 /*   By: emakas <emakas@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:36:52 by emakas            #+#    #+#             */
-/*   Updated: 2022/10/31 18:36:59 by emakas           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:57:10 by emakas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ static void	listen_philos(int count, t_environment *envs)
 				{
 					kill_all(envs, count);
 					if (check_starve(&envs[index]))
+					{
+						ft_wait(5);
 						philo_print(&envs[index], "is died");
+					}
 				}
 				return ;
 			}
