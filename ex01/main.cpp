@@ -12,13 +12,13 @@ void addContact(PhoneBook *book) {
     //TODO: DONT SUPPOR NON ASCII CHARS
     // BUNLAR GETLINE OLACAK
     std::cout << "Enter first name: ";
-    std::cin >> firstName;
+    std::getline(std::cin, firstName);
     std::cout << std::endl << "Enter last name: ";
-    std::cin >> lastName;
+    std::getline(std::cin, lastName);
     std::cout << std::endl << "Enter nickname: ";
-    std::cin >> nickname;
+    std::getline(std::cin, nickname);
     std::cout << std::endl << "Enter darkest secret: ";
-    std::cin >> darkestSecret;
+    std::getline(std::cin, darkestSecret);
     //TODO: Implement Phone number
     std::cout << std::endl;
     Contact contact(firstName,lastName,nickname, darkestSecret,5393408356);
@@ -30,7 +30,7 @@ void filter(std::string infos){
     if (infos.length() < 10){
         int len = 0;
         while (len + infos.length() < 10){
-            std::cout << ".";
+            std::cout << " ";
             len++;
         }
         std::cout << infos;
@@ -64,6 +64,20 @@ void searchBook(PhoneBook *book) {
         std::cout << std::endl;
         index++;
     }
+    bool exit = false;
+    std::string prompt;
+    int iprompt;
+    while (!exit) {
+        std::cout << "Enter index number to show detailed information" << std::endl;
+        std::getline(std::cin, prompt);
+        iprompt = std::stoi(prompt);
+        if (iprompt > 0 && iprompt < 8){
+            printContactExtra(book->getContact(iprompt));
+        }
+        else {
+            std::cout << "Undefined Command." << std::endl;
+        }
+    }
 }
 
 int main(){
@@ -71,8 +85,8 @@ int main(){
     bool exit = false;
     std::string prompt;
     while (!exit) {
-        std::cout << "WELCOME TO PHONE BOOK. WHAT DO YOU WANT TO DO" << std::endl;
-        std::cin >> prompt;
+        std::cout << "WELCOME TO PHONE BOOK. WHAT DO YOUUU WANT" << std::endl;
+        std::getline(std::cin, prompt);
         if (strcmp(prompt.c_str(), "ADD") == 0)
             addContact(&book);
         else if (strcmp(prompt.c_str(), "SEARCH") == 0)

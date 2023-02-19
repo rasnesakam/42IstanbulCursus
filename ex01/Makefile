@@ -2,7 +2,12 @@ NAME = phonebook
 CXX = c++
 CXXFLAGS += -Wall -Wextra -Werror -std=c++98
 
-SRC = *.cpp
+SRC = contact.cpp phonebook.cpp
 
 $(NAME): $(SRC)
-	$(CXX) $(CXXFLAGS) $(SRC) 
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
+
+clear:
+	rm $(NAME)
+
+.PHONY: clear
