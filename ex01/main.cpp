@@ -86,7 +86,7 @@ void searchBook(PhoneBook *book) {
     while (!exit) {
         std::cout << "Enter index number to show detailed information (Press '0'(zero) to exit)" << std::endl;
         std::getline(std::cin, prompt);
-        if (isNumeric(prompt)){
+        if (isNumeric(prompt) && !prompt.empty()){
             iprompt = std::stoi(prompt);
             if (iprompt > 0 && iprompt < 8){
                 printContactExtra(book->getContact(iprompt - 1));
