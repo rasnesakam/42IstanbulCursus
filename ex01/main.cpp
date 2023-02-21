@@ -19,7 +19,7 @@ void addContact(PhoneBook *book) {
     std::getline(std::cin, nickname);
     std::cout << std::endl << "Enter darkest secret: ";
     std::getline(std::cin, darkestSecret);
-    //TODO: Implement Phone number
+    std::cout << std::endl << "Enter phone number (Whatever you say, i believe it.): ";
     std::cout << std::endl;
     Contact contact(firstName,lastName,nickname, darkestSecret,5393408356);
     std::cout <<"Added contact: " << std::endl;
@@ -54,7 +54,15 @@ void printContact(int index, Contact c){
 }
 
 void printContactExtra(Contact c){
-        std::cout << c.getFirstName() << " " << c.getLastName() << std::endl;
+    if (!c.getFirstName().empty()){
+        std::cout << "First name is: " << c.getFirstName() << std::endl;
+        std::cout << "Last name is: " << c.getLastName() << std::endl;
+        std::cout << "Nickname is: " << c.getNickname() << std::endl;
+        std::cout << "Phone Number is: " << c.getPhoneNumber() << std::endl;
+        std::cout << "Darkest secret is: " << c.getDarkestSecret() << std::endl;
+    }
+    else
+        std::cout << "There is no such contact. Please try again with another contact." << std::endl;
 }
 
 void searchBook(PhoneBook *book) {
@@ -68,14 +76,16 @@ void searchBook(PhoneBook *book) {
     std::string prompt;
     int iprompt;
     while (!exit) {
-        std::cout << "Enter index number to show detailed information" << std::endl;
+        std::cout << "Enter index number to show detailed information (Press '0'(zero) to exit)" << std::endl;
         std::getline(std::cin, prompt);
         iprompt = std::stoi(prompt);
         if (iprompt > 0 && iprompt < 8){
-            printContactExtra(book->getContact(iprompt));
+            printContactExtra(book->getContact(iprompt - 1));
         }
+        else if (iprompt == 0)
+            exit = true;
         else {
-            std::cout << "Undefined Command." << std::endl;
+            std::cout << "Unknown Contact." << std::endl;
         }
     }
 }
