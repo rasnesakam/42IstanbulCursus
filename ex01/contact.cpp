@@ -5,14 +5,14 @@ Contact::Contact(){
     this->lastName = "";
     this->nickname = "";
     this->darkestSecret = "";
-    this->phoneNumber = 0;
+    this->phoneNumber = "";
 }
 
 Contact::Contact(std::string firstName,
             std::string lastName,
             std::string nickname,
             std::string darkestSecret,
-            long phoneNumber){
+            std::string phoneNumber){
 
     this->firstName = firstName;
     this->lastName = lastName;
@@ -37,6 +37,6 @@ std::string Contact::getDarkestSecret(){
     return this->darkestSecret;
 }
 
-long Contact::getPhoneNumber(){
+std::string Contact::getPhoneNumber(){
     return this->phoneNumber;
 }

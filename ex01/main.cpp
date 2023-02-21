@@ -2,26 +2,34 @@
 #include "phonebook.hpp"
 
 
+std::string myGetLine(std::string prompt){
+    std::string ret;
+    while (ret.empty()){
+        std::cout << prompt;
+        std::getline(std::cin, ret);
+        std::cout << std::endl;
+    }
+    return ret;
+}
+
+bool isNumeric(std::string str){
+    int i = 0;
+    while (str[i] != '\0'){
+        if (!isdigit(str[i]))
+            return false;
+        i++;
+    }
+    return true;
+}
 
 void addContact(PhoneBook *book) {
-    std::string firstName;
-    std::string lastName;
-    std::string nickname;
-    std::string darkestSecret;
+    std::string firstName = myGetLine("Enter first name: ");
+    std::string lastName = myGetLine("Enter last name: ");
+    std::string nickname = myGetLine("Enter nickname: ");
+    std::string darkestSecret = myGetLine("Enter darkest secret: ");
+    std::string phoneNumber = myGetLine("Enter phone number (Whatever you say, i believe it.): ");
 
-    //TODO: DONT SUPPOR NON ASCII CHARS
-    // BUNLAR GETLINE OLACAK
-    std::cout << "Enter first name: ";
-    std::getline(std::cin, firstName);
-    std::cout << std::endl << "Enter last name: ";
-    std::getline(std::cin, lastName);
-    std::cout << std::endl << "Enter nickname: ";
-    std::getline(std::cin, nickname);
-    std::cout << std::endl << "Enter darkest secret: ";
-    std::getline(std::cin, darkestSecret);
-    std::cout << std::endl << "Enter phone number (Whatever you say, i believe it.): ";
-    std::cout << std::endl;
-    Contact contact(firstName,lastName,nickname, darkestSecret,5393408356);
+    Contact contact(firstName,lastName,nickname, darkestSecret,phoneNumber);
     std::cout <<"Added contact: " << std::endl;
     book->addContact(contact);
 }
@@ -78,15 +86,19 @@ void searchBook(PhoneBook *book) {
     while (!exit) {
         std::cout << "Enter index number to show detailed information (Press '0'(zero) to exit)" << std::endl;
         std::getline(std::cin, prompt);
-        iprompt = std::stoi(prompt);
-        if (iprompt > 0 && iprompt < 8){
-            printContactExtra(book->getContact(iprompt - 1));
+        if (isNumeric(prompt)){
+            iprompt = std::stoi(prompt);
+            if (iprompt > 0 && iprompt < 8){
+                printContactExtra(book->getContact(iprompt - 1));
+            }
+            else if (iprompt == 0)
+                exit = true;
+            else {
+                std::cout << "Unknown Contact." << std::endl;
+            }
         }
-        else if (iprompt == 0)
-            exit = true;
-        else {
-            std::cout << "Unknown Contact." << std::endl;
-        }
+        else
+            std::cout << "Please enter a numeric input!" << std::endl;
     }
 }
 
@@ -94,8 +106,9 @@ int main(){
     PhoneBook book;
     bool exit = false;
     std::string prompt;
+    std::cout << "WELCOME TO PHONE BOOK. ";
     while (!exit) {
-        std::cout << "WELCOME TO PHONE BOOK. WHAT DO YOUUU WANT" << std::endl;
+        std::cout << "WHAT DO YOUUU WANT" << std::endl;
         std::getline(std::cin, prompt);
         if (strcmp(prompt.c_str(), "ADD") == 0)
             addContact(&book);
