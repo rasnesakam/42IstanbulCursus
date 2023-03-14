@@ -1,19 +1,45 @@
 #include <string>
 #include <fstream>
+#include <iostream>
 
-int withFile(std::string file1, std::string file2, std::string replacement, std::string (*manipulator)(std::string input, std::string replaceWith)){
+class Degistirinator {
+    private:
+        std::string substitude;
+        std::string replacement;
+    public:
+        Degistirinator(std::string substitude, std::string replacement){
+            this->substitude = substitude;
+            this->replacement = replacement;
+        };
+        std::string replace(std::string input) {
+            return input;
+        }
+};
+
+class FileWriter {
+    private:
+        std::ofstream outFile;
+    public:
+        FileWriter(std::string filename) {
+            this->outFile = std::ofstream(filename);
+        }
+        ~FileWriter(){
+            this->outFile.close();
+        }
+        void writeLine(std::string input){
+            this->outFile << input;
+        }
+};
+
+std::string withFile(std::string file1,  void(* func(std::string input))()){
     std::string line;
     std::ifstream streamIn(file1);
-    std::ofstream streamOut(file2);
     while (std::getline(streamIn, line)){
-        streamOut << manipulator(line, replacement);
+        func(line)(line);
     }
     streamIn.close();
 }
 
-std::string manipulator(std::string input, std::string replace){
-    
-}
 
 int outFile(std::string file, std::string (*contentProvider)()){}
 
@@ -23,6 +49,10 @@ int main(int ac, char* av[]){
         std::string substitude = av[2];
         std::string replacement = av[3];
         std::string newfile = filename + ".replace";
+        Degistirinator degistir(substitude, replacement);
+        
+        withFile(filename);
+
 
     }
     return 0;
