@@ -20,8 +20,8 @@ class FileWriter {
     private:
         std::ofstream outFile;
     public:
-        FileWriter(std::string filename) {
-            this->outFile = std::ofstream(filename);
+        FileWriter(std::string filename) : outFile(std::ofstream(filename)) {
+            this->outFile = std::ofstream("");
         }
         ~FileWriter(){
             this->outFile.close();
@@ -31,11 +31,11 @@ class FileWriter {
         }
 };
 
-std::string withFile(std::string file1,  void(* func(std::string input))()){
+std::string withFile(std::string file1, Degistirinator degistirinator, FileWriter filewriter){
     std::string line;
     std::ifstream streamIn(file1);
     while (std::getline(streamIn, line)){
-        func(line)(line);
+        filewriter.writeLine(degistirinator.replace(line));
     }
     streamIn.close();
 }
@@ -50,8 +50,9 @@ int main(int ac, char* av[]){
         std::string replacement = av[3];
         std::string newfile = filename + ".replace";
         Degistirinator degistir(substitude, replacement);
+        FileWriter filewriter(newfile);
         
-        withFile(filename);
+        withFile(filename, degistir, filewriter);
 
 
     }
