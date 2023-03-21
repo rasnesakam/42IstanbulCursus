@@ -13,19 +13,12 @@ class Degistirinator {
         };
         std::string replace(std::string input) {
             std::string str = "";
-            int founded = input.find(this->replacement);
-            int cursor = 0;
-            if (founded =-1)
-                    return (input);
-            while (founded > -1){
-                founded = input.find(this->replacement);
-                if (founded == -1)
-                    founded = input.length();
-                for (; cursor < founded; cursor++)
-                    str += input[cursor];
-                if (cursor < input.length())
+            for (int i = 0; i < input.length(); i++) {
+                if (i == input.find(search, i)) {
                     str += this->replacement;
-                cursor += this->replacement.length();
+                    i += search.length();
+                }
+                str += input[i];
             }
             return str;
         }
