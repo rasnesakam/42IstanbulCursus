@@ -13,7 +13,7 @@ class Degistirinator {
         };
         std::string replace(std::string input) {
             std::string str = "";
-            for (int i = 0; i < input.length(); i++) {
+            for (size_t i = 0; i < input.length(); i++) {
                 if (i == input.find(search, i)) {
                     str += this->replacement;
                     i += search.length();

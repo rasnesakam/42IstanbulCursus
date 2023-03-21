@@ -1,7 +1,7 @@
 NAME = sed
 CXX = c++
 CXXFLAG += -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp *.cpp
+SRC = main.cpp
 
 $(NAME): $(SRC)
 	$(CXX) $(CXXFLAG) $(SRC) -o $(NAME)
