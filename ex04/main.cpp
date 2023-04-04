@@ -11,14 +11,18 @@ class Degistirinator {
             this->search = search;
             this->replacement = replacement;
         };
+
         std::string replace(std::string input) {
             std::string str = "";
+            
             for (size_t i = 0; i < input.length(); i++) {
                 if (i == input.find(search, i)) {
                     str += this->replacement;
                     i += search.length();
                 }
-                str += input[i];
+                //std::cout << str << std::endl;
+                if (input[i])
+                    str += input[i];
             }
             return str;
         }
@@ -60,11 +64,11 @@ void withFile(std::string file1, Degistirinator &manipulator, FileWriter &filewr
 
 }
 
-int main(int ac, char* av[]){
+int main(int ac, char *av[]){
     if (ac == 4){
         std::string filename = av[1];
         std::string substitude = av[2];
-        std::string replacement = av[3];
+        std::string replacement(av[3]);
         std::string newfile = filename + ".replace";
         Degistirinator degistir(substitude, replacement);
         FileWriter writer(newfile);
