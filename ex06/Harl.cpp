@@ -5,10 +5,10 @@ void Harl::complain(std::string label){
 	int index = -1;
 	const char *labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*fun[4])() = {
-		fun[0] = &Harl::debug,
-		fun[1] = &Harl::info,
-		fun[2] = &Harl::warning,
-		fun[3] = &Harl::error
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
 	};
 	for (int i = 0; i < 4; i++)
 		if (std::strcmp(labels[i],label.c_str()) == 0)
