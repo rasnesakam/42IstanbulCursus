@@ -19,7 +19,6 @@ Fixed::Fixed(float number){
 	if (number < 0)
 		sum = -0.5;
 	this->number = (int) roundf((number * (double)(1 << this->bits)) +sum);
-	std::cout << (this->getRawBits()) << std::endl;
 }
 
 Fixed::~Fixed(){
