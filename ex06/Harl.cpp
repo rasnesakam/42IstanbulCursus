@@ -17,6 +17,7 @@ void Harl::complain(std::string label){
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		return;
 	}
+	std::cout << "[ " << labels[index] << " ]" << std::endl;
 	(this->*fun[index])();
 }
 
@@ -25,13 +26,13 @@ void Harl::debug(void) {
 }
 
 void Harl::error(void){
-	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
 void Harl::info(void){
-	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 
 void Harl::warning(void){
-	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free." << std::endl << "I’ve been coming for years whereas you started working here since last month" << std::endl;
 }
