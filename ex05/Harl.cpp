@@ -12,12 +12,11 @@ void Harl::complain(std::string label){
 	};
 	for (int i = 0; i < 4; i++)
 		if (std::strcmp(labels[i],label.c_str()) == 0)
-			index = i;
+			return (this->*fun[i])();
 	if (index == -1){
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		return;
 	}
-	(this->*fun[index])();
 }
 
 void Harl::debug(void) {
