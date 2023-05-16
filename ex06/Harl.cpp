@@ -13,12 +13,26 @@ void Harl::complain(std::string label){
 	for (int i = 0; i < 4; i++)
 		if (std::strcmp(labels[i],label.c_str()) == 0)
 			index = i;
-	if (index == -1){
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return;
+	switch (index) {
+		case 0:
+			std::cout << "[ " << "DEBUG" << " ]" << std::endl;
+			Harl::debug();
+			std::cout << std::endl;
+		case 1:
+			std::cout << "[ " << "INFO" << " ]" << std::endl;
+			Harl::info();
+			std::cout << std::endl;
+		case 2:
+			std::cout << "[ " << "WARNING" << " ]" << std::endl;
+			Harl::warning();
+			std::cout << std::endl;
+		case 3:
+			std::cout << "[ " << "ERROR" << " ]" << std::endl;
+			Harl::error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
-	std::cout << "[ " << labels[index] << " ]" << std::endl;
-	(this->*fun[index])();
 }
 
 void Harl::debug(void) {
