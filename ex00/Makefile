@@ -6,9 +6,11 @@ SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 $(NAME): $(SRC)
 	$(CXX) $(CXXFLAG) $(SRC) -o $(NAME)
 
+all: $(NAME)
+
 clean:
 	rm -rf $(NAME)
 
-re: clean $(NAME)
+re: clean all
 
-.PHONY: clean re
+.PHONY: all clean re
