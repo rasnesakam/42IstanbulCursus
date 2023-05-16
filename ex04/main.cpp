@@ -13,18 +13,12 @@ class Degistirinator {
         };
 
         std::string replace(std::string input) {
-            std::string str = "";
-            
-            for (size_t i = 0; i < input.length(); i++) {
-                if (i == input.find(search, i)) {
-                    str += this->replacement;
-                    i += search.length();
-                }
-                //std::cout << str << std::endl;
-                if (input[i])
-                    str += input[i];
-            }
-            return str;
+            size_t position;
+			while((position = input.find(search)) != std::string::npos){
+				input.erase(position,search.length());
+				input.insert(position,replacement);
+			}
+            return input;
         }
 };
 
@@ -54,14 +48,19 @@ class FileWriter {
         }
 };
 
-void withFile(std::string file1, Degistirinator &manipulator, FileWriter &filewriter){
+int withFile(std::string file1, Degistirinator &manipulator, FileWriter &filewriter){
     std::string line;
     std::ifstream streamIn(file1);
+	if (!streamIn.good())
+	{
+		std::cerr << file1 << ": Invalid file" << std::endl;
+		return 1;
+	}
     while (std::getline(streamIn, line)){
         filewriter.writeLine(manipulator.replace(line));
     }
     streamIn.close();
-
+	return 0;
 }
 
 int main(int ac, char *av[]){
@@ -72,10 +71,7 @@ int main(int ac, char *av[]){
         std::string newfile = filename + ".replace";
         Degistirinator degistir(substitude, replacement);
         FileWriter writer(newfile);
-        
-        withFile(filename, degistir, writer);
-
-
+        return withFile(filename, degistir, writer);
     }
     return 0;
 }
