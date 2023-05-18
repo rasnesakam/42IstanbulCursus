@@ -3,7 +3,7 @@
 
 void Harl::complain(std::string label){
 	int index = -1;
-	const char *labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	const std::string labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	for (int i = 0; i < 4; i++)
 		if (labels[i] ==  label)
 			index = i;
