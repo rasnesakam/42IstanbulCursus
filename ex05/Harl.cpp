@@ -2,7 +2,6 @@
 #include <iostream>
 
 void Harl::complain(std::string label){
-	int index = -1;
 	const char *labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*fun[4])() = {
 		fun[0] = &Harl::debug,
