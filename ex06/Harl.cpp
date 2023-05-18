@@ -5,7 +5,7 @@ void Harl::complain(std::string label){
 	int index = -1;
 	const char *labels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	for (int i = 0; i < 4; i++)
-		if (std::strcmp(labels[i],label.c_str()) == 0)
+		if (labels[i] ==  label)
 			index = i;
 	switch (index) {
 		case 0:
