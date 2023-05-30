@@ -17,9 +17,25 @@ class Fixed {
 		void setRawBits(int number);
 		int getRawBits( void ) const;
 		Fixed& operator=(const Fixed& fixed);
-		Fixed operator+(const Fixed rhs);
 		friend std::ostream &operator << (std::ostream &out, const Fixed &c);
 };
 
+// Arithmetic operators
+Fixed &operator+(Fixed& lhs, const Fixed& rhs);
+Fixed &operator-(Fixed& lhs, const Fixed& rhs);
+Fixed &operator*(Fixed& lhs, const Fixed& rhs);
+Fixed &operator/(Fixed& lhs, const Fixed& rhs);
+
+// Increment overloads
+Fixed operator++(const Fixed& fixed);
+Fixed operator--(const Fixed& fixed);
+
+// Conditional operators
+bool operator>(const Fixed& lhs, const Fixed& rhs);
+bool operator>=(const Fixed& lhs, const Fixed& rhs);
+bool operator<(const Fixed& lhs, const Fixed& rhs);
+bool operator<=(const Fixed& lhs, const Fixed& rhs);
+bool operator==(const Fixed& lhs, const Fixed& rhs);
+bool operator!=(const Fixed& lhs, const Fixed& rhs);
 
 #endif
