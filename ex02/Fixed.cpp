@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-int Fixed::bits = 8;
+const int Fixed::bits = 8;
 
 Fixed::Fixed(){
 	std::cout << "Default constructor called" << std::endl;
@@ -57,4 +57,67 @@ Fixed& Fixed::operator=(const Fixed &fixed) {
 std::ostream& operator<<(std::ostream &os, const Fixed &fixed) {
 	os << fixed.toFloat() ;
 	return os;
+}
+
+
+// Arithmetic operators
+Fixed &operator+(Fixed& lhs, const Fixed& rhs){
+	lhs.setRawBits(lhs.getRawBits() + rhs.getRawBits());
+	return lhs;
+}
+Fixed &operator-(Fixed& lhs, const Fixed& rhs){
+	lhs.setRawBits(lhs.getRawBits() - rhs.getRawBits());
+	return lhs;
+}
+Fixed &operator*(Fixed& lhs, const Fixed& rhs){
+	lhs.setRawBits(lhs.getRawBits() * rhs.getRawBits());
+	return lhs;
+}
+Fixed &operator/(Fixed& lhs, const Fixed& rhs){
+	lhs.setRawBits(lhs.getRawBits() / rhs.getRawBits());
+	return lhs;
+}
+
+// Increment overloads
+Fixed& operator++(Fixed& fixed){
+	Fixed increment(1);
+	increment.setRawBits(increment.getRawBits() + 1);
+	return fixed + increment;
+}
+Fixed operator++(Fixed& fixed, int){
+	Fixed temp(fixed);
+	Fixed increment(1);
+	increment.setRawBits(increment.getRawBits() + 1);
+	return temp + increment;
+}
+Fixed& operator--(Fixed& fixed){
+	Fixed decrement(1);
+	decrement.setRawBits(decrement.getRawBits() + 1);
+	return fixed - decrement;
+}
+Fixed operator--(Fixed& fixed, int){
+	Fixed temp(fixed);
+	Fixed decrement(1);
+	decrement.setRawBits(decrement.getRawBits() + 1);
+	return temp - decrement;
+}
+
+// Conditional operators
+inline bool operator>(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() > rhs.getRawBits();
+}
+inline bool operator>=(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() >= rhs.getRawBits();
+}
+inline bool operator<(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() < rhs.getRawBits();
+}
+inline bool operator<=(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() <= rhs.getRawBits();
+}
+inline bool operator==(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() == rhs.getRawBits();
+}
+inline bool operator!=(const Fixed& lhs, const Fixed& rhs){
+	return lhs.getRawBits() != rhs.getRawBits();
 }

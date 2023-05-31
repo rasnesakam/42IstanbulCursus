@@ -5,7 +5,7 @@
 class Fixed {
 	private:
 		int number;
-		static int bits;
+		static const int bits;
 	public:
 		Fixed();
 		~Fixed();
@@ -27,15 +27,17 @@ Fixed &operator*(Fixed& lhs, const Fixed& rhs);
 Fixed &operator/(Fixed& lhs, const Fixed& rhs);
 
 // Increment overloads
-Fixed operator++(const Fixed& fixed);
-Fixed operator--(const Fixed& fixed);
+Fixed& operator++(const Fixed& fixed);
+Fixed operator++(const Fixed& fixed,int);
+Fixed& operator--(const Fixed& fixed);
+Fixed operator--(const Fixed& fixed,int);
 
 // Conditional operators
-bool operator>(const Fixed& lhs, const Fixed& rhs);
-bool operator>=(const Fixed& lhs, const Fixed& rhs);
-bool operator<(const Fixed& lhs, const Fixed& rhs);
-bool operator<=(const Fixed& lhs, const Fixed& rhs);
-bool operator==(const Fixed& lhs, const Fixed& rhs);
-bool operator!=(const Fixed& lhs, const Fixed& rhs);
+inline bool operator>(const Fixed& lhs, const Fixed& rhs);
+inline bool operator>=(const Fixed& lhs, const Fixed& rhs);
+inline bool operator<(const Fixed& lhs, const Fixed& rhs);
+inline bool operator<=(const Fixed& lhs, const Fixed& rhs);
+inline bool operator==(const Fixed& lhs, const Fixed& rhs);
+inline bool operator!=(const Fixed& lhs, const Fixed& rhs);
 
 #endif
