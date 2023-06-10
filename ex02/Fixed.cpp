@@ -4,17 +4,14 @@
 const int Fixed::bits = 8;
 
 Fixed::Fixed(){
-	std::cout << "Default constructor called" << std::endl;
 	this->number = 0;
 }
 
 Fixed::Fixed(int number) {
-	std::cout << "Int constructor called" << std::endl;
 	this->number = number * 1 << this->bits;
 }
 
 Fixed::Fixed(float number){
-	std::cout << "Float constructor called" << std::endl;
 	float sum = 0.5;
 	if (number < 0)
 		sum = -0.5;
@@ -22,11 +19,9 @@ Fixed::Fixed(float number){
 }
 
 Fixed::~Fixed(){
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &fixed) {
-	std::cout << "Copy constructor called" << std::endl;
 	this->number = fixed.getRawBits();
 }
 
@@ -48,76 +43,92 @@ float Fixed::toFloat(void) const{
 }
 
 Fixed& Fixed::operator=(const Fixed &fixed) {
-	
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->setRawBits(fixed.getRawBits());
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream &os, const Fixed &fixed) {
+std::ostream& operator<<(std::ostream &os, const Fixed fixed) {
 	os << fixed.toFloat() ;
 	return os;
 }
 
 
 // Arithmetic operators
-Fixed &operator+(Fixed& lhs, const Fixed& rhs){
-	lhs.setRawBits(lhs.getRawBits() + rhs.getRawBits());
-	return lhs;
+Fixed Fixed::operator+(const Fixed& rhs){
+	Fixed tmp;
+	tmp.setRawBits(this->number + rhs.getRawBits());
+	return tmp;
 }
-Fixed &operator-(Fixed& lhs, const Fixed& rhs){
-	lhs.setRawBits(lhs.getRawBits() - rhs.getRawBits());
-	return lhs;
+Fixed Fixed::operator-(const Fixed& rhs){
+	Fixed tmp;
+	tmp.setRawBits(this->number - rhs.getRawBits());
+	return tmp;
 }
-Fixed &operator*(Fixed& lhs, const Fixed& rhs){
-	lhs.setRawBits(lhs.getRawBits() * rhs.getRawBits());
-	return lhs;
+Fixed Fixed::operator*(const Fixed& rhs){
+	Fixed tmp;
+	tmp.setRawBits(this->number * rhs.getRawBits() >> this->bits);
+	return tmp;
 }
-Fixed &operator/(Fixed& lhs, const Fixed& rhs){
-	lhs.setRawBits(lhs.getRawBits() / rhs.getRawBits());
-	return lhs;
+Fixed Fixed::operator/(const Fixed& rhs){
+	Fixed tmp;
+	tmp.setRawBits((this->number << this->bits) / rhs.getRawBits());
+	return tmp;
 }
 
 // Increment overloads
-Fixed& operator++(Fixed& fixed){
-	Fixed increment(1);
-	increment.setRawBits(increment.getRawBits() + 1);
-	return fixed + increment;
+//prefix
+Fixed& Fixed::operator++(){
+	this->setRawBits(this->number + 1);
+	return *this;
 }
-Fixed operator++(Fixed& fixed, int){
-	Fixed temp(fixed);
-	Fixed increment(1);
-	increment.setRawBits(increment.getRawBits() + 1);
-	return temp + increment;
+Fixed Fixed::operator++(int){
+	Fixed temp(*this);
+	return ++temp;
 }
-Fixed& operator--(Fixed& fixed){
-	Fixed decrement(1);
-	decrement.setRawBits(decrement.getRawBits() + 1);
-	return fixed - decrement;
+Fixed& Fixed::operator--(){
+	this->setRawBits(this->number - 1);
+	return *this;
 }
-Fixed operator--(Fixed& fixed, int){
-	Fixed temp(fixed);
-	Fixed decrement(1);
-	decrement.setRawBits(decrement.getRawBits() + 1);
-	return temp - decrement;
+Fixed Fixed::operator--( int){
+	Fixed temp(*this);
+	return --temp;
 }
 
 // Conditional operators
-inline bool operator>(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() > rhs.getRawBits();
+inline bool Fixed::operator>(const Fixed& rhs) const
+{
+	return this->number > rhs.getRawBits();
 }
-inline bool operator>=(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() >= rhs.getRawBits();
+inline bool Fixed::operator>=(const Fixed& rhs) const
+{
+	return this->number >= rhs.getRawBits();
 }
-inline bool operator<(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() < rhs.getRawBits();
+inline bool Fixed::operator<(const Fixed& rhs) const
+{
+	return this->number < rhs.getRawBits();
 }
-inline bool operator<=(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() <= rhs.getRawBits();
+inline bool Fixed::operator<=(const Fixed& rhs) const
+{
+	return this->number <= rhs.getRawBits();
 }
-inline bool operator==(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() == rhs.getRawBits();
+inline bool Fixed::operator==(const Fixed& rhs) const
+{
+	return this->number == rhs.getRawBits();
 }
-inline bool operator!=(const Fixed& lhs, const Fixed& rhs){
-	return lhs.getRawBits() != rhs.getRawBits();
+inline bool Fixed::operator!=(const Fixed& rhs) const
+{
+	return this->number != rhs.getRawBits();
+}
+
+// Min and Max funcs
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b){
+	if (a > b)
+		return a;
+	return b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b){
+	if (a < b)
+		return a;
+	return b;
 }

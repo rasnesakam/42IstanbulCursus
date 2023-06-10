@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = a.out
 CXX = c++
 CXXARGS = -Wall -Wextra -Werror --std=c++98
 SRC = Fixed.cpp main.cpp
