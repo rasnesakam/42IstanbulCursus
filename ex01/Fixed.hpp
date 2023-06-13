@@ -17,8 +17,9 @@ class Fixed {
 		void setRawBits(int number);
 		int getRawBits( void ) const;
 		Fixed& operator=(const Fixed& fixed);
-		friend std::ostream &operator << (std::ostream &out, const Fixed &c);
 };
+
+std::ostream &operator << (std::ostream &out, const Fixed &c);
 
 
 #endif
