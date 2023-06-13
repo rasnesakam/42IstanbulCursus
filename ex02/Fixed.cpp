@@ -83,7 +83,8 @@ Fixed& Fixed::operator++(){
 }
 Fixed Fixed::operator++(int){
 	Fixed temp(*this);
-	return ++temp;
+	++(*this);
+	return temp;
 }
 Fixed& Fixed::operator--(){
 	this->setRawBits(this->number - 1);
@@ -91,7 +92,8 @@ Fixed& Fixed::operator--(){
 }
 Fixed Fixed::operator--( int){
 	Fixed temp(*this);
-	return --temp;
+	--(*this);
+	return temp;
 }
 
 // Conditional operators
