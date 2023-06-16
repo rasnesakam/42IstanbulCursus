@@ -1,4 +1,4 @@
-NAME = scravtrap
+NAME = fragtrap
 
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra --std=c++98
