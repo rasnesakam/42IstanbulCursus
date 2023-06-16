@@ -1,9 +1,25 @@
 NAME = scravtrap
 
 CXX = g++
-CXXARGS = -Wall -Werror -Wextra --std=c++98
+CXXFLAGS = -Wall -Werror -Wextra --std=c++98
 
 SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
 
-$(NAME): $(SRC)
-	$(CXX) $(CXXARGS) -o $(NAME) $(SRC)
+BIN = $(SRC:.cpp=.o)
+
+$(NAME): $(BIN)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(BIN)
+
+
+all: $(NAME)
+
+clean:
+	rm -rf $(BIN)
+
+fclean: clean
+	rm -rf $(NAME)
+
+
+re: fclean all
+
+.PHONY: clean fclean re all
