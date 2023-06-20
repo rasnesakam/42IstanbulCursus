@@ -6,8 +6,8 @@ class ClapTrap{
 
 	private:
 		std::string name;
-		int hitPoint;
-		int energyPoint;
+		int hitPoints;
+		int energyPoints;
 		int attackDamage;
 
 	public:
@@ -22,14 +22,5 @@ class ClapTrap{
 		void beRepaired(unsigned int amount);
 
 };
-
-typedef struct asd{
-	std::string name;
-	int hitPoint;
-	int energyPoint;
-	int attackDamage;
-} asd;
-
-
 
 #endif

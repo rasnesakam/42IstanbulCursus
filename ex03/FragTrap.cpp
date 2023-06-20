@@ -2,29 +2,29 @@
 #include <iostream>
 
 FragTrap::FragTrap(): ClapTrap(){
-	this->hitPoint = 100;
-	this->energyPoint = 100;
+	this->hitPoints = 100;
+	this->energyPoints = 100;
 	this->attackDamage = 30;
 	std::cout << "Creating empty FragTrap" << std::endl;
 	std::cout << "FragTrap created with values" << std::endl << 
 		"{" << std::endl <<
 			"\tname: " << this->name << std::endl <<
-			"\thitpoint: " << this->hitPoint << std::endl <<
-			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\thitPoints: " << this->hitPoints << std::endl <<
+			"\tenergyPoints: " << this->energyPoints << std::endl <<
 			"\tattackDamage: " << this->attackDamage << std::endl <<
 		"}" << std::endl;
 }
 
 FragTrap::FragTrap(const std::string &name): ClapTrap(name){
-	this->hitPoint = 100;
-	this->energyPoint = 100;
+	this->hitPoints = 100;
+	this->energyPoints = 100;
 	this->attackDamage = 30;
 	std::cout << "FragTrap creating with name: " << name << std::endl;
 	std::cout << "FragTrap created with values" << std::endl << 
 		"{" << std::endl <<
 			"\tname: " << this->name << std::endl <<
-			"\thitpoint: " << this->hitPoint << std::endl <<
-			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\thitPoints: " << this->hitPoints << std::endl <<
+			"\tenergyPoints: " << this->energyPoints << std::endl <<
 			"\tattackDamage: " << this->attackDamage << std::endl <<
 		"}" << std::endl;
 }
@@ -36,8 +36,8 @@ FragTrap::FragTrap(FragTrap &fragTrap): ClapTrap(fragTrap){
 
 FragTrap& FragTrap::operator==(FragTrap &fragTrap){
 	this->attackDamage = fragTrap.attackDamage;
-	this->energyPoint = fragTrap.attackDamage;
-	this->hitPoint = fragTrap.hitPoint;
+	this->energyPoints = fragTrap.attackDamage;
+	this->hitPoints = fragTrap.hitPoints;
 	return *this;
 }
 
@@ -50,13 +50,13 @@ void FragTrap::highFivesGuys(){
 }
 
 void FragTrap::attack(const std::string &name){
-	if (this->energyPoint <= 0)
+	if (this->energyPoints <= 0)
 		std::cout << "Not enough energy points for FragTrap " << this->name << std::endl;
-	if (this->hitPoint <= 0)
-		std::cout << "Not enough hitpoints for FragTrap " << this->name << std::endl;
-	if (this->energyPoint > 0 && this->hitPoint > 0)
+	if (this->hitPoints <= 0)
+		std::cout << "Not enough hitPoints for FragTrap " << this->name << std::endl;
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
-		this->energyPoint -= 1;
+		this->energyPoints -= 1;
 		std::cout << "FragTrap " << this->name <<" attacks " << name <<", causing " << this->attackDamage << " points of damage!" << std::endl;
 	}
 }

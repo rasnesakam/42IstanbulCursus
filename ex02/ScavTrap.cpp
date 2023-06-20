@@ -5,15 +5,15 @@
 
 ScavTrap::ScavTrap(): ClapTrap(){
 	this->attackDamage = 20;
-	this->hitPoint = 100;
-	this->energyPoint = 50;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
 	std::cout << "Creating empty ScavTrap" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name){
 	this->attackDamage = 20;
-	this->hitPoint = 100;
-	this->energyPoint = 50;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
 	std::cout << "ScavTrap creating with name: " << name << std::endl;
 }
 
@@ -29,7 +29,7 @@ ScavTrap::ScavTrap(ScavTrap &scavTrap): ClapTrap(scavTrap){
 ScavTrap& ScavTrap::operator=(ScavTrap &scavTrap){
 	this->name = scavTrap.name;
 	this->attackDamage = scavTrap.attackDamage;
-	this->hitPoint = scavTrap.hitPoint;
+	this->hitPoints = scavTrap.hitPoints;
 	return *this;
 }
 
@@ -38,13 +38,13 @@ void ScavTrap::guardGate(){
 }
 
 void ScavTrap::attack(const std::string &name){
-	if (this->energyPoint <= 0)
+	if (this->energyPoints <= 0)
 		std::cout << "Not enough energy points for ScavTrap " << this->name << std::endl;
-	if (this->hitPoint <= 0)
-		std::cout << "Not enough hitpoints for ScavTrap " << this->name << std::endl;
-	if (this->energyPoint > 0 && this->hitPoint > 0)
+	if (this->hitPoints <= 0)
+		std::cout << "Not enough hitPoints for ScavTrap " << this->name << std::endl;
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
-		this->energyPoint -= 1;
+		this->energyPoints -= 1;
 		std::cout << "ScavTrap " << this->name <<" attacks " << name <<", causing " << this->attackDamage << " points of damage!" << std::endl;
 	}
 }
