@@ -3,7 +3,7 @@ NAME = fragtrap
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra --std=c++98
 
-SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
+SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp
 
 BIN = $(SRC:.cpp=.o)
 
