@@ -1,6 +1,9 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
+ClapTrap::ClapTrap(): name("Default") , hitPoint(10), attackDamage(0), energyPoint(10){
+	std::cout << "New ClapTrap occured in environment" << std::endl;
+}
 ClapTrap::ClapTrap(const std::string &name){
 	std::cout << "New " << name << " occured in environment" << std::endl;
 	this->name = name;

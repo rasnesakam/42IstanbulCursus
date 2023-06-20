@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
 int main(void){
+	ClapTrap ct_0;
 	ClapTrap ct_1("ct_1");
 	ClapTrap ct_2("ct_2");
 	ClapTrap ct_3("ct_3");

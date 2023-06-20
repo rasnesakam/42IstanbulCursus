@@ -2,6 +2,11 @@
 #include <iostream>
 #include <string>
 
+ScavTrap::ScavTrap(): ClapTrap(){
+	
+	std::cout << "Creating empty ScavTrap" << std::endl;
+}
+
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name){
 	this->attackDamage = 20;
 	this->hitPoint = 100;

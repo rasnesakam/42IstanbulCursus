@@ -9,9 +9,9 @@ class ClapTrap{
 		int hitPoint;
 		int energyPoint;
 		int attackDamage;
-		ClapTrap();
-	
+
 	public:
+		ClapTrap();
 		ClapTrap(const std::string &name);
 		ClapTrap(ClapTrap &clapTrap);
 		ClapTrap& operator=(ClapTrap &clapTrap);
@@ -22,5 +22,14 @@ class ClapTrap{
 		void beRepaired(unsigned int amount);
 
 };
+
+typedef struct asd{
+	std::string name;
+	int hitPoint;
+	int energyPoint;
+	int attackDamage;
+} asd;
+
+
 
 #endif

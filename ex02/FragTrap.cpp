@@ -5,6 +5,13 @@ FragTrap::FragTrap(const std::string &name): ClapTrap(name){
 	this->hitPoint = 100;
 	this->energyPoint = 100;
 	this->attackDamage = 30;
+	std::cout << "Creating empty FragTrap" << std::endl;
+}
+
+FragTrap::FragTrap(const std::string &name): ClapTrap(name){
+	this->hitPoint = 100;
+	this->energyPoint = 100;
+	this->attackDamage = 30;
 	std::cout << "FragTrap creating with name: " << name << std::endl;
 }
 
