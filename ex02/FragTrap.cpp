@@ -1,7 +1,7 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap(std::string name): ClapTrap(name){
+FragTrap::FragTrap(const std::string &name): ClapTrap(name){
 	this->hitPoint = 100;
 	this->energyPoint = 100;
 	this->attackDamage = 30;

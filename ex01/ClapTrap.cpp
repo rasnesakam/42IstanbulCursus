@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(std::string name){
+ClapTrap::ClapTrap(const std::string &name){
 	std::cout << "New " << name << " occured in environment" << std::endl;
 	this->name = name;
 	this->hitPoint = 10;

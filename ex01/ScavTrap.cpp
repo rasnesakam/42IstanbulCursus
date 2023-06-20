@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name){
+ScavTrap::ScavTrap(const std::string &name): ClapTrap(name){
 	this->attackDamage = 20;
 	this->hitPoint = 100;
 	this->energyPoint = 50;
