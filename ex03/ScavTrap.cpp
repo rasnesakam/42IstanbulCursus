@@ -8,6 +8,13 @@ ScavTrap::ScavTrap(): ClapTrap(){
 	this->hitPoint = 100;
 	this->energyPoint = 50;
 	std::cout << "Creating empty ScavTrap" << std::endl;
+	std::cout << "ScavTrap created with values" << std::endl << 
+		"{" << std::endl <<
+			"\tname: " << this->name << std::endl <<
+			"\thitpoint: " << this->hitPoint << std::endl <<
+			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\tattackDamage: " << this->attackDamage << std::endl <<
+		"}" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name){
@@ -15,6 +22,13 @@ ScavTrap::ScavTrap(const std::string &name): ClapTrap(name){
 	this->hitPoint = 100;
 	this->energyPoint = 50;
 	std::cout << "ScavTrap creating with name: " << name << std::endl;
+	std::cout << "ScavTrap created with values" << std::endl << 
+		"{" << std::endl <<
+			"\tname: " << this->name << std::endl <<
+			"\thitpoint: " << this->hitPoint << std::endl <<
+			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\tattackDamage: " << this->attackDamage << std::endl <<
+		"}" << std::endl;
 }
 
 ScavTrap::~ScavTrap(){
@@ -35,4 +49,16 @@ ScavTrap& ScavTrap::operator=(ScavTrap &scavTrap){
 
 void ScavTrap::guardGate(){
 	std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode" << std::endl;
+}
+
+void ScavTrap::attack(const std::string &name){
+	if (this->energyPoint <= 0)
+		std::cout << "Not enough energy points for ScavTrap " << this->name << std::endl;
+	if (this->hitPoint <= 0)
+		std::cout << "Not enough hitpoints for ScavTrap " << this->name << std::endl;
+	if (this->energyPoint > 0 && this->hitPoint > 0)
+	{
+		this->energyPoint -= 1;
+		std::cout << "ScavTrap " << this->name <<" attacks " << name <<", causing " << this->attackDamage << " points of damage!" << std::endl;
+	}
 }

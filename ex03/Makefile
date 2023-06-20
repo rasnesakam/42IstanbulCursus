@@ -1,4 +1,4 @@
-NAME = fragtrap
+NAME = diamondTrap
 
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra --std=c++98

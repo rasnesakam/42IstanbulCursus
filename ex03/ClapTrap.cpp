@@ -3,6 +3,13 @@
 
 ClapTrap::ClapTrap(): name("Default") , hitPoint(10), energyPoint(10), attackDamage(0){
 	std::cout << "New ClapTrap occured in environment" << std::endl;
+	std::cout << "ClapTrap created with values" << std::endl << 
+		"{" << std::endl <<
+			"\tname: " << this->name << std::endl <<
+			"\thitpoint: " << this->hitPoint << std::endl <<
+			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\tattackDamage: " << this->attackDamage << std::endl <<
+		"}" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string &name){
@@ -11,6 +18,13 @@ ClapTrap::ClapTrap(const std::string &name){
 	this->hitPoint = 10;
 	this->energyPoint = 10;
 	this->attackDamage = 0;
+	std::cout << "ClapTrap created with values" << std::endl << 
+		"{" << std::endl <<
+			"\tname: " << this->name << std::endl <<
+			"\thitpoint: " << this->hitPoint << std::endl <<
+			"\tenergyPoint: " << this->energyPoint << std::endl <<
+			"\tattackDamage: " << this->attackDamage << std::endl <<
+		"}" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &target){
