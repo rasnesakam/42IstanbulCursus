@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap(): name("Default") , hitPoint(10), attackDamage(0), energyPoint(10){
+ClapTrap::ClapTrap(): name("Default") , hitPoint(10), energyPoint(10), attackDamage(0){
 	std::cout << "New ClapTrap occured in environment" << std::endl;
 }
 
