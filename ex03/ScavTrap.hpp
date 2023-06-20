@@ -12,7 +12,6 @@ class ScavTrap: public ClapTrap {
 		ScavTrap(ScavTrap &scavTrap);
 		ScavTrap& operator=(ScavTrap &scavTrap);
 		void guardGate();
-		void attack(const std::string &name);
 };
 
 #endif

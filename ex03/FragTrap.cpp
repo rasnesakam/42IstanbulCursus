@@ -34,15 +34,3 @@ FragTrap::~FragTrap(){
 void FragTrap::highFivesGuys(){
 	std::cout << "Gimme the highest five ever!" << std::endl;
 }
-
-void FragTrap::attack(const std::string &name){
-	if (this->energyPoint <= 0)
-		std::cout << "Not enough energy points for FragTrap " << this->name << std::endl;
-	if (this->hitPoint <= 0)
-		std::cout << "Not enough hitpoints for FragTrap " << this->name << std::endl;
-	if (this->energyPoint > 0 && this->hitPoint > 0)
-	{
-		this->energyPoint -= 1;
-		std::cout << "FragTrap " << this->name <<" attacks " << name <<", causing " << this->attackDamage << " points of damage!" << std::endl;
-	}
-}
