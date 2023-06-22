@@ -1,0 +1,22 @@
+NAME = animals
+
+CXX = c++
+CXXARGS = -Wall -Werror -Wextra --std=c++98
+
+SRC = Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp main.cpp
+BIN = $(SRC:.cpp=.o)
+
+$(NAME): $(BIN)
+	$(CXX) $(CXXARGS) -o $@
+
+all: $(NAME)
+
+clean:
+	rm -f *.o
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all re fclean clean

@@ -1,3 +1,11 @@
-NAME = program
-CXX = c++
-CXXFLAGS += -Wall -Wextra -Werror -std=c++98
+
+DIRS = ex00 ex01 ex02 ex03
+
+$(DIRS)%:
+	make -C $@ all
+
+all: $(DIRS)
+
+
+
+.PHONY: all re clean fclean
