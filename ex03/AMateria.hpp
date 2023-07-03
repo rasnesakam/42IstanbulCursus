@@ -3,6 +3,8 @@
 #include <string>
 #include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria{
     protected:
         std::string type;
@@ -11,7 +13,7 @@ class AMateria{
         AMateria(const std::string &type);
         AMateria(const AMateria &aMateria);
         AMateria& operator=(const AMateria &aMateria);
-        ~AMateria();
+        virtual ~AMateria();
         const std::string &getType() const;
 
         virtual AMateria *clone() const = 0;

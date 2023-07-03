@@ -6,9 +6,13 @@ SRC = AMateria.cpp Character.cpp Cure.cpp Ice.cpp main.cpp
 BIN = $(SRC:.cpp=.o)
 
 $(NAME): $(BIN)
-	$(CXX) $(CXXARGS) -o $@
+	$(CXX) $(SRC) $(CXXARGS) -o $@
 
 all: $(NAME)
+
+all_term:
+	clang++ -W -Wall -Werror *.cpp
+
 
 clean:
 	rm -f *.o
