@@ -7,7 +7,7 @@ SRC = Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp main.cpp
 BIN = $(SRC:.cpp=.o)
 
 $(NAME): $(BIN)
-	$(CXX) $(CXXARGS) -o $@
+	$(CXX) $(BIN) $(CXXARGS) -o $@
 
 all: $(NAME)
 
