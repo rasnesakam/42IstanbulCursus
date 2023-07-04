@@ -16,6 +16,7 @@ Animal::~Animal(){
 
 Animal::Animal(const Animal &animal){
 	*this = animal;
+	std::cout << "Animal " << this->type <<  " copied into habitat" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &animal){

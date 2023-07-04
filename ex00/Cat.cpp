@@ -5,7 +5,9 @@ Cat::Cat(): Animal("Cat"){
 	std::cout << "Created new Cat!" << std::endl;
 }
 
-Cat::Cat(const Cat &cat): Animal(cat){}
+Cat::Cat(const Cat &cat): Animal(cat){
+	std::cout << "Copied new Cat!" << std::endl;
+}
 
 Cat::~Cat(){
 	std::cout << "Cat is being destroy." << std::endl;

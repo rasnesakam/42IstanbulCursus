@@ -9,7 +9,9 @@ Dog::~Dog(){
 	std::cout << "Dog is being destroy." << std::endl;
 }
 
-Dog::Dog(const Dog &dog): Animal(dog.type){}
+Dog::Dog(const Dog &dog): Animal(dog.type){
+	std::cout << "Copied new Dog!" << std::endl;
+}
 
 Dog& Dog::operator=(const Dog& dog){
 	this->type = dog.type;
