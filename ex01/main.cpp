@@ -19,5 +19,13 @@ int main() {
 	for (int i = 0; i < 10; i++)
 		delete animals[i];
 
+
+	Dog basic;
+	{
+		Dog tmp = basic;
+		tmp.getBrain()->setIdeas("KOmmunizm");
+	}
+	std::cout << "idea is: " << basic.getBrain()->getIdeas(0) << std::endl;
+
 	return 0; 
 }

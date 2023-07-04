@@ -8,7 +8,7 @@ Brain::Brain(){
 
 Brain::Brain(const Brain &brain){
 	*this = brain;
-	std::cout << "Brain created" <<  std::endl;
+	std::cout << "Brain Copied" <<  std::endl;
 }
 
 Brain& Brain::operator=(const Brain &brain){

@@ -15,3 +15,7 @@ WrongCat& WrongCat::operator=(const WrongCat& wrongCat){
 	this->type = wrongCat.type;
 	return *this;
 }
+
+void WrongCat::makeSound() const{
+	std::cout << "WHO LET THE DOGS OUT!! WUPFH WUPFH" << std::endl;
+}
