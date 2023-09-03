@@ -12,9 +12,7 @@ Bureucrat::Bureucrat(const std::string &name, int grade){
 
 Bureucrat::~Bureucrat(){}
 
-Bureucrat::Bureucrat(const Bureucrat &bureucrat): name(bureucrat.name){
-	*this = bureucrat;
-}
+Bureucrat::Bureucrat(const Bureucrat &bureucrat) : name(bureucrat.name), grade(bureucrat.grade) {}
 
 Bureucrat& Bureucrat::operator=(const Bureucrat& bureucrat){
 	this->grade = bureucrat.grade;
@@ -30,22 +28,28 @@ const int Bureucrat::getGrade() const{
 	return this->grade;
 }
 
-void Bureucrat::setGrade(int grade){
-	if (grade < 1 )
-		throw GradeTooHighException("Eyo, grade is too high man");
-	if (grade > 150)
-		throw GradeTooLowException("Eyo, grade is too low man");
-	this->grade = grade;
+void Bureucrat::setGrade(int grade) {
+    if (grade < 1)
+        throw GradeTooHighException("Eyo, grade is too low man"); // Düşük not hatası için
+    if (grade > 150)
+        throw GradeTooLowException("Eyo, grade is too high man"); // Yüksek not hatası için
+    this->grade = grade;
 }
 
-Bureucrat::GradeTooHighException::GradeTooHighException(const std::string &message) :message(message){}
-const char* Bureucrat::GradeTooHighException::what(){
-	return this->message.c_str();
+
+Bureucrat::GradeTooHighException::GradeTooHighException(const std::string &message) {
+	this->message = message;
+}
+const char* Bureucrat::GradeTooHighException::what() {
+    return message.c_str();
 }
 
-Bureucrat::GradeTooLowException::GradeTooLowException(const std::string &message) :message(message){}
-const char* Bureucrat::GradeTooLowException::what(){
-	return this->message.c_str();
+Bureucrat::GradeTooLowException::GradeTooLowException(const std::string &message)
+	:message(message){
+}
+
+const char* Bureucrat::GradeTooLowException::what() {
+    return message.c_str();
 }
 
 std::ostream& operator<<(std::ostream &os, const Bureucrat &bureucrat){

@@ -9,14 +9,14 @@ class Bureucrat {
 	public:
 		class GradeTooHighException : public std::exception{
 			private:
-				const std::string &message;
+				std::string message;
 			public:
 				GradeTooHighException(const std::string &message);
 				const char* what();
 		};
 		class GradeTooLowException : public std::exception{
 			private:
-				const std::string &message;
+				std::string message;
 			public:
 				GradeTooLowException(const std::string &message);
 				const char* what();
