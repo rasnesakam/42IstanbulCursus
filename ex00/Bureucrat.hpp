@@ -9,14 +9,14 @@ class Bureucrat {
 	public:
 		class GradeTooHighException : public std::exception{
 			private:
-				std::string message;
+				const char* message;
 			public:
 				GradeTooHighException(const std::string &message);
 				const char* what();
 		};
 		class GradeTooLowException : public std::exception{
 			private:
-				std::string message;
+				const char* message;
 			public:
 				GradeTooLowException(const std::string &message);
 				const char* what();
@@ -29,6 +29,8 @@ class Bureucrat {
 		const std::string& getName() const;
 		const int getGrade() const;
 		void setGrade(int grade);
+		void incGrade();
+		void decGrade();
 };
 
 std::ostream& operator<<(std::ostream &stream, const Bureucrat &bureucrat);

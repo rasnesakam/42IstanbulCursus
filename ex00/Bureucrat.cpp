@@ -30,26 +30,29 @@ const int Bureucrat::getGrade() const{
 
 void Bureucrat::setGrade(int grade) {
     if (grade < 1)
-        throw GradeTooHighException("Eyo, grade is too low man"); // Düşük not hatası için
+        throw GradeTooHighException("Eyo, grade is too low man");
     if (grade > 150)
-        throw GradeTooLowException("Eyo, grade is too high man"); // Yüksek not hatası için
+        throw GradeTooLowException("Eyo, grade is too high man");
     this->grade = grade;
 }
 
-
-Bureucrat::GradeTooHighException::GradeTooHighException(const std::string &message) {
-	this->message = message;
+void Bureucrat::incGrade(){
+	this->setGrade(this->getGrade() + 1);
 }
+void Bureucrat::decGrade(){
+	this->setGrade(this->getGrade() - 1);
+}
+
+
+Bureucrat::GradeTooHighException::GradeTooHighException(const std::string &message): message(message.c_str()) {}
 const char* Bureucrat::GradeTooHighException::what() {
-    return message.c_str();
+    return message;
 }
 
-Bureucrat::GradeTooLowException::GradeTooLowException(const std::string &message)
-	:message(message){
-}
+Bureucrat::GradeTooLowException::GradeTooLowException(const std::string &message): message(message.c_str()){}
 
 const char* Bureucrat::GradeTooLowException::what() {
-    return message.c_str();
+    return message;
 }
 
 std::ostream& operator<<(std::ostream &os, const Bureucrat &bureucrat){

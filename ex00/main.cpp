@@ -9,13 +9,7 @@ int main() {
         std::cout << nejat;
 		return 0;
     }
-    catch (Bureucrat::GradeTooHighException &tooHigh) {
-        std::cerr << "GradeTooHighException: " << tooHigh.what() << std::endl;
-    }
-    catch (Bureucrat::GradeTooLowException &tooLow) {
-        std::cerr << "GradeTooLowException: " << tooLow.what() << std::endl;
-    }
-    catch (std::exception &e) {
+    catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 }
