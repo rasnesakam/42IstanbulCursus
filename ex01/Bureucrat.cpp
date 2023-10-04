@@ -40,7 +40,7 @@ void Bureucrat::incGrade(){
 	this->setGrade(this->getGrade() + 1);
 }
 void Bureucrat::decGrade(){
-	this->setGrade(this->getGrade() - 1);	
+	this->setGrade(this->getGrade() - 1);
 }
 
 
