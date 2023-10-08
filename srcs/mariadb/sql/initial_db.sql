@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS wordpress;
+CREATE USER IF NOT EXISTS 'wordpress'@'%' IDENTIFIED BY 'inception';
+GRANT ALL PRIVILEGES ON wordpress.* to 'wordpress'@'%';
+FLUSH PRIVILEGES;
+ALTER USER 'root'@

@@ -1,0 +1,47 @@
+services:
+  wordpress:
+    build: ./wordpress
+    container_name: my_wordpress
+    volumes:
+      - wp_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: inception
+      WORDPRESS_DB_PASSWORD: inception
+      WORDPRESS_DB_NAME: inception
+    ports:
+      - "8080:80"
+    networks:
+      - my_network
+  mariadb:
+    build: ./mariadb
+    container_name: my_maria
+    environment:
+      MYSQL_ROOT_PASSWORD: inception
+      MYSQL_DATABASE: inception
+      MYSQL_USER: inception
+      MYSQL_PASSWORD: inception
+    expose:
+      - 3306
+    volumes:
+      - maria_db:/var/lib/mysql
+    networks:
+      - my_network
+
+  nginx:
+    build: ./nginx
+    container_name: my_nginx
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs:/var/log/nginx/
+    ports:
+      - 80:80
+    networks:
+      - my_network
+volumes:
+  maria_db:
+  wp_data:
+
+networks:
+  my_network:
+    driver: bridge
