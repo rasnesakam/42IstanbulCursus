@@ -1,2 +1,4 @@
-2023/09/28 15:57:57 [error] 20#20: *1 SSL_do_handshake() failed (SSL: error:0A00010B:SSL routines::wrong version number) while SSL handshaking to upstream, client: 172.30.0.1, server: emakas.42.fr, request: "GET / HTTP/1.1", upstream: "https://172.30.0.3:80/", host: "emakas.42.fr"
-2023/09/28 15:57:57 [error] 20#20: *1 SSL_do_handshake() failed (SSL: error:0A00010B:SSL routines::wrong version number) while SSL handshaking to upstream, client: 172.30.0.1, server: emakas.42.fr, request: "GET /favicon.ico HTTP/1.1", upstream: "https://172.30.0.3:80/favicon.ico", host: "emakas.42.fr", referrer: "http://emakas.42.fr/"
+2023/10/08 16:10:51 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
+2023/10/08 16:11:40 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
+2023/10/08 16:11:50 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
+2023/10/08 16:12:25 [error] 8#8: *1 directory index of "/var/www/html/" is forbidden, client: 172.17.0.1, server: _, request: "GET / HTTP/1.1", host: "emakas.42.fr"

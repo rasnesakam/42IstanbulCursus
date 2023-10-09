@@ -1,4 +1,16 @@
-FROM wordpress:apache
+FROM debian:11
+RUN apt-get update
+RUN apt-get -y install php7.3 php-mysqli php-fpm wget sendmail
+
+EXPOSE 9000
+
+
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
+COPY ./tools /var/www/
+
+
+
+
 WORKDIR /usr/src/wordpress
 RUN set -eux; \
 	find /etc/apache2 -name '*.conf' -type f -exec sed -ri -e "s!/var/www/html!$PWD!g" -e "s!Directory /var/www/!Directory $PWD!g" '{}' +; \
