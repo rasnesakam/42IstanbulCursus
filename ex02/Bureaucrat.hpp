@@ -1,8 +1,10 @@
-#ifndef BUREUCRAT_HPP
-#define BUREUCRAT_HPP
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 #include <string>
 
-class Bureucrat {
+class AForm;
+
+class Bureaucrat {
 	private:
 		std::string name;
 		unsigned char grade;
@@ -21,18 +23,20 @@ class Bureucrat {
 				GradeTooLowException(const std::string &message);
 				const char* what();
 		};
-		Bureucrat();
-		Bureucrat(const std::string &name, int grade);
-		~Bureucrat();
-		Bureucrat(const Bureucrat &bureucrat);
-		Bureucrat& operator=(const Bureucrat &bureucrat);
+		Bureaucrat();
+		Bureaucrat(const std::string &name, int grade);
+		~Bureaucrat();
+		Bureaucrat(const Bureaucrat &Bureaucrat);
+		Bureaucrat& operator=(const Bureaucrat &Bureaucrat);
 		const std::string& getName() const;
 		const int getGrade() const;
 		void setGrade(int grade);
 		void incGrade();
 		void decGrade();
+		void signForm(AForm& form);
+		void executeForm(const AForm& form);
 };
 
-std::ostream& operator<<(std::ostream &stream, const Bureucrat &bureucrat);
+std::ostream& operator<<(std::ostream &stream, const Bureaucrat &Bureaucrat);
 
 #endif

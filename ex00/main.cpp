@@ -1,11 +1,11 @@
-#include "Bureucrat.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 int main() {
     try {
-        Bureucrat b("Raif Efendi", 1);
-        Bureucrat c(b);
+        Bureaucrat b("Raif Efendi", 1);
+        Bureaucrat c(b);
         std::cout << b << std::endl << c << std::endl;
-        Bureucrat nejat("Nejat", 180);
+        Bureaucrat nejat("Nejat", 180);
         std::cout << nejat;
 		return 0;
     }
