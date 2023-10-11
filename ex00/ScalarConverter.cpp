@@ -88,8 +88,8 @@ void ScalarConverter::printLiteral(char c, int i, float f, double d, ScalarConve
 		else
 			std::cout << "char: " << "not printable" << std::endl;
 		std::cout << "int: " << i << std::endl;
-		std::cout << "float" << f << std::endl;
-		std::cout << "double" << d << std::endl;
+		std::cout << "float: " << f << std::endl;
+		std::cout << "double: " << d << std::endl;
 	}
 }
 
