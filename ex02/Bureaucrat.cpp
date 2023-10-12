@@ -31,11 +31,12 @@ const int Bureaucrat::getGrade() const{
 
 void Bureaucrat::setGrade(int grade) {
     if (grade < 1)
-        throw GradeTooHighException("Eyo, grade is too low man");
+        throw GradeTooHighException("Eyo, grade is too high man");
     if (grade > 150)
-        throw GradeTooLowException("Eyo, grade is too high man");
+        throw GradeTooLowException("Eyo, grade is too low man");
     this->grade = grade;
 }
+
 
 void Bureaucrat::incGrade(){
 	this->setGrade(this->getGrade() + 1);
