@@ -12,7 +12,11 @@ class Form{
 		int gradeToExecute;
 
 	public:
+		Form();
 		Form(const std::string& name, int requiredGradeToSign,int requiredGradeToExecute);
+		Form(const Form& oth);
+		~Form();
+		Form& operator=(const Form& oth);
 		const std::string& getName() const;
 		const bool isSigned() const;
 		const int getGradeToSign() const;

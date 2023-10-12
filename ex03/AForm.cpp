@@ -2,6 +2,25 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+AForm::AForm(){
+	this->name = "";
+	this->signedd = false;
+	this->gradeToExecute = 150;
+	this->gradeToSign = 150;
+}
+AForm::AForm(const AForm& oth){
+	*this = oth;
+}
+AForm::~AForm(){}
+AForm& AForm::operator=(const AForm& oth){
+	this->name = oth.name;
+	this->signedd = oth.signedd;
+	this->gradeToSign = oth.gradeToSign;
+	this->gradeToExecute = oth.gradeToExecute;
+	return *this;
+}
+
+
 AForm::AForm(const std::string& name, int requiredGradeToSign, int requiredGradeToExecute){
 	this->name = name;
 	this->gradeToSign = requiredGradeToSign;

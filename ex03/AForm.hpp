@@ -12,7 +12,10 @@ class AForm{
 		int gradeToExecute;
 
 	public:
+		AForm();
 		AForm(const std::string& name, int requiredGradeToSign,int requiredGradeToExecute);
+		AForm(const AForm& oth);
+		AForm& operator=(const AForm& oth);
 		virtual ~AForm();
 		const std::string& getName() const;
 		const bool isSigned() const;
