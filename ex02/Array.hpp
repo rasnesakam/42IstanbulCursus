@@ -28,6 +28,8 @@ class Array{
 			delete[] this->elements;
 		}
 		T& operator[](unsigned int index){
+			if (index < 0 || index > this->_size)
+				throw std::out_of_range("Index out of bounds");
 			return this->elements[index];
 		}
 		const unsigned int size() const{
