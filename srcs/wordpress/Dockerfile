@@ -13,7 +13,6 @@ RUN \
 EXPOSE 9000
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.daemon
-COPY ./tools /var/www/
 
 RUN echo "Installing Wordpress CLI." &&\
 	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&\
@@ -40,9 +39,4 @@ RUN echo "Setting up Wordpress configuration." && \
 		--dbuser=${WORDPRESS_DB_USER} \
 		--dbpass=${WORDPRESS_DB_PASSWORD}
 
-
-
-#RUN chmod +x /var/www/wordpress_start.sh
-
-# ENTRYPOINT [ "/var/www/wordpress_start.sh" ]
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
