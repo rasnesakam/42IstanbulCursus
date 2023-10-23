@@ -1,19 +1,25 @@
 FROM debian:12
 
 RUN apt-get update
-RUN apt-get install mariadb-server -y
-
+RUN apt-get install -y mariadb-server
 
 EXPOSE 3306
-#ENV WORDPRESS_DB_NAME="$${WORDPRESS_DB_NAME}"
-# ENV WORDPRESS_DB_USER="${WORDPRESS_DB_USER}"
-# ENV WORDPRESS_DB_PASSWORD="${WORDPRESS_DB_PASSWORD}"
 
-RUN service mariadb start  \
-	&& echo "CREATE DATABASE IF NOT EXISTS $${WORDPRESS_DB_NAME}" | mariadb \
-	&& echo "CREATE USER IF NOT EXISTS '${WORDPRESS_DB_USER}'@'%' IDENTIFIED BY '${WORDPRESS_DB_PASSWORD}';\
-				GRANT ALL PRIVILEGES ON ${WORDPRESS_DB_NAME}.* to '${WORDPRESS_DB_USER}'@'%';\
-				FLUSH PRIVILEGES;" | mariadb
+ARG DB_NAME
+ARG DB_USER
+ARG DB_PASSWORD
+ARG ROOT_PASSWORD
 
-CMD ["mysqld"]
+COPY ./sh/init_root.sh /usr/local/bin/init_root
+RUN chmod +x /usr/local/bin/init_root
+
+COPY ./sh/init_db.sh /usr/local/bin/init_db
+RUN chmod +x /usr/local/bin/init_db
+
+RUN service mariadb start && init_db
+RUN service mariadb start && init_root
+
+ENTRYPOINT ["mariadbd"]
+
+CMD ["-u", "root"]
 
