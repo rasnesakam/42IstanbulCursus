@@ -19,4 +19,6 @@ RUN chmod +x /var/www/nginx_start.sh
 
 RUN "/var/www/nginx_start.sh"
 
-CMD [ "nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "nginx" ]
+
+CMD [ "-g", "daemon off;"]
