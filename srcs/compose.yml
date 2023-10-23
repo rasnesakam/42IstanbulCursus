@@ -1,3 +1,12 @@
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  maria_db:
+  wp_data:
+
+
 services:
   wordpress:
     build: ./wordpress
@@ -9,24 +18,33 @@ services:
     env_file:
       - ./.env
     ports:
-      - "8080:80"
+      - "8080:9000"
     networks:
       - my_network
   mariadb:
-    build: ./mariadb
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: ${WORDPRESS_DB_NAME}
+        DB_USER: ${WORDPRESS_DB_USER}
+        DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+        ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
     container_name: my_maria
-    env_file:
-      - ./.env
+    
     expose:
       - 3306
     volumes:
       - maria_db:/var/lib/mysql
+      - ./mariadb/logs:/var/logs/mysql
     networks:
       - my_network
 
   nginx:
     build: ./nginx
     container_name: my_nginx
+    env_file:
+      - ./.env
     depends_on:
       - wordpress
     volumes:
@@ -34,12 +52,7 @@ services:
       - ./nginx/logs:/var/log/nginx/
     ports:
       - 80:80
+      - 443:443
     networks:
       - my_network
-volumes:
-  maria_db:
-  wp_data:
 
-networks:
-  my_network:
-    driver: bridge
