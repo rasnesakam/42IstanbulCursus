@@ -45,13 +45,13 @@ const int Form::getGradeToSign() const {
 }
 
 Form::GradeTooHighException::GradeTooHighException(const std::string &message): message(message.c_str()) {}
-const char* Form::GradeTooHighException::what() {
+const char* Form::GradeTooHighException::what() const throw() {
     return message;
 }
 
 Form::GradeTooLowException::GradeTooLowException(const std::string &message): message(message.c_str()){}
 
-const char* Form::GradeTooLowException::what() {
+const char* Form::GradeTooLowException::what() const throw() {
     return message;
 }
 

@@ -14,14 +14,14 @@ class Bureaucrat {
 				const char* message;
 			public:
 				GradeTooHighException(const std::string &message);
-				const char* what();
+				const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception{
 			private:
 				const char* message;
 			public:
 				GradeTooLowException(const std::string &message);
-				const char* what();
+				const char* what() const throw();
 		};
 		Bureaucrat();
 		Bureaucrat(const std::string &name, int grade);

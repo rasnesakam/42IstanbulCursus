@@ -45,19 +45,19 @@ const int AForm::getGradeToSign() const {
 }
 
 AForm::GradeTooHighException::GradeTooHighException(const std::string &message): message(message.c_str()) {}
-const char* AForm::GradeTooHighException::what() {
+const char* AForm::GradeTooHighException::what() const throw() {
     return message;
 }
 
 AForm::GradeTooLowException::GradeTooLowException(const std::string &message): message(message.c_str()){}
 
-const char* AForm::GradeTooLowException::what() {
+const char* AForm::GradeTooLowException::what() const throw() {
     return message;
 }
 
 AForm::FormNotSignedException::FormNotSignedException(const std::string &message): message(message.c_str()){}
 
-const char* AForm::FormNotSignedException::what() {
+const char* AForm::FormNotSignedException::what() const throw() {
     return message;
 }
 

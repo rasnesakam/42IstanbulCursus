@@ -28,21 +28,21 @@ class AForm{
 				const char* message;
 			public:
 				GradeTooHighException(const std::string &message);
-				const char* what();
+				const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception{
 			private:
 				const char* message;
 			public:
 				GradeTooLowException(const std::string &message);
-				const char* what();
+				const char* what() const throw();
 		};
 		class FormNotSignedException : public std::exception{
 			private:
 				const char* message;
 			public:
 				FormNotSignedException(const std::string &message);
-				const char* what();
+				const char* what() const throw();
 		};
 };
 

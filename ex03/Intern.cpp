@@ -49,6 +49,6 @@ AForm *Intern::makeForm(std::string name, std::string target)
 	return form;
 }
 
-const char *Intern::InvalidFormException::what(){
+const char *Intern::InvalidFormException::what() const throw(){
 	return ("Form couldn't created");
 }

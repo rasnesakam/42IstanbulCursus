@@ -47,13 +47,13 @@ void Bureaucrat::decGrade(){
 
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &message): message(message.c_str()) {}
-const char* Bureaucrat::GradeTooHighException::what() {
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return message;
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &message): message(message.c_str()){}
 
-const char* Bureaucrat::GradeTooLowException::what() {
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return message;
 }
 
