@@ -2,6 +2,8 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+PresidentialPardonForm::PresidentialPardonForm(){}
+
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target): AForm("PresidentialPardonForm",25,5){
 	this->target = target;
 }

@@ -9,10 +9,13 @@ Form::Form(){
 	this->gradeToExecute = 150;
 	this->gradeToSign = 150;
 }
+
 Form::Form(const Form& oth){
 	*this = oth;
 }
+
 Form::~Form(){}
+
 Form& Form::operator=(const Form& oth){
 	this->name = oth.name;
 	this->signedd = oth.signedd;
