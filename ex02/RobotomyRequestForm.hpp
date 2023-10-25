@@ -6,10 +6,11 @@ class RobotomyRequestForm: public AForm {
 		std::string target;
 	public:
 		RobotomyRequestForm();
+		~RobotomyRequestForm();
 		RobotomyRequestForm(const std::string& target);
 		RobotomyRequestForm(const RobotomyRequestForm& form);
-		void execute(const Bureaucrat& bureaucrat) const;
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& form);
+		void execute(const Bureaucrat& bureaucrat) const;
 		const std::string getTarget() const;
 };
 

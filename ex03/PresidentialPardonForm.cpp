@@ -2,6 +2,21 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+PresidentialPardonForm::PresidentialPardonForm(){
+	this->target = "default";
+}
+
+PresidentialPardonForm::~PresidentialPardonForm(){}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& oth){
+	*this = oth;
+}
+
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& oth){
+	this->target = oth.target;
+	return *this;
+}
+
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target): AForm("PresidentialPardonForm",25,5){
 	this->target = target;
 }

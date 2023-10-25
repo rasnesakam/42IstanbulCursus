@@ -3,6 +3,17 @@
 #include <fstream>
 #include <iostream>
 
+ShrubberyCreationForm::ShrubberyCreationForm(){
+	this->target = "default";
+}
+ShrubberyCreationForm::~ShrubberyCreationForm(){}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& oth){
+	*this = oth;
+}
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& oth) {
+	this->target = oth.target;
+	return *this;
+}
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): AForm("ShrubberyCreationForm",25,5){
 	this->target = target;
 }

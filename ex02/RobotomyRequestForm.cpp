@@ -3,6 +3,18 @@
 #include <iostream>
 #include <random>
 
+RobotomyRequestForm::RobotomyRequestForm(){
+	this->target = "default";
+}
+RobotomyRequestForm::~RobotomyRequestForm(){}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& oth){
+	*this = oth;
+}
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& oth) {
+	this->target = oth.target;
+	return *this;
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target): AForm("RobotomyRequestForm",25,5){
 	this->target = target;
 }
