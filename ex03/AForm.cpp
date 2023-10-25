@@ -11,7 +11,6 @@ AForm::AForm(){
 AForm::AForm(const AForm& oth){
 	*this = oth;
 }
-AForm::~AForm(){}
 AForm& AForm::operator=(const AForm& oth){
 	this->name = oth.name;
 	this->signedd = oth.signedd;
@@ -19,6 +18,8 @@ AForm& AForm::operator=(const AForm& oth){
 	this->gradeToExecute = oth.gradeToExecute;
 	return *this;
 }
+
+AForm::~AForm(){}
 
 
 AForm::AForm(const std::string& name, int requiredGradeToSign, int requiredGradeToExecute){
@@ -68,8 +69,6 @@ void AForm::beSigned(const Bureaucrat& bureaucrat){
 	else
 		throw GradeTooLowException("Bureaucrat has too low grade to sign it");
 }
-
-AForm::~AForm(){}
 
 std::ostream& operator<<(std::ostream &os, const AForm& aForm){
 	os << "Name: " << aForm.getName() << std::endl;

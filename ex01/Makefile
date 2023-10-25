@@ -1,9 +1,8 @@
 NAME = bin
-CXX = g++
+CXX = c++
 CXXARGS = -Wall -Wextra -Werror
 
-SRCS = AForm.cpp ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp
+SRCS = Bureaucrat.cpp Form.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
