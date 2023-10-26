@@ -10,7 +10,7 @@ FROM debian:11
 RUN apt-get update
 RUN apt-get install -y nginx openssl
 
-#COPY ./conf/nginx.conf /etc/nginx/sites-enable/default
+COPY ./conf/inception.conf /etc/nginx/conf.d/
 COPY ./ssl/nginx_start.sh /var/www
 
 EXPOSE 443

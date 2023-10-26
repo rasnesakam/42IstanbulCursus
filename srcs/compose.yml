@@ -9,7 +9,7 @@ volumes:
 
 services:
   wordpress:
-    build: ./wordpress
+    build: ./requirements/wordpress
     container_name: my_wordpress
     depends_on:
       - mariadb
@@ -17,13 +17,11 @@ services:
       - wp_data:/var/www/html
     env_file:
       - ./.env
-    ports:
-      - "8080:9000"
     networks:
       - my_network
   mariadb:
     build:
-      context: ./mariadb
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
       args:
         DB_NAME: ${WORDPRESS_DB_NAME}
@@ -31,7 +29,6 @@ services:
         DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
         ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
     container_name: my_maria
-    
     expose:
       - 3306
     volumes:
@@ -41,17 +38,17 @@ services:
       - my_network
 
   nginx:
-    build: ./nginx
+    build: ./requirements/nginx
     container_name: my_nginx
     env_file:
       - ./.env
     depends_on:
       - wordpress
     volumes:
-      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/logs:/var/log/nginx/
+      - ./requirements/nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./requirements/nginx/logs:/var/log/nginx/
+      - wp_data:/var/www/html
     ports:
-      - 80:80
       - 443:443
     networks:
       - my_network
