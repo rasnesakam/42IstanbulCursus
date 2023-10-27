@@ -2,8 +2,8 @@
 
 cd /var/www/html;
 
-# if [ ! -f wp-config.php ]
-# 	then
+if [ ! -f wp-config.php ]
+ 	then
 		echo "Downloading Wordpress.";
 		wp core download --allow-root
 
@@ -17,14 +17,14 @@ cd /var/www/html;
 		wp core install --allow-root \
 			--url=${WORDPRESS_URL} \
 			--title=${WORDPRESS_TITLE} \
-			--admin_user=${WORDPRESS_USER}\
-			--admin_password=${WORDPRESS_PASSWORD}\
-			--admin_email=${WORDPRESS_EMAIL}&& \
+			--admin_user=${WORDPRESS_ADMIN_LOGIN}\
+			--admin_password=${WORDPRESS_ADMIN_PASSWORD}\
+			--admin_email=${WORDPRESS_ADMIN_EMAIL}&& \
 		wp user create --allow-root \
-			${WORDPRESS_USER} ${WORDPRESS_EMAIL}\
+			${WORDPRESS_ADMIN_LOGIN} ${WORDPRESS_ADMIN_EMAIL}\
 			--user_pass=${WORDPRESS_PASSWORD};
 
-# fi
+fi
 
 echo "Executing arguments: $@";
 exec "$@"

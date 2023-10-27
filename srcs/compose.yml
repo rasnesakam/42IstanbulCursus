@@ -33,7 +33,7 @@ services:
       - 3306
     volumes:
       - maria_db:/var/lib/mysql
-      - ./mariadb/logs:/var/logs/mysql
+      - ./requirements/mariadb/logs:/var/logs/mysql
     networks:
       - my_network
 

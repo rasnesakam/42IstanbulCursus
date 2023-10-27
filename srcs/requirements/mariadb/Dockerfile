@@ -19,6 +19,8 @@ RUN chmod +x /usr/local/bin/init_db
 RUN service mariadb start && init_db
 RUN service mariadb start && init_root
 
+RUN sed -i "s/bind-address/#bind-address/" "/etc/mysql/mariadb.conf.d/50-server.cnf"  
+
 ENTRYPOINT ["mariadbd"]
 
 CMD ["-u", "root"]
