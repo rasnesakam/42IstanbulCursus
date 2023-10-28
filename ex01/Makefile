@@ -1,13 +1,13 @@
 NAME = bin
 CXX = c++
-CXXARGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror
 
 SRCS = Bureaucrat.cpp Form.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXARGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 

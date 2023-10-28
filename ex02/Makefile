@@ -1,6 +1,6 @@
 NAME = bin
 CXX = g++
-CXXARGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror
 
 SRCS = AForm.cpp ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp
@@ -8,7 +8,7 @@ SRCS = AForm.cpp ShrubberyCreationForm.cpp \
 OBJS = $(SRCS:.cpp=.o)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXARGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 

@@ -2,10 +2,10 @@ NAME = ex00
 SRCS = main.cpp Bureaucrat.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX  = c++
-CXXARGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME):$(OBJS)
-	$(CXX) $(CXXARGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 
