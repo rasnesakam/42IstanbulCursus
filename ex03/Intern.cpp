@@ -16,11 +16,12 @@ Intern::~Intern(void)
 
 Intern::Intern(Intern &other)
 {
-	
+	(void) other;
 }
 
 Intern& Intern::operator=(Intern &oth)
 {
+	(void) oth;
 	return (*this);
 }
 

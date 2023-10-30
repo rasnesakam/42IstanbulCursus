@@ -35,15 +35,15 @@ const std::string& Form::getName() const {
 	return this->name;
 }
 
-const bool Form::isSigned() const{
+bool Form::isSigned() const{
 	return this->signedd;
 }
 
-const int Form::getGradeToExecute() const {
+int Form::getGradeToExecute() const {
 	return this->gradeToExecute;
 }
 
-const int Form::getGradeToSign() const {
+int Form::getGradeToSign() const {
 	return this->gradeToSign;
 }
 
