@@ -1,4 +1,4 @@
-NAME = bin
+NAME = ex02
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror
 
