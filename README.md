@@ -1,25 +1,43 @@
-# 42IstanbulCursus
-Projects on the cursus of 42 Istanbul
+# Inception
+Inception is the project of 42 for teach to use docker and docker compose.
+## Usage
+To run this application, you need to have `docker` and `docker-compose-plugin` installed.
 
-- [libft](#libft)
-- [ft_printf](#ft_printf)
-- [get_next_line](#get_next_line)
-- [minitalk](#minitalk)
-- [so_long](#so_long)
+If you have the packages that mentioned above, simply run:
+```
+docker compose up -d
+```
 
+## Deep Dive
+Our project consists of three [containers](https://www.docker.com/resources/what-container/).
 
-# Libft
-Libft is first project of 42 Cursus. This project aims us to create our first c library<br/>
-My note on this project is 125%
+* mariadb
+* nginx
+* wordpress
 
-# FT_PRINTF
-ft_printf is copy of [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) function in C lang.
+### Mariadb
+Mariadb is a relational database that used in our project. It is responsible for holding various datas for our application. There are no more details to mention about this. But in case you want to deep dive, [check out this link](https://mariadb.org/)
 
-# GET_NEXT_LINE
-get_next_line is function that returns the next line from the file that specified with file descriptor
+### Nginx
+Nginx is a another service that we use in our project. It is a reverse-proxy server. It is responsible for routing requests according to the configuration file ([inception.conf](./srcs/requirements/nginx/conf/inception.conf))
 
-# MINITALK
-minitalk is project that aims to communicate between two processes with user defined signals.
+### Wordpress
+Wordpress is the last service that we use in our project. This service is actually holds our website. Wordpress is open-source blog site. You can freely install it and begin to serve your blog site.
 
-# SO_LONG
-so_long is 2D game project
+---
+Our services are dependent on each other. To solve this problem, we are declaring that our services dependent on some services to start. We simply can do it like this:
+
+```yml
+// docker-compose.yml
+
+services:
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: my_wordpress
+    depends_on:
+      - mariadb
+	...
+```
+
+[Wordpress](#wordpress) is dependent on mariadb to start. Because wordpress needs to store it's configuration and other datas through [mariadb](#mariadb).
+And also [nginx](#nginx) is dependent on [wordpress](#wordpress) to start. Because in configuration file, [nginx](#nginx) uses the address of [wordpress](#wordpress) to connect.
