@@ -1,7 +1,0 @@
-2023/10/08 16:10:51 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
-2023/10/08 16:11:40 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
-2023/10/08 16:11:50 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/nginx.conf:74
-2023/10/08 16:12:25 [error] 8#8: *1 directory index of "/var/www/html/" is forbidden, client: 172.17.0.1, server: _, request: "GET / HTTP/1.1", host: "emakas.42.fr"
-2023/10/11 19:50:35 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:42
-2023/10/15 13:12:28 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:42
-2023/10/25 17:37:11 [emerg] 1#1: host not found in upstream "wordpress" in /etc/nginx/conf.d/inception.conf:29

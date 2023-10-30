@@ -1,10 +1,24 @@
+version: '3.5'
+
 networks:
   my_network:
     driver: bridge
 
 volumes:
   maria_db:
+    driver: local
+    name: volume_mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device: ${VOLUME_MARIADB}
   wp_data:
+    driver: local
+    name: volume_wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: ${VOLUME_WORDPRESS}
 
 
 services:
