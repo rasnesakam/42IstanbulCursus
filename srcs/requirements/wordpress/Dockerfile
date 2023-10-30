@@ -5,9 +5,6 @@ RUN apt-get install -y php php-mysqli php-fpm wget sendmail  mariadb-client
 
 EXPOSE 9000
 
-RUN PHP_VERSION=$(php -r 'echo PHP_MAJOR_VERSION . "." . PHP_MINOR_VERSION;') && \
-    echo "PHP_VERSION=$PHP_VERSION" >> /etc/environment
-
 RUN sed -i "s/listen = \/run\/php\/php$(php -r 'echo PHP_MAJOR_VERSION . "." . PHP_MINOR_VERSION;')-fpm.sock/listen = 9000/" "/etc/php/$(php -r 'echo PHP_MAJOR_VERSION . "." . PHP_MINOR_VERSION;')/fpm/pool.d/www.conf" && \
 	chown -R www-data:www-data /var/www/* && \
 	chown -R 755 /var/www/* && \
