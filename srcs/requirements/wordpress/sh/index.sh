@@ -22,7 +22,7 @@ if [ ! -f wp-config.php ]
 			--admin_email=${WORDPRESS_ADMIN_EMAIL}&& \
 		wp user create --allow-root \
 			${WORDPRESS_ADMIN_LOGIN} ${WORDPRESS_ADMIN_EMAIL}\
-			--user_pass=${WORDPRESS_PASSWORD};
+			--user_pass=${WORDPRESS_ADMIN_PASSWORD};
 fi
 
 echo "Executing arguments: $@";
