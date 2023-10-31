@@ -54,16 +54,17 @@ $(DATA_WORDPRESS):
 		echo "directory exists";\
 	fi
 
+
 clean:
 	@echo "Warning. sudo mode will be requested!"
 	@echo "Deleting ${DATA_MARIADB}"
-	@if [[ -d ${DATA_MARIADB} ]]; then\
+	@if [ -d ${DATA_MARIADB} ]; then\
 		sudo rm -rf ${DATA_MARIADB};\
 	else \
 		echo "${DATA_MARIADB} not found.";\
 	fi
 	@echo "Deleting ${DATA_WORDPRESS}"
-	@if [[ -d ${DATA_WORDPRESS} ]]; then\
+	@if [ -d ${DATA_WORDPRESS} ]; then\
 		sudo rm -rf ${DATA_WORDPRESS};\
 	else \
 		echo "${DATA_WORDPRESS} not found.";\
