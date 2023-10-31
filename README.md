@@ -36,7 +36,7 @@ services:
     container_name: my_wordpress
     depends_on:
       - mariadb
-	...
+//	...
 ```
 
 [Wordpress](#wordpress) is dependent on mariadb to start. Because wordpress needs to store it's configuration and other datas through [mariadb](#mariadb).
