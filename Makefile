@@ -2,7 +2,7 @@ DIR_DATA = $(HOME)/data
 DIR_SRCS = srcs
 DATA_MARIADB = ${DIR_DATA}/db
 DATA_WORDPRESS = ${DIR_DATA}/wp
-DIR_COMPOSE = ${DIR_SRCS}/docker-compose.yml
+FILE_COMPOSE = ${DIR_SRCS}/docker-compose.yml
 FILE_DOTENV = ${DIR_SRCS}/.env
 
 VAL_VOLUME_DB = VOLUME_MARIADB
@@ -10,11 +10,11 @@ VAL_VOLUME_WP = VOLUME_WORDPRESS
 
 up: all
 	@echo "Starting containers."
-	@docker compose -f ${DIR_COMPOSE} up -d
+	@docker compose -f ${FILE_COMPOSE} up -d
 
 down:
 	@echo "Stopping containers"
-	@docker compose -f ${DIR_COMPOSE} down
+	@docker compose -f ${FILE_COMPOSE} down
 
 all: $(DATA_MARIADB) $(DATA_WORDPRESS)
 
@@ -71,5 +71,8 @@ clean:
 	fi
 
 re: clean up
+
+logs:
+	@docker compose -f ${FILE_COMPOSE} logs -f
 
 .PHONY: all up down clean re
