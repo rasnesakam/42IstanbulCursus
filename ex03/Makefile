@@ -1,12 +1,12 @@
 NAME = a.out
 CXX = c++
-CXXARGS = -Wall -Werror -Wextra --std=c++98
+CXXFLAGS = -Wall -Werror -Wextra --std=c++98
 
 SRC = AMateria.cpp Character.cpp Cure.cpp Ice.cpp main.cpp
 BIN = $(SRC:.cpp=.o)
 
 $(NAME): $(BIN)
-	$(CXX) $(SRC) $(CXXARGS) -o $@
+	$(CXX) $(SRC) $(CXXFLAGS) -o $@
 
 all: $(NAME)
 

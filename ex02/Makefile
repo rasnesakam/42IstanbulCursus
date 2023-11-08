@@ -1,13 +1,13 @@
 NAME = animals
 
 CXX = c++
-CXXARGS = -Wall -Werror -Wextra --std=c++98
+CXXFLAGS = -Wall -Werror -Wextra --std=c++98
 
 SRC = Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp main.cpp
 BIN = $(SRC:.cpp=.o)
 
 $(NAME): $(BIN)
-	$(CXX) $(BIN) $(CXXARGS) -o $@
+	$(CXX) $(BIN) $(CXXFLAGS) -o $@
 
 all: $(NAME)
 
