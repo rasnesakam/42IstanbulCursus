@@ -29,10 +29,11 @@ class ScalarConverter {
 		static bool convert(std::string& literal);
 		class ConvertionException: public std::exception {
 			private:
-				const char *message;
+				const std::string message;
 			public:
 				ConvertionException(const std::string& message);
 				const char* what() const throw();
+				~ConvertionException() throw();
 		};
 };
 

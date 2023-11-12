@@ -6,9 +6,7 @@
 Base * generate(void){
 	srand(time(NULL));
 	int random = rand();
-	std::cout << random << std::endl;
 	random = random % 3;
-	std::cout << random << std::endl;
 	Base *base; 
 	switch(random){
 		case(0):

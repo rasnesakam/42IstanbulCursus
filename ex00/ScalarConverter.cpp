@@ -88,7 +88,7 @@ void ScalarConverter::printLiteral(char c, int i, float f, double d, ScalarConve
 		else
 			std::cout << "char: " << "not printable" << std::endl;
 		std::cout << "int: " << i << std::endl;
-		std::cout << "float: " << f << std::endl;
+		std::cout << "float: " << f << "f" << std::endl;
 		std::cout << "double: " << d << std::endl;
 	}
 }
@@ -134,7 +134,8 @@ bool ScalarConverter::convert(std::string& literal){
 	return true;
 }
 
-ScalarConverter::ConvertionException::ConvertionException(const std::string& message): message(message.c_str()) {}
+ScalarConverter::ConvertionException::ConvertionException(const std::string& message): message(message) {}
 const char* ScalarConverter::ConvertionException::what() const throw(){
-	return this->message;
+	return this->message.c_str();
 }
+ScalarConverter::ConvertionException::~ConvertionException() throw() {}
