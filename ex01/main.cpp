@@ -18,4 +18,5 @@ int main(void)
 	std::cout << std::endl;
 	int arr[5] = {5, 1, 4, 8, 10};
 	iter(arr, 5, printint);
+	std::cout << std::endl;
 }
