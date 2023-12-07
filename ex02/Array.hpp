@@ -16,23 +16,22 @@ class Array{
 		}
 		Array& operator=(const Array& oth){
 			this->_size = oth._size;
-			if (this->elements != NULL)
-				delete[] this->elements;
 			this->elements = new T[oth._size];
-			for (unsigned int i = 0; i < oth._size; i++){
+			for (unsigned int i = 0; i < oth.size(); i++){
 				this->elements[i] = oth.elements[i];
 			}
 			return *this;
 		}
 		~Array(){
-			delete[] this->elements;
+			if (this->elements != NULL)
+				delete[] this->elements;
 		}
 		T& operator[](unsigned int index){
-			if (index < 0 || index > this->_size)
+			if (index < 0 || index >= this->size())
 				throw std::out_of_range("Index out of bounds");
 			return this->elements[index];
 		}
-		const unsigned int size() const{
+		unsigned int size() const{
 			return this->_size;
 		}
 };

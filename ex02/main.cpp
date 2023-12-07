@@ -1,28 +1,58 @@
 #include <iostream>	
+#include <iostream>
 #include "Array.hpp"
 
-int main(void){
-
-	    // Create an array of integers with 5 elements
-    Array<int> intArray(5);
-
-    // Access elements and set their values
-    intArray[0] = 10;
-    intArray[1] = 20;
-    intArray[2] = 30;
-    intArray[3] = 40;
-    intArray[4] = 50;
-
-    // Copy the array
-    Array<int> copiedArray = intArray;
-
-    // Modify the original array
-    intArray[2] = 35;
-
-    // Display the elements in the copied array
-    for (unsigned int i = 0; i < copiedArray.size(); i++) {
-        std::cout << copiedArray[i] << " ";
+#define MAX_VAL 750
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
     }
 
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+		std::cerr << "Exception cached" << std::endl;
+        std::cerr << e.what() << '\n';
+    }
+	std::cout << "Trying another test" << std::endl;
+    try
+    {
+		std::cerr << "Exception cached" << std::endl;
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;
     return 0;
+
 }
