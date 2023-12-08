@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <ctime>
 #include <iostream>	
 #include <iostream>
 #include "Array.hpp"
@@ -51,6 +53,14 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
+    }
+    Array<int> ints = Array<int>(5);
+    for (int i = 0; i < 5; i++){
+        ints[i] = i;
+    }
+    std::cout << "integer array [0,1,2,3,4]" << std::endl;
+    for(int i = 0; i < 5; i++){
+        std::cout << ints[i] << std::endl;
     }
     delete [] mirror;
     return 0;
