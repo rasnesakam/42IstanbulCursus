@@ -1,10 +1,10 @@
-NAME = ex01
+NAME = span
 SRCS = main.cpp Span.cpp
 CXX	 = c++
-CXXARGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(SRCS)
-	$(CXX) $(CXXARGS) -o $(NAME) $(SRCS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(SRCS)
 
 all: $(NAME)
 
