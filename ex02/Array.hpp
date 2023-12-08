@@ -1,6 +1,9 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <cstddef>
+#include <stdexcept>
+
 template <typename T>
 class Array{
 	private:
@@ -32,7 +35,7 @@ class Array{
 				delete[] this->elements;
 		}
 		T& operator[](unsigned int index){
-			if (index < 0 || index >= this->size())
+			if (index >= this->size())
 				throw std::out_of_range("Index out of bounds");
 			return this->elements[index];
 		}
