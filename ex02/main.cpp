@@ -53,6 +53,8 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;
+	Array<int> a(5);
+	a = Array<int>(3);
     return 0;
 
 }

@@ -7,19 +7,24 @@ class Array{
 		T *elements;
 		unsigned int _size;
 	public:
-		Array(): elements(NULL), _size(0) {}
+		Array(): elements(NULL), _size(0){}
 		Array(int len): _size(len) {
 			this->elements = new T[len];
 		}
-		Array(const Array& oth){
+		Array(const Array& oth): elements(NULL), _size(0)
+		{
 			*this = oth;
 		}
 		Array& operator=(const Array& oth){
-			this->_size = oth._size;
+			
+			std::cout << "Address of the inner elements: " << reinterpret_cast<uintptr_t>(this->elements) << std::endl;
+			if (this->size() > 0 || this->elements != NULL)
+				delete[] elements;
 			this->elements = new T[oth._size];
 			for (unsigned int i = 0; i < oth.size(); i++){
 				this->elements[i] = oth.elements[i];
 			}
+			this->_size = oth._size;
 			return *this;
 		}
 		~Array(){
