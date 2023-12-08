@@ -11,7 +11,7 @@ class Array{
 		unsigned int _size;
 	public:
 		Array(): elements(NULL), _size(0){}
-		Array(int len): _size(len) {
+		Array(unsigned int len): _size(len) {
 			this->elements = new T[len];
 		}
 		Array(const Array& oth): elements(NULL), _size(0)
