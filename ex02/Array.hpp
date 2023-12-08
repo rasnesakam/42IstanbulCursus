@@ -19,9 +19,7 @@ class Array{
 			*this = oth;
 		}
 		Array& operator=(const Array& oth){
-			
-			std::cout << "Address of the inner elements: " << reinterpret_cast<uintptr_t>(this->elements) << std::endl;
-			if (this->size() > 0 || this->elements != NULL)
+			if (this->elements != NULL)
 				delete[] elements;
 			this->elements = new T[oth._size];
 			for (unsigned int i = 0; i < oth.size(); i++){
