@@ -8,6 +8,10 @@ int main(){
 	my_vec.push_back(2);
 	my_vec.push_back(3);
 	my_vec.push_back(5);
-	
-	std::cout << easyfind(my_vec,val);
+	std::cout << "Vector: [ ";
+	for (int i = 0; i < 5; i++){
+		std::cout << my_vec[i] << " ";
+	}
+	std::cout << "]" << std::endl;
+	std::cout << "Trying to find " << val << ": " << easyfind(my_vec,val) << std::endl;
 }
