@@ -10,57 +10,41 @@
 #include <cstdio>
 #include <typeinfo>
 #include <cstring>
+#include <string>
 
 
-namespace utils
-{
-    template<class T>
-    T prev(T it, typename std::iterator_traits<T>::difference_type n = 1)
-    {
-        std::advance(it, -n);
-        return it;
-    }
-
-    template<class T>
-    T next(T it, typename std::iterator_traits<T>::difference_type n = 1)
-    {
-        std::advance(it, n);
-        return it;
-    }
-}
-
-template <typename Container>
 class PmergeMe
 {
     private:
-        typedef typename Container::iterator iterator;
-
-        void insertion_sort(iterator left, iterator right);
-        void merge_sort(Container& container, iterator left, iterator right);
-
-        double _elapsedTime;
-
-        Container _sorted;
-        Container _unsorted;
+		double elapsed_vector;
+		double elapsed_list;
+        std::vector<int> _vector;
+		std::list<int> _list;
 
     public:
         PmergeMe();
+        PmergeMe(int len, char *numbers[]);
         PmergeMe(const PmergeMe&);
         PmergeMe &operator = (const PmergeMe&);
         ~PmergeMe();
         
-        void merge_insertion_sort(Container& container);
-        void display(Container& container);
-        Container getInput(int argc, char *argv[]);
+        void display_list();
+        void display_vector();
 
-        void setElapsedTime(clock_t start, clock_t end);
-        double getElapsedTime() const;
+		void sort_list();
+		void sort_vector();
 
-        void setSortedContainer(Container& container);
-        void setUnsortedContainer(Container& container);
-
+        double getElapsedVector();
+		double getElapsedList();
         void displaySorted();
         void displayUnsorted();
+		class InstantiationException : public std::exception{
+			private:
+				std::string message;
+			public:
+				InstantiationException(std::string &message);
+				const char* what() const throw();
+		};
 };
 
 #include "PmergeMe.cpp"
