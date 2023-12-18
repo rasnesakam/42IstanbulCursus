@@ -4,65 +4,42 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <algorithm>
-#include <iterator>
-#include <iomanip>
-#include <cstdio>
-#include <typeinfo>
-#include <cstring>
+#include <string>
 
 
-namespace utils
-{
-    template<class T>
-    T prev(T it, typename std::iterator_traits<T>::difference_type n = 1)
-    {
-        std::advance(it, -n);
-        return it;
-    }
-
-    template<class T>
-    T next(T it, typename std::iterator_traits<T>::difference_type n = 1)
-    {
-        std::advance(it, n);
-        return it;
-    }
-}
-
-template <typename Container>
 class PmergeMe
 {
     private:
-        typedef typename Container::iterator iterator;
-
-        void insertion_sort(iterator left, iterator right);
-        void merge_sort(Container& container, iterator left, iterator right);
-
-        double _elapsedTime;
-
-        Container _sorted;
-        Container _unsorted;
+		double _elapsed_vector;
+		double _elapsed_list;
+        std::vector<int> _vector;
+		std::list<int> _list;
 
     public:
         PmergeMe();
         PmergeMe(const PmergeMe&);
         PmergeMe &operator = (const PmergeMe&);
         ~PmergeMe();
-        
-        void merge_insertion_sort(Container& container);
-        void display(Container& container);
-        Container getInput(int argc, char *argv[]);
+    	void sort_list(int argc, char *argv[]);
+		void sort_vector(int argc, char *argv[]);
 
-        void setElapsedTime(clock_t start, clock_t end);
-        double getElapsedTime() const;
+        double getElapsedVector();
+		double getElapsedList();
 
-        void setSortedContainer(Container& container);
-        void setUnsortedContainer(Container& container);
-
-        void displaySorted();
-        void displayUnsorted();
+        const std::vector<int> getVector() const;
+        const std::list<int> getList() const;
+		class ApplicationException : public std::exception{
+			private:
+				std::string message;
+			public:
+				ApplicationException(const std::string &message);
+                ~ApplicationException() throw();
+				const char* what() const throw();
+		};
 };
 
-#include "PmergeMe.cpp"
+
+
+std::ostream& operator<<(std::ostream& os, const PmergeMe& mergeMe);
 
 #endif

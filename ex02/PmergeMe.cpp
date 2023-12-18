@@ -1,231 +1,156 @@
-#ifndef PMERGEME_CPP
-#define PMERGEME_CPP
-
 #include "PmergeMe.hpp"
+#include <algorithm>
+#include <ctime>
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <sstream>
+#include <string>
 
-template <typename Container>
-PmergeMe<Container>::PmergeMe()
-{
-
+PmergeMe::PmergeMe() {}
+PmergeMe::~PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &oth) { *this = oth; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &oth) {
+  this->_list = oth._list;
+  this->_vector = oth._vector;
+  return *this;
 }
 
-template <typename Container>
-PmergeMe<Container>::PmergeMe(const PmergeMe&)
-{
 
+PmergeMe::ApplicationException::ApplicationException(
+    const std::string &message)
+    : message(message) {}
+
+const char *PmergeMe::ApplicationException::what() const throw() {
+    return this->message.c_str();
 }
+PmergeMe::ApplicationException::~ApplicationException() throw(){}
 
-template <typename Container>
-PmergeMe<Container> &PmergeMe<Container>::operator=(const PmergeMe&)
-{
-    return *this;
-}
-
-template <typename Container>
-PmergeMe<Container>::~PmergeMe()
-{
-
-}
-
-template <typename Container>
-void PmergeMe<Container>::insertion_sort(iterator left, iterator right)
-{
-    for (typename Container::iterator i = left; i != right; i++)
-    {
-        typename Container::value_type temp = *i;
-        typename Container::iterator j = i;
-        while (j != left && *(utils::prev(j)) > temp)
-        {
-            *j = *(utils::prev(j));
-            j--;
+std::list<int> start_sort_list(const std::list<int>::iterator &begin, const std::list<int>::iterator &last){
+    if (std::distance(begin,last) > 2){
+        std::list<int>::iterator mid = begin;
+        std::advance(mid, std::distance(begin,last) / 2);
+        std::list<int> l1 = start_sort_list(begin, mid);
+        std::list<int> l2 = start_sort_list(mid, last);
+        std::list<int> return_vec(l1.size() + l2.size());
+        std::merge(l1.begin(),l1.end(),l2.begin(), l2.end(), std::back_inserter(return_vec));
+        return return_vec;
+    }
+    try{
+        std::list<int>::iterator next = begin;
+        std::advance(next,1);
+        std::list<int> return_list;
+        if (next == last){
+            return_list.push_back(*begin);
+            return return_list;
         }
-        *j = temp;
-    }
-}
-
-template <typename Container>
-void PmergeMe<Container>::merge_sort(Container &container, iterator left, iterator right)
-{
-    if (std::distance(left, right) <= 1)
-        return;
-    
-    if (std::distance(left, right) < 10)
-    {
-        insertion_sort(left, right);
-        return;
-    }
-    
-    iterator middle = utils::next(left, std::distance(left, right) / 2);
-    merge_sort(container, left, middle);
-    merge_sort(container, middle, right);
-    
-    Container temp(std::distance(left, right));
-    iterator i = left;
-    iterator j = middle;
-    iterator k = temp.begin();
-    
-    while (i != middle && j != right)
-    {
-        if (*i < *j)
+        if (*begin > *next)
         {
-            *k = *i;
-            i++;
+            int temp = *begin;
+            *begin = *next;
+            *next = temp;
         }
-        else
+        return_list.push_back(*begin);
+        return_list.push_back(*next);
+        return return_list;
+    }
+    catch(std::exception& e){
+        throw PmergeMe::ApplicationException("Unexpected Error.");
+    }
+}
+
+
+std::vector<int> start_sort_vector(const std::vector<int>::iterator &begin, const std::vector<int>::iterator &last){
+    if (std::distance(begin,last) > 2){
+        std::vector<int>::iterator mid = begin;
+        std::advance(mid, 2);
+        std::vector<int> l1 = start_sort_vector(begin, mid);
+        std::vector<int> l2 = start_sort_vector(mid, last);
+        std::vector<int> return_vec;
+        return_vec.reserve(l1.size() + l2.size());
+        std::merge(l1.begin(),l1.end(),l2.begin(), l2.end(), std::back_inserter(return_vec));
+        return return_vec;
+    }
+    try{
+        std::vector<int>::iterator next = begin + 1;
+        std::vector<int> return_vec;
+        if (next == last){
+            return_vec.reserve(1);
+            return_vec.push_back(*begin);
+            return return_vec;
+        }
+        return_vec.reserve(2);
+        if (*begin > *next)
         {
-            *k = *j;
-            j++;
+            int temp = *begin;
+            *begin = *next;
+            *next = temp;
         }
-        k++;
+        return_vec.push_back(*begin);
+        return_vec.push_back(*next);
+        return return_vec;
     }
-    
-    while (i != middle)
-    {
-        *k = *i;
-        i++;
-        k++;
+    catch(std::exception& e){
+        throw PmergeMe::ApplicationException("Unexpected Error.");
     }
-    
-    while (j != right)
-    {
-        *k = *j;
-        j++;
-        k++;
+}
+
+void PmergeMe::sort_vector(int argc, char* argv[]) {
+    // Fill the array
+    // TODO: start the counter
+    clock_t start, end;
+    for (int i = 1; i < argc; i++) {
+        std::string value(argv[i]);
+        int valueInt;
+        if (!(std::stringstream(value) >> valueInt))
+            throw ApplicationException(value + " is not convertible to integer");
+        if (valueInt < 0)
+            throw ApplicationException("Numbers must be positive");
+        this->_vector.push_back(valueInt);
+        
     }
-    
-    std::copy(temp.begin(), temp.end(), left);
+    start = clock();
+    this->_vector = start_sort_vector(this->_vector.begin(), this->_vector.end());
+    end = clock();
+    this->_elapsed_vector = (double)(end - start)/((double)CLOCKS_PER_SEC / 1000);
 }
 
-template <typename Container>
-void PmergeMe<Container>::merge_insertion_sort(Container &container)
-{
-    merge_sort(container, container.begin(), container.end());
-}
-
-template <typename Container>
-Container PmergeMe<Container>::getInput(int argc, char *argv[])
-{
-    Container input;
-    
-    for (int i = 1; i < argc; i++)
-    {
-        char* token = strtok(argv[i], " ");
-
-        while (token != NULL)
-        {
-            int num;
-            bool valid = true;
-            for (int i = 0; i < (int)strlen(token); i++)
-            {
-                if (!isdigit(token[i]))
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (valid)
-            {
-                num = atoi(token);
-                if (num < 0)
-                {
-                    std::cout << "Error" << std::endl;
-                    exit(1);
-                }
-                input.push_back(num);
-            }
-            else
-            {
-                std::cout << "Error" << std::endl;
-                exit(1);
-            }
-            token = strtok(NULL, " ");
-        }
+void PmergeMe::sort_list(int argc, char *argv[]) {
+    // Fill the array
+    // TODO: start the counter
+    clock_t start, end;
+    for (int i = 1; i < argc; i++) {
+        std::string value(argv[i]);
+        int valueInt;
+        if (!(std::stringstream(value) >> valueInt))
+            throw ApplicationException(value + " is not convertible to integer");
+        if (valueInt < 0)
+            throw ApplicationException("Numbers must be positive");
+        this->_list.push_back(valueInt);
     }
-
-    return input;
+    start = clock();
+    this->_list = start_sort_list(this->_list.begin(), this->_list.end());
+    end = clock();
+    this->_elapsed_list = (double)(end - start)/((double)CLOCKS_PER_SEC / 1000);
 }
 
-template <typename Container>
-void PmergeMe<Container>::display(Container& container)
-{
-    typedef typename Container::value_type value_type;
-
-    std::string type;
-
-    if (typeid(container).name() == typeid(std::list<value_type>).name())
-        type = "std::list";
-    else if (typeid(container).name() == typeid(std::vector<value_type>).name())
-        type = "std::vector";
-    else
-        type = "unknown";
-
-    std::cout << "Time to process a range of ";
-    std::cout << container.size();
-    std::cout << " elements with ";
-    std::cout << type;
-    std::cout << " : ";
-
-    std::cout << std::fixed << std::setprecision(5) << _elapsedTime;
-    std::cout << " us" << std::endl;
+double PmergeMe::getElapsedList() { return this->_elapsed_list; }
+double PmergeMe::getElapsedVector() {
+    return this->_elapsed_vector;
 }
 
-template <typename Container>
-void PmergeMe<Container>::displaySorted()
-{
-    std::cout << "After: ";
-    iterator it = _sorted.begin();
-    while (it != _sorted.end())
-    {
-        std::cout << *it;
-        std::cout << " ";
-        it++;
+const std::list<int> PmergeMe::getList() const {
+    return this->_list;
+}
+const std::vector<int> PmergeMe::getVector() const {
+    return this->_vector;
+}
+
+std::ostream& operator<<(std::ostream& os, const PmergeMe& obj){
+    for (std::vector<int>::size_type i = 0; i < obj.getVector().size(); i++){
+        os << obj.getVector()[i] << " ";
     }
-    std::cout << std::endl;
+    return os;
 }
 
-template <typename Container>
-void PmergeMe<Container>::displayUnsorted()
-{
-    std::cout << "Before: ";
-    iterator it = _unsorted.begin();
-    while (it != _unsorted.end())
-    {
-        std::cout << *it;
-        std::cout << " ";
-        it++;
-    }
-    std::cout << std::endl;
-}
 
-template <typename Container>
-void PmergeMe<Container>::setElapsedTime(clock_t start, clock_t end)
-{
-    double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-    _elapsedTime = elapsedTime;
-}
-
-template <typename Container>
-double PmergeMe<Container>::getElapsedTime() const
-{
-    return this->elapsedTime;
-}
-
-template <typename Container>
-void PmergeMe<Container>::setSortedContainer(Container& container)
-{
-    iterator it = container.begin();
-    iterator ite = container.end();
-    
-    _sorted.assign(it, ite);
-}
-
-template <typename Container>
-void PmergeMe<Container>::setUnsortedContainer(Container& container)
-{
-    iterator it = container.begin();
-    iterator ite = container.end();
-    
-    _unsorted.assign(it, ite);
-}
-
-#endif

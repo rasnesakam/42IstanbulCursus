@@ -1,43 +1,25 @@
 #include "PmergeMe.hpp"
+#include <iostream>
+#include <ostream>
+#include <string>
 
 int main(int argc, char *argv[])
 {
-    clock_t start;
-    clock_t end;
-
-    {
-        PmergeMe< std::vector<int> > _pmergeMe;
-        std::vector<int> input = _pmergeMe.getInput(argc, argv);
-        std::vector<int> holder(input.begin(), input.end());
-
-        start = clock();
-        _pmergeMe.merge_insertion_sort(holder);
-        end = clock();
-
-        _pmergeMe.setElapsedTime(start, end);
-        _pmergeMe.setUnsortedContainer(input);
-        _pmergeMe.setSortedContainer(holder);
-        _pmergeMe.displayUnsorted();
-        _pmergeMe.displaySorted();
-        _pmergeMe.display(holder);
+    try{
+        PmergeMe mergeMe;
+        mergeMe.sort_list(argc,argv);
+        mergeMe.sort_vector(argc,argv);
+        std::cout << "Before:\t";
+        for (int i = 1; i < argc; i++)
+            std::cout << std::string(argv[i]) << " ";
+        std::cout << std::endl;
+        std::cout << "After:\t" << mergeMe << std::endl;
+        std::cout << "Time to process\t" << argc - 1 << " elements with std::vector :\t" << mergeMe.getElapsedVector() << " ms" << std::endl;
+        std::cout << "Time to process\t" << argc - 1 << " elements with std::list :\t" << mergeMe.getElapsedList() << " ms" << std::endl;
+        return 0;
     }
-
-    
-    {
-        PmergeMe< std::list<int> > _pmergeMe;
-        std::list<int> input = _pmergeMe.getInput(argc, argv);
-        std::list<int> holder(input.begin(), input.end());
-
-        start = clock();
-        _pmergeMe.merge_insertion_sort(holder);
-        end = clock();
-
-        _pmergeMe.setElapsedTime(start, end);
-        _pmergeMe.setUnsortedContainer(input);
-        _pmergeMe.setSortedContainer(holder);
-
-        _pmergeMe.display(holder);
+    catch (PmergeMe::ApplicationException &ex){
+        std::cerr << "Error" << ex.what() << std::endl;
+        return 1;
     }
-    // system("leaks PmergeMe");
-    return 0;
 }
