@@ -1,239 +1,82 @@
 #include "BitcoinExchange.hpp"
+#include <fstream>
+#include <string>
+#include <iostream>
+#include <limits>
 
-BitcoinExchange::BitcoinExchange()
-{
+BitcoinExchange::BitcoinExchange(){}
+BitcoinExchange::~BitcoinExchange(){}
+BitcoinExchange::BitcoinExchange(const std::string& file){
+    std::string line;
+    std::ifstream streamIn(file);
+    if (!streamIn.good())
+    {
+        std::cerr << file << ": Invalid file" << std::endl;
+        return;
+    }
+    std::getline(streamIn, line);
+    while (std::getline(streamIn, line)){
+        size_t find = line.find(',');
+        if (find != std::string::npos){
+            std::string key = line.substr(0,find);
+            std::string val = line.substr(find + 1, line.length());
+            this->data[key] = std::stof(val);
+        }
+    }
+    streamIn.close();
+}
+BitcoinExchange::BitcoinExchange(BitcoinExchange& oth){
+    this->data = oth.data;
+}
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &oth){
+    this->data = oth.data;
+    return *this;
 }
 
-bool BitcoinExchange::validateLine(const std::string &line, int i)
-{
-	if (!line.compare("date | value") && i == 0)
-		return false;
 
-	if (line.find("|") == std::string::npos)
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-	size_t pipePosition = line.find("|");
-	size_t lastDashPosition = line.find_first_of("-");
-	size_t firstDashPosition = line.find_last_of("-");
-
-	if (lastDashPosition == firstDashPosition ||
-		lastDashPosition == std::string::npos ||
-		firstDashPosition == std::string::npos )
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-
-	if (lastDashPosition + 4 == pipePosition)
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-
-	if (pipePosition == std::string::npos)
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-
-	strDate = line.substr(0, pipePosition - 1);
-
-	if (pipePosition >= line.length() - 1)
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-	
-	strValue = line.substr(pipePosition + 2, line.length());
-
-	if (std::strtod(strValue.c_str(), NULL) > 1000)
-	{
-		std::cout << "Error: too large a number." << std::endl;
-		return false;
-	}
-
-	if (std::atoi(strValue.c_str()) < 0)
-	{
-		std::cout << "Error: not a positive number." << std::endl;
-		return false;
-	}
-
-	if (strValue.empty())
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-
-	if (dateFinder(strDate) == std::string::npos)
-	{
-		std::cout << "Error: bad input => " << line << std::endl;
-		return false;
-	}
-
-	return true;
-}
-
-BitcoinExchange::BitcoinExchange(const char *fileName)
-{
-	data = readData("data.csv");
-	setFirstDate();
-	setLastDate();
-	setValidDates();
-
-
-	std::fstream inputFile(fileName, std::ios::in);
-	if (!inputFile.is_open())
-	{
-		std::cout << "Error: could not open file." << std::endl;
-		return ;
-	}
-	int i = 0;
-	std::string line;
-
-	while (std::getline(inputFile, line))
-	{
-		if (!validateLine(line, i))
-			continue;
-
-		double val = std::strtod(strValue.c_str(), NULL);
-		std::cout << strDate;
-		std::cout << " => ";
-		std::cout << strValue;
-		std::cout << " = ";
-		std::cout << dateFinder(strDate) * val;
-		std::cout << std::endl;
-
-		i++;
-	}
-}
-
-BitcoinExchange::BitcoinExchange(const BitcoinExchange&)
-{
-
-}
-
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange&)
-{
-	return *this;
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-	data.clear();
-}
-
-std::map<std::string, long double> BitcoinExchange::readData(const char *fileName)
-{
-	std::fstream inputFile(fileName);
-	if (!inputFile.is_open())
-		throw std::runtime_error("Error: could not open the data file.");
-
-	std::map<std::string, long double> data;
-
-	std::string line;
-
-	int i = 0;
-	while (std::getline(inputFile, line))
-	{
-		if (!line.compare("date,exchange_rate") && i == 0)
-			continue;
-		std::string strDate;
-		std::string strValue;
-
-		size_t posSpace = line.find(",");
-
-		strDate = line.substr(0, posSpace);
-		strValue = line.substr(posSpace + 1, line.length());
-
-		char *end;
-		long double value = std::strtod(strValue.c_str(), &end);
-		if (strValue.c_str() == end)
-			throw std::runtime_error("Error while parsing given file.");
-		data[strDate] = value;
-		i++;
-	}
-
-	inputFile.close();
-	return data;
-}
-
-long double BitcoinExchange::dateFinder(std::string value)
-{
-	std::map<std::string, long double>::iterator it_data = data.find(value);
-	std::map<std::string, long double>::iterator it_validDates = validDates.find(value);
-
-	if (it_validDates == validDates.end())
-		return std::string::npos;
-
-	if (it_data == data.end())
-	{
-		int currentYear = std::atoi(value.substr(0, 4).c_str());
-		int currentMonth = std::atoi(value.substr(5, 2).c_str());
-		int currentDay = std::atoi(value.substr(8, 2).c_str());
-		std::tm currentTime;
-		std::memset(&currentTime, 0, sizeof(currentTime));
-		currentTime.tm_year = currentYear - 1900;
-		currentTime.tm_mon = currentMonth - 1;
-		currentTime.tm_mday = currentDay;
-		time_t current_time_t = mktime(&currentTime);
-		long secondsInDay = (24 * 60 * 60);
-		current_time_t -= secondsInDay;
-		std::tm *convertedTime = localtime(&current_time_t);
-		char result_str[11];
-		strftime(result_str, sizeof(result_str), "%Y-%m-%d", convertedTime);
-
-		return dateFinder(result_str);
-	}
-
-	return it_data->second;
-}
-
-void BitcoinExchange::setFirstDate()
-{
-	std::string firstDateStr = data.begin()->first;
-	std::tm firstTime;
-	std::memset(&firstTime, 0, sizeof(firstTime));
-
-	int firstYear = std::atoi(firstDateStr.substr(0, 4).c_str());
-	int firstMonth = std::atoi(firstDateStr.substr(5, 2).c_str());
-	int firstDay = std::atoi(firstDateStr.substr(8, 2).c_str());
-	firstTime.tm_year = firstYear - 1900;
-	firstTime.tm_mon = firstMonth - 1;
-	firstTime.tm_mday = firstDay;
-	
-	firstDate = mktime(&firstTime);
-}
-
-void BitcoinExchange::setLastDate()
-{
-	std::string lastDateStr = (--data.end())->first;
-	std::tm lastTime;
-	std::memset(&lastTime, 0, sizeof(lastTime));
-	
-	int lastYear = std::atoi(lastDateStr.substr(0, 4).c_str());
-	int lastMonth = std::atoi(lastDateStr.substr(5, 2).c_str());
-	int lastDay = std::atoi(lastDateStr.substr(8, 2).c_str());
-	lastTime.tm_year = lastYear - 1900;
-	lastTime.tm_mon = lastMonth - 1;
-	lastTime.tm_mday = lastDay + 1;
-
-	lastDate = mktime(&lastTime);
-}
-
-void BitcoinExchange::setValidDates()
-{
-	time_t currentDate = firstDate;
-
-	std::tm convertedTime = *localtime(&currentDate);
-	while (currentDate <= lastDate)
-	{
-		char result_str[11];
-		convertedTime = *localtime(&currentDate);
-		strftime(result_str, sizeof(result_str), "%Y-%m-%d", &convertedTime);
-		validDates.insert(std::pair<std::string, long double>(result_str, 0));
-		long secondsInDay = (24 * 60 * 60);
-		currentDate += secondsInDay;
-	}
+void BitcoinExchange::btc(std::string& input){
+    std::string line;
+    std::ifstream streamIn(input);
+    if (!streamIn.good())
+    {
+        std::cerr << input << ": Invalid file" << std::endl;
+        return;
+    }
+    std::getline(streamIn, line);
+    while (std::getline(streamIn, line)){
+        size_t find = line.find('|');
+        if (find != std::string::npos){
+            std::string key = line.substr(0,find - 1);
+            std::string val = line.substr(find+1, line.length());
+            std::map<std::string, float>::iterator iterator_start = this->data.begin();
+            std::map<std::string, float>::iterator iterator_end = this->data.end();
+            while (iterator_start++ != iterator_end && iterator_start->first < key );
+            if (iterator_start == iterator_end){
+                std::cerr << "Error: No data found" << std::endl;
+                return;
+            }
+			char *val_end;
+			long double value = std::strtod(val.c_str(), &val_end);
+			if (val.c_str() == val_end){
+				std::cerr << "Error: bad input => " << key << std::endl;
+				continue;
+			}
+			if (value < 0)
+			{
+				std::cerr << "Error: Not a positive number." << std::endl;
+				continue;
+			}
+			if (value > INT_MAX){
+				std::cerr << "Error: too large a number." << std::endl;
+				continue;
+			}
+            std::cout << key << " => " << iterator_start->second << " = " << iterator_start->second * value << std::endl;
+            
+        }
+		else {
+			std::cerr << "Error: bad input => " << line << std::endl;
+		}
+    }
+    streamIn.close();
+	return;
 }

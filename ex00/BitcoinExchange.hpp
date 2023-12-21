@@ -1,42 +1,17 @@
-#ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
-
-#include <ctime>
+#ifndef BITCOIN_EXCHANGE_HPP
+#define BITCOIN_EXCHANGE_HPP
 #include <map>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <iomanip>
-#include <cstring>
-#include <cstdlib>
 
-class BitcoinExchange
-{
+class BitcoinExchange {
     private:
-        std::map<std::string, long double> data;
-        std::map<std::string, long double> validDates;
-        
-        time_t firstDate;
-        time_t lastDate;
-
-		std::string strDate;
-		std::string strValue;
-
-        std::map<std::string, long double> readData(const char* fileName);
-        long double dateFinder(std::string value);
-        void setFirstDate();
-        void setLastDate();
-        void setValidDates();
-
-        bool validateLine(const std::string &line, int i);
+        std::map <std::string, float> data;
     public:
         BitcoinExchange();
-        BitcoinExchange(const char *fileName);
-        BitcoinExchange(const BitcoinExchange&);
-        BitcoinExchange &operator = (const BitcoinExchange&);
+        BitcoinExchange(const std::string &file);
+        BitcoinExchange(BitcoinExchange &other);
         ~BitcoinExchange();
-
+        BitcoinExchange& operator=(const BitcoinExchange &oth);
+        void btc(std::string& input);
 };
 
 #endif
