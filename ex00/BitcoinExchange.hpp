@@ -29,7 +29,7 @@ class BitcoinExchange
         void setLastDate();
         void setValidDates();
 
-        bool errorHandling(const std::string &line, int i);
+        bool validateLine(const std::string &line, int i);
     public:
         BitcoinExchange();
         BitcoinExchange(const char *fileName);

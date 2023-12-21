@@ -4,7 +4,7 @@ BitcoinExchange::BitcoinExchange()
 {
 }
 
-bool BitcoinExchange::errorHandling(const std::string &line, int i)
+bool BitcoinExchange::validateLine(const std::string &line, int i)
 {
 	if (!line.compare("date | value") && i == 0)
 		return false;
@@ -78,23 +78,23 @@ bool BitcoinExchange::errorHandling(const std::string &line, int i)
 BitcoinExchange::BitcoinExchange(const char *fileName)
 {
 	data = readData("data.csv");
+	setFirstDate();
+	setLastDate();
+	setValidDates();
+
+
 	std::fstream inputFile(fileName, std::ios::in);
 	if (!inputFile.is_open())
 	{
 		std::cout << "Error: could not open file." << std::endl;
 		return ;
 	}
-	
-	setFirstDate();
-	setLastDate();
-	setValidDates();
-
 	int i = 0;
 	std::string line;
 
 	while (std::getline(inputFile, line))
 	{
-		if (!errorHandling(line, i))
+		if (!validateLine(line, i))
 			continue;
 
 		double val = std::strtod(strValue.c_str(), NULL);
@@ -126,7 +126,7 @@ BitcoinExchange::~BitcoinExchange()
 
 std::map<std::string, long double> BitcoinExchange::readData(const char *fileName)
 {
-	std::fstream inputFile(fileName, std::ios::in);
+	std::fstream inputFile(fileName);
 	if (!inputFile.is_open())
 		throw std::runtime_error("Error: could not open the data file.");
 
@@ -148,7 +148,10 @@ std::map<std::string, long double> BitcoinExchange::readData(const char *fileNam
 		strValue = line.substr(posSpace + 1, line.length());
 
 		char *end;
-		data.insert(std::pair<std::string, long double>(strDate, std::strtod(strValue.c_str(), &end)));
+		long double value = std::strtod(strValue.c_str(), &end);
+		if (strValue.c_str() == end)
+			throw std::runtime_error("Error while parsing given file.");
+		data[strDate] = value;
 		i++;
 	}
 
@@ -174,10 +177,10 @@ long double BitcoinExchange::dateFinder(std::string value)
 		currentTime.tm_year = currentYear - 1900;
 		currentTime.tm_mon = currentMonth - 1;
 		currentTime.tm_mday = currentDay;
-		time_t ct = mktime(&currentTime);
-
-		ct -= (24 * 60 * 60);
-		std::tm *convertedTime = localtime(&ct);
+		time_t current_time_t = mktime(&currentTime);
+		long secondsInDay = (24 * 60 * 60);
+		current_time_t -= secondsInDay;
+		std::tm *convertedTime = localtime(&current_time_t);
 		char result_str[11];
 		strftime(result_str, sizeof(result_str), "%Y-%m-%d", convertedTime);
 
@@ -230,6 +233,7 @@ void BitcoinExchange::setValidDates()
 		convertedTime = *localtime(&currentDate);
 		strftime(result_str, sizeof(result_str), "%Y-%m-%d", &convertedTime);
 		validDates.insert(std::pair<std::string, long double>(result_str, 0));
-		currentDate += 86400;
+		long secondsInDay = (24 * 60 * 60);
+		currentDate += secondsInDay;
 	}
 }
