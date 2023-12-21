@@ -9,9 +9,12 @@ int main(int argc, char* argv[])
     }
 
     RPN rpn;
-    int result = rpn.calculate(argv[1]);
-
-    if (result != -1)
-        std::cout << result << std::endl;
+	try{
+    	int result = rpn.calculate(argv[1]);
+		std::cout << result << std::endl;
+	}
+	catch(std::exception& e){
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
     return 0;
 }
