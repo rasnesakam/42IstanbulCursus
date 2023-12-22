@@ -58,7 +58,6 @@ int RPN::calculate(const std::string &expression)
 			default:
 				if (isdigit(ch)){
 					if (i == expressionLen - 1 || isspace(expression[i + 1])){
-						std::cout << "index: " << i << " token: >" << expression[i + 1] << "<" << std::endl;
 						buffer.push(ch - '0');
 					}
 					else
