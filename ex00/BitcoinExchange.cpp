@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-#include <limits>
+#include <limits.h>
 
 BitcoinExchange::BitcoinExchange(){}
 BitcoinExchange::~BitcoinExchange(){}
@@ -81,7 +81,7 @@ void BitcoinExchange::btc(std::string& input){
             }
 			char *val_end;
 			long double value = std::strtod(val.c_str(), &val_end);
-			if (val.c_str() == val_end){
+			if (!validateDate(key) || val.c_str() == val_end){
 				std::cerr << "Error: bad input => " << key << std::endl;
 				continue;
 			}
@@ -97,7 +97,7 @@ void BitcoinExchange::btc(std::string& input){
             std::cout << key << " => " << iterator_start->second << " = " << iterator_start->second * value << std::endl;
             
         }
-		else {
+        else {
 			std::cerr << "Error: bad input => " << line << std::endl;
 		}
     }
