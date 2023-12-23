@@ -37,20 +37,24 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &oth){
 
 bool validateDate(const std::string &date){
     std::tm time;
-    std::string yearString = date.substr(0,3);
+	memset(&time, 0, sizeof(time));
+    std::string yearString = date.substr(0,4);
     std::string monthString = date.substr(5,6);
     std::string dayString = date.substr(8,9);
     char *strEnd;
     int yearInt = std::strtol(yearString.c_str(), &strEnd, 10);
-    if (strEnd == yearString.c_str())
+    if (strEnd == yearString.c_str()){
         return false;
+	}
     int monthInt = std::strtol(monthString.c_str(), &strEnd, 10);
-    if (strEnd == monthString.c_str())
+    if (strEnd == monthString.c_str()){
         return false;
+	}
     int dayInt = std::strtol(dayString.c_str(), &strEnd, 10);
-    if (strEnd == dayString.c_str())
+    if (strEnd == dayString.c_str()){
         return false;
-    time.tm_year = yearInt - 1900;
+	}
+	time.tm_year = yearInt - 1900;
     time.tm_mon = monthInt - 1;
     time.tm_mday = dayInt;
     int ret = mktime(&time);
@@ -81,7 +85,7 @@ void BitcoinExchange::btc(std::string& input){
             }
 			char *val_end;
 			long double value = std::strtod(val.c_str(), &val_end);
-			if (!validateDate(key) || val.c_str() == val_end){
+			if ( !validateDate(key) || val.c_str() == val_end){
 				std::cerr << "Error: bad input => " << key << std::endl;
 				continue;
 			}
