@@ -5,7 +5,7 @@
 
 class BitcoinExchange {
     private:
-        std::map <std::string, float> data;
+        std::map <std::string, double> data;
     public:
         BitcoinExchange();
         BitcoinExchange(const std::string &file);

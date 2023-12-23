@@ -5,6 +5,11 @@
 #include <string>
 #include <iostream>
 #include <limits.h>
+#include <regex>
+#include <chrono>
+
+
+using std::chrono::system_clock;
 
 BitcoinExchange::BitcoinExchange(){}
 BitcoinExchange::~BitcoinExchange(){}
@@ -38,28 +43,36 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &oth){
 bool validateDate(const std::string &date){
     std::tm time;
 	memset(&time, 0, sizeof(time));
+	
+	std::regex datePattern("^\\d{4}-\\d{2}-\\d{2}$");
+	if (!std::regex_match(date,datePattern))
+		return false;
+
     std::string yearString = date.substr(0,4);
-    std::string monthString = date.substr(5,6);
-    std::string dayString = date.substr(8,9);
+    std::string monthString = date.substr(5,2);
+    std::string dayString = date.substr(8,2);
     char *strEnd;
+
     int yearInt = std::strtol(yearString.c_str(), &strEnd, 10);
-    if (strEnd == yearString.c_str()){
+    if (strEnd == yearString.c_str() || yearInt < 1900){
         return false;
 	}
     int monthInt = std::strtol(monthString.c_str(), &strEnd, 10);
-    if (strEnd == monthString.c_str()){
+    if (strEnd == monthString.c_str() || monthInt < 1 || monthInt > 12){
         return false;
 	}
     int dayInt = std::strtol(dayString.c_str(), &strEnd, 10);
-    if (strEnd == dayString.c_str()){
+    if (strEnd == dayString.c_str() || dayInt < 1 || dayInt > 31){
         return false;
 	}
 	time.tm_year = yearInt - 1900;
     time.tm_mon = monthInt - 1;
     time.tm_mday = dayInt;
-    int ret = mktime(&time);
-    return ret != -1;
 
+	system_clock::time_point tp = system_clock::from_time_t(std::mktime(&time));
+	time_t timeAsTimeT = std::chrono::system_clock::to_time_t(tp);
+	std::tm result = *std::localtime(&timeAsTimeT);
+	return result.tm_year == time.tm_year && result.tm_mon == time.tm_mon && result.tm_mday == time.tm_mday;
 }
 
 void BitcoinExchange::btc(std::string& input){
@@ -76,13 +89,26 @@ void BitcoinExchange::btc(std::string& input){
         if (find != std::string::npos){
             std::string key = line.substr(0,find - 1);
             std::string val = line.substr(find+1, line.length());
-            std::map<std::string, float>::iterator iterator_start = this->data.begin();
-            std::map<std::string, float>::iterator iterator_end = this->data.end();
-            while (iterator_start++ != iterator_end && iterator_start->first < key );
-            if (iterator_start == iterator_end){
-                std::cerr << "Error: No data found" << std::endl;
-                return;
-            }
+			double db_value;
+            std::map<std::string, double>::iterator iterator_start = this->data.begin();
+            std::map<std::string, double>::iterator iterator_end = this->data.end();
+            if (this->data.find(key) == iterator_end)
+			{
+				std::map<std::string, double>::iterator iterator_found = this->data.end();
+				while (iterator_start != iterator_end){
+					if (iterator_start->first < key)
+						iterator_found = iterator_start;
+					iterator_start++;
+				}
+				if (iterator_found == iterator_end){
+					std::cerr << "Error: No data found. => " << key << std::endl;
+					continue;
+				}
+				db_value = iterator_found->second;
+			}
+			else
+				db_value = this->data[key];
+			
 			char *val_end;
 			long double value = std::strtod(val.c_str(), &val_end);
 			if ( !validateDate(key) || val.c_str() == val_end){
@@ -94,11 +120,11 @@ void BitcoinExchange::btc(std::string& input){
 				std::cerr << "Error: Not a positive number." << std::endl;
 				continue;
 			}
-			if (value > INT_MAX){
+			if (value > 1000){
 				std::cerr << "Error: too large a number." << std::endl;
 				continue;
 			}
-            std::cout << key << " => " << iterator_start->second << " = " << iterator_start->second * value << std::endl;
+            std::cout << key << " => " << db_value << " = " << db_value * value << std::endl;
             
         }
         else {
